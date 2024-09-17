@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class FFPlayerMovement : MonoBehaviour
 {
     //number vars
     [SerializeField] private float moveSpeed;
-    private float p1moveX, p1moveY, p2moveX, p2moveY;
-    private Vector2 p1moveDir, p2moveDir;
+    private Vector2 p1MoveDir, p2MoveDir, characterMoveDir;
     
     //componment vars
     private Rigidbody2D rb;
@@ -19,37 +19,42 @@ public class FFPlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         //set players' move directions to zero
-        p1moveDir = Vector2.zero;
-        p2moveDir = Vector2.zero;
+        p1MoveDir = Vector2.zero;
+        p2MoveDir = Vector2.zero;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //get p1's movement direction from keyboard input
-        if(Input.GetKey("w"))
-        {
-            p1moveDir = Vector2.up;
-        }
-        if(Input.GetKey("d"))
-        {
-            p1moveDir = Vector2.right;
-        }
-        if(Input.GetKey("s"))
-        {
-            p1moveDir = Vector2.down;
-        }
-        if(Input.GetKey("a"))
-        {
-            p1moveDir = Vector2.left;
-        }
+        Debug.DrawRay(transform.position, p1MoveDir.normalized * 100f, Color.red);
+        Debug.DrawRay(transform.position, p2MoveDir.normalized * 100f, Color.blue);
+    }
 
-        Debug.DrawRay(transform.position, p1moveDir.normalized * 100f, Color.red);
+    //when p1 pressed WASD,...
+    void OnP1Move(InputValue value)
+    {
+        //set p1MoveDir to direction of WASD
+        //NOTE: vector is already normalized!
+        p1MoveDir = value.Get<Vector2>();
+    }
+
+    //when p2 pressed Arrow Keys,...
+    void OnP2Move(InputValue value)
+    {
+        //set p2MoveDir to direction of Arrow Keys
+        //NOTE: vector is already normalized!
+        p2MoveDir = value.Get<Vector2>();
     }
 
     void FixedUpdate()
     {
-        //apply p1moveDir and p2moveDir to player
-        rb.AddForce((p1moveDir.normalized + p2moveDir.normalized) * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Force);
+        //calculate characterMoveDir
+        characterMoveDir = p1MoveDir + p2MoveDir;
+
+        //apply characterMoveDir to player
+        rb.AddForce(characterMoveDir * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Force);
+
+        //change direction of character
+        transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
     }
 }
