@@ -56,5 +56,9 @@ public class FFPlayerMovement : MonoBehaviour
 
         //change direction of character
         transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
+        // if()
+        // { 
+        //     transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
+        // }
     }
 }
