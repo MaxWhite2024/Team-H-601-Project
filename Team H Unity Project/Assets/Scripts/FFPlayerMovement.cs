@@ -74,8 +74,17 @@ public class FFPlayerMovement : MonoBehaviour
         }
         else
         {
+            //calculate grid characterMoveDir
+            if (p1MoveDir == p2MoveDir)
+            {
+                characterMoveDir = p1MoveDir * 2f;
+            }
+            else
+            {
+                characterMoveDir = Vector2.zero;
+            }
             //calculate freeform characterMoveDir
-            characterMoveDir = p1MoveDir + p2MoveDir;
+            // characterMoveDir = p1MoveDir + p2MoveDir;
 
             //apply characterMoveDir to player
             rb.AddForce(characterMoveDir * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Force);
