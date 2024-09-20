@@ -376,6 +376,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2000
+  timeBetweenGridSteps: 1
+  isGridMovement: 0
+  canStep: 1
 --- !u!212 &1914868613
 SpriteRenderer:
   m_ObjectHideFlags: 0
