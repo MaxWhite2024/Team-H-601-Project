@@ -224,6 +224,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   melee: {fileID: 988535923}
   ranged: {fileID: 1010370898}
+  mTimer: 0
+  rTimer: 0
+  attacking: 0
+  attackWhileMove: 0
 --- !u!1 &988535923
 GameObject:
   m_ObjectHideFlags: 0

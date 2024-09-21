@@ -10,6 +10,7 @@ public class PlayerAttacking : MonoBehaviour
     [SerializeField] private float mTimer;
     [SerializeField] private float rTimer;
     [SerializeField] private bool attacking;
+    [SerializeField] private bool attackWhileMove;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class PlayerAttacking : MonoBehaviour
     void Update()
     {
         //Rotating
-        if(!attacking)
+        if (!attacking || attackWhileMove)
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
@@ -47,6 +48,7 @@ public class PlayerAttacking : MonoBehaviour
                 this.transform.rotation = Quaternion.Euler(0, 0, -90);
             }
         }
+        
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
