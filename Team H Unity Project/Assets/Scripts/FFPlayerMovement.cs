@@ -74,12 +74,14 @@ public class FFPlayerMovement : MonoBehaviour
         if(p2Attack <= 0)
         {
             p2Attack = rangedCooldown;
+            //Instantiate(ranged, (transform.position + (transform.up /1.7f)), transform.rotation); Spawns the projecile in front of the player
             Instantiate(ranged, transform.position, transform.rotation);
         }
     }
 
     void FixedUpdate()
     {
+        Debug.Log(transform.rotation);
         #region Move Logic
 
         if((!canAttackMove && p1Attack <= 0) || canAttackMove)
