@@ -7,7 +7,7 @@ public class FFPlayerMovement : MonoBehaviour
 {
     //number vars
     [SerializeField] private float moveSpeed, timeBetweenGridSteps, meleeTime, rangedCooldown;
-    [SerializeField] private bool isGridMovement = false, canStep = true, canAttackMove = true;
+    [SerializeField] private bool isGridMovement = false, canStep = false, canAttackMove = true;
     [SerializeField] private GameObject melee, ranged;
     private Vector2 p1MoveDir, p2MoveDir, characterMoveDir;
     private float p1Attack, p2Attack; //timer the melee hitbox appears and cooldown timer for ranged attacks
@@ -84,6 +84,7 @@ public class FFPlayerMovement : MonoBehaviour
 
         if((!canAttackMove && p1Attack <= 0) || canAttackMove)
         {
+            //if players move via grid,...
             if (isGridMovement)
             {
                 //calculate grid characterMoveDir
@@ -96,14 +97,24 @@ public class FFPlayerMovement : MonoBehaviour
                     characterMoveDir = Vector2.zero;
                 }
 
-                //if character can step,...
-                if (canStep)
+                //if players have made new movement inputs,...
+                if (characterMoveDir != Vector2.zero)
                 {
-                    //apply characterMoveDir to player
-                    rb.AddForce(characterMoveDir * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+                    //change direction of character
+                    transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
 
-                    //begin step cooldown
+                    //wait 1 step
                     StartCoroutine(GridStepDelay(timeBetweenGridSteps));
+
+                    //if character can step,...
+                    if (canStep)
+                    {
+                        //apply characterMoveDir to player
+                        rb.AddForce(characterMoveDir * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+
+                        //begin step cooldown
+                        StartCoroutine(GridStepDelay(timeBetweenGridSteps));
+                    }
                 }
             }
             else
@@ -122,13 +133,13 @@ public class FFPlayerMovement : MonoBehaviour
 
                 //apply characterMoveDir to player
                 rb.AddForce(characterMoveDir * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Force);
-            }
 
-            //if players have made new movement inputs,...
-            if (characterMoveDir != Vector2.zero)
-            {
-                //change direction of character
-                transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
+                //if players have made new movement inputs,...
+                if (characterMoveDir != Vector2.zero)
+                {
+                    //change direction of character
+                    transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
+                }
             }
         }
 
