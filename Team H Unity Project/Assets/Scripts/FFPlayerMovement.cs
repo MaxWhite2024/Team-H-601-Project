@@ -74,8 +74,8 @@ public class FFPlayerMovement : MonoBehaviour
         if(p2Attack <= 0)
         {
             p2Attack = rangedCooldown;
-            //Instantiate(ranged, (transform.position + (transform.up /1.7f)), transform.rotation); Spawns the projecile in front of the player
-            Instantiate(ranged, transform.position, transform.rotation);
+            //Instantiate(ranged, (transform.position + (transform.up /1.7f)), transform.rotation); //Spawns the projecile in front of the player
+            Instantiate(ranged, transform.position, transform.rotation); //Spawns the projectile in the player
         }
     }
 
