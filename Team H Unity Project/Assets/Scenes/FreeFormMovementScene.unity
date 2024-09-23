@@ -1426,8 +1426,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5ee04494c814142bb6dfb9af3d43b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2000
-  timeBetweenGridSteps: 1
+  moveSpeed: 500
+  timeBetweenGridSteps: 0.1
   meleeTime: 0.5
   rangedCooldown: 1
   isGridMovement: 0

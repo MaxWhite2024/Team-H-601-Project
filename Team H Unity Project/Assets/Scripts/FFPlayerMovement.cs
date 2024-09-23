@@ -8,6 +8,7 @@ public class FFPlayerMovement : MonoBehaviour
     //number vars
     [SerializeField] private float moveSpeed, timeBetweenGridSteps, meleeTime, rangedCooldown;
     [SerializeField] private bool isGridMovement = false, canStep = false, canAttackMove = true;
+    private bool hasTurned = false;
     [SerializeField] private GameObject melee, ranged;
     private Vector2 p1MoveDir, p2MoveDir, characterMoveDir;
     private float p1Attack, p2Attack; //timer the melee hitbox appears and cooldown timer for ranged attacks
@@ -100,20 +101,30 @@ public class FFPlayerMovement : MonoBehaviour
                 //if players have made new movement inputs,...
                 if (characterMoveDir != Vector2.zero)
                 {
-                    //change direction of character
-                    transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
+                    //if player should face a new direction,...
+                    if (transform.rotation != Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir)))
+                    {
+                        //change direction of character
+                        transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
 
-                    //wait 1 step
-                    StartCoroutine(GridStepDelay(timeBetweenGridSteps));
+                        //Wait 1 step
+                        StartCoroutine(DelayBoolean(hasTurned, timeBetweenGridSteps));
+                    }
+                    //else player is already facing correct direction,...
+                    else
+                    {
+                        //set hasTurned to true
+                        hasTurned = true;
+                    }
 
                     //if character can step,...
-                    if (canStep)
+                    if (canStep && hasTurned)
                     {
+                        //begin step cooldown
+                        StartCoroutine(DelayBoolean(canStep, timeBetweenGridSteps));
+
                         //apply characterMoveDir to player
                         rb.AddForce(characterMoveDir * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
-
-                        //begin step cooldown
-                        StartCoroutine(GridStepDelay(timeBetweenGridSteps));
                     }
                 }
             }
@@ -179,15 +190,15 @@ public class FFPlayerMovement : MonoBehaviour
         }
     }
 
-    IEnumerator GridStepDelay(float delayTime)
+    IEnumerator DelayBoolean(bool booleanToChange, float delayTime)
     {
-        //prevent character from stepping
-        canStep = false;
+        //Set booleanToChange to false
+        booleanToChange = false;
 
         //wait for delayTime seconds
         yield return new WaitForSeconds(delayTime);
 
-        //allow character to step
-        canStep = true;
+        //Set booleanToChange to true
+        booleanToChange = true;
     }
 }
