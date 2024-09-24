@@ -1430,7 +1430,7 @@ MonoBehaviour:
   timeBetweenGridSteps: 0.1
   meleeTime: 0.5
   rangedCooldown: 1
-  isGridMovement: 0
+  isGridMovement: 1
   canStep: 1
   canAttackMove: 1
   melee: {fileID: 57324128}
