@@ -97,27 +97,32 @@ public class FFPlayerMovement : MonoBehaviour
                 //if players have made new movement inputs,...
                 if (characterMoveDir != Vector2.zero)
                 {
-                    //if player should face a new direction,...
-                    if (transform.rotation != Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir)))
-                    {
-                        //change direction of character
-                        transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
 
-                        //Wait 1 step
-                        StartCoroutine(DelayBoolean(hasTurned, timeBetweenGridSteps));
-                    }
-                    //else player is already facing correct direction,...
-                    else
-                    {
-                        //set hasTurned to true
+                    //change direction of character
+                    //Debug.Log("cur rot is : " + transform.rotation + ". and Euler move direction is: " + Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir)));
+                    transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
                         hasTurned = true;
-                    }
+                    // //if player should face a new direction,...
+                    // if (transform.rotation != Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir)))
+                    // {
+                    //     //change direction of character
+                    //     transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
+
+                    //     //Wait 1 step
+                    //     //StartCoroutine(DelayBoolean(hasTurned, timeBetweenGridSteps));
+                    // }
+                    // //else player is already facing correct direction,...
+                    // else
+                    // {
+                    //     //set hasTurned to true
+                    //     hasTurned = true;
+                    // }
 
                     //if character can step,...
                     if (canStep && hasTurned)
                     {
                         //begin step cooldown
-                        StartCoroutine(DelayBoolean(canStep, timeBetweenGridSteps));
+                        StartCoroutine(DelayStep(timeBetweenGridSteps));
 
                         //apply characterMoveDir to player
                         rb.AddForce(characterMoveDir * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
@@ -184,15 +189,15 @@ public class FFPlayerMovement : MonoBehaviour
         }
     }
 
-    IEnumerator DelayBoolean(bool booleanToChange, float delayTime)
+    IEnumerator DelayStep(float delayTime)
     {
-        //Set booleanToChange to false
-        booleanToChange = false;
+        //Set canStep to false
+        canStep = false;
 
         //wait for delayTime seconds
         yield return new WaitForSeconds(delayTime);
 
-        //Set booleanToChange to true
-        booleanToChange = true;
+        //Set canStep to true
+        canStep = true;
     }
 }
