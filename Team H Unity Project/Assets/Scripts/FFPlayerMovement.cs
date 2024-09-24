@@ -19,10 +19,6 @@ public class FFPlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //GetComponent is expensive so I assigned rb in the inspector :)
-        //get rgidbody2D of player
-        //rb = GetComponent<Rigidbody2D>();
-
         //set players' move directions to zero
         p1MoveDir = Vector2.zero;
         p2MoveDir = Vector2.zero;
@@ -139,8 +135,6 @@ public class FFPlayerMovement : MonoBehaviour
                 {
                     characterMoveDir = Vector2.zero;
                 }
-                //calculate freeform characterMoveDir
-                // characterMoveDir = p1MoveDir + p2MoveDir;
 
                 //apply characterMoveDir to player
                 rb.AddForce(characterMoveDir * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Force);
