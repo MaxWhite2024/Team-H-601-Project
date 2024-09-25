@@ -5,11 +5,24 @@ using UnityEngine.InputSystem;
 
 public class FFPlayerMovement : MonoBehaviour
 {
-    //number vars
-    [SerializeField] private float moveSpeed, timeBetweenGridSteps, meleeTime, rangedCooldown;
-    [SerializeField] private bool isGridMovement = false, canStep = false, canAttackMove = true;
-    private bool hasTurned = false;
-    [SerializeField] private GameObject melee, ranged;
+    [Header("Movement Settings")]
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float timeBetweenGridSteps;
+
+    [Header("Movement Options")]
+    [SerializeField] private bool isGridMovement = false;
+    [SerializeField] private bool canStep = false;
+    [SerializeField] private bool canAttackMove = true;
+
+    [Header("Attack Settings")]
+    [SerializeField] private float meleeTime;
+    [SerializeField] private float rangedCooldown;
+
+    [Header("Gameobjects and Components")]
+    [SerializeField] private GameObject melee;
+    [SerializeField] private GameObject ranged;
+    [SerializeField] private GameObject characterCenter;
+
     private Vector2 p1MoveDir, p2MoveDir, characterMoveDir;
     private float p1Attack, p2Attack; //timer the melee hitbox appears and cooldown timer for ranged attacks
     
@@ -97,11 +110,9 @@ public class FFPlayerMovement : MonoBehaviour
                 //if players have made new movement inputs,...
                 if (characterMoveDir != Vector2.zero)
                 {
-
                     //change direction of character
                     //Debug.Log("cur rot is : " + transform.rotation + ". and Euler move direction is: " + Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir)));
                     transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
-                        hasTurned = true;
                     // //if player should face a new direction,...
                     // if (transform.rotation != Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir)))
                     // {
@@ -119,7 +130,7 @@ public class FFPlayerMovement : MonoBehaviour
                     // }
 
                     //if character can step,...
-                    if (canStep && hasTurned)
+                    if (canStep)
                     {
                         //begin step cooldown
                         StartCoroutine(DelayStep(timeBetweenGridSteps));
