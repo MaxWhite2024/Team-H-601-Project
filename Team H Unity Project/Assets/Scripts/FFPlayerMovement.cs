@@ -111,23 +111,18 @@ public class FFPlayerMovement : MonoBehaviour
                 if (characterMoveDir != Vector2.zero)
                 {
                     //change direction of character
-                    //Debug.Log("cur rot is : " + transform.rotation + ". and Euler move direction is: " + Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir)));
-                    transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
-                    // //if player should face a new direction,...
-                    // if (transform.rotation != Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir)))
-                    // {
-                    //     //change direction of character
-                    //     transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
+                    Debug.Log("cur rot is : " + transform.localEulerAngles + ". and Euler move direction is: " + new Vector3(0f, 0f, Vector2.Angle(Vector2.up, characterMoveDir)) + ". Signed Eulaer angle is: " + new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir) + 360f));
+                    //transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
+                    //if player should face a new direction,...
+                    if (transform.localEulerAngles != new Vector3(0f, 0f, Vector2.Angle(Vector2.up, characterMoveDir)) || transform.localEulerAngles != new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir) + 360f))
+                    {
+                        //change direction of character
+                        transform.localEulerAngles = new Vector3(0f, 0f, Vector2.Angle(Vector2.up, characterMoveDir));
 
-                    //     //Wait 1 step
-                    //     //StartCoroutine(DelayBoolean(hasTurned, timeBetweenGridSteps));
-                    // }
-                    // //else player is already facing correct direction,...
-                    // else
-                    // {
-                    //     //set hasTurned to true
-                    //     hasTurned = true;
-                    // }
+                        //Wait 1 step
+                        //StartCoroutine(DelayBoolean(hasTurned, timeBetweenGridSteps));
+                    }
+                    //else player is already facing correct direction,...
 
                     //if character can step,...
                     if (canStep)
