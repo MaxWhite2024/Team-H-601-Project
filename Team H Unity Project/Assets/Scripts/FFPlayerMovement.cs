@@ -81,7 +81,7 @@ public class FFPlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(transform.rotation);
+        //Debug.Log(transform.rotation);
         #region Move Logic
 
         if((!canAttackMove && p1Attack <= 0) || canAttackMove)

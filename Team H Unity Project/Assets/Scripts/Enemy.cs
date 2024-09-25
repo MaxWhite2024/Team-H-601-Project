@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private float speed, stepTime;
 
+    //public bool spawned = true;
     private Vector3 playerPos;
     private Vector3 distance;
     private float timer;
@@ -15,6 +16,10 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(!player)
+        {
+            player = GameObject.Find("Players");
+        }
         playerPos = player.transform.position;
         timer = stepTime;
     }
