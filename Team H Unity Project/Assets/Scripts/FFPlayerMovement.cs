@@ -5,12 +5,30 @@ using UnityEngine.InputSystem;
 
 public class FFPlayerMovement : MonoBehaviour
 {
-    //number vars
-    [SerializeField] private float moveSpeed, timeBetweenGridSteps, meleeTime, rangedCooldown;
-    [SerializeField] private bool isGridMovement = false, canStep = true, canAttackMove = true;
-    [SerializeField] private GameObject melee, ranged;
+    [Header("DEBUG VARIABLES")]
+    [SerializeField] private bool hasTurned = true;
+
+    [Header("Movement Settings")]
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float timeBetweenGridSteps;
+
+    [Header("Movement Options")]
+    [SerializeField] private bool isGridMovement = false;
+    [SerializeField] private bool canStep = false;
+    [SerializeField] private bool canAttackMove = true;
+
+    [Header("Attack Settings")]
+    [SerializeField] private float meleeTime;
+    [SerializeField] private float rangedCooldown;
+
+    [Header("Gameobjects and Components")]
+    [SerializeField] private GameObject melee;
+    [SerializeField] private GameObject ranged;
+    [SerializeField] private GameObject characterCenter;
+
     private Vector2 p1MoveDir, p2MoveDir, characterMoveDir;
     private float p1Attack, p2Attack; //timer the melee hitbox appears and cooldown timer for ranged attacks
+    private float tempTimeBetweenGridSteps = 0f;
     
     //componment vars
     [SerializeField] private Rigidbody2D rb;
@@ -18,10 +36,6 @@ public class FFPlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //GetComponent is expensive so I assigned rb in the inspector :)
-        //get rgidbody2D of player
-        //rb = GetComponent<Rigidbody2D>();
-
         //set players' move directions to zero
         p1MoveDir = Vector2.zero;
         p2MoveDir = Vector2.zero;
@@ -82,10 +96,21 @@ public class FFPlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         //Debug.Log(transform.rotation);
+        //increment tempTimeBetweenGridSteps
+        tempTimeBetweenGridSteps += Time.fixedDeltaTime;
+
+        //if timeBetweenGridSteps has elapsed,...
+        if(tempTimeBetweenGridSteps >= timeBetweenGridSteps)
+        {
+            //set canStep to true 
+            canStep = true;
+        }
+
         #region Move Logic
 
         if((!canAttackMove && p1Attack <= 0) || canAttackMove)
         {
+            //if players move via grid,...
             if (isGridMovement)
             {
                 //calculate grid characterMoveDir
@@ -98,19 +123,46 @@ public class FFPlayerMovement : MonoBehaviour
                     characterMoveDir = Vector2.zero;
                 }
 
-                //if character can step,...
-                if (canStep)
-                {
-                    //apply characterMoveDir to player
-                    rb.AddForce(characterMoveDir * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+                //if players have made new movement inputs,...
+                if (characterMoveDir != Vector2.zero)
+                {         
+                    //create a Vector3 to store the rotation of movement direction in Euler angles
+                    // Debug.Log("Current rotation: " + characterCenter.transform.localEulerAngles + ". Move Angle: " + AdjustedAngle(Vector2.SignedAngle(Vector2.up, characterMoveDir)));
+                    Vector3 moveVec3 = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
 
-                    //begin step cooldown
-                    StartCoroutine(GridStepDelay(timeBetweenGridSteps));
+                    //create a Vector3 to store adjusted current character rotation
+                    Vector3 currentRotation = new Vector3(characterCenter.transform.localEulerAngles.x, characterCenter.transform.localEulerAngles.y, AdjustedAngle(characterCenter.transform.localEulerAngles.z));
+
+                    //if players entered a new movement direction
+                    if(currentRotation != moveVec3)
+                    {
+                        //Debug.Log("Players want to move in a new direction!");
+
+                        //wait 1 step
+                        canStep = false;
+                        tempTimeBetweenGridSteps = 0f;
+
+                        //change direction of character
+                        characterCenter.transform.localEulerAngles = moveVec3;
+                    }
+
+                    //if character can step,...
+                    if (canStep)
+                    {
+                        // Debug.Log("Players can step!");
+
+                        //apply characterMoveDir to player
+                        rb.AddForce(characterMoveDir * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+
+                        //wait 1 step
+                        canStep = false;
+                        tempTimeBetweenGridSteps = 0f;
+                    }
                 }
             }
             else
             {
-                //calculate grid characterMoveDir
+                //calculate free form characterMoveDir
                 if (p1MoveDir == p2MoveDir)
                 {
                     characterMoveDir = p1MoveDir * 2f;
@@ -119,18 +171,16 @@ public class FFPlayerMovement : MonoBehaviour
                 {
                     characterMoveDir = Vector2.zero;
                 }
-                //calculate freeform characterMoveDir
-                // characterMoveDir = p1MoveDir + p2MoveDir;
 
                 //apply characterMoveDir to player
                 rb.AddForce(characterMoveDir * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Force);
-            }
 
-            //if players have made new movement inputs,...
-            if (characterMoveDir != Vector2.zero)
-            {
-                //change direction of character
-                transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
+                //if players have made new movement inputs,...
+                if (characterMoveDir != Vector2.zero)
+                {
+                    //change direction of character
+                    transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
+                }
             }
         }
 
@@ -170,15 +220,13 @@ public class FFPlayerMovement : MonoBehaviour
         }
     }
 
-    IEnumerator GridStepDelay(float delayTime)
+    public float AdjustedAngle(float angle)
     {
-        //prevent character from stepping
-        canStep = false;
+        if (angle > 180f)
+        {
+            angle -= 360f;
+        }
 
-        //wait for delayTime seconds
-        yield return new WaitForSeconds(delayTime);
-
-        //allow character to step
-        canStep = true;
+        return angle;
     }
 }
