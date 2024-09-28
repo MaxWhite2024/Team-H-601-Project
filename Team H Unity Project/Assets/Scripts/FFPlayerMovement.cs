@@ -7,15 +7,19 @@ public class FFPlayerMovement : MonoBehaviour
 {
     [Header("DEBUG VARIABLES")]
     [SerializeField] private bool hasTurned = true;
-
-    [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float timeBetweenGridSteps;
+    [SerializeField] private bool canStep = false;
+    [SerializeField] private bool inSyncMove = false;
 
     [Header("Movement Options")]
     [SerializeField] private bool isGridMovement = false;
-    [SerializeField] private bool canStep = false;
     [SerializeField] private bool canAttackMove = true;
+
+    [Header("Free Form Movement Settings")]
+    [SerializeField] private float freeFormMoveSpeed;
+
+    [Header("Grid Movement Settings")]
+    [SerializeField] private float gridMoveSpeed;
+    [SerializeField] private float timeBetweenGridSteps;
 
     [Header("Attack Settings")]
     [SerializeField] private float meleeTime;
@@ -104,17 +108,36 @@ public class FFPlayerMovement : MonoBehaviour
             canStep = true;
         }
 
+        #region Move Syncronization Logic
+
+        //if both p1 and p2 are non-zero and moving in the same direction,...
+        if(p1MoveDir != Vector2.zero && p2MoveDir != Vector2.zero && p1MoveDir == p2MoveDir)
+        {
+            //set inSyncMove to true
+            inSyncMove = true;
+        }
+        //else players are out of sync so,...
+        else
+        {
+            //set inSyncMove to false
+            inSyncMove = false;
+        }
+
+        #endregion
+
         #region Move Logic
 
-        if((!canAttackMove && p1Attack <= 0) || canAttackMove)
+        if ((!canAttackMove && p1Attack <= 0) || canAttackMove)
         {
             //if players move via grid,...
             if (isGridMovement)
             {
+                #region Grid Movement
+
                 //calculate grid characterMoveDir
-                if (p1MoveDir == p2MoveDir)
+                if (inSyncMove)
                 {
-                    characterMoveDir = p1MoveDir * 2f;
+                    characterMoveDir = p1MoveDir;
                 }
                 else
                 {
@@ -150,16 +173,20 @@ public class FFPlayerMovement : MonoBehaviour
                         // Debug.Log("Players can step!");
 
                         //apply characterMoveDir to player
-                        rb.AddForce(characterMoveDir * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+                        rb.AddForce(characterMoveDir * gridMoveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
 
                         //wait 1 step
                         canStep = false;
                         tempTimeBetweenGridSteps = 0f;
                     }
                 }
+
+                #endregion
             }
             else
             {
+                #region Free Form Movement
+
                 //calculate free form characterMoveDir
                 if (p1MoveDir == p2MoveDir)
                 {
@@ -171,7 +198,7 @@ public class FFPlayerMovement : MonoBehaviour
                 }
 
                 //apply characterMoveDir to player
-                rb.AddForce(characterMoveDir * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Force);
+                rb.AddForce(characterMoveDir * freeFormMoveSpeed * Time.fixedDeltaTime, ForceMode2D.Force);
 
                 //if players have made new movement inputs,...
                 if (characterMoveDir != Vector2.zero)
@@ -179,6 +206,8 @@ public class FFPlayerMovement : MonoBehaviour
                     //change direction of character
                     transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
                 }
+
+                #endregion
             }
         }
 
