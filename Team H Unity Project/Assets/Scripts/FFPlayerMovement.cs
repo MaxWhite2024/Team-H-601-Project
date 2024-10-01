@@ -115,37 +115,28 @@ public class FFPlayerMovement : MonoBehaviour
         //***** Calculate characterMoveDir and inSyncMove variables ******
         #region Move Syncronization Logic
 
-        //if both p1 and p2 are non-zero,...
+        //if both p1 and p2 are both non-zero,...
         if (p1MoveDir != Vector2.zero && p2MoveDir != Vector2.zero)
         {
             //if both p1 and p2 are moving in the same direction,...
             if (p1MoveDir == p2MoveDir)
             {
+                Debug.Log("IN SYNC");
                 //set inSyncMove to true
                 inSyncMove = true;
 
                 //set characterMoveDir to p1MoveDir since both players are moving in same direction
                 characterMoveDir = p1MoveDir;
             }
-            //else players are out of sync so,...
+            //else players are moving in different directions,...
             else
             {
+                Debug.Log("UNDECIDED");
                 //set inSyncMove to false
                 inSyncMove = false;
 
-                //if p1 is moving and p2 is NOT moving,...
-                if (p1MoveDir != Vector2.zero && p2MoveDir == Vector2.zero)
-                {
-                    //set characterMoveDir to p1MoveDir
-                    characterMoveDir = p1MoveDir;
-
-                }
-                //else if p1 is NOT moving and p2 is moving,...
-                else if (p1MoveDir == Vector2.zero && p2MoveDir != Vector2.zero)
-                {
-                    //set characterMoveDir to p2MoveDir
-                    characterMoveDir = p2MoveDir;
-                }
+                //set characterMoveDir to zero
+                characterMoveDir = Vector2.zero;
             }
         }
         //else neither player is moving so,...
@@ -154,8 +145,30 @@ public class FFPlayerMovement : MonoBehaviour
             //set inSyncMove to false
             inSyncMove = false;
 
-            //set characterMoveDir to zero
-            characterMoveDir = Vector2.zero;
+            //if p1 is moving and p2 is NOT moving,...
+            if (p1MoveDir != Vector2.zero && p2MoveDir == Vector2.zero)
+            {
+                Debug.Log("p1 MOVE");
+                //set characterMoveDir to p1MoveDir
+                characterMoveDir = p1MoveDir;
+
+            }
+            //else if p1 is NOT moving and p2 is moving,...
+            else if (p1MoveDir == Vector2.zero && p2MoveDir != Vector2.zero)
+            {
+                Debug.Log("p2 MOVE");
+                //set characterMoveDir to p2MoveDir
+                characterMoveDir = p2MoveDir;
+            }
+            else
+            {
+                Debug.Log("NIETHER moving");
+                //set inSyncMove to false
+                inSyncMove = false;
+
+                //set characterMoveDir to zero
+                characterMoveDir = Vector2.zero;
+            }
         }
 
         #endregion
@@ -163,6 +176,7 @@ public class FFPlayerMovement : MonoBehaviour
         //***** Handle character movement and apply movement force to character *****
         #region Move and Rotation Logic
 
+        Debug.Log("p1 move dir is: " + p1MoveDir + ". p2 move dir is: " + p2MoveDir + ". chracter move direction is: " + characterMoveDir);
         if ((!canAttackMove && p1Attack <= 0) || canAttackMove)
         {
             //if players have made new movement inputs,...
@@ -195,6 +209,7 @@ public class FFPlayerMovement : MonoBehaviour
                         //else players are NOT moving in sync,...
                         else
                         {
+                            Debug.Log("HERE!");
                             //set timeBetweenGridSteps to double the value from inspector so that the charcater must wait 2 steps
                             timeBetweenGridSteps = inspectorTimeBetweenGridSteps * 2f;
 
