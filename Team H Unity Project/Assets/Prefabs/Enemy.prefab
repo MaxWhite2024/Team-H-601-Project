@@ -101,7 +101,6 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 0.5
   stepTime: 0.5
-  spawned: 1
 --- !u!58 &725086737098611172
 CircleCollider2D:
   m_ObjectHideFlags: 0
