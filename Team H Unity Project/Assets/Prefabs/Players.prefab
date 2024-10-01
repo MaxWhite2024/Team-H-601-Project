@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3979158823159578912}
   - component: {fileID: 6209709697524763909}
   - component: {fileID: 3923888817605829432}
-  - component: {fileID: 4288697895268425043}
+  - component: {fileID: 2028783648528501802}
   - component: {fileID: 8192479857519966251}
   - component: {fileID: 5061495762136108037}
   m_Layer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,8 +117,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &4288697895268425043
-CircleCollider2D:
+--- !u!61 &2028783648528501802
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -150,8 +150,18 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &8192479857519966251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,17 +204,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5ee04494c814142bb6dfb9af3d43b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasTurned: 1
-  moveSpeed: 500
-  timeBetweenGridSteps: 0.1
-  isGridMovement: 1
   canStep: 1
+  inSyncMove: 0
+  isGridMovement: 1
   canAttackMove: 1
+  freeFormMoveSpeed: 0
+  gridMoveSpeed: 0
+  inspectorTimeBetweenGridSteps: 0
   meleeTime: 0.5
   rangedCooldown: 1
   melee: {fileID: 7506816831007820961}
   ranged: {fileID: 5574379742644334510, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
   characterCenter: {fileID: 6575475850797676369}
+  characterMoveDir: {x: 0, y: 0}
   rb: {fileID: 3923888817605829432}
 --- !u!1 &4780695108777331002
 GameObject:

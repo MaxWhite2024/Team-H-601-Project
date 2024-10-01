@@ -209,7 +209,6 @@ public class FFPlayerMovement : MonoBehaviour
                         //else players are NOT moving in sync,...
                         else
                         {
-                            Debug.Log("HERE!");
                             //set timeBetweenGridSteps to double the value from inspector so that the charcater must wait 2 steps
                             timeBetweenGridSteps = inspectorTimeBetweenGridSteps * 2f;
 
