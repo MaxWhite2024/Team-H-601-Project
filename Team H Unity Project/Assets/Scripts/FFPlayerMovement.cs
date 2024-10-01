@@ -100,6 +100,11 @@ public class FFPlayerMovement : MonoBehaviour
         }
     }
 
+    void OnSwapMovementType()
+    {
+        isGridMovement = !isGridMovement;
+    }
+
     void FixedUpdate()
     {
         //increment tempTimeBetweenGridSteps
