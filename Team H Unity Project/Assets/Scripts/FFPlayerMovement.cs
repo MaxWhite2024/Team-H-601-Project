@@ -8,6 +8,7 @@ public class FFPlayerMovement : MonoBehaviour
     [Header("DEBUG VARIABLES")]
     [SerializeField] private bool canStep = false;
     [SerializeField] private bool inSyncMove = false;
+    [SerializeField] private bool inSyncAttack = false;
 
     [Header("Movement Options")]
     [SerializeField] private bool isGridMovement = false;
@@ -21,6 +22,9 @@ public class FFPlayerMovement : MonoBehaviour
     [SerializeField] private float inspectorTimeBetweenGridSteps;
     private float timeBetweenGridSteps;
     private float tempTimeBetweenGridSteps = 0f;
+
+    [Header("Attack Options")]
+    [SerializeField] private AttackType attackType; 
 
     [Header("Attack Settings")]
     [SerializeField] private float meleeTime;
@@ -280,6 +284,13 @@ public class FFPlayerMovement : MonoBehaviour
 
         #endregion
 
+        //***** Calculate inSyncAttack variable *****
+        #region Attack Syncronization Logic
+
+        //inSyncAttack
+
+        #endregion
+
         //***** Handle character attacking ******
         #region Attack Logic
 
@@ -325,5 +336,10 @@ public class FFPlayerMovement : MonoBehaviour
         }
 
         return angle;
+    }
+
+    private enum AttackType
+    {
+        BOTH_MELEE, BOTH_RANGED
     }
 }
