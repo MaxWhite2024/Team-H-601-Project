@@ -208,9 +208,9 @@ MonoBehaviour:
   inSyncMove: 0
   isGridMovement: 1
   canAttackMove: 1
-  freeFormMoveSpeed: 0
-  gridMoveSpeed: 0
-  inspectorTimeBetweenGridSteps: 0
+  freeFormMoveSpeed: 24000
+  gridMoveSpeed: 2000
+  inspectorTimeBetweenGridSteps: 0.05
   meleeTime: 0.5
   rangedCooldown: 1
   melee: {fileID: 7506816831007820961}

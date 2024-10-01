@@ -121,7 +121,7 @@ public class FFPlayerMovement : MonoBehaviour
             //if both p1 and p2 are moving in the same direction,...
             if (p1MoveDir == p2MoveDir)
             {
-                Debug.Log("IN SYNC");
+                // Debug.Log("IN SYNC");
                 //set inSyncMove to true
                 inSyncMove = true;
 
@@ -131,7 +131,7 @@ public class FFPlayerMovement : MonoBehaviour
             //else players are moving in different directions,...
             else
             {
-                Debug.Log("UNDECIDED");
+                // Debug.Log("UNDECIDED");
                 //set inSyncMove to false
                 inSyncMove = false;
 
@@ -148,7 +148,7 @@ public class FFPlayerMovement : MonoBehaviour
             //if p1 is moving and p2 is NOT moving,...
             if (p1MoveDir != Vector2.zero && p2MoveDir == Vector2.zero)
             {
-                Debug.Log("p1 MOVE");
+                // Debug.Log("p1 MOVE");
                 //set characterMoveDir to p1MoveDir
                 characterMoveDir = p1MoveDir;
 
@@ -156,13 +156,13 @@ public class FFPlayerMovement : MonoBehaviour
             //else if p1 is NOT moving and p2 is moving,...
             else if (p1MoveDir == Vector2.zero && p2MoveDir != Vector2.zero)
             {
-                Debug.Log("p2 MOVE");
+                // Debug.Log("p2 MOVE");
                 //set characterMoveDir to p2MoveDir
                 characterMoveDir = p2MoveDir;
             }
             else
             {
-                Debug.Log("NIETHER moving");
+                // Debug.Log("NIETHER moving");
                 //set inSyncMove to false
                 inSyncMove = false;
 
@@ -176,7 +176,7 @@ public class FFPlayerMovement : MonoBehaviour
         //***** Handle character movement and apply movement force to character *****
         #region Move and Rotation Logic
 
-        Debug.Log("p1 move dir is: " + p1MoveDir + ". p2 move dir is: " + p2MoveDir + ". chracter move direction is: " + characterMoveDir);
+        // Debug.Log("p1 move dir is: " + p1MoveDir + ". p2 move dir is: " + p2MoveDir + ". chracter move direction is: " + characterMoveDir);
         if ((!canAttackMove && p1Attack <= 0) || canAttackMove)
         {
             //if players have made new movement inputs,...
@@ -224,15 +224,17 @@ public class FFPlayerMovement : MonoBehaviour
                 {
                     //****** Handle free form movement ******
                     #region Free Form Movement
-
-                    //apply characterMoveDir to player
-                    rb.AddForce(characterMoveDir * freeFormMoveSpeed * Time.fixedDeltaTime, ForceMode2D.Force);
-
-                    //if players have made new movement inputs,...
-                    if (characterMoveDir != Vector2.zero)
+                    
+                    //players are moving in sync
+                    if (inSyncMove)
                     {
-                        //change direction of character
-                        transform.rotation = Quaternion.Euler(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
+                        //apply characterMoveDir to player
+                        rb.AddForce(characterMoveDir * freeFormMoveSpeed * Time.fixedDeltaTime, ForceMode2D.Force);
+                    }
+                    else
+                    {
+                        //apply penalized characterMoveDir to player
+                        rb.AddForce(characterMoveDir * (freeFormMoveSpeed / 2f) * Time.fixedDeltaTime, ForceMode2D.Force);
                     }
 
                     #endregion
