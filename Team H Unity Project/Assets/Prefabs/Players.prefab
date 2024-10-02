@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 2028783648528501802}
   - component: {fileID: 8192479857519966251}
   - component: {fileID: 5061495762136108037}
-  m_Layer: 0
+  - component: {fileID: 6039578850739190062}
+  m_Layer: 3
   m_Name: Players
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,10 +110,10 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 119
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -218,6 +219,19 @@ MonoBehaviour:
   characterCenter: {fileID: 6575475850797676369}
   characterMoveDir: {x: 0, y: 0}
   rb: {fileID: 3923888817605829432}
+--- !u!114 &6039578850739190062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73474973282886379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dece7363d9632b458d546c8ca1b4e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10000
 --- !u!1 &4780695108777331002
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5944209734454632216}
   - component: {fileID: 9063783272410142535}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2134894311257815045}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Character Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1733394659579114859}
   - component: {fileID: 983528104012273529}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +444,7 @@ GameObject:
   - component: {fileID: 3617461447356268325}
   - component: {fileID: 3057667409567110567}
   - component: {fileID: 2370848154072337659}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Closed Sprite Shape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
