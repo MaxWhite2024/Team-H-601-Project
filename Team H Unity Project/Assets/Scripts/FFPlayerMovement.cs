@@ -29,6 +29,9 @@ public class FFPlayerMovement : MonoBehaviour
     [Header("Attack Settings")]
     [SerializeField] private float meleeTime;
     [SerializeField] private float rangedCooldown;
+    [SerializeField] private float attackSyncWindow;
+    [SerializeField] private bool p1hasAttacked = false, p2hasAttacked = false;
+    private float tempAttackSyncWindow = 0f;
 
     [Header("Gameobjects and Components")]
     [SerializeField] private GameObject melee;
@@ -83,7 +86,7 @@ public class FFPlayerMovement : MonoBehaviour
 
     void OnP1Attack()
     {
-        if(p1Attack > 0)
+        if(p1Attack > 0f)
         {
             p1Attack += meleeTime;
         }
@@ -91,17 +94,42 @@ public class FFPlayerMovement : MonoBehaviour
         {
             p1Attack = meleeTime;
         }
+
         //Debug.Log(p1Attack);
-        melee.SetActive(true);
+        //if attackType is melle and ranged,...
+        if(attackType == AttackType.MELEE_AND_RANGED)
+        {
+            //activate melee swipe object
+            melee.SetActive(true);
+        }
+        else if(attackType == AttackType.BOTH_MELEE)
+        {
+            //
+            p1hasAttacked = true;
+        }       
     }
 
     void OnP2Attack()
     {
-        if(p2Attack <= 0)
+        if(p2Attack <= 0f)
         {
             p2Attack = rangedCooldown;
-            //Instantiate(ranged, (transform.position + (transform.up /1.7f)), transform.rotation); //Spawns the projecile in front of the player
-            Instantiate(ranged, transform.position, transform.rotation); //Spawns the projectile in the player
+
+            //if attackType is melle and ranged,...
+            if(attackType == AttackType.MELEE_AND_RANGED)
+            {
+                // //Spawns the projecile in front of the characterCenter
+                // Instantiate(ranged, (transform.position + (transform.up /1.7f)), transform.rotation); 
+                
+                //Spawns the projectile in the characterCenter
+                Instantiate(ranged, characterCenter.transform.position, characterCenter.transform.rotation); 
+            }
+            //else if attackType is both melee,...
+            else if(attackType == AttackType.BOTH_MELEE)
+            {
+                //
+                p2hasAttacked = true;
+            }
         }
     }
 
@@ -306,6 +334,26 @@ public class FFPlayerMovement : MonoBehaviour
         #region Attack Syncronization Logic
 
         //inSyncAttack
+        
+        //if either p1 or p2 has attacked,...
+        if(p1hasAttacked || p2hasAttacked)
+        {
+            //increment tempAttackSyncWindow
+            tempAttackSyncWindow += Time.fixedDeltaTime;
+
+            //if attackSyncWindow has elapsed,...
+            if(tempAttackSyncWindow >= attackSyncWindow)
+            {
+                //set p1hasAttacked and p2hasAttacked back to false
+                p1hasAttacked = false;
+                p2hasAttacked = false;
+            }
+            //else attackSyncWindow has NOT elapsed,...
+            else
+            {
+                //..................
+            }
+        }
 
         #endregion
 
@@ -358,6 +406,6 @@ public class FFPlayerMovement : MonoBehaviour
 
     private enum AttackType
     {
-        BOTH_MELEE, BOTH_RANGED
+        MELEE_AND_RANGED, BOTH_MELEE, BOTH_RANGED
     }
 }
