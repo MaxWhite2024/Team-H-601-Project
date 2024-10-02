@@ -107,7 +107,25 @@ public class FFPlayerMovement : MonoBehaviour
 
     void OnSwapMovementType()
     {
+        //invert isGridMovement
         isGridMovement = !isGridMovement;
+    }
+
+    void OnNextAttackType()
+    {
+        //if the current attackType is greater than the number of attack types minus 1,...
+        if ((int) attackType >= AttackType.GetNames(typeof(AttackType)).Length - 1)
+        {
+            //set attackType back to first attack type
+            attackType = 0;
+        }
+        //else the current attackType is less than or equal to the number of attack types,...
+        else
+        {
+            //increment attack type
+            attackType++;
+        }
+        // Debug.Log(attackType);
     }
 
     void FixedUpdate()

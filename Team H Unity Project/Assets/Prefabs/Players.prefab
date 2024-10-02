@@ -35,7 +35,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2134894311257815045}
-  - {fileID: 3617461447356268325}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6209709697524763909
@@ -206,11 +205,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canStep: 1
   inSyncMove: 0
+  inSyncAttack: 0
   isGridMovement: 1
   canAttackMove: 1
   freeFormMoveSpeed: 24000
   gridMoveSpeed: 2000
   inspectorTimeBetweenGridSteps: 0.05
+  attackType: 0
   meleeTime: 0.5
   rangedCooldown: 1
   melee: {fileID: 7506816831007820961}
@@ -333,6 +334,7 @@ Transform:
   m_Children:
   - {fileID: 5944209734454632216}
   - {fileID: 1733394659579114859}
+  - {fileID: 3617461447356268325}
   m_Father: {fileID: 3979158823159578912}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7198080563520226777
@@ -450,7 +452,7 @@ Transform:
   m_LocalScale: {x: 0.7568745, y: 0.7568745, z: 0.7568745}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3979158823159578912}
+  m_Father: {fileID: 2134894311257815045}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1971053207 &3057667409567110567
 SpriteShapeRenderer:
