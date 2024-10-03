@@ -34,7 +34,8 @@ public class FFPlayerMovement : MonoBehaviour
     private float tempAttackSyncWindow = 0f;
 
     [Header("Gameobjects and Components")]
-    [SerializeField] private GameObject melee;
+    [SerializeField] private GameObject meleeSwipe;
+    [SerializeField] private GameObject meleeStab;
     [SerializeField] private GameObject ranged;
     [SerializeField] private GameObject characterCenter;
 
@@ -99,14 +100,14 @@ public class FFPlayerMovement : MonoBehaviour
         //if attackType is melle and ranged,...
         if(attackType == AttackType.MELEE_AND_RANGED)
         {
-            //activate melee swipe object
-            melee.SetActive(true);
+            //activate meleeSwipe swipe object
+            meleeSwipe.SetActive(true);
         }
         else if(attackType == AttackType.BOTH_MELEE)
         {
             //
             p1hasAttacked = true;
-        }       
+        }    
     }
 
     void OnP2Attack()
@@ -115,7 +116,7 @@ public class FFPlayerMovement : MonoBehaviour
         {
             p2Attack = rangedCooldown;
 
-            //if attackType is melle and ranged,...
+            //if attackType is melee and ranged,...
             if(attackType == AttackType.MELEE_AND_RANGED)
             {
                 // //Spawns the projecile in front of the characterCenter
@@ -366,7 +367,7 @@ public class FFPlayerMovement : MonoBehaviour
 
             if (p1Attack <= 0)
             {
-                melee.SetActive(false);
+                meleeSwipe.SetActive(false);
             }
         }
 
