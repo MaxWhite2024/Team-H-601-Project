@@ -206,6 +206,9 @@ MonoBehaviour:
   canStep: 1
   inSyncMove: 0
   inSyncAttack: 0
+  characterMoveDir: {x: 0, y: 0}
+  isP1Attacking: 0
+  isP2Attacking: 0
   isGridMovement: 1
   canAttackMove: 1
   freeFormMoveSpeed: 24000
@@ -213,13 +216,9 @@ MonoBehaviour:
   inspectorTimeBetweenGridSteps: 0.05
   attackType: 0
   meleeTime: 0.5
-  attackSyncWindow: 0
-  p1hasAttacked: 0
-  p2hasAttacked: 0
   meleeSwipe: {fileID: 7506816831007820961}
   meleeStab: {fileID: 7225709484863884097}
   characterCenter: {fileID: 6575475850797676369}
-  characterMoveDir: {x: 0, y: 0}
   rb: {fileID: 3923888817605829432}
 --- !u!1 &4780695108777331002
 GameObject:

@@ -10,6 +10,8 @@ public class FFPlayerMovement : MonoBehaviour
     [SerializeField] private bool inSyncMove = false;
     [SerializeField] private bool inSyncAttack = false;
     [SerializeField] private Vector2 characterMoveDir;
+    [SerializeField]
+    private bool isP1Attacking = false, isP2Attacking = false;
 
     [Header("Movement Options")]
     [SerializeField] private bool isGridMovement = false;
@@ -37,7 +39,6 @@ public class FFPlayerMovement : MonoBehaviour
 
     private Vector2 p1MoveDir, p2MoveDir;
     private float curP1AttackTimer, curP2AttackTimer; //timers for melee hitboxes
-    private bool isP1Attacking = false, isP2Attacking = false;
     
     //componment vars
     [SerializeField] private Rigidbody2D rb;
@@ -50,9 +51,9 @@ public class FFPlayerMovement : MonoBehaviour
         p2MoveDir = Vector2.zero;
         characterMoveDir = Vector2.zero;
 
-        //sets attacking timer variables to 0
-        curP1AttackTimer = 0f;
-        curP2AttackTimer = 0f;
+        //sets attacking timer variables to meleeTime
+        curP1AttackTimer = meleeTime;
+        curP2AttackTimer = meleeTime;
 
         //set timeBetweenGridSteps to the value from inspector
         timeBetweenGridSteps = inspectorTimeBetweenGridSteps;
@@ -108,7 +109,7 @@ public class FFPlayerMovement : MonoBehaviour
                 curP2AttackTimer = 0f;
 
                 //set isP1Attacking to true
-                isP1Attacking = true;
+                isP2Attacking = true;
             }
         } 
     }
