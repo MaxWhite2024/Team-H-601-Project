@@ -32,4 +32,19 @@ public class Damageable : MonoBehaviour
             
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        //Debug.Log("I've been hit by " + collider.gameObject.name);
+        DamageSource damage = collider.gameObject.GetComponent<DamageSource>();
+        if (damage != null)
+        {
+            health = health - damage.damage;
+            if(health <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+            
+        }
+    }
 }
