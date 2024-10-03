@@ -213,13 +213,11 @@ MonoBehaviour:
   inspectorTimeBetweenGridSteps: 0.05
   attackType: 0
   meleeTime: 0.5
-  rangedCooldown: 1
   attackSyncWindow: 0
   p1hasAttacked: 0
   p2hasAttacked: 0
   meleeSwipe: {fileID: 7506816831007820961}
   meleeStab: {fileID: 7225709484863884097}
-  ranged: {fileID: 5574379742644334510, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
   characterCenter: {fileID: 6575475850797676369}
   characterMoveDir: {x: 0, y: 0}
   rb: {fileID: 3923888817605829432}
@@ -501,7 +499,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.53396225, b: 0.53396225, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites:
