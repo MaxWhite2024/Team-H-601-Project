@@ -112,25 +112,25 @@ public class FFPlayerMovement : MonoBehaviour
 
     void OnP2Attack()
     {
-        if(p2Attack <= 0f)
+        //if attackType is melee and ranged,...
+        if(attackType == AttackType.MELEE_AND_RANGED)
         {
-            p2Attack = rangedCooldown;
-
-            //if attackType is melee and ranged,...
-            if(attackType == AttackType.MELEE_AND_RANGED)
+            if(p2Attack <= 0f)
             {
-                // //Spawns the projecile in front of the characterCenter
-                // Instantiate(ranged, (transform.position + (transform.up /1.7f)), transform.rotation); 
-                
-                //Spawns the projectile in the characterCenter
-                Instantiate(ranged, characterCenter.transform.position, characterCenter.transform.rotation); 
+                p2Attack = rangedCooldown;
             }
-            //else if attackType is both melee,...
-            else if(attackType == AttackType.BOTH_MELEE)
-            {
-                //
-                p2hasAttacked = true;
-            }
+            
+            // //Spawns the projecile in front of the characterCenter
+            // Instantiate(ranged, (transform.position + (transform.up /1.7f)), transform.rotation); 
+            
+            //Spawns the projectile in the characterCenter
+            Instantiate(ranged, characterCenter.transform.position, characterCenter.transform.rotation); 
+        }
+        //else if attackType is both melee,...
+        else if(attackType == AttackType.BOTH_MELEE)
+        {
+            //
+            p2hasAttacked = true;
         }
     }
 
