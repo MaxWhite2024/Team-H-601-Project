@@ -34,7 +34,8 @@ public class FFPlayerMovement : MonoBehaviour
 
     [Header("Gameobjects and Components")]
     [SerializeField] private GameObject meleeSwipe;
-    [SerializeField] private GameObject meleeStab;
+    [SerializeField] private GameObject p1MeleeStab;
+    [SerializeField] private GameObject p2MeleeStab;
     [SerializeField] private GameObject characterCenter;
 
     private Vector2 p1MoveDir, p2MoveDir;
@@ -87,13 +88,18 @@ public class FFPlayerMovement : MonoBehaviour
         //Debug.Log(p1Attack);
         if(attackType == AttackType.BOTH_MELEE)
         {
+            //if p1 has finished attacking and can therefore attack again,...
             if(curP1AttackTimer >= meleeTime)
             {
                 //reset curP1AttackTimer
                 curP1AttackTimer = 0f;
 
-                //set isP1Attacking to true
-                isP1Attacking = true;
+                //if p2 is also attacking,...
+                if(curP2AttackTimer < meleeTime)
+                {
+                    //reset curP2AttackTimer
+                    curP2AttackTimer = 0f;
+                }
             }
         }    
     }
@@ -103,13 +109,18 @@ public class FFPlayerMovement : MonoBehaviour
         //Debug.Log(p2Attack);
         if(attackType == AttackType.BOTH_MELEE)
         {
+            //if p2 has finished attacking and can therefore attack again,...
             if(curP2AttackTimer >= meleeTime)
             {
                 //reset curP2AttackTimer
                 curP2AttackTimer = 0f;
 
-                //set isP1Attacking to true
-                isP2Attacking = true;
+                //if p1 is also attacking,...
+                if(curP1AttackTimer < meleeTime)
+                {
+                    //reset curP1AttackTimer
+                    curP1AttackTimer = 0f;
+                }
             }
         } 
     }
@@ -315,49 +326,57 @@ public class FFPlayerMovement : MonoBehaviour
         #region Attack Logic
 
         //if both p1 and p2 are attacking,...
-        if(isP1Attacking && isP2Attacking)
+        if(curP1AttackTimer < meleeTime && curP2AttackTimer < meleeTime)
         {
-            //deactivate melee stab
-            meleeStab.SetActive(false);
+            //deactivate melee stabs
+            p1MeleeStab.SetActive(false);
+            p2MeleeStab.SetActive(false);
 
             //activate melee swipe
             meleeSwipe.SetActive(true);
         }
         //else if p1 is attacking and p2 is NOT attacking,...
-        else if(isP1Attacking && !isP2Attacking)
+        else if(curP1AttackTimer < meleeTime && curP2AttackTimer >= meleeTime)
         {
-            //activate melee stab
-            meleeStab.SetActive(true);
+            //activate p1MeleeStab 
+            p1MeleeStab.SetActive(true);
         }
         //else if p1 is NOT attacking and p2 is attacking,...
-        else if(!isP1Attacking && isP2Attacking)
+        else if(curP1AttackTimer >= meleeTime && curP2AttackTimer < meleeTime)
         {
-            //activate melee stab
-            meleeStab.SetActive(true);
+            //activate p2MeleeStab
+            p2MeleeStab.SetActive(true);
         }
 
-        if(curP1AttackTimer >= meleeTime)
+        //if syncronized melee attack is over,...
+        if(curP1AttackTimer >= meleeTime && curP2AttackTimer >= meleeTime)
         {
-            //
+            //set isP1Attacking and isP2Attacking to false
             isP1Attacking = false;
-
-            //
-            meleeStab.SetActive(false);
-
-            //
-            meleeSwipe.SetActive(false);
-        }
-
-        if(curP2AttackTimer >= meleeTime)
-        {
-            //
             isP2Attacking = false;
 
-            //
-            meleeStab.SetActive(false);
+            //deactivate meleeSwipe
+            meleeSwipe.SetActive(false); 
+        }
 
-            //
-            meleeSwipe.SetActive(false);
+        //if p1 melee attack is over,...
+        if(curP1AttackTimer >= meleeTime)
+        {
+            //set isP1Attacking to false
+            isP1Attacking = false;
+
+            //deactivate p1MeleeStab
+            p1MeleeStab.SetActive(false);
+        }
+
+        //if p2 melee attack is over,...
+        if(curP2AttackTimer >= meleeTime)
+        {
+            //set isP2Attacking to false
+            isP2Attacking = false;
+
+            //deactivate p2MeleeStab
+            p2MeleeStab.SetActive(false);
         }
 
         //increment attack timers
