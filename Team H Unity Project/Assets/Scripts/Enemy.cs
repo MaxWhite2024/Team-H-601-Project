@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private GameObject player;
     [SerializeField] private float speed, stepTime;
+    [SerializeField] private Rigidbody2D rb;
+
 
     //public bool spawned = true;
     private Vector3 playerPos;
@@ -34,7 +36,8 @@ public class Enemy : MonoBehaviour
             playerPos = player.transform.position;
 
             distance = (playerPos - transform.position);
-            transform.position += distance.normalized * speed;
+            rb.velocity = (distance.normalized * speed);
+            //transform.position += distance.normalized * speed;
 
             timer = stepTime;
         }
