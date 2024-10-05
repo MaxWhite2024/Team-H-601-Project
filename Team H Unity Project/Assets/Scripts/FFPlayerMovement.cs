@@ -32,7 +32,7 @@ public class FFPlayerMovement : MonoBehaviour
     [SerializeField] private GameObject characterCenter;
 
     [SerializeField] private Vector2 characterMoveDir;
-    private Vector2 p1MoveDir, p2MoveDir;
+    [HideInInspector] public Vector2 p1MoveDir, p2MoveDir;
     private float p1Attack, p2Attack; //timer the melee hitbox appears and cooldown timer for ranged attacks
     
     //componment vars
