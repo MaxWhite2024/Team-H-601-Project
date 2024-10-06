@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Playtest01 map.unity
+    guid: 2d2b532aebee4fc43b3b60fcf4a959ff
+  - enabled: 0
     path: Assets/Scenes/FreeFormMovementScene.unity
     guid: 4729c727e5b5a2543bca0df2dd418ce6
   - enabled: 0
