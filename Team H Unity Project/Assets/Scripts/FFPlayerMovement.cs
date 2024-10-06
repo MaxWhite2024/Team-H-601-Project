@@ -8,6 +8,10 @@ public class FFPlayerMovement : MonoBehaviour
     [Header("DEBUG VARIABLES")]
     [SerializeField] private bool canStep = false;
     [SerializeField] private bool inSyncMove = false;
+    [SerializeField] private bool inSyncAttack = false;
+    [SerializeField] private Vector2 characterMoveDir;
+    [SerializeField]
+    private bool isP1Attacking = false, isP2Attacking = false;
 
     [Header("Movement Options")]
     [SerializeField] private bool isGridMovement = false;
@@ -22,18 +26,21 @@ public class FFPlayerMovement : MonoBehaviour
     private float timeBetweenGridSteps;
     private float tempTimeBetweenGridSteps = 0f;
 
+    [Header("Attack Options")]
+    [SerializeField] private AttackType attackType; 
+
     [Header("Attack Settings")]
     [SerializeField] private float meleeTime;
-    [SerializeField] private float rangedCooldown;
 
     [Header("Gameobjects and Components")]
-    [SerializeField] private GameObject melee;
-    [SerializeField] private GameObject ranged;
+    [SerializeField] private GameObject meleeSwipe;
+    [SerializeField] private GameObject p1MeleeStab;
+    [SerializeField] private GameObject p2MeleeStab;
     [SerializeField] private GameObject characterCenter;
 
     [SerializeField] private Vector2 characterMoveDir;
     [HideInInspector] public Vector2 p1MoveDir, p2MoveDir;
-    private float p1Attack, p2Attack; //timer the melee hitbox appears and cooldown timer for ranged attacks
+    private float curP1AttackTimer, curP2AttackTimer; //timers for melee hitboxes
     
     //componment vars
     [SerializeField] private Rigidbody2D rb;
@@ -46,9 +53,9 @@ public class FFPlayerMovement : MonoBehaviour
         p2MoveDir = Vector2.zero;
         characterMoveDir = Vector2.zero;
 
-        //sets attacking variables to 0
-        p1Attack = 0.0f;
-        p2Attack = 0.0f;
+        //sets attacking timer variables to meleeTime
+        curP1AttackTimer = meleeTime;
+        curP2AttackTimer = meleeTime;
 
         //set timeBetweenGridSteps to the value from inspector
         timeBetweenGridSteps = inspectorTimeBetweenGridSteps;
@@ -79,31 +86,67 @@ public class FFPlayerMovement : MonoBehaviour
 
     void OnP1Attack()
     {
-        if(p1Attack > 0)
-        {
-            p1Attack += meleeTime;
-        }
-        else
-        {
-            p1Attack = meleeTime;
-        }
         //Debug.Log(p1Attack);
-        melee.SetActive(true);
+        if(attackType == AttackType.BOTH_MELEE)
+        {
+            //if p1 has finished attacking and can therefore attack again,...
+            if(curP1AttackTimer >= meleeTime)
+            {
+                //reset curP1AttackTimer
+                curP1AttackTimer = 0f;
+
+                //if p2 is also attacking,...
+                if(curP2AttackTimer < meleeTime)
+                {
+                    //reset curP2AttackTimer
+                    curP2AttackTimer = 0f;
+                }
+            }
+        }    
     }
 
     void OnP2Attack()
     {
-        if(p2Attack <= 0)
+        //Debug.Log(p2Attack);
+        if(attackType == AttackType.BOTH_MELEE)
         {
-            p2Attack = rangedCooldown;
-            Instantiate(ranged, (transform.position + (transform.up /1.7f)), transform.rotation); //Spawns the projecile in front of the player
-            //Instantiate(ranged, transform.position, transform.rotation); //Spawns the projectile in the player
-        }
+            //if p2 has finished attacking and can therefore attack again,...
+            if(curP2AttackTimer >= meleeTime)
+            {
+                //reset curP2AttackTimer
+                curP2AttackTimer = 0f;
+
+                //if p1 is also attacking,...
+                if(curP1AttackTimer < meleeTime)
+                {
+                    //reset curP1AttackTimer
+                    curP1AttackTimer = 0f;
+                }
+            }
+        } 
     }
 
     void OnSwapMovementType()
     {
+        //invert isGridMovement
         isGridMovement = !isGridMovement;
+    }
+
+    void OnNextAttackType()
+    {
+        //if the current attackType is greater than the number of attack types minus 1,...
+        if ((int) attackType >= AttackType.GetNames(typeof(AttackType)).Length - 1)
+        {
+            //set attackType back to first attack type
+            attackType = 0;
+        }
+        //else the current attackType is less than or equal to the number of attack types,...
+        else
+        {
+            //increment attack type
+            attackType++;
+        }
+        // Debug.Log(attackType);
     }
 
     void FixedUpdate()
@@ -184,7 +227,7 @@ public class FFPlayerMovement : MonoBehaviour
         #region Move and Rotation Logic
 
         // Debug.Log("p1 move dir is: " + p1MoveDir + ". p2 move dir is: " + p2MoveDir + ". chracter move direction is: " + characterMoveDir);
-        if ((!canAttackMove && p1Attack <= 0) || canAttackMove)
+        if ((!canAttackMove && !isP1Attacking && !isP2Attacking) || canAttackMove)
         {
             //if players have made new movement inputs,...
             if (characterMoveDir != Vector2.zero)
@@ -283,20 +326,63 @@ public class FFPlayerMovement : MonoBehaviour
         //***** Handle character attacking ******
         #region Attack Logic
 
-        if (p1Attack > 0)
+        //if both p1 and p2 are attacking,...
+        if(curP1AttackTimer < meleeTime && curP2AttackTimer < meleeTime)
         {
-            p1Attack -= Time.deltaTime;
+            //deactivate melee stabs
+            p1MeleeStab.SetActive(false);
+            p2MeleeStab.SetActive(false);
 
-            if (p1Attack <= 0)
-            {
-                melee.SetActive(false);
-            }
+            //activate melee swipe
+            meleeSwipe.SetActive(true);
+        }
+        //else if p1 is attacking and p2 is NOT attacking,...
+        else if(curP1AttackTimer < meleeTime && curP2AttackTimer >= meleeTime)
+        {
+            //activate p1MeleeStab 
+            p1MeleeStab.SetActive(true);
+        }
+        //else if p1 is NOT attacking and p2 is attacking,...
+        else if(curP1AttackTimer >= meleeTime && curP2AttackTimer < meleeTime)
+        {
+            //activate p2MeleeStab
+            p2MeleeStab.SetActive(true);
         }
 
-        if(p2Attack > 0)
+        //if syncronized melee attack is over,...
+        if(curP1AttackTimer >= meleeTime && curP2AttackTimer >= meleeTime)
         {
-            p2Attack -= Time.deltaTime;
+            //set isP1Attacking and isP2Attacking to false
+            isP1Attacking = false;
+            isP2Attacking = false;
+
+            //deactivate meleeSwipe
+            meleeSwipe.SetActive(false); 
         }
+
+        //if p1 melee attack is over,...
+        if(curP1AttackTimer >= meleeTime)
+        {
+            //set isP1Attacking to false
+            isP1Attacking = false;
+
+            //deactivate p1MeleeStab
+            p1MeleeStab.SetActive(false);
+        }
+
+        //if p2 melee attack is over,...
+        if(curP2AttackTimer >= meleeTime)
+        {
+            //set isP2Attacking to false
+            isP2Attacking = false;
+
+            //deactivate p2MeleeStab
+            p2MeleeStab.SetActive(false);
+        }
+
+        //increment attack timers
+        curP1AttackTimer += Time.fixedDeltaTime;
+        curP2AttackTimer += Time.fixedDeltaTime;
 
         #endregion
     }
@@ -325,5 +411,10 @@ public class FFPlayerMovement : MonoBehaviour
         }
 
         return angle;
+    }
+
+    private enum AttackType
+    {
+        MELEE_AND_RANGED, BOTH_MELEE, BOTH_RANGED
     }
 }

@@ -546,7 +546,7 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "p2Attack",
@@ -555,12 +555,21 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Swap Movement Type",
                     "type": "Button",
                     "id": "e51c06e6-a3bc-42a0-858d-85f4d611e911",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Next Attack Type",
+                    "type": "Button",
+                    "id": "bed7c2d3-0a01-45f9-9324-7758ae3a0a2d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -708,6 +717,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Swap Movement Type",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1724b049-b8ca-4f94-9311-f9f6eb35268a",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Next Attack Type",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
