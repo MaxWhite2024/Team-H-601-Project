@@ -221,6 +221,8 @@ MonoBehaviour:
   p1MeleeStab: {fileID: 7225709484863884097}
   p2MeleeStab: {fileID: 5519271001967049682}
   characterCenter: {fileID: 6575475850797676369}
+  p1MoveDir: {x: 0, y: 0}
+  p2MoveDir: {x: 0, y: 0}
   rb: {fileID: 3923888817605829432}
 --- !u!114 &6391768355133209792
 MonoBehaviour:
@@ -332,7 +334,6 @@ GameObject:
   - component: {fileID: 8872008583035900769}
   - component: {fileID: 7381698969035192536}
   - component: {fileID: 5144136414275370856}
-  - component: {fileID: 2475542012984784185}
   m_Layer: 0
   m_Name: P2 Melee Stab
   m_TagString: Untagged
@@ -528,33 +529,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.3810208, y: 1.5877004}
   m_EdgeRadius: 0
---- !u!50 &2475542012984784185
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5519271001967049682}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &6575475850797676369
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,7 +662,6 @@ GameObject:
   - component: {fileID: 1095161690486506376}
   - component: {fileID: 8952307263986737338}
   - component: {fileID: 4333169715455252580}
-  - component: {fileID: 1410758142533202689}
   m_Layer: 0
   m_Name: P1 Melee Stab
   m_TagString: Untagged
@@ -884,33 +857,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.3810208, y: 1.5877004}
   m_EdgeRadius: 0
---- !u!50 &1410758142533202689
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7225709484863884097}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &7506816831007820961
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,7 +870,6 @@ GameObject:
   - component: {fileID: 2370848154072337659}
   - component: {fileID: 2984826930045756033}
   - component: {fileID: 5851685980865653452}
-  - component: {fileID: 7584513717905990014}
   m_Layer: 0
   m_Name: Melee Swipe
   m_TagString: Untagged
@@ -1125,30 +1070,3 @@ PolygonCollider2D:
       - {x: 1.4397128, y: -0.7279483}
       - {x: 0.9689763, y: 0.43148643}
   m_UseDelaunayMesh: 0
---- !u!50 &7584513717905990014
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7506816831007820961}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0

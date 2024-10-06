@@ -38,7 +38,6 @@ public class FFPlayerMovement : MonoBehaviour
     [SerializeField] private GameObject p2MeleeStab;
     [SerializeField] private GameObject characterCenter;
 
-    [SerializeField] private Vector2 characterMoveDir;
     [HideInInspector] public Vector2 p1MoveDir, p2MoveDir;
     private float curP1AttackTimer, curP2AttackTimer; //timers for melee hitboxes
     
