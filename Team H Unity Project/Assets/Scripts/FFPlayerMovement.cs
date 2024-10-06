@@ -8,7 +8,6 @@ public class FFPlayerMovement : MonoBehaviour
     [Header("DEBUG VARIABLES")]
     [SerializeField] private bool canStep = false;
     [SerializeField] private bool inSyncMove = false;
-    [SerializeField] private bool inSyncAttack = false;
     [SerializeField] private Vector2 characterMoveDir;
     [SerializeField]
     private bool isP1Attacking = false, isP2Attacking = false;
