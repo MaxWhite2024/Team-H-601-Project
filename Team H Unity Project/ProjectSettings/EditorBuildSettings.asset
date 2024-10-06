@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/FreeFormMovementScene.unity
     guid: 4729c727e5b5a2543bca0df2dd418ce6
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 0
     path: Assets/Scenes/Matt Test.unity
     guid: d087d7eac21fb7848b8cb32b95b136fa
   m_configObjects: {}
