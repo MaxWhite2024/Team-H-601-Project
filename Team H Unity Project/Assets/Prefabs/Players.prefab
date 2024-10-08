@@ -212,7 +212,7 @@ MonoBehaviour:
   isGridMovement: 1
   canAttackMove: 1
   freeFormMoveSpeed: 24000
-  gridMoveSpeed: 2000
+  gridMoveSpeed: 615
   inspectorTimeBetweenGridSteps: 0.05
   attackType: 1
   meleeTime: 0.5
