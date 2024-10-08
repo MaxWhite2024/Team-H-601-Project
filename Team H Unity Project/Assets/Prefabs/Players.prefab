@@ -209,11 +209,10 @@ MonoBehaviour:
   characterMoveDir: {x: 0, y: 0}
   isP1Attacking: 0
   isP2Attacking: 0
-  isGridMovement: 1
   canAttackMove: 1
-  freeFormMoveSpeed: 24000
   gridMoveSpeed: 615
   inspectorTimeBetweenGridSteps: 0.05
+  outOfSyncMovementPenalty: 0.5
   attackType: 1
   meleeTime: 0.5
   meleeSwipe: {fileID: 7506816831007820961}

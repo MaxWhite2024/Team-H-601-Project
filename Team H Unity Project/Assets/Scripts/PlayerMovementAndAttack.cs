@@ -15,12 +15,10 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [Header("Movement Options")]
     [SerializeField] private bool canAttackMove = true;
 
-    [Header("Free Form Movement Settings")]
-    [SerializeField] private float freeFormMoveSpeed;
-
-    [Header("Grid Movement Settings")]
+    [Header("Movement Settings")]
     [SerializeField] private float gridMoveSpeed;
     [SerializeField] private float inspectorTimeBetweenGridSteps;
+    [SerializeField] private float outOfSyncMovementPenalty;
     private float timeBetweenGridSteps;
     private float tempTimeBetweenGridSteps = 0f;
 
@@ -247,10 +245,10 @@ public class PlayerMovementAndAttack : MonoBehaviour
                     //else players are NOT moving in sync,...
                     else
                     {
-                        //set timeBetweenGridSteps to double the value from inspector so that the charcater must wait 2 steps
-                        timeBetweenGridSteps = inspectorTimeBetweenGridSteps * 2f;
+                        //set timeBetweenGridSteps to double the value from inspector so that the charcater must wait outOfSyncMovementPenalty steps
+                        timeBetweenGridSteps = inspectorTimeBetweenGridSteps * (1 / outOfSyncMovementPenalty);
 
-                        //wait 2 steps
+                        //wait outOfSyncMovementPenalty steps
                         canStep = false;
                         tempTimeBetweenGridSteps = 0f;
                     }
