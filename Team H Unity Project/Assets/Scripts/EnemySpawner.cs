@@ -6,13 +6,16 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemy;
     [SerializeField] private float spawnTimer;
+    [SerializeField] private RoomManager room;
 
     private float timer;
+    public int enemiesSpawned;
 
     // Start is called before the first frame update
     void Start()
     {
-        timer = spawnTimer;    
+        timer = spawnTimer;
+        enemiesSpawned = 0;
     }
 
     // Update is called once per frame
@@ -22,7 +25,9 @@ public class EnemySpawner : MonoBehaviour
         if(timer < 0)
         {
             timer = spawnTimer;
-            Instantiate(enemy, transform.position, transform.rotation); //Spawns the projectile in the player
+            Enemy newEnemy = Object.Instantiate(enemy, transform.position, transform.rotation).GetComponent<Enemy>(); //Spawns the projectile in the player
+            newEnemy.spawner = this;
+            enemiesSpawned++;
         }
     }
 }

@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private float speed, stepTime;
     [SerializeField] private Rigidbody2D rb;
+    public EnemySpawner spawner;
 
 
     //public bool spawned = true;
