@@ -43,4 +43,15 @@ public class Enemy : MonoBehaviour
             timer = stepTime;
         }
     }
+
+    public void Death()
+    {
+        if (spawner != null)
+        {
+            spawner.enemiesSpawned--;
+        }
+
+        Destroy(this);
+    }
+
 }

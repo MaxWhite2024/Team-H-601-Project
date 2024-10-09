@@ -9,18 +9,43 @@ public class RoomManager : MonoBehaviour
     public List<EnemySpawner> spawners;
 
     private float timeInRoom;
+    [SerializeField] private float decreaseSpawnRateRate;
+    [SerializeField] private float decreaseSpawnRateAmount;
+    [SerializeField] private float decreaseSpawnRateMinimum;
 
     // Start is called before the first frame update
     void Start()
     {
         roomClean = false;
-        enemies = new List<Enemy>();
-        spawners = new List<EnemySpawner>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        timeInRoom += Time.deltaTime;
+
+        if(enemies.Count <= 0)
+        {
+            roomClean = true;
+        }
+
+        if (timeInRoom > decreaseSpawnRateRate)
+        {
+
+            foreach (EnemySpawner spawner in spawners)
+            {
+                if(spawner.decreaseSpawnTime && spawner.spawnTimer > decreaseSpawnRateMinimum)
+                {
+                    spawner.spawnTimer -= decreaseSpawnRateAmount;
+
+                    if(spawner.spawnTimer < decreaseSpawnRateMinimum)
+                    {
+                        spawner.spawnTimer = decreaseSpawnRateMinimum;
+                    }
+                }
+            }
+
+            timeInRoom -= decreaseSpawnRateRate;
+        }
     }
 }

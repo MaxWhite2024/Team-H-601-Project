@@ -42,7 +42,14 @@ public class Damageable : MonoBehaviour
             health = health - damage.damage;
             if(health <= 0)
             {
-                Destroy(this.gameObject);
+                if (this.gameObject.GetComponent<Enemy>() != null)
+                {
+                    this.gameObject.GetComponent<Enemy>().Death();
+                }
+                else
+                {
+                    Destroy(this.gameObject);
+                }
             }
             
         }
