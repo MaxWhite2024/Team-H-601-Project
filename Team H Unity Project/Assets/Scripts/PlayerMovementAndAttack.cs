@@ -33,6 +33,8 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private GameObject p1MeleeStab;
     [SerializeField] private GameObject p2MeleeStab;
     [SerializeField] private GameObject characterCenter;
+    [SerializeField] private GameObject p1Center;
+    [SerializeField] private GameObject p2Center;
 
     [HideInInspector] public Vector2 p1MoveDir, p2MoveDir;
     private float curP1AttackTimer, curP2AttackTimer; //timers for melee hitboxes
@@ -69,6 +71,19 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //set p1MoveDir to direction of WASD
         //NOTE: vector is already normalized!
         p1MoveDir = RemoveDiagonal(value.Get<Vector2>());
+
+        //create a Vector3 to store the rotation of movement direction in Euler angles
+        Vector3 moveVec3 = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p1MoveDir));
+
+        //create a Vector3 to store adjusted current p1MoveDir rotation
+        Vector3 currentRotation = new Vector3(p1Center.transform.localEulerAngles.x, p1Center.transform.localEulerAngles.y, AdjustedAngle(p1Center.transform.localEulerAngles.z));
+
+        //if player 2 entered a new movement direction
+        if (currentRotation != moveVec3)
+        {
+            //change direction of p1MoveDir
+            p1Center.transform.localEulerAngles = moveVec3;
+        }
     }
 
     //when p2 pressed Arrow Keys,...
@@ -77,6 +92,9 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //set p2MoveDir to direction of Arrow Keys
         //NOTE: vector is already normalized!
         p2MoveDir = RemoveDiagonal(value.Get<Vector2>());
+
+        //change direction of p2Center
+        p2Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p2MoveDir));
     }
 
     void OnP1Attack()

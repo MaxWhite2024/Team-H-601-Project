@@ -10,7 +10,7 @@ public class UI_arrowscript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerMovementScript = GameObject.Find("Players").GetComponent<PlayerMovementAndAttack>();
+        PlayerMovementScript = GetComponent<PlayerMovementAndAttack>();
 
     }
 
