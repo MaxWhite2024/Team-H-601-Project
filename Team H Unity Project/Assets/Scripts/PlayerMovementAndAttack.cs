@@ -72,17 +72,11 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //NOTE: vector is already normalized!
         p1MoveDir = RemoveDiagonal(value.Get<Vector2>());
 
-        //create a Vector3 to store the rotation of movement direction in Euler angles
-        Vector3 moveVec3 = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p1MoveDir));
-
-        //create a Vector3 to store adjusted current p1MoveDir rotation
-        Vector3 currentRotation = new Vector3(p1Center.transform.localEulerAngles.x, p1Center.transform.localEulerAngles.y, AdjustedAngle(p1Center.transform.localEulerAngles.z));
-
-        //if player 2 entered a new movement direction
-        if (currentRotation != moveVec3)
+        //if p1MoveDir is not equal to zero,...
+        if (p1MoveDir != Vector2.zero)
         {
-            //change direction of p1MoveDir
-            p1Center.transform.localEulerAngles = moveVec3;
+            //change direction of p2Center
+            p1Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p1MoveDir));
         }
     }
 
@@ -93,8 +87,12 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //NOTE: vector is already normalized!
         p2MoveDir = RemoveDiagonal(value.Get<Vector2>());
 
-        //change direction of p2Center
-        p2Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p2MoveDir));
+        //if p2MoveDir is not equal to zero,...
+        if (p2MoveDir != Vector2.zero)
+        {
+            //change direction of p2Center
+            p2Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p2MoveDir));
+        }
     }
 
     void OnP1Attack()
