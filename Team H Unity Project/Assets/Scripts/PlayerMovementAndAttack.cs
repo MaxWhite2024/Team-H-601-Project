@@ -33,6 +33,8 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private GameObject p1MeleeStab;
     [SerializeField] private GameObject p2MeleeStab;
     [SerializeField] private GameObject characterCenter;
+    [SerializeField] private GameObject p1Center;
+    [SerializeField] private GameObject p2Center;
 
     [HideInInspector] public Vector2 p1MoveDir, p2MoveDir;
     private float curP1AttackTimer, curP2AttackTimer; //timers for melee hitboxes
@@ -69,6 +71,13 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //set p1MoveDir to direction of WASD
         //NOTE: vector is already normalized!
         p1MoveDir = RemoveDiagonal(value.Get<Vector2>());
+
+        //if p1MoveDir is not equal to zero,...
+        if (p1MoveDir != Vector2.zero)
+        {
+            //change direction of p2Center
+            p1Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p1MoveDir));
+        }
     }
 
     //when p2 pressed Arrow Keys,...
@@ -77,6 +86,13 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //set p2MoveDir to direction of Arrow Keys
         //NOTE: vector is already normalized!
         p2MoveDir = RemoveDiagonal(value.Get<Vector2>());
+
+        //if p2MoveDir is not equal to zero,...
+        if (p2MoveDir != Vector2.zero)
+        {
+            //change direction of p2Center
+            p2Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p2MoveDir));
+        }
     }
 
     void OnP1Attack()
