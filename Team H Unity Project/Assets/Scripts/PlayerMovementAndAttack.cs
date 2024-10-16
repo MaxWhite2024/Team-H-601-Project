@@ -25,7 +25,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
     private float tempTimeBetweenGridSteps = 0f;
 
     [Header("Attack Settings")]
-    [SerializeField] private float meleeTime;
+    [SerializeField] private float attackTime;
 
     [Header("Gameobjects and Components")]
     [SerializeField] private GameObject meleeSwipe;
@@ -34,6 +34,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private GameObject characterCenter;
     [SerializeField] private GameObject p1Center;
     [SerializeField] private GameObject p2Center;
+    [SerializeField] private GameObject playerProjectile;
 
     [HideInInspector] public Vector2 p1MoveDir, p2MoveDir;
     private float curP1AttackTimer, curP2AttackTimer; //timers for melee hitboxes
@@ -49,9 +50,9 @@ public class PlayerMovementAndAttack : MonoBehaviour
         p2MoveDir = Vector2.zero;
         characterMoveDir = Vector2.zero;
 
-        //sets attacking timer variables to meleeTime
-        curP1AttackTimer = meleeTime;
-        curP2AttackTimer = meleeTime;
+        //sets attacking timer variables to attackTime
+        curP1AttackTimer = attackTime;
+        curP2AttackTimer = attackTime;
 
         //set timeBetweenGridSteps to the value from inspector
         timeBetweenGridSteps = inspectorTimeBetweenGridSteps;
@@ -98,13 +99,13 @@ public class PlayerMovementAndAttack : MonoBehaviour
     {
         //Debug.Log(p1Attack);
         //    //if p1 has finished attacking and can therefore attack again,...
-        //    if(curP1AttackTimer >= meleeTime)
+        //    if(curP1AttackTimer >= attackTime)
         //    {
         //        //reset curP1AttackTimer
         //        curP1AttackTimer = 0f;
 
         //        //if p2 is also attacking,...
-        //        if(curP2AttackTimer < meleeTime)
+        //        if(curP2AttackTimer < attackTime)
         //        {
         //            //reset curP2AttackTimer
         //            curP2AttackTimer = 0f;
@@ -130,13 +131,13 @@ public class PlayerMovementAndAttack : MonoBehaviour
     {
         //Debug.Log(p2Attack);
         //    //if p2 has finished attacking and can therefore attack again,...
-        //    if(curP2AttackTimer >= meleeTime)
+        //    if(curP2AttackTimer >= attackTime)
         //    {
         //        //reset curP2AttackTimer
         //        curP2AttackTimer = 0f;
 
         //        //if p1 is also attacking,...
-        //        if(curP1AttackTimer < meleeTime)
+        //        if(curP1AttackTimer < attackTime)
         //        {
         //            //reset curP1AttackTimer
         //            curP1AttackTimer = 0f;
@@ -309,7 +310,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
         #region Attack Logic
 
         //if both p1 and p2 are attacking,...
-        if(curP1AttackTimer < meleeTime && curP2AttackTimer < meleeTime)
+        if(curP1AttackTimer < attackTime && curP2AttackTimer < attackTime)
         {
             //deactivate melee stabs
             p1MeleeStab.SetActive(false);
@@ -319,20 +320,20 @@ public class PlayerMovementAndAttack : MonoBehaviour
             meleeSwipe.SetActive(true);
         }
         //else if p1 is attacking and p2 is NOT attacking,...
-        else if(curP1AttackTimer < meleeTime && curP2AttackTimer >= meleeTime)
+        else if(curP1AttackTimer < attackTime && curP2AttackTimer >= attackTime)
         {
             //activate p1MeleeStab 
             p1MeleeStab.SetActive(true);
         }
         //else if p1 is NOT attacking and p2 is attacking,...
-        else if(curP1AttackTimer >= meleeTime && curP2AttackTimer < meleeTime)
+        else if(curP1AttackTimer >= attackTime && curP2AttackTimer < attackTime)
         {
             //activate p2MeleeStab
             p2MeleeStab.SetActive(true);
         }
 
         //if syncronized melee attack is over,...
-        if(curP1AttackTimer >= meleeTime && curP2AttackTimer >= meleeTime)
+        if(curP1AttackTimer >= attackTime && curP2AttackTimer >= attackTime)
         {
             //set isP1Attacking and isP2Attacking to false
             isP1Attacking = false;
@@ -343,7 +344,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
         }
 
         //if p1 melee attack is over,...
-        if(curP1AttackTimer >= meleeTime)
+        if(curP1AttackTimer >= attackTime)
         {
             //set isP1Attacking to false
             isP1Attacking = false;
@@ -353,7 +354,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
         }
 
         //if p2 melee attack is over,...
-        if(curP2AttackTimer >= meleeTime)
+        if(curP2AttackTimer >= attackTime)
         {
             //set isP2Attacking to false
             isP2Attacking = false;

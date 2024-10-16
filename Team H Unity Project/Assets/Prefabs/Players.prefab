@@ -211,11 +211,12 @@ MonoBehaviour:
   characterMoveDir: {x: 0, y: 0}
   isP1Attacking: 0
   isP2Attacking: 0
+  p1Mode: 0
+  p2Mode: 0
   canAttackMove: 1
   gridMoveSpeed: 615
   inspectorTimeBetweenGridSteps: 0.05
   outOfSyncMovementPenalty: 0.5
-  attackType: 1
   meleeTime: 0.5
   meleeSwipe: {fileID: 7506816831007820961}
   p1MeleeStab: {fileID: 7225709484863884097}
@@ -223,6 +224,7 @@ MonoBehaviour:
   characterCenter: {fileID: 6575475850797676369}
   p1Center: {fileID: 7187091063743419513}
   p2Center: {fileID: 2166987808576703634}
+  playerProjectile: {fileID: 5574379742644334510, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
   p1MoveDir: {x: 0, y: 0}
   p2MoveDir: {x: 0, y: 0}
   rb: {fileID: 3923888817605829432}
