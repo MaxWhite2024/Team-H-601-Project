@@ -11,6 +11,8 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private Vector2 characterMoveDir;
     [SerializeField]
     private bool isP1Attacking = false, isP2Attacking = false;
+    [SerializeField]
+    private PlayerMode p1Mode = PlayerMode.MOVE, p2Mode = PlayerMode.MOVE;
 
     [Header("Movement Options")]
     [SerializeField] private bool canAttackMove = true;
@@ -21,9 +23,6 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private float outOfSyncMovementPenalty;
     private float timeBetweenGridSteps;
     private float tempTimeBetweenGridSteps = 0f;
-
-    [Header("Attack Options")]
-    [SerializeField] private AttackType attackType; 
 
     [Header("Attack Settings")]
     [SerializeField] private float meleeTime;
@@ -98,60 +97,65 @@ public class PlayerMovementAndAttack : MonoBehaviour
     void OnP1Attack()
     {
         //Debug.Log(p1Attack);
-        if(attackType == AttackType.BOTH_MELEE)
-        {
-            //if p1 has finished attacking and can therefore attack again,...
-            if(curP1AttackTimer >= meleeTime)
-            {
-                //reset curP1AttackTimer
-                curP1AttackTimer = 0f;
+        //    //if p1 has finished attacking and can therefore attack again,...
+        //    if(curP1AttackTimer >= meleeTime)
+        //    {
+        //        //reset curP1AttackTimer
+        //        curP1AttackTimer = 0f;
 
-                //if p2 is also attacking,...
-                if(curP2AttackTimer < meleeTime)
-                {
-                    //reset curP2AttackTimer
-                    curP2AttackTimer = 0f;
-                }
-            }
-        }    
+        //        //if p2 is also attacking,...
+        //        if(curP2AttackTimer < meleeTime)
+        //        {
+        //            //reset curP2AttackTimer
+        //            curP2AttackTimer = 0f;
+        //        }
+        //    }   
+
+        //if the current p1Mode is greater than the number of attack types minus 1,...
+        if ((int)p1Mode >= PlayerMode.GetNames(typeof(PlayerMode)).Length - 1)
+        {
+            //set p1Mode back to first attack type
+            p1Mode = 0;
+        }
+        //else the current p1Mode is less than or equal to the number of attack types,...
+        else
+        {
+            //increment attack type
+            p1Mode++;
+        }
+        // Debug.Log(p1Mode);
     }
 
     void OnP2Attack()
     {
         //Debug.Log(p2Attack);
-        if(attackType == AttackType.BOTH_MELEE)
-        {
-            //if p2 has finished attacking and can therefore attack again,...
-            if(curP2AttackTimer >= meleeTime)
-            {
-                //reset curP2AttackTimer
-                curP2AttackTimer = 0f;
+        //    //if p2 has finished attacking and can therefore attack again,...
+        //    if(curP2AttackTimer >= meleeTime)
+        //    {
+        //        //reset curP2AttackTimer
+        //        curP2AttackTimer = 0f;
 
-                //if p1 is also attacking,...
-                if(curP1AttackTimer < meleeTime)
-                {
-                    //reset curP1AttackTimer
-                    curP1AttackTimer = 0f;
-                }
-            }
-        } 
-    }
+        //        //if p1 is also attacking,...
+        //        if(curP1AttackTimer < meleeTime)
+        //        {
+        //            //reset curP1AttackTimer
+        //            curP1AttackTimer = 0f;
+        //        }
+        //    }
 
-    void OnNextAttackType()
-    {
-        //if the current attackType is greater than the number of attack types minus 1,...
-        if ((int) attackType >= AttackType.GetNames(typeof(AttackType)).Length - 1)
+        //if the current p2Mode is greater than the number of attack types minus 1,...
+        if ((int)p2Mode >= PlayerMode.GetNames(typeof(PlayerMode)).Length - 1)
         {
-            //set attackType back to first attack type
-            attackType = 0;
+            //set p2Mode back to first attack type
+            p2Mode = 0;
         }
-        //else the current attackType is less than or equal to the number of attack types,...
+        //else the current p2Mode is less than or equal to the number of attack types,...
         else
         {
             //increment attack type
-            attackType++;
+            p2Mode++;
         }
-        // Debug.Log(attackType);
+        // Debug.Log(p2Mode);
     }
 
     void FixedUpdate()
@@ -391,8 +395,8 @@ public class PlayerMovementAndAttack : MonoBehaviour
         return angle;
     }
 
-    private enum AttackType
-    {
-        MELEE_AND_RANGED, BOTH_MELEE, BOTH_RANGED
+    private enum PlayerMode
+    { 
+        MOVE, ATTACK
     }
 }
