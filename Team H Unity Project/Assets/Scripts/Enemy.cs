@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float speed, stepTime;
     [SerializeField] private Rigidbody2D rb;
     public EnemySpawner spawner;
+    public RoomManager room;
 
 
     //public bool spawned = true;
@@ -50,8 +51,12 @@ public class Enemy : MonoBehaviour
         {
             spawner.enemiesSpawned--;
         }
+        if(room != null)
+        {
+            room.enemies.Remove(this);
+        }
 
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 
 }

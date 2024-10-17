@@ -14,6 +14,7 @@ public class EnemySpawner : MonoBehaviour
 
     private float timer;
     public int enemiesSpawned;
+    [SerializeField] private int maxEnemies;
 
     // Start is called before the first frame update
     void Start()
@@ -34,10 +35,15 @@ public class EnemySpawner : MonoBehaviour
         if(timer < 0)
         {
             timer = spawnTimer;
-            Enemy newEnemy = Object.Instantiate(enemy, transform.position, transform.rotation).GetComponent<Enemy>(); //Spawns the projectile in the player
-            newEnemy.spawner = this;
-            room.enemies.Add(newEnemy);
-            enemiesSpawned++;
+
+            if(enemiesSpawned < maxEnemies && room.enemies.Count < room.maxEnemies)
+            {
+                Enemy newEnemy = Object.Instantiate(enemy, transform.position, transform.rotation).GetComponent<Enemy>(); //Spawns the projectile in the player
+                newEnemy.spawner = this;
+                newEnemy.room = room;
+                room.enemies.Add(newEnemy);
+                enemiesSpawned++;
+            }
         }
     }
 }

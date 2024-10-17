@@ -8,6 +8,7 @@ public class RoomManager : MonoBehaviour
     public List<Enemy> enemies;
     public List<EnemySpawner> spawners;
 
+    public int maxEnemies;
     private float timeInRoom;
     [SerializeField] private float decreaseSpawnRateRate;
     [SerializeField] private float decreaseSpawnRateAmount;
