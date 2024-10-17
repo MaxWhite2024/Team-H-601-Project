@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private float speed, stepTime;
     [SerializeField] private Rigidbody2D rb;
+    public EnemySpawner spawner;
+    public RoomManager room;
 
 
     //public bool spawned = true;
@@ -42,4 +44,19 @@ public class Enemy : MonoBehaviour
             timer = stepTime;
         }
     }
+
+    public void Death()
+    {
+        if (spawner != null)
+        {
+            spawner.enemiesSpawned--;
+        }
+        if(room != null)
+        {
+            room.enemies.Remove(this);
+        }
+
+        Destroy(this.gameObject);
+    }
+
 }
