@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class FFPlayerMovement : MonoBehaviour
+public class PlayerMovementAndAttack : MonoBehaviour
 {
     [Header("DEBUG VARIABLES")]
     [SerializeField] private bool canStep = false;
@@ -13,15 +13,12 @@ public class FFPlayerMovement : MonoBehaviour
     private bool isP1Attacking = false, isP2Attacking = false;
 
     [Header("Movement Options")]
-    [SerializeField] private bool isGridMovement = false;
     [SerializeField] private bool canAttackMove = true;
 
-    [Header("Free Form Movement Settings")]
-    [SerializeField] private float freeFormMoveSpeed;
-
-    [Header("Grid Movement Settings")]
+    [Header("Movement Settings")]
     [SerializeField] private float gridMoveSpeed;
     [SerializeField] private float inspectorTimeBetweenGridSteps;
+    [SerializeField] private float outOfSyncMovementPenalty;
     private float timeBetweenGridSteps;
     private float tempTimeBetweenGridSteps = 0f;
 
@@ -36,6 +33,8 @@ public class FFPlayerMovement : MonoBehaviour
     [SerializeField] private GameObject p1MeleeStab;
     [SerializeField] private GameObject p2MeleeStab;
     [SerializeField] private GameObject characterCenter;
+    [SerializeField] private GameObject p1Center;
+    [SerializeField] private GameObject p2Center;
 
     [HideInInspector] public Vector2 p1MoveDir, p2MoveDir;
     private float curP1AttackTimer, curP2AttackTimer; //timers for melee hitboxes
@@ -72,6 +71,13 @@ public class FFPlayerMovement : MonoBehaviour
         //set p1MoveDir to direction of WASD
         //NOTE: vector is already normalized!
         p1MoveDir = RemoveDiagonal(value.Get<Vector2>());
+
+        //if p1MoveDir is not equal to zero,...
+        if (p1MoveDir != Vector2.zero)
+        {
+            //change direction of p2Center
+            p1Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p1MoveDir));
+        }
     }
 
     //when p2 pressed Arrow Keys,...
@@ -80,6 +86,13 @@ public class FFPlayerMovement : MonoBehaviour
         //set p2MoveDir to direction of Arrow Keys
         //NOTE: vector is already normalized!
         p2MoveDir = RemoveDiagonal(value.Get<Vector2>());
+
+        //if p2MoveDir is not equal to zero,...
+        if (p2MoveDir != Vector2.zero)
+        {
+            //change direction of p2Center
+            p2Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p2MoveDir));
+        }
     }
 
     void OnP1Attack()
@@ -122,12 +135,6 @@ public class FFPlayerMovement : MonoBehaviour
                 }
             }
         } 
-    }
-
-    void OnSwapMovementType()
-    {
-        //invert isGridMovement
-        isGridMovement = !isGridMovement;
     }
 
     void OnNextAttackType()
@@ -230,63 +237,40 @@ public class FFPlayerMovement : MonoBehaviour
             //if players have made new movement inputs,...
             if (characterMoveDir != Vector2.zero)
             {
-                //if players move via grid,...
-                if (isGridMovement)
+                //***** Handle grid movement ******
+                #region Grid Movement
+
+                //if character can step,...
+                if (canStep)
                 {
-                    //***** Handle grid movement ******
-                    #region Grid Movement
+                    // Debug.Log("Players can step!");
 
-                    //if character can step,...
-                    if (canStep)
-                    {
-                        // Debug.Log("Players can step!");
+                    //apply force in characterMoveDir to the character
+                    rb.AddForce(characterMoveDir * gridMoveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
 
-                        //apply force in characterMoveDir to the character
-                        rb.AddForce(characterMoveDir * gridMoveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
-
-                        //if players are moving in sync,...
-                        if (inSyncMove)
-                        {
-                            //set timeBetweenGridSteps to the value from inspector
-                            timeBetweenGridSteps = inspectorTimeBetweenGridSteps;
-
-                            //wait 1 step
-                            canStep = false;
-                            tempTimeBetweenGridSteps = 0f;
-                        }
-                        //else players are NOT moving in sync,...
-                        else
-                        {
-                            //set timeBetweenGridSteps to double the value from inspector so that the charcater must wait 2 steps
-                            timeBetweenGridSteps = inspectorTimeBetweenGridSteps * 2f;
-
-                            //wait 2 steps
-                            canStep = false;
-                            tempTimeBetweenGridSteps = 0f;
-                        }
-                    }
-
-                    #endregion
-                }
-                else
-                {
-                    //****** Handle free form movement ******
-                    #region Free Form Movement
-                    
-                    //players are moving in sync
+                    //if players are moving in sync,...
                     if (inSyncMove)
                     {
-                        //apply characterMoveDir to player
-                        rb.AddForce(characterMoveDir * freeFormMoveSpeed * Time.fixedDeltaTime, ForceMode2D.Force);
+                        //set timeBetweenGridSteps to the value from inspector
+                        timeBetweenGridSteps = inspectorTimeBetweenGridSteps;
+
+                        //wait 1 step
+                        canStep = false;
+                        tempTimeBetweenGridSteps = 0f;
                     }
+                    //else players are NOT moving in sync,...
                     else
                     {
-                        //apply penalized characterMoveDir to player
-                        rb.AddForce(characterMoveDir * (freeFormMoveSpeed / 2f) * Time.fixedDeltaTime, ForceMode2D.Force);
-                    }
+                        //set timeBetweenGridSteps to double the value from inspector so that the charcater must wait outOfSyncMovementPenalty steps
+                        timeBetweenGridSteps = inspectorTimeBetweenGridSteps * (1 / outOfSyncMovementPenalty);
 
-                    #endregion
+                        //wait outOfSyncMovementPenalty steps
+                        canStep = false;
+                        tempTimeBetweenGridSteps = 0f;
+                    }
                 }
+
+                #endregion
 
                 #region Character Rotation Logic
 
@@ -303,13 +287,9 @@ public class FFPlayerMovement : MonoBehaviour
                 {
                     // Debug.Log("Players want to move in a new direction!");
 
-                    //if using grid movement,...
-                    if(isGridMovement)
-                    {
-                        //wait 1 step
-                        canStep = false;
-                        tempTimeBetweenGridSteps = 0f;
-                    }
+                    //wait 1 step
+                    canStep = false;
+                    tempTimeBetweenGridSteps = 0f;
 
                     //change direction of character
                     characterCenter.transform.localEulerAngles = moveVec3;

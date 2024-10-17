@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Damageable : MonoBehaviour
 {
-    [SerializeField] private int health;
+    public int health;
 
     // Start is called before the first frame update
     void Start()

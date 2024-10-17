@@ -6,11 +6,11 @@ public class UI_arrowscript : MonoBehaviour
 {
     [SerializeField]private RectTransform P1_Arrow;
     [SerializeField]private RectTransform P2_Arrow;
-    [SerializeField]private FFPlayerMovement PlayerMovementScript;
+    [SerializeField]private PlayerMovementAndAttack PlayerMovementScript;
     // Start is called before the first frame update
     void Start()
     {
-        PlayerMovementScript = GameObject.Find("Players").GetComponent<FFPlayerMovement>();
+        PlayerMovementScript = GetComponent<PlayerMovementAndAttack>();
 
     }
 

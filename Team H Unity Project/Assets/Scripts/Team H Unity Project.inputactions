@@ -558,15 +558,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Swap Movement Type",
-                    "type": "Button",
-                    "id": "e51c06e6-a3bc-42a0-858d-85f4d611e911",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Next Attack Type",
                     "type": "Button",
                     "id": "bed7c2d3-0a01-45f9-9324-7758ae3a0a2d",
@@ -706,17 +697,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "p2Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "054de886-3701-4021-a71c-a3ef015df70d",
-                    "path": "<Keyboard>/g",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Swap Movement Type",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
