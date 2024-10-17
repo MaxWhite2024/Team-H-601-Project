@@ -115,6 +115,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 6721093072881008051, guid: 578fae2c5939b4f45bd61a2d3d4c47fb, type: 3}
   spawnTimer: 3
+  room: {fileID: 0}
+  offWhenRoomClean: 0
+  decreaseSpawnTime: 0
+  enemiesSpawned: 0
+  maxEnemies: 5
 --- !u!61 &7673445233402568491
 BoxCollider2D:
   m_ObjectHideFlags: 0
