@@ -5,42 +5,70 @@ using UnityEngine;
 public class Damageable : MonoBehaviour
 {
     public int health;
+    [SerializeField] private float iFrameTime;
+    private float timer;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        timer = iFrameTime;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if(timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collider)
     {
-        //Debug.Log("I've been hit by " + collision.gameObject.name);
-        DamageSource damage = collision.gameObject.GetComponent<DamageSource>();
-        if (damage != null)
+        DamageSource damage = collider.gameObject.GetComponent<DamageSource>();
+        if (damage != null && timer <= 0)
         {
+            timer = iFrameTime;
             health = health - damage.damage;
-            if(health <= 0)
+            Vector3 knockbackAngle = -1 * (collider.gameObject.transform.position - this.gameObject.transform.position);
+            this.gameObject.GetComponent<Rigidbody2D>().velocity = (knockbackAngle.normalized * damage.damage * 120);
+
+            if (health <= 0)
             {
-                Destroy(this.gameObject);
+                if (this.gameObject.GetComponent<Enemy>() != null)
+                {
+                    this.gameObject.GetComponent<Enemy>().Death();
+                }
+                else
+                {
+                    Destroy(this.gameObject);
+                }
             }
-            
+
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        //Debug.Log("I've been hit by " + collider.gameObject.name);
+        //Debug.Log(this.gameObject.name + " has been hit by " + collider.gameObject.name);
+        //Debug.Log(collider.gameObject.transform.position - this.gameObject.transform.position);
+
         DamageSource damage = collider.gameObject.GetComponent<DamageSource>();
-        if (damage != null)
+
+        //TEMP FIX TO AVOID PLAYER DAMAGING THEMSELVES
+        if(this.gameObject.GetComponent<PlayerMovementAndAttack>() != null)
         {
+            return;
+        }
+
+        if (damage != null && timer <= 0)
+        {
+            timer = iFrameTime;
             health = health - damage.damage;
-            if(health <= 0)
+            Vector3 knockbackAngle = -1 * (collider.gameObject.transform.position - this.gameObject.transform.position);
+            this.gameObject.GetComponent<Rigidbody2D>().velocity = (knockbackAngle.normalized * damage.damage * 4);
+
+            if (health <= 0)
             {
                 if (this.gameObject.GetComponent<Enemy>() != null)
                 {
