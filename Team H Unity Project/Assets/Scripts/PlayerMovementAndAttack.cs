@@ -29,7 +29,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
     
     [Header("Attack Settings")]
     [SerializeField] private float fireRate = 0.3f;
-    private float p1TempfireRate = 0f, p2TempfireRate = 0f;
+    private float tempP1FireRate = 0f, tempP2FireRate = 0f, tempSyncedFireRate = 0f;
     [SerializeField] private int maxAmmo;
     public int p1Ammo, p2Ammo;
     [SerializeField] private float ammoRechargeTime;
@@ -44,7 +44,8 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private GameObject p2Center;
     [SerializeField] private GameObject p1Projectile;
     [SerializeField] private GameObject p2Projectile;
-    
+    [SerializeField] private GameObject syncedProjectile;
+
     //componment vars
     [SerializeField] private Rigidbody2D rb;
 
@@ -384,35 +385,56 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //***** Handle character attacking ******
         #region Attack Logic
 
-        //is p1 is inputting a attack direction and p1 can attack again and p1 has ammo,...
-        if (p1AttackDir != Vector2.zero && p1TempfireRate >= fireRate && p1Ammo > 0)
+        //if both players inputting an attack in the same direction,...
+        if (p1AttackDir == p2AttackDir)
         {
-            //create a p1Projectile at p1Center in orientation of p1Center
-            Instantiate(p1Projectile, p1Center.transform.position, p1Center.transform.rotation);
+            //if both players are attacking and syncedFireRate has elapsed and both players have ammo,...
+            if (p1AttackDir != Vector2.zero && p2AttackDir != Vector2.zero && tempSyncedFireRate >= fireRate && p1Ammo > 0 && p2Ammo > 0)
+            {
+                //create a syncedProjectile at p1Center in orientation of p1Center (since both players are attacking in the same direction)
+                Instantiate(syncedProjectile, p1Center.transform.position, p1Center.transform.rotation);
 
-            //reset p1TempfireRate
-            p1TempfireRate = 0f;
+                //reset tempSyncedFireRate
+                tempSyncedFireRate = 0f;
 
-            //decrement p1Ammmo
-            p1Ammo--;
+                //decrement p1Ammmo and p2Ammo
+                p1Ammo--;
+                p2Ammo--;
+            }
         }
-
-        //is p2 is inputting a attack direction and p2 can attack again and p2 has ammo,...
-        if (p2AttackDir != Vector2.zero && p2TempfireRate >= fireRate && p2Ammo > 0)
+        else
         {
-            //create a p2Projectile at p2Center in orientation of p2Center
-            Instantiate(p2Projectile, p2Center.transform.position, p2Center.transform.rotation);
+            //is p1 is inputting an attack direction and p1 can attack again and p1 has ammo,...
+            if (p1AttackDir != Vector2.zero && tempP1FireRate >= fireRate && p1Ammo > 0)
+            {
+                //create a p1Projectile at p1Center in orientation of p1Center
+                Instantiate(p1Projectile, p1Center.transform.position, p1Center.transform.rotation);
 
-            //reset p2TempfireRate
-            p2TempfireRate = 0f;
+                //reset tempP1FireRate
+                tempP1FireRate = 0f;
 
-            //decrement p2Ammmo
-            p2Ammo--;
+                //decrement p1Ammmo
+                p1Ammo--;
+            }
+
+            //is p2 is inputting an attack direction and p2 can attack again and p2 has ammo,...
+            if (p2AttackDir != Vector2.zero && tempP2FireRate >= fireRate && p2Ammo > 0)
+            {
+                //create a p2Projectile at p2Center in orientation of p2Center
+                Instantiate(p2Projectile, p2Center.transform.position, p2Center.transform.rotation);
+
+                //reset tempP2FireRate
+                tempP2FireRate = 0f;
+
+                //decrement p2Ammmo
+                p2Ammo--;
+            }
         }
 
         //increment attack timers
-        p1TempfireRate += Time.fixedDeltaTime;
-        p2TempfireRate += Time.fixedDeltaTime;
+        tempP1FireRate += Time.fixedDeltaTime;
+        tempP2FireRate += Time.fixedDeltaTime;
+        tempSyncedFireRate += Time.fixedDeltaTime;
 
         #endregion
     }

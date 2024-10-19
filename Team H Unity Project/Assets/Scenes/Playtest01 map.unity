@@ -2611,9 +2611,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5061495762136108037, guid: 76195bd9ef611044ea98bb97c7f5e131, type: 3}
-      propertyPath: ammoRechargeTime
-      value: 0.5
-      objectReference: {fileID: 0}
+      propertyPath: syncedProjectile
+      value: 
+      objectReference: {fileID: 506075118401876979, guid: 4f3254e9898936244b7ac325dd420600, type: 3}
     - target: {fileID: 5519271001967049682, guid: 76195bd9ef611044ea98bb97c7f5e131, type: 3}
       propertyPath: m_Layer
       value: 7
