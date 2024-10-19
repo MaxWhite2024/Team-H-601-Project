@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
 
             if(enemiesSpawned < maxEnemies && room.enemies.Count < room.maxEnemies)
             {
-                Enemy newEnemy = Object.Instantiate(enemy, transform.position, transform.rotation).GetComponent<Enemy>(); //Spawns the projectile in the player
+                Enemy newEnemy = Object.Instantiate(enemy, transform).GetComponent<Enemy>(); //Spawns the projectile in the player
                 newEnemy.spawner = this;
                 newEnemy.room = room;
                 room.enemies.Add(newEnemy);
