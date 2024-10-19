@@ -229,7 +229,8 @@ MonoBehaviour:
   characterCenter: {fileID: 6575475850797676369}
   p1Center: {fileID: 7187091063743419513}
   p2Center: {fileID: 2166987808576703634}
-  playerProjectile: {fileID: 5574379742644334510, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
+  p1Projectile: {fileID: 1198810571206102961, guid: ee40d666c248f664c80dccd493582401, type: 3}
+  p2Projectile: {fileID: 1773930947871152712, guid: 8418049397436fa4f889a7cd64ae4b64, type: 3}
   rb: {fileID: 3923888817605829432}
 --- !u!114 &6391768355133209792
 MonoBehaviour:

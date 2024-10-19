@@ -38,7 +38,8 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private GameObject characterCenter;
     [SerializeField] private GameObject p1Center;
     [SerializeField] private GameObject p2Center;
-    [SerializeField] private GameObject playerProjectile;
+    [SerializeField] private GameObject p1Projectile;
+    [SerializeField] private GameObject p2Projectile;
 
     private float curP1fireDelayr, curP2fireDelayr; //timers for melee hitboxes
     
@@ -367,13 +368,17 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //is p1 is inputting a attack direction and p1 can attack again,...
         if(p1AttackDir != Vector2.zero && p1TempFireDelay >= fireDelay)
         {
-            Instantiate(playerProjectile, p1Center.transform.position, p1Center.transform.rotation);
+            Instantiate(p1Projectile, p1Center.transform.position, p1Center.transform.rotation);
+
+            p1TempFireDelay = 0f;
         }
 
         //is p2 is inputting a attack direction and p2 can attack again,...
         if (p2AttackDir != Vector2.zero && p2TempFireDelay >= fireDelay)
         {
-            Instantiate(playerProjectile, p2Center.transform.position, p2Center.transform.rotation);
+            Instantiate(p2Projectile, p2Center.transform.position, p2Center.transform.rotation);
+
+            p2TempFireDelay = 0f;
         }
 
         //increment attack timers
