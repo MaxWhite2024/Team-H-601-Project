@@ -28,8 +28,12 @@ public class PlayerMovementAndAttack : MonoBehaviour
     private float tempTimeBetweenGridSteps = 0f;
     
     [Header("Attack Settings")]
-    [SerializeField] private float fireDelay = 0.3f;
-    private float p1TempFireDelay = 0f, p2TempFireDelay = 0f;
+    [SerializeField] private float fireRate = 0.3f;
+    private float p1TempfireRate = 0f, p2TempfireRate = 0f;
+    [SerializeField] private int maxAmmo;
+    public int p1Ammo, p2Ammo;
+    [SerializeField] private float ammoRechargeTime;
+    private float tempP1AmmoRechargeTime = 0f, tempP2AmmoRechargeTime = 0f;
 
     [Header("Gameobjects and Components")]
     [SerializeField] private GameObject meleeSwipe;
@@ -40,8 +44,6 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private GameObject p2Center;
     [SerializeField] private GameObject p1Projectile;
     [SerializeField] private GameObject p2Projectile;
-
-    private float curP1fireDelayr, curP2fireDelayr; //timers for melee hitboxes
     
     //componment vars
     [SerializeField] private Rigidbody2D rb;
@@ -58,12 +60,12 @@ public class PlayerMovementAndAttack : MonoBehaviour
         p1AttackDir = Vector2.zero;
         p2AttackDir = Vector2.zero;
 
-        //sets attacking timer variables to fireDelay
-        curP1fireDelayr = fireDelay;
-        curP2fireDelayr = fireDelay;
-
         //set timeBetweenGridSteps to the value from inspector
         timeBetweenGridSteps = inspectorTimeBetweenGridSteps;
+
+        //give each player max ammo
+        p1Ammo = maxAmmo;
+        p2Ammo = maxAmmo;
     }
 
     // Update is called once per frame
@@ -153,21 +155,6 @@ public class PlayerMovementAndAttack : MonoBehaviour
 
     void OnP1Attack()
     {
-        //Debug.Log(p1Attack);
-        //    //if p1 has finished attacking and can therefore attack again,...
-        //    if(curP1fireDelayr >= fireDelay)
-        //    {
-        //        //reset curP1fireDelayr
-        //        curP1fireDelayr = 0f;
-
-        //        //if p2 is also attacking,...
-        //        if(curP2fireDelayr < fireDelay)
-        //        {
-        //            //reset curP2fireDelayr
-        //            curP2fireDelayr = 0f;
-        //        }
-        //    }   
-
         //if the current p1Mode is greater than the number of attack types minus 1,...
         if ((int)p1Mode >= PlayerMode.GetNames(typeof(PlayerMode)).Length - 1)
         {
@@ -185,21 +172,6 @@ public class PlayerMovementAndAttack : MonoBehaviour
 
     void OnP2Attack()
     {
-        //Debug.Log(p2Attack);
-        //    //if p2 has finished attacking and can therefore attack again,...
-        //    if(curP2fireDelayr >= fireDelay)
-        //    {
-        //        //reset curP2fireDelayr
-        //        curP2fireDelayr = 0f;
-
-        //        //if p1 is also attacking,...
-        //        if(curP1fireDelayr < fireDelay)
-        //        {
-        //            //reset curP1fireDelayr
-        //            curP1fireDelayr = 0f;
-        //        }
-        //    }
-
         //if the current p2Mode is greater than the number of attack types minus 1,...
         if ((int)p2Mode >= PlayerMode.GetNames(typeof(PlayerMode)).Length - 1)
         {
@@ -229,7 +201,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
         }
 
         //***** Calculate characterMoveDir and inSyncMove variables ******
-        #region Move Syncronization Logic
+        #region Move Syncronization and Ammo Recharge Logic
 
         //if both p1 and p2 are both non-zero,...
         if (p1MoveDir != Vector2.zero && p2MoveDir != Vector2.zero)
@@ -362,28 +334,85 @@ public class PlayerMovementAndAttack : MonoBehaviour
 
         #endregion
 
+        //***** Handle Ammo Recharge *****
+        #region Ammo Recharge
+
+        //if p1 is moving,...
+        if(p1MoveDir != Vector2.zero)
+        {
+            //increment tempP1AmmoRechargeTime
+            tempP1AmmoRechargeTime += Time.fixedDeltaTime;
+
+            //if p1's ammo is less than maxAmmo,...
+            if (p1Ammo < maxAmmo)
+            {
+                //if ammoRechargeTime has elapsed,...
+                if (tempP1AmmoRechargeTime >= ammoRechargeTime)
+                {
+                    //increment p1Ammo by 1 keeping
+                    p1Ammo++;
+
+                    //reset tempP1AmmoRechargeTime
+                    tempP1AmmoRechargeTime = 0f;
+                }
+            }
+        }
+
+        //if p2 is moving,...
+        if(p2MoveDir != Vector2.zero)
+        {
+            //increment tempP2AmmoRechargeTime
+            tempP2AmmoRechargeTime += Time.fixedDeltaTime;
+
+            //if p2's ammo is less than maxAmmo,...
+            if (p2Ammo < maxAmmo)
+            {
+                //if ammoRechargeTime has elapsed,...
+                if (tempP2AmmoRechargeTime >= ammoRechargeTime)
+                {
+                    //increment p2Ammo by 1 keeping
+                    p2Ammo++;
+
+                    //reset tempP2AmmoRechargeTime
+                    tempP2AmmoRechargeTime = 0f;
+                }
+            }
+        }
+
+        #endregion
+
         //***** Handle character attacking ******
         #region Attack Logic
 
-        //is p1 is inputting a attack direction and p1 can attack again,...
-        if(p1AttackDir != Vector2.zero && p1TempFireDelay >= fireDelay)
+        //is p1 is inputting a attack direction and p1 can attack again and p1 has ammo,...
+        if (p1AttackDir != Vector2.zero && p1TempfireRate >= fireRate && p1Ammo > 0)
         {
+            //create a p1Projectile at p1Center in orientation of p1Center
             Instantiate(p1Projectile, p1Center.transform.position, p1Center.transform.rotation);
 
-            p1TempFireDelay = 0f;
+            //reset p1TempfireRate
+            p1TempfireRate = 0f;
+
+            //decrement p1Ammmo
+            p1Ammo--;
         }
 
-        //is p2 is inputting a attack direction and p2 can attack again,...
-        if (p2AttackDir != Vector2.zero && p2TempFireDelay >= fireDelay)
+        //is p2 is inputting a attack direction and p2 can attack again and p2 has ammo,...
+        if (p2AttackDir != Vector2.zero && p2TempfireRate >= fireRate && p2Ammo > 0)
         {
+            //create a p2Projectile at p2Center in orientation of p2Center
             Instantiate(p2Projectile, p2Center.transform.position, p2Center.transform.rotation);
 
-            p2TempFireDelay = 0f;
+            //reset p2TempfireRate
+            p2TempfireRate = 0f;
+
+            //decrement p2Ammmo
+            p2Ammo--;
         }
 
         //increment attack timers
-        p1TempFireDelay += Time.fixedDeltaTime;
-        p2TempFireDelay += Time.fixedDeltaTime;
+        p1TempfireRate += Time.fixedDeltaTime;
+        p2TempfireRate += Time.fixedDeltaTime;
 
         #endregion
     }

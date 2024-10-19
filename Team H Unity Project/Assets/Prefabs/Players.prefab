@@ -222,7 +222,11 @@ MonoBehaviour:
   gridMoveSpeed: 615
   inspectorTimeBetweenGridSteps: 0.05
   outOfSyncMovementPenalty: 0.5
-  fireDelay: 0.3
+  fireRate: 0.3
+  maxAmmo: 10
+  p1Ammo: 0
+  p2Ammo: 0
+  ammoRechargeTime: 0.5
   meleeSwipe: {fileID: 7506816831007820961}
   p1MeleeStab: {fileID: 7225709484863884097}
   p2MeleeStab: {fileID: 5519271001967049682}
