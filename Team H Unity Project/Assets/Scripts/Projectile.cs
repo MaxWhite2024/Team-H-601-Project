@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
     void Awake()
     {
         enemyLayer = LayerMask.NameToLayer("Enemy");
+        //Debug.Log(enemyLayer);
     }
 
     // Update is called once per frame
@@ -29,8 +30,16 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //destroy self
+        Destroy(this.gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        Debug.Log(collider.gameObject.layer);
+        Debug.Log(canPierceEnemies && collider.gameObject.layer == enemyLayer);
         //if projectile can pierce enemies and touched rigidbody is an enemy,...
-        if (canPierceEnemies && collision.gameObject.layer == enemyLayer)
+        if (canPierceEnemies && collider.gameObject.layer == enemyLayer)
         {
             //exit function
             return;
