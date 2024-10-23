@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 5362708713431935145, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
+      propertyPath: canPierceEnemies
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5574379742644334510, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
       propertyPath: m_Name
       value: Synced Projectile
