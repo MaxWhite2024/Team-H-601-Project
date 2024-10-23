@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8192479857519966251}
   - component: {fileID: 5061495762136108037}
   - component: {fileID: 6391768355133209792}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Players
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,23 +208,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canStep: 1
   inSyncMove: 0
+  inSyncAttack: 0
   characterMoveDir: {x: 0, y: 0}
   isP1Attacking: 0
   isP2Attacking: 0
+  p1Mode: 0
+  p2Mode: 0
+  p1MoveDir: {x: 0, y: 0}
+  p2MoveDir: {x: 0, y: 0}
+  p1AttackDir: {x: 0, y: 0}
+  p2AttackDir: {x: 0, y: 0}
   canAttackMove: 1
   gridMoveSpeed: 615
   inspectorTimeBetweenGridSteps: 0.05
   outOfSyncMovementPenalty: 0.5
-  attackType: 1
-  meleeTime: 0.5
+  fireRate: 0.3
+  maxAmmo: 10
+  p1Ammo: 0
+  p2Ammo: 0
+  ammoRechargeTime: 0.5
   meleeSwipe: {fileID: 7506816831007820961}
   p1MeleeStab: {fileID: 7225709484863884097}
   p2MeleeStab: {fileID: 5519271001967049682}
   characterCenter: {fileID: 6575475850797676369}
   p1Center: {fileID: 7187091063743419513}
   p2Center: {fileID: 2166987808576703634}
-  p1MoveDir: {x: 0, y: 0}
-  p2MoveDir: {x: 0, y: 0}
+  p1Projectile: {fileID: 1198810571206102961, guid: ee40d666c248f664c80dccd493582401, type: 3}
+  p2Projectile: {fileID: 1773930947871152712, guid: 8418049397436fa4f889a7cd64ae4b64, type: 3}
   rb: {fileID: 3923888817605829432}
 --- !u!114 &6391768355133209792
 MonoBehaviour:
