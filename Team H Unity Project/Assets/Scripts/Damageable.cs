@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Damageable : MonoBehaviour
 {
@@ -35,9 +36,9 @@ public class Damageable : MonoBehaviour
 
             if (health <= 0)
             {
-                if (this.gameObject.GetComponent<Enemy>() != null)
+                if (this.gameObject.GetComponent<PlayerMovementAndAttack>() != null)
                 {
-                    this.gameObject.GetComponent<Enemy>().Death();
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 }
                 else
                 {
