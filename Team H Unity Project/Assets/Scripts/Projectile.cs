@@ -36,8 +36,8 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log(collider.gameObject.layer);
-        Debug.Log(canPierceEnemies && collider.gameObject.layer == enemyLayer);
+        //Debug.Log(collider.gameObject.layer);
+        //Debug.Log(canPierceEnemies && collider.gameObject.layer == enemyLayer);
         //if projectile can pierce enemies and touched rigidbody is an enemy,...
         if (canPierceEnemies && collider.gameObject.layer == enemyLayer)
         {
