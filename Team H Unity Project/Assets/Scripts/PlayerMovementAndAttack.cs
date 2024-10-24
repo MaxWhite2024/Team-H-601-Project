@@ -39,7 +39,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private GameObject meleeSwipe;
     [SerializeField] private GameObject p1MeleeStab;
     [SerializeField] private GameObject p2MeleeStab;
-    [SerializeField] private GameObject characterCenter;
+    public GameObject characterCenter;
     [SerializeField] private GameObject p1Center;
     [SerializeField] private GameObject p2Center;
     [SerializeField] private GameObject p1Projectile;
