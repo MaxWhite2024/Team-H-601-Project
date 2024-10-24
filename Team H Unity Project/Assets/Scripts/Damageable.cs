@@ -40,6 +40,10 @@ public class Damageable : MonoBehaviour
                 {
                     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 }
+                else if(this.gameObject.GetComponent<Enemy>() != null)
+                {
+                    this.gameObject.GetComponent<Enemy>().Death();
+                }
                 else
                 {
                     Destroy(this.gameObject);

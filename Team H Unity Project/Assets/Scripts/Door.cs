@@ -6,9 +6,10 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
 
-    [SerializeField] GameObject room1;
-    [SerializeField] GameObject room2;
+    [SerializeField] private GameObject room1;
+    [SerializeField] private GameObject room2;
     [SerializeField] private GameObject mainCamera;
+    [SerializeField] private GameObject player;
 
     public bool movingCamera;
     private bool OnetoTwo = false;
@@ -19,6 +20,11 @@ public class Door : MonoBehaviour
     void Start()
     {
         //room2.gameObject.SetActive(false);
+
+        if(player == null)
+        {
+            player = GameObject.Find("Players");
+        }
     }
 
     // Update is called once per frame
@@ -73,6 +79,8 @@ public class Door : MonoBehaviour
                 movingCamera = true;
                 room1.SetActive(false);
                 room2.SetActive(true);
+
+                player.transform.position -= (Vector3.Normalize(player.transform.position - room2.GetComponent<RoomManager>().cameraTransform.position) * 3);
                 //mainCamera.transform.position = room2.GetComponent<RoomManager>().cameraTransform.position;
             }
             else
@@ -81,6 +89,8 @@ public class Door : MonoBehaviour
                 movingCamera = true;
                 room1.SetActive(true);
                 room2.SetActive(false);
+
+                player.transform.position -= (Vector3.Normalize(player.transform.position - room1.GetComponent<RoomManager>().cameraTransform.position) * 3);
                 //mainCamera.transform.position = room1.GetComponent<RoomManager>().cameraTransform.position;
 
             }

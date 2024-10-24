@@ -21,6 +21,11 @@ public class EnemySpawner : MonoBehaviour
     {
         timer = spawnTimer;
         enemiesSpawned = 0;
+
+        if(room == null)
+        {
+            room = transform.parent.gameObject.GetComponent<RoomManager>();
+        }
     }
 
     // Update is called once per frame

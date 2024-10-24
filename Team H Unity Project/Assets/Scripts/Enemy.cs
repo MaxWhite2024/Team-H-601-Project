@@ -26,6 +26,11 @@ public class Enemy : MonoBehaviour
         }
         playerPos = player.transform.position;
         timer = stepTime;
+
+        if (room == null)
+        {
+            room = transform.parent.gameObject.GetComponent<RoomManager>();
+        }
     }
 
     // Update is called once per frame

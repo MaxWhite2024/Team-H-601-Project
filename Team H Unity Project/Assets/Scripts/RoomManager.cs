@@ -20,6 +20,20 @@ public class RoomManager : MonoBehaviour
     private void Start()
     {
         roomClean = false;
+
+        foreach(Transform child in transform)
+        {
+            Enemy enemy = child.gameObject.GetComponent<Enemy>();
+            EnemySpawner spawner = child.gameObject.GetComponent<EnemySpawner>();
+            if (enemy != null && !enemies.Contains(enemy))
+            {
+                enemies.Add(enemy);
+            }
+            else if(spawner != null && !spawners.Contains(spawner))
+            {
+                spawners.Add(spawner);
+            }
+        }
     }
 
     void OnEnable()
