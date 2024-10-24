@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public enum PlayerMode
+{
+    MOVE, ATTACK
+}
+
 public class PlayerMovementAndAttack : MonoBehaviour
 {
     [Header("DEBUG VARIABLES")]
@@ -29,7 +34,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
     
     [Header("Attack Settings")]
     [SerializeField] private float fireRate = 0.3f;
-    private float tempP1FireRate = 0f, tempP2FireRate = 0f, tempSyncedFireRate = 0f;
+    public float tempP1FireRate = 0f, tempP2FireRate = 0f, tempSyncedFireRate = 0f;
     [SerializeField] private int maxAmmo;
     public int p1Ammo, p2Ammo;
     [SerializeField] private float ammoRechargeTime;
@@ -463,10 +468,5 @@ public class PlayerMovementAndAttack : MonoBehaviour
         }
 
         return angle;
-    }
-
-    public enum PlayerMode
-    { 
-        MOVE, ATTACK
     }
 }
