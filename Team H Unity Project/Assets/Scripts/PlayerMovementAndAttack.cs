@@ -12,8 +12,8 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private Vector2 characterMoveDir;
     [SerializeField]
     private bool isP1Attacking = false, isP2Attacking = false;
-    [SerializeField]
-    private PlayerMode p1Mode = PlayerMode.MOVE, p2Mode = PlayerMode.MOVE;
+    public PlayerMode p1Mode = PlayerMode.MOVE;
+    public PlayerMode p2Mode = PlayerMode.MOVE;
     [SerializeField] private Vector2 p1MoveDir, p2MoveDir;
     [SerializeField] private Vector2 p1AttackDir, p2AttackDir;
 
@@ -465,7 +465,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
         return angle;
     }
 
-    private enum PlayerMode
+    public enum PlayerMode
     { 
         MOVE, ATTACK
     }
