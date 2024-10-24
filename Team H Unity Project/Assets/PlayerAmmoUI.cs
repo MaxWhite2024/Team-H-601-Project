@@ -14,10 +14,13 @@ public class PlayerAmmoUI : MonoBehaviour
     [SerializeField] private Slider P2AmmoRechargeSlider;
     private PlayerMovementAndAttack playerMovementAndAttack;
 
+
     // Start is called before the first frame update
     void Start()
     {
         playerMovementAndAttack = GameObject.Find("Players").GetComponent<PlayerMovementAndAttack>();
+        P1AmmoRechargeSlider.maxValue = playerMovementAndAttack.ammoRechargeTime;
+        P2AmmoRechargeSlider.maxValue = playerMovementAndAttack.ammoRechargeTime;
     }
 
     // Update is called once per frame
@@ -27,5 +30,7 @@ public class PlayerAmmoUI : MonoBehaviour
         p2AmmoText.text = "P2 Ammo: " + playerMovementAndAttack.p2Ammo;
         p1ModeText.text = "P1 Mode: " + PlayerMode.GetName(typeof(PlayerMode), (int)playerMovementAndAttack.p1Mode);
         p2ModeText.text = "P2 Mode: " + PlayerMode.GetName(typeof(PlayerMode), (int)playerMovementAndAttack.p2Mode);
+        P1AmmoRechargeSlider.value = playerMovementAndAttack.tempP1AmmoRechargeTime;
+        P2AmmoRechargeSlider.value = playerMovementAndAttack.tempP2AmmoRechargeTime;
     }
 }

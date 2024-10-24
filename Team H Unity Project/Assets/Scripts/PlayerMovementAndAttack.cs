@@ -31,14 +31,14 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private float outOfSyncMovementPenalty;
     private float timeBetweenGridSteps;
     private float tempTimeBetweenGridSteps = 0f;
-    
+
     [Header("Attack Settings")]
     [SerializeField] private float fireRate = 0.3f;
-    public float tempP1FireRate = 0f, tempP2FireRate = 0f, tempSyncedFireRate = 0f;
+    private float tempP1FireRate = 0f, tempP2FireRate = 0f, tempSyncedFireRate = 0f;
     [SerializeField] private int maxAmmo;
     public int p1Ammo, p2Ammo;
-    [SerializeField] private float ammoRechargeTime;
-    private float tempP1AmmoRechargeTime = 0f, tempP2AmmoRechargeTime = 0f;
+    public float ammoRechargeTime;
+    [HideInInspector]public float tempP1AmmoRechargeTime = 0f, tempP2AmmoRechargeTime = 0f;
 
     [Header("Gameobjects and Components")]
     [SerializeField] private GameObject meleeSwipe;

@@ -394,6 +394,8 @@ MonoBehaviour:
   p2AmmoText: {fileID: 7648115762007234406}
   p1ModeText: {fileID: 5316342877270118315}
   p2ModeText: {fileID: 2205070163703862716}
+  P1AmmoRechargeSlider: {fileID: 7810058889333575646}
+  P2AmmoRechargeSlider: {fileID: 7464450049828307510}
 --- !u!1 &527145941186530420
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,7 +879,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8413593227180270921}
   - component: {fileID: 7810058889333575646}
-  - component: {fileID: 4720015115740079593}
   m_Layer: 5
   m_Name: Player1_Ammo_Recharge
   m_TagString: Untagged
@@ -957,51 +958,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4720015115740079593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4367018969742867126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0aac950ae56251468be6f6793f98525, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthSlider: {fileID: 7810058889333575646}
-  healthGradient:
-    serializedVersion: 2
-    key0: {r: 0.9685534, g: 0.082235515, b: 0.11594908, a: 1}
-    key1: {r: 1, g: 0, b: 0, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  fill: {fileID: 291151410776339491}
-  Player: {fileID: 0}
 --- !u!1 &4798428663592057194
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,7 +1004,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6221373547635136147}
   - component: {fileID: 7464450049828307510}
-  - component: {fileID: 9155096206896748354}
   m_Layer: 5
   m_Name: Player2_Ammo_Recharge
   m_TagString: Untagged
@@ -1128,51 +1083,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &9155096206896748354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4829186016469198084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0aac950ae56251468be6f6793f98525, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthSlider: {fileID: 7464450049828307510}
-  healthGradient:
-    serializedVersion: 2
-    key0: {r: 0.9685534, g: 0.082235515, b: 0.11594908, a: 1}
-    key1: {r: 1, g: 0, b: 0, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  fill: {fileID: 3067169481268157792}
-  Player: {fileID: 0}
 --- !u!1 &5007731700088942250
 GameObject:
   m_ObjectHideFlags: 0
