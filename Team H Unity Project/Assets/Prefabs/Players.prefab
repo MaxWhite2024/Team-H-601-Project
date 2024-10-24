@@ -235,6 +235,7 @@ MonoBehaviour:
   p2Center: {fileID: 2166987808576703634}
   p1Projectile: {fileID: 1198810571206102961, guid: ee40d666c248f664c80dccd493582401, type: 3}
   p2Projectile: {fileID: 1773930947871152712, guid: 8418049397436fa4f889a7cd64ae4b64, type: 3}
+  syncedProjectile: {fileID: 506075118401876979, guid: 4f3254e9898936244b7ac325dd420600, type: 3}
   rb: {fileID: 3923888817605829432}
 --- !u!114 &6391768355133209792
 MonoBehaviour:
@@ -249,6 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1000
+  iFrameTime: 0
 --- !u!1 &1760080146802476155
 GameObject:
   m_ObjectHideFlags: 0

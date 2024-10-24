@@ -32,7 +32,7 @@ public class Damageable : MonoBehaviour
             timer = iFrameTime;
             health = health - damage.damage;
             Vector3 knockbackAngle = -1 * (collider.gameObject.transform.position - this.gameObject.transform.position);
-            this.gameObject.GetComponent<Rigidbody2D>().velocity = (knockbackAngle.normalized * damage.damage * 120);
+            this.gameObject.GetComponent<Rigidbody2D>().velocity = (knockbackAngle.normalized * damage.damage * 4);
 
             if (health <= 0)
             {
