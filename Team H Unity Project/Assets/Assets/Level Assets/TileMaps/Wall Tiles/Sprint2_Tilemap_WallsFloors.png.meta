@@ -1,0 +1,859 @@
+fileFormatVersion: 2
+guid: bea6f96aa9f4a4d408394affe9142c5f
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 200
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 998
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -46, y: 52}
+        - {x: -46, y: -100}
+        - {x: 48, y: -100}
+        - {x: 48, y: 2}
+        - {x: 100, y: 2}
+        - {x: 100, y: 52}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76b1eae3df858204f85c68f3c295987d
+      internalID: -50410079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_1
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 1000
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42df97cbefacd904c90b5c7b02675da5
+      internalID: -23733370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_2
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 1000
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -100, y: 59}
+        - {x: -100, y: 2}
+        - {x: -49, y: 1}
+        - {x: -48, y: -100}
+        - {x: 50, y: -100}
+        - {x: 48, y: 2}
+        - {x: 100, y: 2}
+        - {x: 100, y: 59}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f688a623f7a74d6459edf28fc68a1d3c
+      internalID: -1121246711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_3
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1000
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -100, y: 55}
+        - {x: -100, y: -100}
+        - {x: 100, y: -100}
+        - {x: 100, y: 55}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c80a3f6308e64e4b9ae013ace8f9a8f
+      internalID: 1526445103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_4
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 1000
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 51, y: -100}
+        - {x: 50, y: 54}
+        - {x: -100, y: 57}
+        - {x: -100, y: 1}
+        - {x: -46, y: 0}
+        - {x: -45, y: -100}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2eb63198b52b2f4284d4a6a517d89df
+      internalID: -404168576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 800
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -48, y: 100}
+        - {x: -47, y: -100}
+        - {x: 47, y: -100}
+        - {x: 47, y: 100}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 541dfc72cbbae04458c92e0d4440af3c
+      internalID: -1471076952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_6
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 800
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9e9c27ce33a6404688079e80f47a247
+      internalID: -858920138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_7
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 800
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5464394cc98357348ab3129047785b08
+      internalID: -1256553367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_8
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 800
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -100, y: 100}
+        - {x: -100, y: 0}
+        - {x: 100, y: 0}
+        - {x: 100, y: 100}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b38a8d0b149e9948b851a17f2b1f098
+      internalID: 1082740007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_9
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 800
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 51, y: -100}
+        - {x: 51, y: 100}
+        - {x: -100, y: 100}
+        - {x: -100, y: -100}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 523b6336a957e474f9fa58d35b5f8e48
+      internalID: -1052551019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 52, y: -100}
+        - {x: 52, y: 100}
+        - {x: -52, y: 100}
+        - {x: -52, y: -100}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 122e8bc134ef3f94e871cd2ac2c51db6
+      internalID: 699170580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_11
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 600
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 895fe3cc32d52014faa47e74d2bece11
+      internalID: 780981277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_12
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 600
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 52, y: -100}
+        - {x: 52, y: 100}
+        - {x: -52, y: 100}
+        - {x: -52, y: -100}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7fe5f56dacc14343b1421532e2af2c5
+      internalID: 512629257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_13
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 600
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29894e96693eb014bab8e8dc64157fba
+      internalID: -1490686211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_14
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 600
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f79d9d48305a894aa2fa95ea66df7c8
+      internalID: 1905450461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1990e3dd6d1f08e4f8b14f1300236ae7
+      internalID: 1498128000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_16
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 400
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b13bb27d35267f4e94a5160c55efd20
+      internalID: -1196967994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_17
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 400
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 52, y: -100}
+        - {x: 52, y: 100}
+        - {x: -52, y: 100}
+        - {x: -52, y: -100}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01656951769ebf94d97e5a12ff52a629
+      internalID: 475635617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_18
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 400
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -100, y: 100}
+        - {x: -100, y: 0}
+        - {x: 100, y: 0}
+        - {x: 100, y: 100}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98258a1bba9ab0e43b874ab47e2d5442
+      internalID: -1097258986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_19
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 400
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcdf56a0ddf8fbd48940f9491065c8d6
+      internalID: 2082374091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db74dd9c7798b7f448efc1b441650d13
+      internalID: -251617538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_21
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 200
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -100, y: 50}
+        - {x: -100, y: -100}
+        - {x: 100, y: -100}
+        - {x: 100, y: 53}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b233322ccf789734180dfcb12ca25559
+      internalID: -661431428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_22
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 200
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57c48c2ca3e5c6a4d90c090da3c483d6
+      internalID: 1371823248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_23
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 200
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 038b87cfaa74c254fb150c70a803655e
+      internalID: -807602493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_24
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 200
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7c9ca49f367c1448971fc6ddd686ab3
+      internalID: 1360380133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -100, y: 100}
+        - {x: -100, y: 0}
+        - {x: 100, y: 0}
+        - {x: 100, y: 100}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00e2bc2f70357884c8ffc9e93215b3da
+      internalID: 139623368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_26
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -100, y: 100}
+        - {x: -100, y: 0}
+        - {x: 100, y: 0}
+        - {x: 100, y: 100}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5feeded35aa0a854d9fb27c074cb0284
+      internalID: 1539746498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_27
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59c16977c95dd7d409d4aef92f4500eb
+      internalID: -677368425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_28
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -100, y: 100}
+        - {x: -100, y: 0}
+        - {x: 100, y: 0}
+        - {x: 100, y: 100}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07d558a81d604a644af9df0e7b422127
+      internalID: 45295618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint2_Tilemap_WallsFloors_29
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -100, y: 100}
+        - {x: -100, y: 0}
+        - {x: 43, y: 0}
+        - {x: 43, y: 100}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89cce29f497734a4bb62568f0e34ce74
+      internalID: 1845131451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Sprint2_Tilemap_WallsFloors_0: -50410079
+      Sprint2_Tilemap_WallsFloors_1: -23733370
+      Sprint2_Tilemap_WallsFloors_10: 699170580
+      Sprint2_Tilemap_WallsFloors_11: 780981277
+      Sprint2_Tilemap_WallsFloors_12: 512629257
+      Sprint2_Tilemap_WallsFloors_13: -1490686211
+      Sprint2_Tilemap_WallsFloors_14: 1905450461
+      Sprint2_Tilemap_WallsFloors_15: 1498128000
+      Sprint2_Tilemap_WallsFloors_16: -1196967994
+      Sprint2_Tilemap_WallsFloors_17: 475635617
+      Sprint2_Tilemap_WallsFloors_18: -1097258986
+      Sprint2_Tilemap_WallsFloors_19: 2082374091
+      Sprint2_Tilemap_WallsFloors_2: -1121246711
+      Sprint2_Tilemap_WallsFloors_20: -251617538
+      Sprint2_Tilemap_WallsFloors_21: -661431428
+      Sprint2_Tilemap_WallsFloors_22: 1371823248
+      Sprint2_Tilemap_WallsFloors_23: -807602493
+      Sprint2_Tilemap_WallsFloors_24: 1360380133
+      Sprint2_Tilemap_WallsFloors_25: 139623368
+      Sprint2_Tilemap_WallsFloors_26: 1539746498
+      Sprint2_Tilemap_WallsFloors_27: -677368425
+      Sprint2_Tilemap_WallsFloors_28: 45295618
+      Sprint2_Tilemap_WallsFloors_29: 1845131451
+      Sprint2_Tilemap_WallsFloors_3: 1526445103
+      Sprint2_Tilemap_WallsFloors_4: -404168576
+      Sprint2_Tilemap_WallsFloors_5: -1471076952
+      Sprint2_Tilemap_WallsFloors_6: -858920138
+      Sprint2_Tilemap_WallsFloors_7: -1256553367
+      Sprint2_Tilemap_WallsFloors_8: 1082740007
+      Sprint2_Tilemap_WallsFloors_9: -1052551019
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

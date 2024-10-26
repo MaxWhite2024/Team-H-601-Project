@@ -12,10 +12,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Take Out Damageable Object
       objectReference: {fileID: 0}
+    - target: {fileID: 4501022440122227732, guid: 5f18cc741a4df2a4a8533e7992af9e54, type: 3}
+      propertyPath: m_Size.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501022440122227732, guid: 5f18cc741a4df2a4a8533e7992af9e54, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6458405145016396295, guid: 5f18cc741a4df2a4a8533e7992af9e54, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: a381a7410646ba54da73209b772c48a2, type: 3}
+    - target: {fileID: 6458405145016396295, guid: 5f18cc741a4df2a4a8533e7992af9e54, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8253831797787835182, guid: 5f18cc741a4df2a4a8533e7992af9e54, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
