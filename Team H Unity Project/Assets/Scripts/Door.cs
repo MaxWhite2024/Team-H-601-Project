@@ -80,7 +80,8 @@ public class Door : MonoBehaviour
                 room1.SetActive(false);
                 room2.SetActive(true);
 
-                player.transform.position -= (Vector3.Normalize(player.transform.position - room2.GetComponent<RoomManager>().cameraTransform.position) * 3);
+                player.transform.position -= ((player.transform.position - room2.GetComponent<RoomManager>().cameraTransform.position)/2);
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0);
                 //mainCamera.transform.position = room2.GetComponent<RoomManager>().cameraTransform.position;
             }
             else
@@ -90,7 +91,8 @@ public class Door : MonoBehaviour
                 room1.SetActive(true);
                 room2.SetActive(false);
 
-                player.transform.position -= (Vector3.Normalize(player.transform.position - room1.GetComponent<RoomManager>().cameraTransform.position) * 3);
+                player.transform.position -= ((player.transform.position - room1.GetComponent<RoomManager>().cameraTransform.position)/2);
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0);
                 //mainCamera.transform.position = room1.GetComponent<RoomManager>().cameraTransform.position;
 
             }
