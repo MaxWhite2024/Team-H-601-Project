@@ -228,6 +228,8 @@ MonoBehaviour:
   p1Ammo: 0
   p2Ammo: 0
   ammoRechargeTime: 0.5
+  tempP1AmmoRechargeTime: 0
+  tempP2AmmoRechargeTime: 0
   meleeSwipe: {fileID: 7506816831007820961}
   p1MeleeStab: {fileID: 7225709484863884097}
   p2MeleeStab: {fileID: 5519271001967049682}
@@ -250,7 +252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dece7363d9632b458d546c8ca1b4e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
+  health: 10
+  iFrameTime: 0
 --- !u!114 &2494213612536732334
 MonoBehaviour:
   m_ObjectHideFlags: 0
