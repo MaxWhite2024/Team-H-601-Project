@@ -8,11 +8,16 @@ public class Damageable : MonoBehaviour
     public int health;
     [SerializeField] private float iFrameTime;
     private float timer;
+    public RoomManager room;
 
     // Start is called before the first frame update
     void Start()
     {
         timer = iFrameTime;
+        if (room == null && transform.parent != null)
+        {
+            room = transform.parent.gameObject.GetComponent<RoomManager>();
+        }
     }
 
     // Update is called once per frame
@@ -22,6 +27,7 @@ public class Damageable : MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collider)
@@ -36,6 +42,12 @@ public class Damageable : MonoBehaviour
 
             if (health <= 0)
             {
+
+                if(room != null)
+                {
+                    room.damageables.Remove(this);
+                }
+
                 if (this.gameObject.GetComponent<PlayerMovementAndAttack>() != null)
                 {
                     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -43,6 +55,10 @@ public class Damageable : MonoBehaviour
                 else if(this.gameObject.GetComponent<Enemy>() != null)
                 {
                     this.gameObject.GetComponent<Enemy>().Death();
+                }
+                else if (this.gameObject.GetComponent<EnemySpawner>() != null)
+                {
+                    this.gameObject.GetComponent<EnemySpawner>().Death();
                 }
                 else
                 {
@@ -75,9 +91,18 @@ public class Damageable : MonoBehaviour
 
             if (health <= 0)
             {
+                if (room != null)
+                {
+                    room.damageables.Remove(this);
+                }
+
                 if (this.gameObject.GetComponent<Enemy>() != null)
                 {
                     this.gameObject.GetComponent<Enemy>().Death();
+                }
+                else if (this.gameObject.GetComponent<EnemySpawner>() != null)
+                {
+                    this.gameObject.GetComponent<EnemySpawner>().Death();
                 }
                 else
                 {

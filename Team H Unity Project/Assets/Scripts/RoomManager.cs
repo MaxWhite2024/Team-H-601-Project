@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour
@@ -8,10 +9,12 @@ public class RoomManager : MonoBehaviour
     public List<Enemy> enemies;
     public List<EnemySpawner> spawners;
     public List<Door> doors;
+    public List<Damageable> damageables;
     public Transform cameraTransform;
 
     public int maxEnemies;
     private float timeInRoom;
+    [SerializeField] private bool fullClear; //Do you need to kill all enemies or all everything
     [SerializeField] private float decreaseSpawnRateRate;
     [SerializeField] private float decreaseSpawnRateAmount;
     [SerializeField] private float decreaseSpawnRateMinimum;
@@ -25,6 +28,7 @@ public class RoomManager : MonoBehaviour
         {
             Enemy enemy = child.gameObject.GetComponent<Enemy>();
             EnemySpawner spawner = child.gameObject.GetComponent<EnemySpawner>();
+            Damageable damageable = child.gameObject.GetComponent<Damageable>();
             if (enemy != null && !enemies.Contains(enemy))
             {
                 enemies.Add(enemy);
@@ -32,6 +36,12 @@ public class RoomManager : MonoBehaviour
             else if(spawner != null && !spawners.Contains(spawner))
             {
                 spawners.Add(spawner);
+            }
+            
+            
+            if (damageable != null && !damageables.Contains(damageable))
+            {
+                damageables.Add(damageable);
             }
         }
     }
@@ -66,7 +76,11 @@ public class RoomManager : MonoBehaviour
         
         timeInRoom += Time.deltaTime;
 
-        if(enemies.Count <= 0)
+        if(enemies.Count <= 0 && !fullClear)
+        {
+            roomClean = true;
+        }
+        else if (damageables.Count <= 0)
         {
             roomClean = true;
         }
