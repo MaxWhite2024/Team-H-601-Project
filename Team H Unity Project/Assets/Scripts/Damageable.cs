@@ -32,6 +32,11 @@ public class Damageable : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collider)
     {
+        if(collider.gameObject.layer == this.gameObject.layer)
+        {
+            return;
+        }
+
         DamageSource damage = collider.gameObject.GetComponent<DamageSource>();
         if (damage != null && timer <= 0)
         {
@@ -71,6 +76,11 @@ public class Damageable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        if (collider.gameObject.layer == this.gameObject.layer)
+        {
+            return;
+        }
+
         //Debug.Log(this.gameObject.name + " has been hit by " + collider.gameObject.name);
         //Debug.Log(collider.gameObject.transform.position - this.gameObject.transform.position);
 

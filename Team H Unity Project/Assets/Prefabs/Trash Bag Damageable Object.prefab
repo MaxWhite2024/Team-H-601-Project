@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trash Bag Damageable Object
       objectReference: {fileID: 0}
+    - target: {fileID: 2016078054032996481, guid: 5f18cc741a4df2a4a8533e7992af9e54, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4501022440122227732, guid: 5f18cc741a4df2a4a8533e7992af9e54, type: 3}
       propertyPath: m_Size.x
       value: 0.75
