@@ -19,7 +19,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"C:/Users/gr8wh/OneDrive/Documents/GitHub/Team-H-601-Project/Team H Unity Project/WebGL Builds/Sprint2SpritesBuild;C:/Users/gr8wh/OneDrive/Documents/GitHub/Team-H-601-Project/Team H Unity Project/WebGL Builds/BothRangedBuild;C:/Users/gr8wh/OneDrive/Documents/GitHub/Team-H-601-Project/Team H Unity Project/WebGL Builds/ArrowsOnPlayerBuild;C:/Users/gr8wh/OneDrive/Documents/GitHub/Team-H-601-Project/Team H Unity Project/WebGL Builds/BothMeleeBuild;C:/Users/gr8wh/OneDrive/Documents/GitHub/Team-H-601-Project/Team H Unity Project/WebGL Builds;;;;;\"}"
+                "value": "{\"m_Value\":\"C:/Users/zukey/Desktop/Github/sink up/Team-H-601-Project/Team H Unity Project/WebGL Builds/Playtest2 Build;C:/Users/zukey/Desktop/Github/sink up/Team-H-601-Project/Team H Unity Project/WebGL Builds/Playtest 2;C:/Users/gr8wh/OneDrive/Documents/GitHub/Team-H-601-Project/Team H Unity Project/WebGL Builds/Sprint2SpritesBuild;C:/Users/gr8wh/OneDrive/Documents/GitHub/Team-H-601-Project/Team H Unity Project/WebGL Builds/BothRangedBuild;C:/Users/gr8wh/OneDrive/Documents/GitHub/Team-H-601-Project/Team H Unity Project/WebGL Builds/ArrowsOnPlayerBuild;C:/Users/gr8wh/OneDrive/Documents/GitHub/Team-H-601-Project/Team H Unity Project/WebGL Builds/BothMeleeBuild;C:/Users/gr8wh/OneDrive/Documents/GitHub/Team-H-601-Project/Team H Unity Project/WebGL Builds;;;\"}"
             }
         ]
     }
