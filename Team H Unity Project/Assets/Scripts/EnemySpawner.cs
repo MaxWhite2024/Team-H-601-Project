@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject enemy;
-    [SerializeField] public float spawnTimer;
-    [SerializeField] private RoomManager room;
     
-    //Spawn Settings
+    [Header("Spawn Settings")]
+    [SerializeField] public float spawnTimer;
+    [SerializeField] private GameObject enemy;
     [SerializeField] private bool offWhenRoomClean;
     public bool decreaseSpawnTime;
-
     private float timer;
-    public int enemiesSpawned;
     [SerializeField] private int maxEnemies;
+
+    [HideInInspector]
+    [SerializeField] private RoomManager room;
+    [HideInInspector]
+    public int enemiesSpawned;
 
     // Start is called before the first frame update
     void Start()
@@ -31,11 +33,14 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Stops spawning if the room is clean and offWhenRoomClean is true
         if (room.roomClean && offWhenRoomClean)
         {
             this.GetComponent<EnemySpawner>().enabled = false;
         }
 
+        //Counts down from spawnTimer, when it reaches 0 it checks to see if there are too many enemies
+        //If there aren't too many enemies, it will spawn a new one and add them to lists in the room
         timer -= Time.deltaTime;
         if(timer < 0)
         {
@@ -53,6 +58,9 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Removes the spawner from the room and then deletes itself
+    /// </summary>
     public void Death()
     {
 

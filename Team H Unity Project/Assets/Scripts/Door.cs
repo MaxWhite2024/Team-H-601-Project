@@ -5,16 +5,15 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-
     [SerializeField] private GameObject room1;
     [SerializeField] private GameObject room2;
     [SerializeField] private GameObject mainCamera;
     [SerializeField] private GameObject player;
 
-    public bool movingCamera;
-    private bool OnetoTwo = false;
-    private bool TwotoOne = false;
+    [HideInInspector] public bool changingRooms;
     private float lerpAmount = 0;
+    private GameObject exitRoom;
+    private GameObject enterRoom;
 
     // Start is called before the first frame update
     void Start()
@@ -30,38 +29,24 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(OnetoTwo)
+        //if changing rooms, lerp the camera from the old room's cameraTransform to the new one
+        if(changingRooms)
         {
             lerpAmount += .1f;
-            mainCamera.transform.position = Vector3.Lerp(room1.GetComponent<RoomManager>().cameraTransform.position, room2.GetComponent<RoomManager>().cameraTransform.position, lerpAmount);
+            mainCamera.transform.position = Vector3.Lerp(exitRoom.GetComponent<RoomManager>().cameraTransform.position, enterRoom.GetComponent<RoomManager>().cameraTransform.position, lerpAmount);
+            
+            //Once the lerp is done, set changingRooms to false is disable self if the room isn't clean
             if (lerpAmount >= 1)
             {
                 lerpAmount = 0;
-                OnetoTwo = false;
-                movingCamera = false;
+                changingRooms = false;
 
-                if(!room2.GetComponent<RoomManager>().roomClean)
+                if(!enterRoom.GetComponent<RoomManager>().roomClean)
                 {
                     this.gameObject.SetActive(false);
+                    player.GetComponent<Damageable>().health = player.GetComponent<Damageable>().maxHealth;
                 }
 
-            }
-        }
-
-        if (TwotoOne)
-        {
-            lerpAmount += .1f;
-            mainCamera.transform.position = Vector3.Lerp(room2.GetComponent<RoomManager>().cameraTransform.position, room1.GetComponent<RoomManager>().cameraTransform.position, lerpAmount);
-            if (lerpAmount >= 1)
-            {
-                lerpAmount = 0;
-                TwotoOne = false;
-                movingCamera = false;
-
-                if (!room1.GetComponent<RoomManager>().roomClean)
-                {
-                    this.gameObject.SetActive(false);
-                }
             }
         }
     }
@@ -73,10 +58,14 @@ public class Door : MonoBehaviour
         //If the player collides with the door
         if (collider.gameObject.GetComponent<PlayerMovementAndAttack>() != null)
         {
-            if(room1.activeSelf)
+            changingRooms = true;
+
+            //Checks if the player is in room 1 or 2, then switches which room is enables, moves the player
+            //and finally sets which room they are exiting and which they are entering
+            if (room1.activeSelf)
             {
-                OnetoTwo = true;
-                movingCamera = true;
+                exitRoom = room1;
+                enterRoom = room2;
                 room1.SetActive(false);
                 room2.SetActive(true);
 
@@ -86,8 +75,8 @@ public class Door : MonoBehaviour
             }
             else
             {
-                TwotoOne = true;
-                movingCamera = true;
+                exitRoom = room2;
+                enterRoom = room1;
                 room1.SetActive(true);
                 room2.SetActive(false);
 

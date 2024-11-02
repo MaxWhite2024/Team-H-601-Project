@@ -251,8 +251,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dece7363d9632b458d546c8ca1b4e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 10
   health: 10
-  iFrameTime: 0
+  iFrameTime: 1
   room: {fileID: 0}
 --- !u!114 &2494213612536732334
 MonoBehaviour:

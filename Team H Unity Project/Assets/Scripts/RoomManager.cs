@@ -5,25 +5,29 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    public bool roomClean;
-    public List<Enemy> enemies;
-    public List<EnemySpawner> spawners;
-    public List<Door> doors;
-    public List<Damageable> damageables;
-    public Transform cameraTransform;
+    [HideInInspector] public List<Enemy> enemies;
+    [HideInInspector] public List<EnemySpawner> spawners;
+    [Header("Doors")] public List<Door> doors;
+    [HideInInspector] public List<Damageable> damageables;
+    [HideInInspector] public bool roomClean;
 
+    [Header("Customization Vars")]
+    public Transform cameraTransform;
     public int maxEnemies;
-    private float timeInRoom;
     [SerializeField] private bool fullClear; //Do you need to kill all enemies or all everything
+
+    [Header("Spawners Speed Up Vars")]
     [SerializeField] private float decreaseSpawnRateRate;
     [SerializeField] private float decreaseSpawnRateAmount;
     [SerializeField] private float decreaseSpawnRateMinimum;
+    private float timeInRoom;
 
     // Start is called before the first frame update
     private void Start()
     {
         roomClean = false;
 
+        //Goes through each child of the room and adds them to the appropriate list
         foreach(Transform child in transform)
         {
             Enemy enemy = child.gameObject.GetComponent<Enemy>();
@@ -48,11 +52,12 @@ public class RoomManager : MonoBehaviour
 
     void OnEnable()
     {
+        //When the room is enabled, if it's not clean and the door isn't moving the camera, disable the door
         if(!roomClean)
         {
             foreach (Door door in doors)
             {
-                if (!door.movingCamera)
+                if (!door.changingRooms)
                 {
                     door.gameObject.SetActive(false);
                 }
@@ -63,6 +68,8 @@ public class RoomManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //Activate each door when room is clean
         if(roomClean)
         {
             foreach (Door door in doors)
@@ -73,9 +80,8 @@ public class RoomManager : MonoBehaviour
                 }
             }
         }
-        
-        timeInRoom += Time.deltaTime;
 
+        //If the enemies list is empty and the room doesn't need to be full cleared, OR if the damageables list is empty
         if(enemies.Count <= 0 && !fullClear)
         {
             roomClean = true;
@@ -85,9 +91,11 @@ public class RoomManager : MonoBehaviour
             roomClean = true;
         }
 
+        //Counts up to decreaseSpawnRateRate, once timeInRoom reachest that if goes through each spawner to see if they spawn faster over time
+        //If they do spawn faster over time, their rate is decreased by decreaseSpawnRateAmount as long as the spawnrate is > decreaseSpawnRateMinimum
+        timeInRoom += Time.deltaTime;
         if (timeInRoom > decreaseSpawnRateRate)
         {
-
             foreach (EnemySpawner spawner in spawners)
             {
                 if(spawner.decreaseSpawnTime && spawner.spawnTimer > decreaseSpawnRateMinimum)
