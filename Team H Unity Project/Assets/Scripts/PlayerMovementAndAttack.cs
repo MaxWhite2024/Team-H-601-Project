@@ -464,8 +464,8 @@ public class PlayerMovementAndAttack : MonoBehaviour
     //***** Remove Diagonals from a Vector2 *****
     private Vector2 RemoveDiagonal(Vector2 inputVector)
     {
-        float X = inputVector.x;
-        float Y = inputVector.y;
+        float X = Mathf.Round(inputVector.x);
+        float Y = Mathf.Round(inputVector.y);
         if(X*X > Y*Y)
         {
             return new Vector2(X,0);
