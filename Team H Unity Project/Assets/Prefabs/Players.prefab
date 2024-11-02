@@ -220,8 +220,7 @@ MonoBehaviour:
   p1AttackDir: {x: 0, y: 0}
   p2AttackDir: {x: 0, y: 0}
   canAttackMove: 1
-  gridMoveSpeed: 615
-  inspectorTimeBetweenGridSteps: 0.05
+  freeFormMoveSpeed: 10000
   outOfSyncMovementPenalty: 0.5
   fireRate: 0.3
   maxAmmo: 10

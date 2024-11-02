@@ -26,8 +26,9 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private bool canAttackMove = true;
 
     [Header("Movement Settings")]
-    [SerializeField] private float gridMoveSpeed;
-    [SerializeField] private float inspectorTimeBetweenGridSteps;
+    [SerializeField] private float freeFormMoveSpeed;
+    // [SerializeField] private float gridMoveSpeed;
+    // [SerializeField] private float inspectorTimeBetweenGridSteps;
     [SerializeField] private float outOfSyncMovementPenalty;
     private float timeBetweenGridSteps;
     private float tempTimeBetweenGridSteps = 0f;
@@ -67,7 +68,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
         p2AttackDir = Vector2.zero;
 
         //set timeBetweenGridSteps to the value from inspector
-        timeBetweenGridSteps = inspectorTimeBetweenGridSteps;
+        // timeBetweenGridSteps = inspectorTimeBetweenGridSteps;
 
         //give each player max ammo
         p1Ammo = maxAmmo;
@@ -276,38 +277,54 @@ public class PlayerMovementAndAttack : MonoBehaviour
             //if players have made new movement inputs,...
             if (characterMoveDir != Vector2.zero)
             {
+                //***** Handle Free Form Movement *****
+                #region Free Form Movement
+
+                //players are moving in sync
+                if (inSyncMove)
+                {
+                    //apply characterMoveDir to player
+                    rb.AddForce(characterMoveDir * freeFormMoveSpeed * Time.fixedDeltaTime, ForceMode2D.Force);
+                }
+                else
+                {
+                    //apply penalized characterMoveDir to player
+                    rb.AddForce(characterMoveDir * (freeFormMoveSpeed / 2f) * Time.fixedDeltaTime, ForceMode2D.Force);
+                }
+
+                #endregion
                 //***** Handle grid movement ******
                 #region Grid Movement
 
                 //if character can step,...
-                if (canStep)
-                {
-                    // Debug.Log("Players can step!");
+                //if (canStep)
+                //{
+                //    // Debug.Log("Players can step!");
 
-                    //apply force in characterMoveDir to the character
-                    rb.AddForce(characterMoveDir * gridMoveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+                //    //apply force in characterMoveDir to the character
+                //    rb.AddForce(characterMoveDir * gridMoveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
 
-                    //if players are moving in sync,...
-                    if (inSyncMove)
-                    {
-                        //set timeBetweenGridSteps to the value from inspector
-                        timeBetweenGridSteps = inspectorTimeBetweenGridSteps;
+                //    //if players are moving in sync,...
+                //    if (inSyncMove)
+                //    {
+                //        //set timeBetweenGridSteps to the value from inspector
+                //        timeBetweenGridSteps = inspectorTimeBetweenGridSteps;
 
-                        //wait 1 step
-                        canStep = false;
-                        tempTimeBetweenGridSteps = 0f;
-                    }
-                    //else players are NOT moving in sync,...
-                    else
-                    {
-                        //set timeBetweenGridSteps to double the value from inspector so that the charcater must wait outOfSyncMovementPenalty steps
-                        timeBetweenGridSteps = inspectorTimeBetweenGridSteps * (1 / outOfSyncMovementPenalty);
+                //        //wait 1 step
+                //        canStep = false;
+                //        tempTimeBetweenGridSteps = 0f;
+                //    }
+                //    //else players are NOT moving in sync,...
+                //    else
+                //    {
+                //        //set timeBetweenGridSteps to double the value from inspector so that the charcater must wait outOfSyncMovementPenalty steps
+                //        timeBetweenGridSteps = inspectorTimeBetweenGridSteps * (1 / outOfSyncMovementPenalty);
 
-                        //wait outOfSyncMovementPenalty steps
-                        canStep = false;
-                        tempTimeBetweenGridSteps = 0f;
-                    }
-                }
+                //        //wait outOfSyncMovementPenalty steps
+                //        canStep = false;
+                //        tempTimeBetweenGridSteps = 0f;
+                //    }
+                //}
 
                 #endregion
 
@@ -327,8 +344,8 @@ public class PlayerMovementAndAttack : MonoBehaviour
                     // Debug.Log("Players want to move in a new direction!");
 
                     //wait 1 step
-                    canStep = false;
-                    tempTimeBetweenGridSteps = 0f;
+                    //canStep = false;
+                    //tempTimeBetweenGridSteps = 0f;
 
                     //change direction of character
                     characterCenter.transform.localEulerAngles = moveVec3;
