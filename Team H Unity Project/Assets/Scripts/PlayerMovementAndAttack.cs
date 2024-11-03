@@ -51,8 +51,6 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private GameObject p1Projectile;
     [SerializeField] private GameObject p2Projectile;
     [SerializeField] private GameObject syncedProjectile;
-
-    //componment vars
     [SerializeField] private Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -76,11 +74,11 @@ public class PlayerMovementAndAttack : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        Debug.DrawRay(transform.position, p1MoveDir.normalized * 100f, Color.red);
-        Debug.DrawRay(transform.position, p2MoveDir.normalized * 100f, Color.blue);
-    }
+    //void Update()
+    //{
+    //    Debug.DrawRay(transform.position, p1MoveDir.normalized * 100f, Color.red);
+    //    Debug.DrawRay(transform.position, p2MoveDir.normalized * 100f, Color.blue);
+    //}
 
     //when p1 pressed WASD,...
     void OnP1Move(InputValue value)
@@ -258,9 +256,6 @@ public class PlayerMovementAndAttack : MonoBehaviour
             else
             {
                 // Debug.Log("NIETHER moving");
-                //set inSyncMove to false
-                inSyncMove = false;
-
                 //set characterMoveDir to zero
                 characterMoveDir = Vector2.zero;
             }
