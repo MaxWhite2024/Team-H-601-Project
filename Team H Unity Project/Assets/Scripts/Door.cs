@@ -69,8 +69,7 @@ public class Door : MonoBehaviour
                 room1.SetActive(false);
                 room2.SetActive(true);
 
-                player.transform.position -= ((player.transform.position - room2.GetComponent<RoomManager>().cameraTransform.position)/2);
-                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0);
+                MovePlayer(exitRoom, enterRoom);
                 //mainCamera.transform.position = room2.GetComponent<RoomManager>().cameraTransform.position;
             }
             else
@@ -80,11 +79,50 @@ public class Door : MonoBehaviour
                 room1.SetActive(true);
                 room2.SetActive(false);
 
-                player.transform.position -= ((player.transform.position - room1.GetComponent<RoomManager>().cameraTransform.position)/2);
-                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0);
+                MovePlayer(exitRoom, enterRoom);
                 //mainCamera.transform.position = room1.GetComponent<RoomManager>().cameraTransform.position;
 
             }
         }
+    }
+
+    /// <summary>
+    /// Moves player from exitRoom to enterRoom based on the door's localScale values
+    /// </summary>
+    /// <param name="exitRoom">Room the player is leaving</param>
+    /// <param name="enterRoom">Room the player is entering</param>
+    private void MovePlayer(GameObject exitRoom, GameObject enterRoom)
+    {
+        //Checks to see if the rooms are vertical or horizontal
+        Vector3 roomDif = exitRoom.GetComponent<RoomManager>().cameraTransform.position - enterRoom.GetComponent<RoomManager>().cameraTransform.position;
+        roomDif = Vector3.Normalize(roomDif);
+        if(Mathf.Abs(roomDif.x) > Mathf.Abs(roomDif.y))
+        {
+            //If the player is moving left
+            if(exitRoom.transform.position.x > enterRoom.transform.position.x)
+            {
+                player.transform.position = new Vector3(player.transform.position.x - this.gameObject.transform.localScale.x - 1, player.transform.position.y, 0);
+            }
+            else //else moving right
+            {
+                player.transform.position = new Vector3(player.transform.position.x + this.gameObject.transform.localScale.x + 1, player.transform.position.y, 0);
+            }
+        }
+        else
+        {
+            //If the player is moving down
+            if (exitRoom.transform.position.y > enterRoom.transform.position.y)
+            {
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - this.gameObject.transform.localScale.y - 1, 0);
+            }
+            else //else moving up
+            {
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + this.gameObject.transform.localScale.y + 1, 0);
+            }
+        }
+
+        //Old code which moves regardless of where the rooms are oriented, doesn't work if rooms are too close/far apart
+        //player.transform.position -= ((player.transform.position - enterRoom.GetComponent<RoomManager>().cameraTransform.position) / 2);
+        //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0);
     }
 }

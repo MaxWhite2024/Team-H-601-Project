@@ -5,11 +5,9 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    [HideInInspector] public List<Enemy> enemies;
-    [HideInInspector] public List<EnemySpawner> spawners;
+    
     [Header("Doors")] public List<Door> doors;
-    [HideInInspector] public List<Damageable> damageables;
-    [HideInInspector] public bool roomClean;
+    
 
     [Header("Customization Vars")]
     public Transform cameraTransform;
@@ -21,6 +19,12 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private float decreaseSpawnRateAmount;
     [SerializeField] private float decreaseSpawnRateMinimum;
     private float timeInRoom;
+
+    [Header("Debugging Vars")]
+    public List<Enemy> enemies;
+    public List<EnemySpawner> spawners;
+    public List<Damageable> damageables;
+    public bool roomClean;
 
     // Start is called before the first frame update
     private void Start()
