@@ -289,7 +289,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
                 else
                 {
                     //apply penalized characterMoveDir to player
-                    rb.AddForce(characterMoveDir * (freeFormMoveSpeed / 2f) * Time.fixedDeltaTime, ForceMode2D.Force);
+                    rb.AddForce(characterMoveDir * (freeFormMoveSpeed * outOfSyncMovementPenalty) * Time.fixedDeltaTime, ForceMode2D.Force);
                 }
 
                 #endregion
