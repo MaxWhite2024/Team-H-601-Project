@@ -63,35 +63,35 @@ public class PlayerSpriteManager : MonoBehaviour
                 break;
         }
 
-        //compare the mode of p1
-        switch (playerMovementAndAttack.p1Mode)
-        {
-            //p1 is in MOVE mode
-            case PlayerMode.MOVE:
-                //change p1 arrow sprite to p1MovementSprite
-                p1ArrowSpriteRenderer.sprite = p1MovementSprite;
-                break;
+        ////compare the mode of p1
+        //switch (playerMovementAndAttack.p1Mode)
+        //{
+        //    //p1 is in MOVE mode
+        //    case PlayerMode.MOVE:
+        //        //change p1 arrow sprite to p1MovementSprite
+        //        p1ArrowSpriteRenderer.sprite = p1MovementSprite;
+        //        break;
 
-            //p1 is in ATTACK mode
-            case PlayerMode.ATTACK:
-                //change p2 arrow sprite to p1AttackSprite
-                p1ArrowSpriteRenderer.sprite = p1AttackSprite;
-                break;
-        }
+        //    //p1 is in ATTACK mode
+        //    case PlayerMode.ATTACK:
+        //        //change p2 arrow sprite to p1AttackSprite
+        //        p1ArrowSpriteRenderer.sprite = p1AttackSprite;
+        //        break;
+        //}
 
-        //compare the mode of p2
-        switch (playerMovementAndAttack.p2Mode)
-        {
-            //p1 is in MOVE mode
-            case PlayerMode.MOVE:
-                //change p2 arrow sprite to p1MovementSprite
-                p2ArrowSpriteRenderer.sprite = p2MovementSprite;
-                break;
-            //p2 is in ATTACK mode
-            case PlayerMode.ATTACK:
-                //change p2 arrow sprite to p2AttackSprite
-                p2ArrowSpriteRenderer.sprite = p2AttackSprite;
-                break;
-        }
+        ////compare the mode of p2
+        //switch (playerMovementAndAttack.p2Mode)
+        //{
+        //    //p1 is in MOVE mode
+        //    case PlayerMode.MOVE:
+        //        //change p2 arrow sprite to p1MovementSprite
+        //        p2ArrowSpriteRenderer.sprite = p2MovementSprite;
+        //        break;
+        //    //p2 is in ATTACK mode
+        //    case PlayerMode.ATTACK:
+        //        //change p2 arrow sprite to p2AttackSprite
+        //        p2ArrowSpriteRenderer.sprite = p2AttackSprite;
+        //        break;
+        //}
     }
 }
