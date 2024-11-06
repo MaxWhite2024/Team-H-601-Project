@@ -200,9 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9586d952ca5aebb4c9ea3000f356da76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   speed: 2
   stepTime: 0.5
+  player: {fileID: 0}
   rb: {fileID: 5263086027457687259}
   spawner: {fileID: 0}
   room: {fileID: 0}
@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dece7363d9632b458d546c8ca1b4e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 2
   health: 2
   iFrameTime: 0
   room: {fileID: 0}

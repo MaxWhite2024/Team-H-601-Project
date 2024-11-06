@@ -213,15 +213,13 @@ MonoBehaviour:
   characterMoveDir: {x: 0, y: 0}
   isP1Attacking: 0
   isP2Attacking: 0
-  p1Mode: 0
-  p2Mode: 0
   p1MoveDir: {x: 0, y: 0}
   p2MoveDir: {x: 0, y: 0}
-  p1AttackDir: {x: 0, y: 0}
-  p2AttackDir: {x: 0, y: 0}
+  p1IsAttacking: 0
+  p2IsAttacking: 0
   canAttackMove: 1
   freeFormMoveSpeed: 10000
-  outOfSyncMovementPenalty: 0.5
+  outOfSyncMovementPenalty: 0.15
   fireRate: 0.3
   maxAmmo: 10
   p1Ammo: 0
@@ -229,6 +227,7 @@ MonoBehaviour:
   ammoRechargeTime: 0.5
   tempP1AmmoRechargeTime: 0
   tempP2AmmoRechargeTime: 0
+  attackBufferTime: 0.2
   meleeSwipe: {fileID: 7506816831007820961}
   p1MeleeStab: {fileID: 7225709484863884097}
   p2MeleeStab: {fileID: 5519271001967049682}
