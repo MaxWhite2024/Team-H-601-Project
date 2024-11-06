@@ -21,6 +21,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
     //public PlayerMode p2Mode = PlayerMode.MOVE;
     [SerializeField] private Vector2 p1MoveDir, p2MoveDir;
     //[SerializeField] private Vector2 p1AttackDir, p2AttackDir;
+    [SerializeField] private bool p1IsAttacking = false, p2IsAttacking = false;
 
     [Header("Movement Options")]
     [SerializeField] private bool canAttackMove = true;
@@ -39,7 +40,9 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private int maxAmmo;
     public int p1Ammo, p2Ammo;
     public float ammoRechargeTime;
-    [HideInInspector]public float tempP1AmmoRechargeTime = 0f, tempP2AmmoRechargeTime = 0f;
+    [HideInInspector] public float tempP1AmmoRechargeTime = 0f, tempP2AmmoRechargeTime = 0f;
+    [SerializeField] private float attackBufferTime;
+    private float tempP1AttackBufferTime = 0f, tempP2AttackBufferTime = 0f;
 
     [Header("Gameobjects and Components")]
     [SerializeField] private GameObject meleeSwipe;
@@ -113,13 +116,29 @@ public class PlayerMovementAndAttack : MonoBehaviour
     //when p1 presses any p1 attack button,...
     void OnP1Attack()
     {
-        
+        //if p1 can fire again,...
+        if (!p1IsAttacking && tempP1FireRate >= fireRate)
+        {
+            //set p1IsAttacking to true
+            p1IsAttacking = true;
+
+            //reset tempP1FireRate
+            tempP1FireRate = 0f;
+        }
     }
 
     //when p2 presses any p2 attack button,...
     void OnP2Attack()
     {
+        //if p2 can fire again,...
+        if (!p2IsAttacking && tempP2FireRate >= fireRate)
+        {
+            //set p2IsAttacking to true
+            p2IsAttacking = true;
 
+            //reset tempP2FireRate
+            tempP2FireRate = 0f;
+        }
     }
 
     void FixedUpdate()
@@ -286,7 +305,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
         #region Ammo Recharge
 
         //if p1 is moving,...
-        if(p1MoveDir != Vector2.zero)
+        if (p1MoveDir != Vector2.zero)
         {
             //increment tempP1AmmoRechargeTime
             tempP1AmmoRechargeTime += Time.fixedDeltaTime;
@@ -307,7 +326,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
         }
 
         //if p2 is moving,...
-        if(p2MoveDir != Vector2.zero)
+        if (p2MoveDir != Vector2.zero)
         {
             //increment tempP2AmmoRechargeTime
             tempP2AmmoRechargeTime += Time.fixedDeltaTime;
@@ -332,6 +351,45 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //***** Handle character attacking ******
         #region Attack Logic
 
+        //increment tempP1FireRate and tempP2FireRate
+        tempP1FireRate += Time.fixedDeltaTime;
+        tempP2FireRate += Time.fixedDeltaTime;
+
+        //if p1 is attacking,...
+        if (p1IsAttacking)
+        {
+            //increment tempP1AttackBufferTime
+            tempP1AttackBufferTime += Time.fixedDeltaTime;
+
+            //if buffer time has elapsed,...
+            if (tempP1AttackBufferTime >= attackBufferTime)
+            {
+                FireP1Projectile();
+            }
+            //else buffer time has not elapsed and p2 is also attacking in the same direction,...
+            else if (p2IsAttacking && p1Center.transform.rotation == p2Center.transform.rotation)
+            {
+                FireSyncedProjectile();
+            }
+        }
+
+        //if p2 is attacking,...
+        if(p2IsAttacking)
+        {
+            //increment tempP2AttackBufferTime
+            tempP2AttackBufferTime += Time.fixedDeltaTime;
+
+            //if buffer time has elapsed,...
+            if (tempP2AttackBufferTime >= attackBufferTime)
+            {
+                FireP2Projectile();
+            }
+            //else buffer time has not elapsed and p1 is also attacking in the same direction,...
+            else if (p1IsAttacking && p1Center.transform.rotation == p2Center.transform.rotation)
+            {
+                FireSyncedProjectile();
+            }
+        }
 
         ////if both players inputting an attack in the same direction,...
         //if (p1AttackDir == p2AttackDir)
@@ -385,6 +443,44 @@ public class PlayerMovementAndAttack : MonoBehaviour
         tempSyncedFireRate += Time.fixedDeltaTime;
 
         #endregion
+    }
+
+    private void FireP1Projectile()
+    {
+        //fire p1 projectile in p1 direction
+        Instantiate(p1Projectile, p1Center.transform.position, p1Center.transform.rotation);
+
+        //set p1IsAttacking to false
+        p1IsAttacking = false;
+
+        //reset tempP1AttackBufferTime
+        tempP1AttackBufferTime = 0f;
+    }
+
+    private void FireP2Projectile()
+    {
+        //fire p2 projectile in p2 direction
+        Instantiate(p2Projectile, p2Center.transform.position, p2Center.transform.rotation);
+
+        //set p2IsAttacking to false
+        p2IsAttacking = false;
+
+        //reset tempP2AttackBufferTime
+        tempP2AttackBufferTime = 0f;
+    }
+
+    private void FireSyncedProjectile()
+    {
+        //fire a synced projectile in p1 direction
+        Instantiate(syncedProjectile, p1Center.transform.position, p1Center.transform.rotation);
+
+        //set p1IsAttacking and p2IsAttacking to false
+        p1IsAttacking = false;
+        p2IsAttacking = false;
+
+        //rest tempP1AttackBufferTime and tempP1AttackBufferTime
+        tempP1AttackBufferTime = 0f;
+        tempP2AttackBufferTime = 0f;
     }
 
     //***** Remove Diagonals from a Vector2 *****
