@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5a75cb5d075884c4d9fb4098e2a0f5c0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d3a30cbd32770884499eeff6755d484d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -211,8 +211,6 @@ MonoBehaviour:
   inSyncMove: 0
   inSyncAttack: 0
   characterMoveDir: {x: 0, y: 0}
-  isP1Attacking: 0
-  isP2Attacking: 0
   p1MoveDir: {x: 0, y: 0}
   p2MoveDir: {x: 0, y: 0}
   p1IsAttacking: 0
@@ -267,17 +265,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpriteRenderer: {fileID: 6209709697524763909}
+  p1ArmSpriteRenderer: {fileID: 335721151270195718}
+  p2ArmSpriteRenderer: {fileID: 3972924922817550812}
   playerMovementAndAttack: {fileID: 5061495762136108037}
-  p1ArrowSpriteRenderer: {fileID: 335721151270195718}
-  p2ArrowSpriteRenderer: {fileID: 3972924922817550812}
-  downSprite: {fileID: 21300000, guid: 5a75cb5d075884c4d9fb4098e2a0f5c0, type: 3}
-  upSprite: {fileID: 21300000, guid: 5dd10f285f6abf848b22953d9fc8ed26, type: 3}
-  leftSprite: {fileID: 21300000, guid: 145caee5bbda1e34380cac96ac296669, type: 3}
-  rightSprite: {fileID: 21300000, guid: 70321586bb20103469b77fa4a82fd953, type: 3}
-  p1MovementSprite: {fileID: 21300000, guid: 155cb3a7d50053c418216b44d7f0591b, type: 3}
-  p2MovementSprite: {fileID: 21300000, guid: 5a3377bb44c70df4580e097ba97feb3b, type: 3}
-  p1AttackSprite: {fileID: 21300000, guid: baa2f6b290836a44ab24bf3301bf580f, type: 3}
-  p2AttackSprite: {fileID: 21300000, guid: 0cb0f5d720eecc04b82275aa00dd61f7, type: 3}
+  characterCenter: {fileID: 6575475850797676369}
+  p1Center: {fileID: 7187091063743419513}
+  p2Center: {fileID: 2166987808576703634}
+  downSprite: {fileID: 21300000, guid: d3a30cbd32770884499eeff6755d484d, type: 3}
+  upSprite: {fileID: 21300000, guid: 97743b4ff7f8731439eb7c4dfbfe80d1, type: 3}
+  leftSprite: {fileID: 21300000, guid: 2cde1ff29a3cf5743a33a4959a11fe2f, type: 3}
+  rightSprite: {fileID: 21300000, guid: fdf9e54310919cb43be9cd6768a19978, type: 3}
+  p1Down: {fileID: 21300000, guid: 78d69c4e6fed49243aefdaea1321df3e, type: 3}
+  p1Up: {fileID: 21300000, guid: aa9a853a89ccfec4e9d3e4c7ad2da083, type: 3}
+  p1Left: {fileID: 21300000, guid: a4c01259bfbe787449637f9813d574b6, type: 3}
+  p1Right: {fileID: 21300000, guid: 450f1cb714afcad41a121a4b4b915240, type: 3}
+  p2Down: {fileID: 21300000, guid: 0d22486e45c3ca94282b8f021a3178c2, type: 3}
+  p2Up: {fileID: 21300000, guid: 33e986d24fa25c04d8185548aede64ba, type: 3}
+  p2Left: {fileID: 21300000, guid: 8352846e38c90fa4d835181cf3210907, type: 3}
+  p2Right: {fileID: 21300000, guid: 267c9ac4be9d42f419c5b122e7deff3a, type: 3}
 --- !u!1 &1760080146802476155
 GameObject:
   m_ObjectHideFlags: 0
