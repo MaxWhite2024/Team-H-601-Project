@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class Enemy : MonoBehaviour
 {
     [Header("Movement Vars")]
     [SerializeField] private float speed;
-    [SerializeField] private float stepTime; //Time between steps
+    //[SerializeField] private float stepTime; //Time between steps, only used in old pathfinding
 
     [Header("Player + EnemyRB")]
     [SerializeField] private GameObject player;
@@ -21,6 +22,9 @@ public class Enemy : MonoBehaviour
     private Vector3 playerPos;
     private Vector3 distance;
     private float timer;
+
+    //Astar vars
+    private AIPath path;
 
     // Start is called before the first frame update
     void Start()
@@ -40,14 +44,21 @@ public class Enemy : MonoBehaviour
             room = transform.parent.gameObject.GetComponent<RoomManager>();
         }
 
+        path = GetComponent<AIPath>();
+
         playerPos = player.transform.position;
-        timer = stepTime;
+        path.maxSpeed = speed;
+        //timer = stepTime;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Counts down from stepTime, once time hits 0 moves in the direction of the player
+        playerPos = player.transform.position;
+        path.destination = playerPos;
+
+        #region old pathing
+        /*//Counts down from stepTime, once time hits 0 moves in the direction of the player
         timer -= Time.deltaTime;
         if (timer <= 0) {
 
@@ -58,7 +69,8 @@ public class Enemy : MonoBehaviour
             //transform.position += distance.normalized * speed;
 
             timer = stepTime;
-        }
+        }*/
+        #endregion
     }
 
     /// <summary>
