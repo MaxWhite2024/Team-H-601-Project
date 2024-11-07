@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Damageable : MonoBehaviour
 {
+    enum Damageables {Unassigned, Enemy, Player, Trash, Spawner};
+
     public int maxHealth;
     public int health;
     [SerializeField] private float iFrameTime;
+    [SerializeField] private Damageables type;
+    
     private float timer;
     [HideInInspector] public RoomManager room;
 
@@ -18,6 +22,27 @@ public class Damageable : MonoBehaviour
         if (room == null && transform.parent != null)
         {
             room = transform.parent.gameObject.GetComponent<RoomManager>();
+        }
+
+        if(type == Damageables.Unassigned)
+        {
+            if (this.gameObject.GetComponent<PlayerMovementAndAttack>() != null)
+            {
+                type = Damageables.Player;
+            }
+            //Custom enemy and spawner methods
+            else if (this.gameObject.GetComponent<Enemy>() != null)
+            {
+                type = Damageables.Enemy;
+            }
+            else if (this.gameObject.GetComponent<EnemySpawner>() != null)
+            {
+                type = Damageables.Spawner;
+            }
+            else
+            {
+                type = Damageables.Trash;
+            }
         }
     }
 
@@ -63,23 +88,21 @@ public class Damageable : MonoBehaviour
                     room.damageables.Remove(this);
                 }
 
-                //Resets scene if player dies
-                if (this.gameObject.GetComponent<PlayerMovementAndAttack>() != null)
+                switch (type)
                 {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                }
-                //Custom enemy and spawner methods
-                else if (this.gameObject.GetComponent<Enemy>() != null)
-                {
-                    this.gameObject.GetComponent<Enemy>().Death();
-                }
-                else if (this.gameObject.GetComponent<EnemySpawner>() != null)
-                {
-                    this.gameObject.GetComponent<EnemySpawner>().Death();
-                }
-                else
-                {
-                    Destroy(this.gameObject);
+                    case Damageables.Player:
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                        break;
+                    case Damageables.Enemy:
+                        this.gameObject.GetComponent<Enemy>().Death();
+                        break;
+                    case Damageables.Spawner:
+                        this.gameObject.GetComponent<EnemySpawner>().Death();
+                        break;
+                    default:
+                        AstarPath.active.Scan(); //Reloads graph
+                        Destroy(this.gameObject);
+                        break;
                 }
             }
 
