@@ -319,7 +319,7 @@ PrefabInstance:
     - target: {fileID: 2558388615955554361, guid: 1528e60a637a131428ca0e925232519d, type: 3}
       propertyPath: room
       value: 
-      objectReference: {fileID: 799985335}
+      objectReference: {fileID: 0}
     - target: {fileID: 3221990833745314391, guid: 1528e60a637a131428ca0e925232519d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.41
@@ -497,7 +497,7 @@ PrefabInstance:
     - target: {fileID: 2558388615955554361, guid: 578fae2c5939b4f45bd61a2d3d4c47fb, type: 3}
       propertyPath: room
       value: 
-      objectReference: {fileID: 799985335}
+      objectReference: {fileID: 0}
     - target: {fileID: 2558388615955554361, guid: 578fae2c5939b4f45bd61a2d3d4c47fb, type: 3}
       propertyPath: player
       value: 
@@ -25118,7 +25118,7 @@ PrefabInstance:
     - target: {fileID: 2558388615955554361, guid: 578fae2c5939b4f45bd61a2d3d4c47fb, type: 3}
       propertyPath: room
       value: 
-      objectReference: {fileID: 799985335}
+      objectReference: {fileID: 0}
     - target: {fileID: 2558388615955554361, guid: 578fae2c5939b4f45bd61a2d3d4c47fb, type: 3}
       propertyPath: player
       value: 
@@ -25647,7 +25647,7 @@ PrefabInstance:
     - target: {fileID: 2558388615955554361, guid: 578fae2c5939b4f45bd61a2d3d4c47fb, type: 3}
       propertyPath: room
       value: 
-      objectReference: {fileID: 799985335}
+      objectReference: {fileID: 0}
     - target: {fileID: 2558388615955554361, guid: 578fae2c5939b4f45bd61a2d3d4c47fb, type: 3}
       propertyPath: player
       value: 
@@ -25952,7 +25952,7 @@ PrefabInstance:
     - target: {fileID: 2558388615955554361, guid: 578fae2c5939b4f45bd61a2d3d4c47fb, type: 3}
       propertyPath: room
       value: 
-      objectReference: {fileID: 799985335}
+      objectReference: {fileID: 0}
     - target: {fileID: 2558388615955554361, guid: 578fae2c5939b4f45bd61a2d3d4c47fb, type: 3}
       propertyPath: player
       value: 
@@ -26609,7 +26609,7 @@ PrefabInstance:
     - target: {fileID: 2558388615955554361, guid: 1528e60a637a131428ca0e925232519d, type: 3}
       propertyPath: room
       value: 
-      objectReference: {fileID: 799985335}
+      objectReference: {fileID: 0}
     - target: {fileID: 3221990833745314391, guid: 1528e60a637a131428ca0e925232519d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.959999
