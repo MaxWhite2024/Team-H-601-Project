@@ -207,9 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5ee04494c814142bb6dfb9af3d43b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canStep: 1
   inSyncMove: 0
-  inSyncAttack: 0
   characterMoveDir: {x: 0, y: 0}
   p1MoveDir: {x: 0, y: 0}
   p2MoveDir: {x: 0, y: 0}
@@ -219,7 +217,7 @@ MonoBehaviour:
   freeFormMoveSpeed: 10000
   outOfSyncMovementPenalty: 0.5
   fireRate: 0.3
-  maxAmmo: 10
+  maxAmmo: 3
   p1Ammo: 0
   p2Ammo: 0
   ammoRechargeTime: 1
@@ -267,13 +265,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpriteRenderer: {fileID: 6209709697524763909}
+  p1ArmSpriteRenderer: {fileID: 335721151270195718}
+  p2ArmSpriteRenderer: {fileID: 3972924922817550812}
   playerMovementAndAttack: {fileID: 5061495762136108037}
-  p1ArrowSpriteRenderer: {fileID: 335721151270195718}
-  p2ArrowSpriteRenderer: {fileID: 3972924922817550812}
+  characterCenter: {fileID: 6575475850797676369}
+  p1Center: {fileID: 7187091063743419513}
+  p2Center: {fileID: 2166987808576703634}
   downSprite: {fileID: 21300000, guid: 5a75cb5d075884c4d9fb4098e2a0f5c0, type: 3}
   upSprite: {fileID: 21300000, guid: 5dd10f285f6abf848b22953d9fc8ed26, type: 3}
   leftSprite: {fileID: 21300000, guid: 145caee5bbda1e34380cac96ac296669, type: 3}
   rightSprite: {fileID: 21300000, guid: 70321586bb20103469b77fa4a82fd953, type: 3}
+  p1Down: {fileID: 0}
+  p1Up: {fileID: 0}
+  p1Left: {fileID: 0}
+  p1Right: {fileID: 0}
+  p2Down: {fileID: 0}
+  p2Up: {fileID: 0}
+  p2Left: {fileID: 0}
+  p2Right: {fileID: 0}
 --- !u!1 &1760080146802476155
 GameObject:
   m_ObjectHideFlags: 0
