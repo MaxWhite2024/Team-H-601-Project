@@ -6,7 +6,8 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour
 {
     
-    [Header("Doors")] public List<Door> doors;
+    [Header("Doors and order")] public List<Door> doors;
+    [SerializeField] private bool firstRoom;
     
 
     [Header("Customization Vars")]
@@ -52,6 +53,12 @@ public class RoomManager : MonoBehaviour
                 damageables.Add(damageable);
             }
         }
+
+        //Disables self if not the first room
+        if(!firstRoom)
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     void OnEnable()
@@ -86,13 +93,20 @@ public class RoomManager : MonoBehaviour
         }
 
         //If the enemies list is empty and the room doesn't need to be full cleared, OR if the damageables list is empty
-        if(enemies.Count <= 0 && !fullClear)
+        switch(fullClear)
         {
-            roomClean = true;
-        }
-        else if (damageables.Count <= 0)
-        {
-            roomClean = true;
+            case true:
+                if (damageables.Count <= 0)
+                {
+                    roomClean = true;
+                }
+                break;
+            default:
+                if (enemies.Count <= 0)
+                {
+                    roomClean = true;
+                }
+                break;
         }
 
         //Counts up to decreaseSpawnRateRate, once timeInRoom reachest that if goes through each spawner to see if they spawn faster over time

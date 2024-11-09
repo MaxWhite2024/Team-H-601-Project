@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
         //Stops spawning if the room is clean and offWhenRoomClean is true
         if (room.roomClean && offWhenRoomClean)
         {
-            this.GetComponent<EnemySpawner>().enabled = false;
+            this.gameObject.SetActive(false);
         }
 
         //Counts down from spawnTimer, when it reaches 0 it checks to see if there are too many enemies

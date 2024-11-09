@@ -76,8 +76,12 @@ public class Damageable : MonoBehaviour
             //Sets iFrames, takes damage, and takes knockback based on damage taken
             timer = iFrameTime;
             health = health - damage.damage;
-            Vector3 knockbackAngle = -1 * (collider.gameObject.transform.position - this.gameObject.transform.position);
-            this.gameObject.GetComponent<Rigidbody2D>().velocity = (knockbackAngle.normalized * damage.damage * 4);
+
+            if (type != Damageables.Trash)
+            {
+                Vector3 knockbackAngle = -1 * (collider.gameObject.transform.position - this.gameObject.transform.position);
+                this.gameObject.GetComponent<Rigidbody2D>().velocity = (knockbackAngle.normalized * damage.damage * 4);
+            }
 
             //Death methods
             if (health <= 0)
