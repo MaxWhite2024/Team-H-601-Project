@@ -29,6 +29,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private int maxAmmo;
     [HideInInspector] public int p1Ammo, p2Ammo;
     public float ammoRechargeTime;
+    [SerializeField] private float movementAmmoRechargeMultiplier;
     [HideInInspector] public float tempP1AmmoRechargeTime = 0f, tempP2AmmoRechargeTime = 0f;
     [SerializeField] private float attackBufferTime;
     private float tempP1AttackBufferTime = 0f, tempP2AttackBufferTime = 0f;
@@ -92,7 +93,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
     void OnP1Attack()
     {
         //if p1 can fire again,...
-        if (!p1IsAttacking && tempP1FireRate >= fireRate)
+        if (!p1IsAttacking && tempP1FireRate >= fireRate && p1Ammo > 0)
         {
             //set p1IsAttacking to true
             p1IsAttacking = true;
@@ -106,7 +107,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
     void OnP2Attack()
     {
         //if p2 can fire again,...
-        if (!p2IsAttacking && tempP2FireRate >= fireRate)
+        if (!p2IsAttacking && tempP2FireRate >= fireRate && p2Ammo > 0)
         {
             //set p2IsAttacking to true
             p2IsAttacking = true;
@@ -268,45 +269,60 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //***** Handle Ammo Recharge *****
         #region Ammo Recharge
 
+        //*****  *****
         //if p1 is moving,...
         if (p1MoveDir != Vector2.zero)
         {
-            //increment tempP1AmmoRechargeTime
+            //increment tempP1AmmoRechargeTime by movementAmmoRechargeMultiplier times fixedDeltaTime
+            tempP1AmmoRechargeTime += movementAmmoRechargeMultiplier * Time.fixedDeltaTime;
+        }
+        //else p1 is NOT moving,...
+        else
+        {
+            //increment tempP1AmmoRechargeTime by fixedDeltaTime
             tempP1AmmoRechargeTime += Time.fixedDeltaTime;
-
-            //if p1's ammo is less than maxAmmo,...
-            if (p1Ammo < maxAmmo)
-            {
-                //if ammoRechargeTime has elapsed,...
-                if (tempP1AmmoRechargeTime >= ammoRechargeTime)
-                {
-                    //increment p1Ammo by 1
-                    p1Ammo++;
-
-                    //reset tempP1AmmoRechargeTime
-                    tempP1AmmoRechargeTime = 0f;
-                }
-            }
         }
 
         //if p2 is moving,...
         if (p2MoveDir != Vector2.zero)
         {
-            //increment tempP2AmmoRechargeTime
+            //increment tempP2AmmoRechargeTime by movementAmmoRechargeMultiplier times fixedDeltaTime
+            tempP2AmmoRechargeTime += movementAmmoRechargeMultiplier * Time.fixedDeltaTime;
+        }
+        //else p2 is NOT moving,...
+        else
+        {
+            //increment tempP2AmmoRechargeTime by fixedDeltaTime
             tempP2AmmoRechargeTime += Time.fixedDeltaTime;
+        }
 
-            //if p2's ammo is less than maxAmmo,...
-            if (p2Ammo < maxAmmo)
+        //if p1's ammo is less than maxAmmo,...
+        if (p1Ammo < maxAmmo)
+        {
+            //if ammoRechargeTime has elapsed,...
+            if (tempP1AmmoRechargeTime >= ammoRechargeTime)
             {
-                //if ammoRechargeTime has elapsed,...
-                if (tempP2AmmoRechargeTime >= ammoRechargeTime)
-                {
-                    //increment p2Ammo by 1
-                    p2Ammo++;
+                //increment p1Ammo by 1
+                p1Ammo++;
 
-                    //reset tempP2AmmoRechargeTime
-                    tempP2AmmoRechargeTime = 0f;
-                }
+                //reset tempP1AmmoRechargeTime
+                tempP1AmmoRechargeTime = 0f;
+            }
+        }
+
+
+
+        //if p2's ammo is less than maxAmmo,...
+        if (p2Ammo < maxAmmo)
+        {
+            //if ammoRechargeTime has elapsed,...
+            if (tempP2AmmoRechargeTime >= ammoRechargeTime)
+            {
+                //increment p2Ammo by 1
+                p2Ammo++;
+
+                //reset tempP2AmmoRechargeTime
+                tempP2AmmoRechargeTime = 0f;
             }
         }
 
