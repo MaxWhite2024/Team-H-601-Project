@@ -63,7 +63,7 @@ public class Damageable : MonoBehaviour
     private void CollisionLogic(Collider2D collider)
     {
         //This is so enemies won't damage each other or damage trash
-        if (collider.gameObject.layer == this.gameObject.layer)
+        if (collider.gameObject.layer == this.gameObject.layer || (collider.gameObject.layer == 6 && type == Damageables.Trash))
         {
             return;
         }
@@ -100,7 +100,19 @@ public class Damageable : MonoBehaviour
                         this.gameObject.GetComponent<EnemySpawner>().Death();
                         break;
                     default:
-                        AstarPath.active.Scan(); //Reloads graph
+                        //AstarPath.active.Scan(); //Reloads all graphs -> cause dummy lag
+                        var graphToScan = AstarPath.active.data.gridGraph;
+
+                        /*if(room.gameObject.name == "RoomManager")
+                        {
+                            //graphToScan = AstarPath.active.data.room1;
+                        }
+                        else if (room.gameObject.name == "RoomManager (1)")
+                        {
+
+                        }
+
+                        AstarPath.active.Scan(graphToScan);*/
                         Destroy(this.gameObject);
                         break;
                 }
