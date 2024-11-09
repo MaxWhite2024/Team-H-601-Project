@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    
+
     [Header("Doors and order")] public List<Door> doors;
     [SerializeField] private bool firstRoom;
-    
+
 
     [Header("Customization Vars")]
     public Transform cameraTransform;
@@ -33,7 +33,7 @@ public class RoomManager : MonoBehaviour
         roomClean = false;
 
         //Goes through each child of the room and adds them to the appropriate list
-        foreach(Transform child in transform)
+        foreach (Transform child in transform)
         {
             Enemy enemy = child.gameObject.GetComponent<Enemy>();
             EnemySpawner spawner = child.gameObject.GetComponent<EnemySpawner>();
@@ -42,12 +42,12 @@ public class RoomManager : MonoBehaviour
             {
                 enemies.Add(enemy);
             }
-            else if(spawner != null && !spawners.Contains(spawner))
+            else if (spawner != null && !spawners.Contains(spawner))
             {
                 spawners.Add(spawner);
             }
-            
-            
+
+
             if (damageable != null && !damageables.Contains(damageable))
             {
                 damageables.Add(damageable);
@@ -55,7 +55,7 @@ public class RoomManager : MonoBehaviour
         }
 
         //Disables self if not the first room
-        if(!firstRoom)
+        if (!firstRoom)
         {
             this.gameObject.SetActive(false);
         }
@@ -64,7 +64,7 @@ public class RoomManager : MonoBehaviour
     void OnEnable()
     {
         //When the room is enabled, if it's not clean and the door isn't moving the camera, disable the door
-        if(!roomClean)
+        if (!roomClean)
         {
             foreach (Door door in doors)
             {
@@ -81,11 +81,11 @@ public class RoomManager : MonoBehaviour
     {
 
         //Activate each door when room is clean
-        if(roomClean)
+        if (roomClean)
         {
             foreach (Door door in doors)
             {
-                if(!door.gameObject.activeSelf)
+                if (!door.gameObject.activeSelf)
                 {
                     door.gameObject.SetActive(true);
                 }
@@ -93,7 +93,7 @@ public class RoomManager : MonoBehaviour
         }
 
         //If the enemies list is empty and the room doesn't need to be full cleared, OR if the damageables list is empty
-        switch(fullClear)
+        switch (fullClear)
         {
             case true:
                 if (damageables.Count <= 0)
@@ -116,11 +116,11 @@ public class RoomManager : MonoBehaviour
         {
             foreach (EnemySpawner spawner in spawners)
             {
-                if(spawner.decreaseSpawnTime && spawner.spawnTimer > decreaseSpawnRateMinimum)
+                if (spawner.decreaseSpawnTime && spawner.spawnTimer > decreaseSpawnRateMinimum)
                 {
                     spawner.spawnTimer -= decreaseSpawnRateAmount;
 
-                    if(spawner.spawnTimer < decreaseSpawnRateMinimum)
+                    if (spawner.spawnTimer < decreaseSpawnRateMinimum)
                     {
                         spawner.spawnTimer = decreaseSpawnRateMinimum;
                     }

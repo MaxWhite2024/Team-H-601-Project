@@ -12,10 +12,9 @@ public class Enemy : MonoBehaviour
     [Header("Player + EnemyRB")]
     [SerializeField] private GameObject player;
     [SerializeField] private Rigidbody2D rb;
-    
-    [HideInInspector]
+
+    [Header("Debug Vars")]
     public EnemySpawner spawner;
-    [HideInInspector]
     public RoomManager room;
 
     //public bool spawned = true;
