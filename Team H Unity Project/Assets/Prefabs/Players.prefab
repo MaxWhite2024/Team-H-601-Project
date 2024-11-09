@@ -211,14 +211,10 @@ MonoBehaviour:
   inSyncMove: 0
   inSyncAttack: 0
   characterMoveDir: {x: 0, y: 0}
-  isP1Attacking: 0
-  isP2Attacking: 0
-  p1Mode: 0
-  p2Mode: 0
   p1MoveDir: {x: 0, y: 0}
   p2MoveDir: {x: 0, y: 0}
-  p1AttackDir: {x: 0, y: 0}
-  p2AttackDir: {x: 0, y: 0}
+  p1IsAttacking: 0
+  p2IsAttacking: 0
   canAttackMove: 1
   freeFormMoveSpeed: 10000
   outOfSyncMovementPenalty: 0.5
@@ -226,9 +222,11 @@ MonoBehaviour:
   maxAmmo: 10
   p1Ammo: 0
   p2Ammo: 0
-  ammoRechargeTime: 0.5
+  ammoRechargeTime: 1
+  movementAmmoRechargeMultiplier: 2
   tempP1AmmoRechargeTime: 0
   tempP2AmmoRechargeTime: 0
+  attackBufferTime: 0
   meleeSwipe: {fileID: 7506816831007820961}
   p1MeleeStab: {fileID: 7225709484863884097}
   p2MeleeStab: {fileID: 5519271001967049682}
@@ -276,10 +274,6 @@ MonoBehaviour:
   upSprite: {fileID: 21300000, guid: 5dd10f285f6abf848b22953d9fc8ed26, type: 3}
   leftSprite: {fileID: 21300000, guid: 145caee5bbda1e34380cac96ac296669, type: 3}
   rightSprite: {fileID: 21300000, guid: 70321586bb20103469b77fa4a82fd953, type: 3}
-  p1MovementSprite: {fileID: 21300000, guid: 155cb3a7d50053c418216b44d7f0591b, type: 3}
-  p2MovementSprite: {fileID: 21300000, guid: 5a3377bb44c70df4580e097ba97feb3b, type: 3}
-  p1AttackSprite: {fileID: 21300000, guid: baa2f6b290836a44ab24bf3301bf580f, type: 3}
-  p2AttackSprite: {fileID: 21300000, guid: 0cb0f5d720eecc04b82275aa00dd61f7, type: 3}
 --- !u!1 &1760080146802476155
 GameObject:
   m_ObjectHideFlags: 0
