@@ -100,19 +100,8 @@ public class Damageable : MonoBehaviour
                         this.gameObject.GetComponent<EnemySpawner>().Death();
                         break;
                     default:
-                        //AstarPath.active.Scan(); //Reloads all graphs -> cause dummy lag
-                        var graphToScan = AstarPath.active.data.gridGraph;
-
-                        /*if(room.gameObject.name == "RoomManager")
-                        {
-                            //graphToScan = AstarPath.active.data.room1;
-                        }
-                        else if (room.gameObject.name == "RoomManager (1)")
-                        {
-
-                        }
-
-                        AstarPath.active.Scan(graphToScan);*/
+                        //Recalculates the Astar grid at the position of this object
+                        AstarPath.active.UpdateGraphs(gameObject.GetComponent<Collider2D>().bounds);
                         Destroy(this.gameObject);
                         break;
                 }

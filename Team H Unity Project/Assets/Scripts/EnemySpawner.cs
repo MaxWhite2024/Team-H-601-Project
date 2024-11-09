@@ -10,13 +10,13 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject enemy;
     [SerializeField] private bool offWhenRoomClean;
     public bool decreaseSpawnTime;
-    private float timer;
     [SerializeField] private int maxEnemies;
 
-    [HideInInspector]
+    [Header("Debug Vars")]
     [SerializeField] private RoomManager room;
-    [HideInInspector]
     public int enemiesSpawned;
+    [SerializeField] private float timer;
+
 
     // Start is called before the first frame update
     void Start()
