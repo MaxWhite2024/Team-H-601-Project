@@ -6,9 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovementAndAttack : MonoBehaviour
 {
     [Header("DEBUG VARIABLES")]
-    [SerializeField] private bool canStep = false;
     [SerializeField] private bool inSyncMove = false;
-    [SerializeField] private bool inSyncAttack = false;
     [SerializeField] private Vector2 characterMoveDir;
     [SerializeField] private Vector2 p1MoveDir, p2MoveDir;
     [SerializeField] private bool p1IsAttacking = false, p2IsAttacking = false;
@@ -19,8 +17,6 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float freeFormMoveSpeed;
     [SerializeField] private float outOfSyncMovementPenalty;
-    private float timeBetweenGridSteps;
-    private float tempTimeBetweenGridSteps = 0f;
 
     [Header("Attack Settings")]
     [SerializeField] private float fireRate = 0.3f;
