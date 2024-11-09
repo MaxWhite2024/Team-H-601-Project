@@ -18,6 +18,9 @@ public class Damageable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //set health to maxhealth
+        health = maxHealth;
+
         timer = iFrameTime;
         if (room == null && transform.parent != null)
         {
