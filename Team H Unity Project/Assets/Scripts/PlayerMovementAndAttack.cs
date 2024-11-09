@@ -119,7 +119,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
     void FixedUpdate()
     {
         //***** Calculate characterMoveDir and inSyncMove variables ******
-        #region Move Syncronization and Ammo Recharge Logic
+        #region Move Syncronization Logic
 
         //if both p1 and p2 are both non-zero,...
         if (p1MoveDir != Vector2.zero && p2MoveDir != Vector2.zero)
@@ -280,7 +280,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
                 //if ammoRechargeTime has elapsed,...
                 if (tempP1AmmoRechargeTime >= ammoRechargeTime)
                 {
-                    //increment p1Ammo by 1 keeping
+                    //increment p1Ammo by 1
                     p1Ammo++;
 
                     //reset tempP1AmmoRechargeTime
@@ -301,7 +301,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
                 //if ammoRechargeTime has elapsed,...
                 if (tempP2AmmoRechargeTime >= ammoRechargeTime)
                 {
-                    //increment p2Ammo by 1 keeping
+                    //increment p2Ammo by 1
                     p2Ammo++;
 
                     //reset tempP2AmmoRechargeTime
@@ -368,6 +368,9 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //fire p1 projectile in p1 direction
         Instantiate(p1Projectile, p1Center.transform.position, p1Center.transform.rotation);
 
+        //decrement p1Ammo
+        p1Ammo--;
+
         //set p1IsAttacking to false
         p1IsAttacking = false;
 
@@ -380,6 +383,9 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //fire p2 projectile in p2 direction
         Instantiate(p2Projectile, p2Center.transform.position, p2Center.transform.rotation);
 
+        //decrement p2Ammo
+        p2Ammo--;
+
         //set p2IsAttacking to false
         p2IsAttacking = false;
 
@@ -391,6 +397,10 @@ public class PlayerMovementAndAttack : MonoBehaviour
     {
         //fire a synced projectile in p1 direction
         Instantiate(syncedProjectile, p1Center.transform.position, p1Center.transform.rotation);
+
+        //decrement p1Ammo and p2Ammo
+        p1Ammo--;
+        p2Ammo--;
 
         //set p1IsAttacking and p2IsAttacking to false
         p1IsAttacking = false;

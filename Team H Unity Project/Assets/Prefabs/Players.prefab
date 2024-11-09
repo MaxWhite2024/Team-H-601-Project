@@ -220,7 +220,7 @@ MonoBehaviour:
   freeFormMoveSpeed: 10000
   outOfSyncMovementPenalty: 0.15
   fireRate: 0.3
-  maxAmmo: 10
+  maxAmmo: 3
   p1Ammo: 0
   p2Ammo: 0
   ammoRechargeTime: 0.5
