@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public enum PlayerMode
+{
+    MOVE, ATTACK
+}
+
 public class PlayerMovementAndAttack : MonoBehaviour
 {
     [Header("DEBUG VARIABLES")]
@@ -10,14 +15,20 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private bool inSyncMove = false;
     [SerializeField] private bool inSyncAttack = false;
     [SerializeField] private Vector2 characterMoveDir;
+    [SerializeField]
+    private bool isP1Attacking = false, isP2Attacking = false;
+    public PlayerMode p1Mode = PlayerMode.MOVE;
+    public PlayerMode p2Mode = PlayerMode.MOVE;
     [SerializeField] private Vector2 p1MoveDir, p2MoveDir;
-    [SerializeField] private bool p1IsAttacking = false, p2IsAttacking = false;
+    [SerializeField] private Vector2 p1AttackDir, p2AttackDir;
 
     [Header("Movement Options")]
     [SerializeField] private bool canAttackMove = true;
 
     [Header("Movement Settings")]
     [SerializeField] private float freeFormMoveSpeed;
+    // [SerializeField] private float gridMoveSpeed;
+    // [SerializeField] private float inspectorTimeBetweenGridSteps;
     [SerializeField] private float outOfSyncMovementPenalty;
     private float timeBetweenGridSteps;
     private float tempTimeBetweenGridSteps = 0f;
@@ -25,13 +36,10 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [Header("Attack Settings")]
     [SerializeField] private float fireRate = 0.3f;
     private float tempP1FireRate = 0f, tempP2FireRate = 0f, tempSyncedFireRate = 0f;
-    private bool isP1Attacking = false, isP2Attacking = false;
     [SerializeField] private int maxAmmo;
-    [HideInInspector] public int p1Ammo, p2Ammo;
+    public int p1Ammo, p2Ammo;
     public float ammoRechargeTime;
-    [HideInInspector] public float tempP1AmmoRechargeTime = 0f, tempP2AmmoRechargeTime = 0f;
-    [SerializeField] private float attackBufferTime;
-    private float tempP1AttackBufferTime = 0f, tempP2AttackBufferTime = 0f;
+    [HideInInspector]public float tempP1AmmoRechargeTime = 0f, tempP2AmmoRechargeTime = 0f;
 
     [Header("Gameobjects and Components")]
     [SerializeField] private GameObject meleeSwipe;
@@ -53,71 +61,150 @@ public class PlayerMovementAndAttack : MonoBehaviour
         p2MoveDir = Vector2.zero;
         characterMoveDir = Vector2.zero;
 
+        //set players' attack directions to zero
+        p1AttackDir = Vector2.zero;
+        p2AttackDir = Vector2.zero;
+
+        //set timeBetweenGridSteps to the value from inspector
+        // timeBetweenGridSteps = inspectorTimeBetweenGridSteps;
+
         //give each player max ammo
         p1Ammo = maxAmmo;
         p2Ammo = maxAmmo;
     }
 
+    // Update is called once per frame
+    //void Update()
+    //{
+    //    Debug.DrawRay(transform.position, p1MoveDir.normalized * 100f, Color.red);
+    //    Debug.DrawRay(transform.position, p2MoveDir.normalized * 100f, Color.blue);
+    //}
+
     //when p1 pressed WASD,...
     void OnP1Move(InputValue value)
     {
-        //set p1MoveDir to direction of WASD
-        //NOTE: vector is already normalized!
-        p1MoveDir = RemoveDiagonal(value.Get<Vector2>());
-
-        //if p1MoveDir is not equal to zero,...
-        if (p1MoveDir != Vector2.zero)
+        //if p1's mode is move,...
+        if (p1Mode == PlayerMode.MOVE)
         {
-            //change direction of p2Center
-            p1Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p1MoveDir));
+            //set p1MoveDir to direction of WASD
+            //NOTE: vector is already normalized!
+            p1MoveDir = RemoveDiagonal(value.Get<Vector2>());
+
+            //if p1MoveDir is not equal to zero,...
+            if (p1MoveDir != Vector2.zero)
+            {
+                //change direction of p2Center
+                p1Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p1MoveDir));
+            }
+
+            //set p1AttackDir to zero
+            p1AttackDir = Vector2.zero;
+        }
+        //else p1's mode is attack,...
+        else
+        {
+            //set p1AttackDir to direction of WASD
+            //NOTE: vector is already normalized!
+            p1AttackDir = RemoveDiagonal(value.Get<Vector2>());
+
+            //if p1AttackDir is not equal to zero,...
+            if (p1AttackDir != Vector2.zero)
+            {
+                //change direction of p1Center
+                p1Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p1AttackDir));
+            }
+
+            //set p1MoveDir to zero
+            p1MoveDir = Vector2.zero;
         }
     }
 
     //when p2 pressed Arrow Keys,...
     void OnP2Move(InputValue value)
     {
-        //set p2MoveDir to direction of WASD
-        //NOTE: vector is already normalized!
-        p2MoveDir = RemoveDiagonal(value.Get<Vector2>());
-
-        //if p2MoveDir is not equal to zero,...
-        if (p2MoveDir != Vector2.zero)
+        //if p2's mode is move,...
+        if (p2Mode == PlayerMode.MOVE)
         {
-            //change direction of p2Center
-            p2Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p2MoveDir));
+            //set p2MoveDir to direction of WASD
+            //NOTE: vector is already normalized!
+            p2MoveDir = RemoveDiagonal(value.Get<Vector2>());
+
+            //if p2MoveDir is not equal to zero,...
+            if (p2MoveDir != Vector2.zero)
+            {
+                //change direction of p2Center
+                p2Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p2MoveDir));
+            }
+
+            //set p2AttackDir to zero
+            p2AttackDir = Vector2.zero;
+        }
+        //else p2's mode is attack,...
+        else
+        {
+            //set p1AttackDir to direction of WASD
+            //NOTE: vector is already normalized!
+            p2AttackDir = RemoveDiagonal(value.Get<Vector2>());
+
+            //if p2AttackDir is not equal to zero,...
+            if (p2AttackDir != Vector2.zero)
+            {
+                //change direction of p2Center
+                p2Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p2AttackDir));
+            }
+
+            //set p2MoveDir to zero
+            p2MoveDir = Vector2.zero;
         }
     }
 
-    //when p1 presses any p1 attack button,...
     void OnP1Attack()
     {
-        //if p1 can fire again,...
-        if (!p1IsAttacking && tempP1FireRate >= fireRate)
+        //if the current p1Mode is greater than the number of attack types minus 1,...
+        if ((int)p1Mode >= PlayerMode.GetNames(typeof(PlayerMode)).Length - 1)
         {
-            //set p1IsAttacking to true
-            p1IsAttacking = true;
-
-            //reset tempP1FireRate
-            tempP1FireRate = 0f;
+            //set p1Mode back to first attack type
+            p1Mode = 0;
         }
+        //else the current p1Mode is less than or equal to the number of attack types,...
+        else
+        {
+            //increment attack type
+            p1Mode++;
+        }
+        // Debug.Log(p1Mode);
     }
 
-    //when p2 presses any p2 attack button,...
     void OnP2Attack()
     {
-        //if p2 can fire again,...
-        if (!p2IsAttacking && tempP2FireRate >= fireRate)
+        //if the current p2Mode is greater than the number of attack types minus 1,...
+        if ((int)p2Mode >= PlayerMode.GetNames(typeof(PlayerMode)).Length - 1)
         {
-            //set p2IsAttacking to true
-            p2IsAttacking = true;
-
-            //reset tempP2FireRate
-            tempP2FireRate = 0f;
+            //set p2Mode back to first attack type
+            p2Mode = 0;
         }
+        //else the current p2Mode is less than or equal to the number of attack types,...
+        else
+        {
+            //increment attack type
+            p2Mode++;
+        }
+        // Debug.Log(p2Mode);
     }
 
     void FixedUpdate()
     {
+        //Debug.Log(transform.rotation);
+        //increment tempTimeBetweenGridSteps
+        tempTimeBetweenGridSteps += Time.fixedDeltaTime;
+
+        //if timeBetweenGridSteps has elapsed,...
+        if(tempTimeBetweenGridSteps >= timeBetweenGridSteps)
+        {
+            //set canStep to true 
+            canStep = true;
+        }
+
         //***** Calculate characterMoveDir and inSyncMove variables ******
         #region Move Syncronization and Ammo Recharge Logic
 
@@ -269,7 +356,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
         #region Ammo Recharge
 
         //if p1 is moving,...
-        if (p1MoveDir != Vector2.zero)
+        if(p1MoveDir != Vector2.zero)
         {
             //increment tempP1AmmoRechargeTime
             tempP1AmmoRechargeTime += Time.fixedDeltaTime;
@@ -290,7 +377,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
         }
 
         //if p2 is moving,...
-        if (p2MoveDir != Vector2.zero)
+        if(p2MoveDir != Vector2.zero)
         {
             //increment tempP2AmmoRechargeTime
             tempP2AmmoRechargeTime += Time.fixedDeltaTime;
@@ -315,43 +402,49 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //***** Handle character attacking ******
         #region Attack Logic
 
-        //increment tempP1FireRate and tempP2FireRate
-        tempP1FireRate += Time.fixedDeltaTime;
-        tempP2FireRate += Time.fixedDeltaTime;
-
-        //if p1 is attacking,...
-        if (p1IsAttacking)
+        //if both players inputting an attack in the same direction,...
+        if (p1AttackDir == p2AttackDir)
         {
-            //increment tempP1AttackBufferTime
-            tempP1AttackBufferTime += Time.fixedDeltaTime;
+            //if both players are attacking and syncedFireRate has elapsed and both players have ammo,...
+            if (p1AttackDir != Vector2.zero && p2AttackDir != Vector2.zero && tempSyncedFireRate >= fireRate && p1Ammo > 0 && p2Ammo > 0)
+            {
+                //create a syncedProjectile at p1Center in orientation of p1Center (since both players are attacking in the same direction)
+                Instantiate(syncedProjectile, p1Center.transform.position, p1Center.transform.rotation);
 
-            //if buffer time has elapsed,...
-            if (tempP1AttackBufferTime >= attackBufferTime)
-            {
-                FireP1Projectile();
-            }
-            //else buffer time has not elapsed and p2 is also attacking in the same direction,...
-            else if (p2IsAttacking && p1Center.transform.rotation == p2Center.transform.rotation)
-            {
-                FireSyncedProjectile();
+                //reset tempSyncedFireRate
+                tempSyncedFireRate = 0f;
+
+                //decrement p1Ammmo and p2Ammo
+                p1Ammo--;
+                p2Ammo--;
             }
         }
-
-        //if p2 is attacking,...
-        if(p2IsAttacking)
+        else
         {
-            //increment tempP2AttackBufferTime
-            tempP2AttackBufferTime += Time.fixedDeltaTime;
+            //is p1 is inputting an attack direction and p1 can attack again and p1 has ammo,...
+            if (p1AttackDir != Vector2.zero && tempP1FireRate >= fireRate && p1Ammo > 0)
+            {
+                //create a p1Projectile at p1Center in orientation of p1Center
+                Instantiate(p1Projectile, p1Center.transform.position, p1Center.transform.rotation);
 
-            //if buffer time has elapsed,...
-            if (tempP2AttackBufferTime >= attackBufferTime)
-            {
-                FireP2Projectile();
+                //reset tempP1FireRate
+                tempP1FireRate = 0f;
+
+                //decrement p1Ammmo
+                p1Ammo--;
             }
-            //else buffer time has not elapsed and p1 is also attacking in the same direction,...
-            else if (p1IsAttacking && p1Center.transform.rotation == p2Center.transform.rotation)
+
+            //is p2 is inputting an attack direction and p2 can attack again and p2 has ammo,...
+            if (p2AttackDir != Vector2.zero && tempP2FireRate >= fireRate && p2Ammo > 0)
             {
-                FireSyncedProjectile();
+                //create a p2Projectile at p2Center in orientation of p2Center
+                Instantiate(p2Projectile, p2Center.transform.position, p2Center.transform.rotation);
+
+                //reset tempP2FireRate
+                tempP2FireRate = 0f;
+
+                //decrement p2Ammmo
+                p2Ammo--;
             }
         }
 
@@ -361,44 +454,6 @@ public class PlayerMovementAndAttack : MonoBehaviour
         tempSyncedFireRate += Time.fixedDeltaTime;
 
         #endregion
-    }
-
-    private void FireP1Projectile()
-    {
-        //fire p1 projectile in p1 direction
-        Instantiate(p1Projectile, p1Center.transform.position, p1Center.transform.rotation);
-
-        //set p1IsAttacking to false
-        p1IsAttacking = false;
-
-        //reset tempP1AttackBufferTime
-        tempP1AttackBufferTime = 0f;
-    }
-
-    private void FireP2Projectile()
-    {
-        //fire p2 projectile in p2 direction
-        Instantiate(p2Projectile, p2Center.transform.position, p2Center.transform.rotation);
-
-        //set p2IsAttacking to false
-        p2IsAttacking = false;
-
-        //reset tempP2AttackBufferTime
-        tempP2AttackBufferTime = 0f;
-    }
-
-    private void FireSyncedProjectile()
-    {
-        //fire a synced projectile in p1 direction
-        Instantiate(syncedProjectile, p1Center.transform.position, p1Center.transform.rotation);
-
-        //set p1IsAttacking and p2IsAttacking to false
-        p1IsAttacking = false;
-        p2IsAttacking = false;
-
-        //rest tempP1AttackBufferTime and tempP1AttackBufferTime
-        tempP1AttackBufferTime = 0f;
-        tempP2AttackBufferTime = 0f;
     }
 
     //***** Remove Diagonals from a Vector2 *****

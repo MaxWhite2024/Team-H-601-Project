@@ -25317,6 +25317,10 @@ PrefabInstance:
       propertyPath: gridMoveSpeed
       value: 450
       objectReference: {fileID: 0}
+    - target: {fileID: 5061495762136108037, guid: 76195bd9ef611044ea98bb97c7f5e131, type: 3}
+      propertyPath: outOfSyncMovementPenalty
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 6209709697524763909, guid: 76195bd9ef611044ea98bb97c7f5e131, type: 3}
       propertyPath: m_SortingOrder
       value: 1

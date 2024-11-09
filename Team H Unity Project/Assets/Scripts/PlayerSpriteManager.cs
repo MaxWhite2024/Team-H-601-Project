@@ -5,16 +5,11 @@ using static PlayerMovementAndAttack;
 
 public class PlayerSpriteManager : MonoBehaviour
 {
-    [Header("Sprite Renderer Variables")]
+    [Header("Component Variables")]
     [SerializeField] private SpriteRenderer playerSpriteRenderer;
-    [SerializeField] private SpriteRenderer p1ArmSpriteRenderer;
-    [SerializeField] private SpriteRenderer p2ArmSpriteRenderer;
-
-    [Header("Component and GameObject Vairables")]
     [SerializeField] private PlayerMovementAndAttack playerMovementAndAttack;
-    [SerializeField] private GameObject characterCenter;
-    [SerializeField] private GameObject p1Center;
-    [SerializeField] private GameObject p2Center;
+    [SerializeField] private SpriteRenderer p1ArrowSpriteRenderer;
+    [SerializeField] private SpriteRenderer p2ArrowSpriteRenderer;
 
     [Header("Player Sprite Variables")]
     [SerializeField] private Sprite downSprite;
@@ -22,17 +17,11 @@ public class PlayerSpriteManager : MonoBehaviour
     [SerializeField] private Sprite leftSprite;
     [SerializeField] private Sprite rightSprite;
 
-    [Header("P1 Arm Variables")]
-    [SerializeField] private Sprite p1Down;
-    [SerializeField] private Sprite p1Up;
-    [SerializeField] private Sprite p1Left;
-    [SerializeField] private Sprite p1Right;
-
-    [Header("P2 Arm Variables")]
-    [SerializeField] private Sprite p2Down;
-    [SerializeField] private Sprite p2Up;
-    [SerializeField] private Sprite p2Left;
-    [SerializeField] private Sprite p2Right;
+    [Header("Arrow Variables")]
+    [SerializeField] private Sprite p1MovementSprite;
+    [SerializeField] private Sprite p2MovementSprite;
+    [SerializeField] private Sprite p1AttackSprite;
+    [SerializeField] private Sprite p2AttackSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -46,8 +35,8 @@ public class PlayerSpriteManager : MonoBehaviour
     {
         //Debug.Log(playerMovementAndAttack.characterCenter.transform.localEulerAngles);
 
-        //compare the z rotation of the character's center object to determine the character's sprite
-        switch (characterCenter.transform.localEulerAngles.z)
+        //compare the z rotation of the character's center object
+        switch (playerMovementAndAttack.characterCenter.transform.localEulerAngles.z)
         {
             //character is facing up
             case 0f:
@@ -74,59 +63,34 @@ public class PlayerSpriteManager : MonoBehaviour
                 break;
         }
 
-        //compare the z rotation of P1's center object to determine the P1's arm sprite
-        switch (p1Center.transform.localEulerAngles.z)
+        //compare the mode of p1
+        switch (playerMovementAndAttack.p1Mode)
         {
-            //P1 Arm is facing up
-            case 0f:
-                //change P1 Arm sprite to p1Up
-                p1ArmSpriteRenderer.sprite = p1Up;
+            //p1 is in MOVE mode
+            case PlayerMode.MOVE:
+                //change p1 arrow sprite to p1MovementSprite
+                p1ArrowSpriteRenderer.sprite = p1MovementSprite;
                 break;
 
-            //P1 Arm is facing down
-            case 180f:
-                //change P1 Arm sprite to downSprite
-                p1ArmSpriteRenderer.sprite = p1Down;
-                break;
-
-            //P1 Arm is facing left
-            case 90f:
-                //change P1 Arm sprite to p1Left
-                p1ArmSpriteRenderer.sprite = p1Left;
-                break;
-
-            //P1 Arm is facing right
-            case 270f:
-                //change P1 Arm sprite to p1Right
-                p1ArmSpriteRenderer.sprite = p1Right;
+            //p1 is in ATTACK mode
+            case PlayerMode.ATTACK:
+                //change p2 arrow sprite to p1AttackSprite
+                p1ArrowSpriteRenderer.sprite = p1AttackSprite;
                 break;
         }
 
-        //compare the z rotation of P2's center object to determine the P2's arm sprite
-        switch (p2Center.transform.localEulerAngles.z)
+        //compare the mode of p2
+        switch (playerMovementAndAttack.p2Mode)
         {
-            //P2 Arm is facing up
-            case 0f:
-                //change P2 Arm sprite to p2Up
-                p2ArmSpriteRenderer.sprite = p2Up;
+            //p1 is in MOVE mode
+            case PlayerMode.MOVE:
+                //change p2 arrow sprite to p1MovementSprite
+                p2ArrowSpriteRenderer.sprite = p2MovementSprite;
                 break;
-
-            //P2 Arm is facing down
-            case 180f:
-                //change P2 Arm sprite to downSprite
-                p2ArmSpriteRenderer.sprite = p2Down;
-                break;
-
-            //P2 Arm is facing left
-            case 90f:
-                //change P2 Arm sprite to p2Left
-                p2ArmSpriteRenderer.sprite = p2Left;
-                break;
-
-            //P2 Arm is facing right
-            case 270f:
-                //change P2 Arm sprite to p2Right
-                p2ArmSpriteRenderer.sprite = p2Right;
+            //p2 is in ATTACK mode
+            case PlayerMode.ATTACK:
+                //change p2 arrow sprite to p2AttackSprite
+                p2ArrowSpriteRenderer.sprite = p2AttackSprite;
                 break;
         }
     }
