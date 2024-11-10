@@ -265,7 +265,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //***** Handle Ammo Recharge *****
         #region Ammo Recharge
 
-        //*****  *****
+        //***** Increment tempP1AmmoRechargeTime *****
         //if p1 is moving,...
         if (p1MoveDir != Vector2.zero)
         {
@@ -279,6 +279,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
             tempP1AmmoRechargeTime += Time.fixedDeltaTime;
         }
 
+        //***** Increment tempP2AmmoRechargeTime *****
         //if p2 is moving,...
         if (p2MoveDir != Vector2.zero)
         {
@@ -292,6 +293,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
             tempP2AmmoRechargeTime += Time.fixedDeltaTime;
         }
 
+        //***** Recharge P1 ammo *****
         //if p1's ammo is less than maxAmmo,...
         if (p1Ammo < maxAmmo)
         {
@@ -305,9 +307,14 @@ public class PlayerMovementAndAttack : MonoBehaviour
                 tempP1AmmoRechargeTime = 0f;
             }
         }
+        //else p1's ammo is greater than or equal to maxAmmo,...
+        else
+        {
+            //keep tempP1AmmoRechargeTime at 0
+            tempP1AmmoRechargeTime = 0f;
+        }
 
-
-
+        //***** Recharge P2 ammo *****
         //if p2's ammo is less than maxAmmo,...
         if (p2Ammo < maxAmmo)
         {
@@ -320,6 +327,12 @@ public class PlayerMovementAndAttack : MonoBehaviour
                 //reset tempP2AmmoRechargeTime
                 tempP2AmmoRechargeTime = 0f;
             }
+        }
+        //else p2's ammo is greater than or equal to maxAmmo,...
+        else
+        {
+            //keep tempP2AmmoRechargeTime at 0
+            tempP2AmmoRechargeTime = 0f;
         }
 
         #endregion
