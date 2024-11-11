@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -103,6 +104,20 @@ public class Damageable : MonoBehaviour
         }
     }
 
+    private void CollisionStayCheck(Collider2D collider)
+    {
+        if(type != Damageables.Player) //Enemies should not be able to take damage from the same projectile
+        {
+            return;
+        }
+        if(timer > 0)
+        {
+            return;
+        }
+
+        CollisionLogic(collider);
+    }
+
     private void Death()
     {
         //Removes self from room
@@ -138,5 +153,15 @@ public class Damageable : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider)
     {
         CollisionLogic(collider);
+    }
+
+    private void OnCollisionStay2D(Collision2D collider)
+    {
+        CollisionStayCheck(collider.collider);
+    }
+
+    private void OnTriggerStay2D(Collider2D collider)
+    {
+        CollisionStayCheck(collider);
     }
 }
