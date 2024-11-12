@@ -17,6 +17,8 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float freeFormMoveSpeed;
     [SerializeField] private float outOfSyncMovementPenalty;
+    [SerializeField] private float movementInputBuffertime;
+    private float tempP1MovementInputBuffertime = 0f, tempP2MovementInputBuffertime = 0f;
 
     [Header("Attack Settings")]
     [SerializeField] private float fireRate = 0.3f;
@@ -196,40 +198,6 @@ public class PlayerMovementAndAttack : MonoBehaviour
                     //apply penalized characterMoveDir to player
                     rb.AddForce(characterMoveDir * (freeFormMoveSpeed * outOfSyncMovementPenalty) * Time.fixedDeltaTime, ForceMode2D.Force);
                 }
-
-                #endregion
-                //***** Handle grid movement ******
-                #region Grid Movement
-
-                //if character can step,...
-                //if (canStep)
-                //{
-                //    // Debug.Log("Players can step!");
-
-                //    //apply force in characterMoveDir to the character
-                //    rb.AddForce(characterMoveDir * gridMoveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
-
-                //    //if players are moving in sync,...
-                //    if (inSyncMove)
-                //    {
-                //        //set timeBetweenGridSteps to the value from inspector
-                //        timeBetweenGridSteps = inspectorTimeBetweenGridSteps;
-
-                //        //wait 1 step
-                //        canStep = false;
-                //        tempTimeBetweenGridSteps = 0f;
-                //    }
-                //    //else players are NOT moving in sync,...
-                //    else
-                //    {
-                //        //set timeBetweenGridSteps to double the value from inspector so that the charcater must wait outOfSyncMovementPenalty steps
-                //        timeBetweenGridSteps = inspectorTimeBetweenGridSteps * (1 / outOfSyncMovementPenalty);
-
-                //        //wait outOfSyncMovementPenalty steps
-                //        canStep = false;
-                //        tempTimeBetweenGridSteps = 0f;
-                //    }
-                //}
 
                 #endregion
 
