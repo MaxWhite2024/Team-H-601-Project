@@ -17,8 +17,10 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float freeFormMoveSpeed;
     [SerializeField] private float outOfSyncMovementPenalty;
-    [SerializeField] private float movementInputBuffertime;
+    [SerializeField] private float movementInputBufferTimeLimit;
     private float tempP1MovementInputBuffertime = 0f, tempP2MovementInputBuffertime = 0f;
+    private bool p1TappedMovement = false;
+    [SerializeField] private bool p2TappedMovement = false;
 
     [Header("Attack Settings")]
     [SerializeField] private float fireRate = 0.3f;
@@ -117,6 +119,43 @@ public class PlayerMovementAndAttack : MonoBehaviour
 
     void FixedUpdate()
     {
+        ////***** Calculate if players have tapped or are holding down movement inputs *****
+        #region Movement Input Buffering Logic
+
+        //if p2MoveDir is equal to zero,...
+        if (p2MoveDir == Vector2.zero)
+        {
+            //if movementInputBufferTimeLimit seconds have not yet elapsed since last time p2MoveDir was zero,...
+            if (tempP2MovementInputBuffertime != 0f && tempP2MovementInputBuffertime < movementInputBufferTimeLimit)
+            {
+                //p2 has tapped movement
+                p2TappedMovement = true;
+            }
+            //else if tempP2MovementInputBuffertime is still 0f,...
+            else if (tempP2MovementInputBuffertime == 0f)
+            {
+                //p2 has NOT tapped movement
+                p2TappedMovement = false;
+            }
+
+            //reset tempP2MovementInputBuffertime
+            tempP2MovementInputBuffertime = 0f;
+        }
+        //else p2MoveDir is NOT equal to zero,...
+        else
+        {
+            //p2 has NOT tapped movement
+            p2TappedMovement = false;
+
+            //increment tempP2MovementInputBuffertime
+            tempP2MovementInputBuffertime += Time.fixedDeltaTime;
+        }
+
+        #endregion
+
+        if (p2TappedMovement)
+            Debug.Log("P2 TAPPED");
+
         //***** Calculate characterMoveDir and inSyncMove variables ******
         #region Move Syncronization Logic
 
@@ -181,50 +220,59 @@ public class PlayerMovementAndAttack : MonoBehaviour
         // Debug.Log("p1 move dir is: " + p1MoveDir + ". p2 move dir is: " + p2MoveDir + ". chracter move direction is: " + characterMoveDir);
         if ((!canAttackMove && !isP1Attacking && !isP2Attacking) || canAttackMove)
         {
-            //if players have made new movement inputs,...
-            if (characterMoveDir != Vector2.zero)
+            Debug.Log(characterMoveDir);
+            //if p1 has tapped movement,...
+            if(p1TappedMovement)
             {
-                //***** Handle Free Form Movement *****
-                #region Free Form Movement
+                //set characterMoveDir to vector towards p1Center.transform.localEulerAngles.z
+                characterMoveDir = new Vector2(Mathf.Sin(p1Center.transform.localEulerAngles.z * Mathf.Deg2Rad), Mathf.Cos(p1Center.transform.localEulerAngles.z * Mathf.Deg2Rad)); ;
 
-                //players are moving in sync
-                if (inSyncMove)
+                //***** Handle Character Rotation *****
+                RotateCharacter();
+
+                //set characterMoveDir to zero
+                characterMoveDir = Vector2.zero;
+            }
+            //else if p2 has tapped movement,...
+            else if (p2TappedMovement)
+            {
+                //set characterMoveDir to vector towards p2Center.transform.localEulerAngles.z
+                Vector2 tempVector2 = EulerAngleToVector2(p2Center.transform.localEulerAngles.z);
+                characterMoveDir = new Vector2(tempVector2.x, tempVector2.y);
+                //Debug.Log(characterMoveDir);
+
+                //***** Handle Character Rotation *****
+                RotateCharacter();
+
+                //set characterMoveDir to zero
+                characterMoveDir = Vector2.zero;
+            }
+            //else neither p1 nor p2 have tapped movement,...
+            else
+            {
+                //if players have made new movement inputs,...
+                if (characterMoveDir != Vector2.zero)
                 {
-                    //apply characterMoveDir to player
-                    rb.AddForce(characterMoveDir * freeFormMoveSpeed * Time.fixedDeltaTime, ForceMode2D.Force);
+                    //***** Handle Free Form Movement *****
+                    #region Free Form Movement
+
+                    //players are moving in sync
+                    if (inSyncMove)
+                    {
+                        //apply characterMoveDir to player
+                        rb.AddForce(characterMoveDir * freeFormMoveSpeed * Time.fixedDeltaTime, ForceMode2D.Force);
+                    }
+                    else
+                    {
+                        //apply penalized characterMoveDir to player
+                        rb.AddForce(characterMoveDir * (freeFormMoveSpeed * outOfSyncMovementPenalty) * Time.fixedDeltaTime, ForceMode2D.Force);
+                    }
+
+                    #endregion
+
+                    //***** Handle Character Rotation *****
+                    RotateCharacter();
                 }
-                else
-                {
-                    //apply penalized characterMoveDir to player
-                    rb.AddForce(characterMoveDir * (freeFormMoveSpeed * outOfSyncMovementPenalty) * Time.fixedDeltaTime, ForceMode2D.Force);
-                }
-
-                #endregion
-
-                #region Character Rotation Logic
-
-                // Debug.Log("Current rotation: " + characterCenter.transform.localEulerAngles + ". Move Angle: " + AdjustedAngle(Vector2.SignedAngle(Vector2.up, characterMoveDir)));
-
-                //create a Vector3 to store the rotation of movement direction in Euler angles
-                Vector3 moveVec3 = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
-
-                //create a Vector3 to store adjusted current character rotation
-                Vector3 currentRotation = new Vector3(characterCenter.transform.localEulerAngles.x, characterCenter.transform.localEulerAngles.y, AdjustedAngle(characterCenter.transform.localEulerAngles.z));
-
-                //if players entered a new movement direction
-                if (currentRotation != moveVec3)
-                {
-                    // Debug.Log("Players want to move in a new direction!");
-
-                    //wait 1 step
-                    //canStep = false;
-                    //tempTimeBetweenGridSteps = 0f;
-
-                    //change direction of character
-                    characterCenter.transform.localEulerAngles = moveVec3;
-                }
-
-                #endregion
             }
         }
 
@@ -354,6 +402,42 @@ public class PlayerMovementAndAttack : MonoBehaviour
         tempSyncedFireRate += Time.fixedDeltaTime;
 
         #endregion
+    }
+
+    public Vector2 EulerAngleToVector2(float eulerAngle)
+    {
+        switch (eulerAngle)
+        {
+            case 0f:
+                return Vector2.up;
+            case 90f:
+                return Vector2.left;
+            case 180f:
+                return Vector2.down;
+            case 270f:
+                return Vector2.right;
+            default:
+                return Vector2.zero;
+        }
+    }
+
+    private void RotateCharacter()
+    {
+        // Debug.Log("Current rotation: " + characterCenter.transform.localEulerAngles + ". Move Angle: " + AdjustedAngle(Vector2.SignedAngle(Vector2.up, characterMoveDir)));
+
+        //create a Vector3 to store the rotation of movement direction in Euler angles
+        Vector3 moveVec3 = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, characterMoveDir));
+
+        //create a Vector3 to store adjusted current character rotation
+        Vector3 currentRotation = new Vector3(characterCenter.transform.localEulerAngles.x, characterCenter.transform.localEulerAngles.y, AdjustedAngle(characterCenter.transform.localEulerAngles.z));
+
+        //if players entered a new movement direction
+        if (currentRotation != moveVec3)
+        {
+            // Debug.Log("Players want to move in a new direction!");
+            //change direction of character
+            characterCenter.transform.localEulerAngles = moveVec3;
+        }
     }
 
     private void FireP1Projectile()

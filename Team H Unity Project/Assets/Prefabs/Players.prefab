@@ -219,6 +219,8 @@ MonoBehaviour:
   canAttackMove: 1
   freeFormMoveSpeed: 10000
   outOfSyncMovementPenalty: 0.5
+  movementInputBufferTimeLimit: 1
+  p2TappedMovement: 0
   fireRate: 0.3
   maxAmmo: 3
   p1Ammo: 0
