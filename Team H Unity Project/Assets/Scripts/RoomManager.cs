@@ -26,6 +26,7 @@ public class RoomManager : MonoBehaviour
     public List<EnemySpawner> spawners;
     public List<Damageable> damageables;
     public bool roomClean;
+    [SerializeField] private HouseManager house;
 
     // Start is called before the first frame update
     private void Start()
@@ -52,6 +53,11 @@ public class RoomManager : MonoBehaviour
             {
                 damageables.Add(damageable);
             }
+        }
+
+        if (house == null)
+        {
+            house = transform.parent.gameObject.GetComponent<HouseManager>();
         }
 
         //Disables self if not the first room
@@ -90,6 +96,7 @@ public class RoomManager : MonoBehaviour
                     door.gameObject.SetActive(true);
                 }
             }
+            house.RoomsClean();
         }
 
         //If the enemies list is empty and the room doesn't need to be full cleared, OR if the damageables list is empty

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] private GameObject room1;
-    [SerializeField] private GameObject room2;
+    [SerializeField] public GameObject room1;
+    [SerializeField] public GameObject room2;
     [SerializeField] private GameObject mainCamera;
     [SerializeField] private GameObject player;
 
