@@ -9,6 +9,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1496193582903074443, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496193582903074443, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496193582903074443, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ac56541f105379d4d821775c86162753, type: 3}
+    - target: {fileID: 1496193582903074443, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
