@@ -35,14 +35,12 @@ public class PlayerSpriteManager : MonoBehaviour
     [SerializeField] private Sprite p2Right;
 
     [Header("P1 Pip Variables")]
-    [SerializeField] private Color p1PipColor;
     private Color fadedP1PipColor;
     [SerializeField] private SpriteRenderer p1Pip1Renderer;
     [SerializeField] private SpriteRenderer p1Pip2Renderer;
     [SerializeField] private SpriteRenderer p1Pip3Renderer;
 
     [Header("P2 Pip Variables")]
-    [SerializeField] private Color p2PipColor;
     private Color fadedP2PipColor;
     [SerializeField] private SpriteRenderer p2Pip1Renderer;
     [SerializeField] private SpriteRenderer p2Pip2Renderer;
@@ -55,11 +53,11 @@ public class PlayerSpriteManager : MonoBehaviour
         playerSpriteRenderer.sprite = downSprite;
 
         //
-        fadedP1PipColor = p1PipColor;
+        fadedP1PipColor = Color.white;
         fadedP1PipColor.a = 0.2f;
 
         //
-        fadedP2PipColor = p2PipColor;
+        fadedP2PipColor = Color.white;
         fadedP2PipColor.a = 0.2f;
     }
 
@@ -166,7 +164,7 @@ public class PlayerSpriteManager : MonoBehaviour
             //P1 was 1 ammo
             case 1:
                 //intensify lower pip
-                p1Pip1Renderer.color = p1PipColor;
+                p1Pip1Renderer.color = Color.white;
 
                 //fade 2 higher pips
                 p1Pip2Renderer.color = fadedP1PipColor;
@@ -176,8 +174,8 @@ public class PlayerSpriteManager : MonoBehaviour
             //P1 was 2 ammo
             case 2:
                 //intensify 2 lower pips
-                p1Pip1Renderer.color = p1PipColor;
-                p1Pip2Renderer.color = p1PipColor;
+                p1Pip1Renderer.color = Color.white;
+                p1Pip2Renderer.color = Color.white;
 
                 //fade 1 higher pip
                 p1Pip3Renderer.color = fadedP1PipColor;
@@ -186,9 +184,9 @@ public class PlayerSpriteManager : MonoBehaviour
             //P1 was 3 ammo
             case 3:
                 //intensify all 3 pips
-                p1Pip1Renderer.color = p1PipColor;
-                p1Pip2Renderer.color = p1PipColor;
-                p1Pip3Renderer.color = p1PipColor;
+                p1Pip1Renderer.color = Color.white;
+                p1Pip2Renderer.color = Color.white;
+                p1Pip3Renderer.color = Color.white;
                 break;
         }
 
@@ -206,7 +204,7 @@ public class PlayerSpriteManager : MonoBehaviour
             //P1 was 1 ammo
             case 1:
                 //intensify lower pip
-                p2Pip1Renderer.color = p2PipColor;
+                p2Pip1Renderer.color = Color.white;
 
                 //fade 2 higher pips
                 p2Pip2Renderer.color = fadedP2PipColor;
@@ -216,8 +214,8 @@ public class PlayerSpriteManager : MonoBehaviour
             //P1 was 2 ammo
             case 2:
                 //intensify 2 lower pips
-                p2Pip1Renderer.color = p2PipColor;
-                p2Pip2Renderer.color = p2PipColor;
+                p2Pip1Renderer.color = Color.white;
+                p2Pip2Renderer.color = Color.white;
 
                 //fade 1 higher pip
                 p2Pip3Renderer.color = fadedP2PipColor;
@@ -226,9 +224,9 @@ public class PlayerSpriteManager : MonoBehaviour
             //P1 was 3 ammo
             case 3:
                 //intensify all 3 pips
-                p2Pip1Renderer.color = p2PipColor;
-                p2Pip2Renderer.color = p2PipColor;
-                p2Pip3Renderer.color = p2PipColor;
+                p2Pip1Renderer.color = Color.white;
+                p2Pip2Renderer.color = Color.white;
+                p2Pip3Renderer.color = Color.white;
                 break;
         }
     }
