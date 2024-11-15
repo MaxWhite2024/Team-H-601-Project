@@ -84,7 +84,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d46c39a430b38c242adfaecc033b0d8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -220,7 +220,6 @@ MonoBehaviour:
   freeFormMoveSpeed: 10000
   outOfSyncMovementPenalty: 0.5
   movementInputBufferTimeLimit: 0.1
-  p2TappedMovement: 0
   fireRate: 0.3
   maxAmmo: 3
   p1Ammo: 0
@@ -288,11 +287,9 @@ MonoBehaviour:
   p2Up: {fileID: 21300000, guid: 3794b3b7afd720a488c5af5cfeef219e, type: 3}
   p2Left: {fileID: 21300000, guid: 269af9075d6b1a441ab0936de97e1f0d, type: 3}
   p2Right: {fileID: 21300000, guid: 97f90c34d0f314e418277251e0ebe7bb, type: 3}
-  p1PipColor: {r: 1, g: 1, b: 1, a: 1}
   p1Pip1Renderer: {fileID: 4678164025917629664}
   p1Pip2Renderer: {fileID: 6109119388419091032}
   p1Pip3Renderer: {fileID: 4270840277016775464}
-  p2PipColor: {r: 1, g: 1, b: 1, a: 1}
   p2Pip1Renderer: {fileID: 9012143509200261663}
   p2Pip2Renderer: {fileID: 7567022241090036750}
   p2Pip3Renderer: {fileID: 4464304398717811127}

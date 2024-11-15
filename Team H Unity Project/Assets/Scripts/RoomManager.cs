@@ -76,7 +76,7 @@ public class RoomManager : MonoBehaviour
             {
                 if (!door.changingRooms)
                 {
-                    door.gameObject.SetActive(false);
+                    door.Close();
                 }
             }
         }
@@ -91,9 +91,9 @@ public class RoomManager : MonoBehaviour
         {
             foreach (Door door in doors)
             {
-                if (!door.gameObject.activeSelf)
+                if (!door.open)
                 {
-                    door.gameObject.SetActive(true);
+                    door.Open();
                 }
             }
             house.RoomsClean();
