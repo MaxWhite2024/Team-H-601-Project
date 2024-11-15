@@ -9,10 +9,12 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float deleteTimer = 5f;
     [SerializeField] private bool canPierceEnemies = false;
     private int enemyLayer;
+    private int trashLayer;
 
     void Awake()
     {
         enemyLayer = LayerMask.NameToLayer("Enemy");
+        enemyLayer = LayerMask.NameToLayer("Trash");
         //Debug.Log(enemyLayer);
     }
 
@@ -39,7 +41,7 @@ public class Projectile : MonoBehaviour
         //Debug.Log(collider.gameObject.layer);
         //Debug.Log(canPierceEnemies && collider.gameObject.layer == enemyLayer);
         //if projectile can pierce enemies and touched rigidbody is an enemy,...
-        if (canPierceEnemies && collider.gameObject.layer == enemyLayer)
+        if (canPierceEnemies && (collider.gameObject.layer == enemyLayer || collider.gameObject.layer == trashLayer))
         {
             //exit function
             return;
