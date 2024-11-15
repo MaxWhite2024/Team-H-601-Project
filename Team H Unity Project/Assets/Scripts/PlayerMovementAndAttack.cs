@@ -44,6 +44,8 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private GameObject p2Center;
     [SerializeField] private GameObject p1Projectile;
     [SerializeField] private GameObject p2Projectile;
+    [SerializeField] private GameObject p1Arrow;
+    [SerializeField] private GameObject p2Arrow;
     [SerializeField] private GameObject syncedProjectile;
     [SerializeField] private Rigidbody2D rb;
 
@@ -543,7 +545,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
     private void FireP1Projectile()
     {
         //fire p1 projectile in p1 direction
-        Instantiate(p1Projectile, p1Center.transform.position, p1Center.transform.rotation);
+        Instantiate(p1Projectile, p1Arrow.transform.position, p1Arrow.transform.rotation);
 
         //decrement p1Ammo
         p1Ammo--;
@@ -558,7 +560,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
     private void FireP2Projectile()
     {
         //fire p2 projectile in p2 direction
-        Instantiate(p2Projectile, p2Center.transform.position, p2Center.transform.rotation);
+        Instantiate(p2Projectile, p2Arrow.transform.position, p2Arrow.transform.rotation);
 
         //decrement p2Ammo
         p2Ammo--;
@@ -573,7 +575,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
     private void FireSyncedProjectile()
     {
         //fire a synced projectile in p1 direction
-        Instantiate(syncedProjectile, p1Center.transform.position, p1Center.transform.rotation);
+        Instantiate(syncedProjectile, p1Arrow.transform.position, p1Arrow.transform.rotation);
 
         //decrement p1Ammo and p2Ammo
         p1Ammo--;
