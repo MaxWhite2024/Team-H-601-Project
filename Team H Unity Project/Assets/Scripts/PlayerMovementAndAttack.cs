@@ -19,8 +19,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private float outOfSyncMovementPenalty;
     [SerializeField] private float movementInputBufferTimeLimit;
     private float tempP1MovementInputBuffertime = 0f, tempP2MovementInputBuffertime = 0f;
-    private bool p1TappedMovement = false;
-    [SerializeField] private bool p2TappedMovement = false;
+    private bool p1TappedMovement = false, p2TappedMovement = false;
     private bool isP1BufferTimerOn = false, isP2BufferTimerOn = false;
 
     [Header("Attack Settings")]
