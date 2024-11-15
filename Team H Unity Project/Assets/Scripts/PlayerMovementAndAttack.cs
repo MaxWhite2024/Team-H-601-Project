@@ -21,6 +21,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
     private float tempP1MovementInputBuffertime = 0f, tempP2MovementInputBuffertime = 0f;
     private bool p1TappedMovement = false;
     [SerializeField] private bool p2TappedMovement = false;
+    private bool isP1BufferTimerOn = false, isP2BufferTimerOn = false;
 
     [Header("Attack Settings")]
     [SerializeField] private float fireRate = 0.3f;
@@ -122,39 +123,94 @@ public class PlayerMovementAndAttack : MonoBehaviour
         ////***** Calculate if players have tapped or are holding down movement inputs *****
         #region Movement Input Buffering Logic
 
-        //if p2MoveDir is equal to zero,...
-        if (p2MoveDir == Vector2.zero)
+        //***** Check if p1 has tapped movement input *****
+        //if p1MoveDir equals zero,...
+        if (p1MoveDir == Vector2.zero)
         {
-            //if movementInputBufferTimeLimit seconds have not yet elapsed since last time p2MoveDir was zero,...
-            if (tempP2MovementInputBuffertime != 0f && tempP2MovementInputBuffertime < movementInputBufferTimeLimit)
-            {
-                //p2 has tapped movement
-                p2TappedMovement = true;
-            }
-            //else if tempP2MovementInputBuffertime is still 0f,...
-            else if (tempP2MovementInputBuffertime == 0f)
-            {
-                //p2 has NOT tapped movement
-                p2TappedMovement = false;
-            }
+            //stop timer
+            isP1BufferTimerOn = false;
 
-            //reset tempP2MovementInputBuffertime
-            tempP2MovementInputBuffertime = 0f;
+            //p1TappedMovement is false
+            p1TappedMovement = false;
         }
-        //else p2MoveDir is NOT equal to zero,...
+        //else p1MoveDir does NOT equal zero,...
         else
         {
-            //p2 has NOT tapped movement
-            p2TappedMovement = false;
+            //if timer is on,...
+            if (isP1BufferTimerOn)
+            {
+                //increment timer
+                tempP1MovementInputBuffertime += Time.fixedDeltaTime;
+            }
+            //else timer is off,...
+            else
+            {
+                //start timer
+                tempP1MovementInputBuffertime = 0f;
+                isP1BufferTimerOn = true;
+            }
 
-            //increment tempP2MovementInputBuffertime
-            tempP2MovementInputBuffertime += Time.fixedDeltaTime;
+            //if movementInputBufferTimeLimit has NOT elapsed since timer has begun,...
+            if (tempP1MovementInputBuffertime <= movementInputBufferTimeLimit)
+            {
+                //set p1TappedMovement to true
+                p1TappedMovement = true;
+            }
+            //else movementInputBufferTimeLimit has elapsed since timer has begun,...
+            else
+            {
+                //set p1TappedMovement to false
+                p1TappedMovement = false;
+            }
         }
 
-        #endregion
+        //***** Check if p2 has tapped movement input *****
+        //if p2MoveDir equals zero,...
+        if (p2MoveDir == Vector2.zero)
+        {
+            //stop timer
+            isP2BufferTimerOn = false;
 
-        if (p2TappedMovement)
-            Debug.Log("P2 TAPPED");
+            //p2TappedMovement is false
+            p2TappedMovement = false;
+        }
+        //else p2MoveDir does NOT equal zero,...
+        else
+        {
+            //if timer is on,...
+            if (isP2BufferTimerOn)
+            {
+                //increment timer
+                tempP2MovementInputBuffertime += Time.fixedDeltaTime;
+            }
+            //else timer is off,...
+            else
+            {
+                //start timer
+                tempP2MovementInputBuffertime = 0f;
+                isP2BufferTimerOn = true;
+            }
+
+            //if movementInputBufferTimeLimit has NOT elapsed since timer has begun,...
+            if (tempP2MovementInputBuffertime <= movementInputBufferTimeLimit)
+            {
+                //set p2TappedMovement to true
+                p2TappedMovement = true;
+            }
+            //else movementInputBufferTimeLimit has elapsed since timer has begun,...
+            else
+            {
+                //set p2TappedMovement to false
+                p2TappedMovement = false;
+            }
+        }
+
+        //if (p2TappedMovement)
+        //    Debug.Log("P2 TAPPED");
+        //if (p1TappedMovement)
+        //    Debug.Log("P1 TAPPED");
+
+        #endregion
 
         //***** Calculate characterMoveDir and inSyncMove variables ******
         #region Move Syncronization Logic
@@ -220,18 +276,18 @@ public class PlayerMovementAndAttack : MonoBehaviour
         // Debug.Log("p1 move dir is: " + p1MoveDir + ". p2 move dir is: " + p2MoveDir + ". chracter move direction is: " + characterMoveDir);
         if ((!canAttackMove && !isP1Attacking && !isP2Attacking) || canAttackMove)
         {
-            Debug.Log(characterMoveDir);
+            //Debug.Log(characterMoveDir);
+
             //if p1 has tapped movement,...
             if(p1TappedMovement)
             {
                 //set characterMoveDir to vector towards p1Center.transform.localEulerAngles.z
-                characterMoveDir = new Vector2(Mathf.Sin(p1Center.transform.localEulerAngles.z * Mathf.Deg2Rad), Mathf.Cos(p1Center.transform.localEulerAngles.z * Mathf.Deg2Rad)); ;
+                Vector2 tempVector2 = EulerAngleToVector2(p1Center.transform.localEulerAngles.z);
+                characterMoveDir = new Vector2(tempVector2.x, tempVector2.y);
+                //Debug.Log(characterMoveDir);
 
                 //***** Handle Character Rotation *****
                 RotateCharacter();
-
-                //set characterMoveDir to zero
-                characterMoveDir = Vector2.zero;
             }
             //else if p2 has tapped movement,...
             else if (p2TappedMovement)
@@ -243,9 +299,6 @@ public class PlayerMovementAndAttack : MonoBehaviour
 
                 //***** Handle Character Rotation *****
                 RotateCharacter();
-
-                //set characterMoveDir to zero
-                characterMoveDir = Vector2.zero;
             }
             //else neither p1 nor p2 have tapped movement,...
             else
