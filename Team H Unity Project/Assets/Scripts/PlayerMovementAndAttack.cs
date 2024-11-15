@@ -21,6 +21,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
     private float tempP1MovementInputBuffertime = 0f, tempP2MovementInputBuffertime = 0f;
     private bool p1TappedMovement = false, p2TappedMovement = false;
     private bool isP1BufferTimerOn = false, isP2BufferTimerOn = false;
+    private bool isP1TurningToNewDirection = false, isP2TurningToNewDirection = false;
 
     [Header("Attack Settings")]
     [SerializeField] private float fireRate = 0.3f;
@@ -69,6 +70,16 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //if p1MoveDir is not equal to zero,...
         if (p1MoveDir != Vector2.zero)
         {
+            //if 
+            if (p1MoveDir == EulerAngleToVector2(p1Center.transform.localEulerAngles.z))
+            {
+                isP1TurningToNewDirection = false;
+            }
+            else
+            {
+                isP1TurningToNewDirection = true;
+            }
+
             //change direction of p2Center
             p1Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p1MoveDir));
         }
@@ -84,6 +95,17 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //if p2MoveDir is not equal to zero,...
         if (p2MoveDir != Vector2.zero)
         {
+            //Debug.Log(p2MoveDir == EulerAngleToVector2(p2Center.transform.localEulerAngles.z));
+            //if 
+            if(p2MoveDir == EulerAngleToVector2(p2Center.transform.localEulerAngles.z))
+            {
+                isP2TurningToNewDirection = false;
+            }
+            else
+            {
+                isP2TurningToNewDirection = true;
+            }
+
             //change direction of p2Center
             p2Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p2MoveDir));
         }
@@ -135,30 +157,43 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //else p1MoveDir does NOT equal zero,...
         else
         {
-            //if timer is on,...
-            if (isP1BufferTimerOn)
+            //if new p1 movement input direction is NOT facing towards the direction p1 is already facing,...
+            if (isP1TurningToNewDirection)
             {
-                //increment timer
-                tempP1MovementInputBuffertime += Time.fixedDeltaTime;
-            }
-            //else timer is off,...
-            else
-            {
-                //start timer
-                tempP1MovementInputBuffertime = 0f;
-                isP1BufferTimerOn = true;
-            }
+                //if timer is on,...
+                if (isP1BufferTimerOn)
+                {
+                    //increment timer
+                    tempP1MovementInputBuffertime += Time.fixedDeltaTime;
+                }
+                //else timer is off,...
+                else
+                {
+                    //start timer
+                    tempP1MovementInputBuffertime = 0f;
+                    isP1BufferTimerOn = true;
+                }
 
-            //if movementInputBufferTimeLimit has NOT elapsed since timer has begun,...
-            if (tempP1MovementInputBuffertime <= movementInputBufferTimeLimit)
-            {
-                //set p1TappedMovement to true
-                p1TappedMovement = true;
+                //if movementInputBufferTimeLimit has NOT elapsed since timer has begun,...
+                if (tempP1MovementInputBuffertime <= movementInputBufferTimeLimit)
+                {
+                    //set p1TappedMovement to true
+                    p1TappedMovement = true;
+                }
+                //else movementInputBufferTimeLimit has elapsed since timer has begun,...
+                else
+                {
+                    //set p1TappedMovement to false
+                    p1TappedMovement = false;
+                }
             }
-            //else movementInputBufferTimeLimit has elapsed since timer has begun,...
+            //else new p1 movement input direction is facing towards the direction p1 is already facing,...
             else
             {
-                //set p1TappedMovement to false
+                //stop timer
+                isP1BufferTimerOn = false;
+
+                //p1TappedMovement is false
                 p1TappedMovement = false;
             }
         }
@@ -176,30 +211,43 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //else p2MoveDir does NOT equal zero,...
         else
         {
-            //if timer is on,...
-            if (isP2BufferTimerOn)
+            //if new p2 movement input direction is facing towards the direction p2 is already facing,...
+            if (isP2TurningToNewDirection)
             {
-                //increment timer
-                tempP2MovementInputBuffertime += Time.fixedDeltaTime;
-            }
-            //else timer is off,...
-            else
-            {
-                //start timer
-                tempP2MovementInputBuffertime = 0f;
-                isP2BufferTimerOn = true;
-            }
+                //if timer is on,...
+                if (isP2BufferTimerOn)
+                {
+                    //increment timer
+                    tempP2MovementInputBuffertime += Time.fixedDeltaTime;
+                }
+                //else timer is off,...
+                else
+                {
+                    //start timer
+                    tempP2MovementInputBuffertime = 0f;
+                    isP2BufferTimerOn = true;
+                }
 
-            //if movementInputBufferTimeLimit has NOT elapsed since timer has begun,...
-            if (tempP2MovementInputBuffertime <= movementInputBufferTimeLimit)
-            {
-                //set p2TappedMovement to true
-                p2TappedMovement = true;
+                //if movementInputBufferTimeLimit has NOT elapsed since timer has begun,...
+                if (tempP2MovementInputBuffertime <= movementInputBufferTimeLimit)
+                {
+                    //set p2TappedMovement to true
+                    p2TappedMovement = true;
+                }
+                //else movementInputBufferTimeLimit has elapsed since timer has begun,...
+                else
+                {
+                    //set p2TappedMovement to false
+                    p2TappedMovement = false;
+                }
             }
-            //else movementInputBufferTimeLimit has elapsed since timer has begun,...
+            //else new p2 movement input direction is NOT facing towards the direction p2 is already facing,...
             else
             {
-                //set p2TappedMovement to false
+                //stop timer
+                isP2BufferTimerOn = false;
+
+                //p2TappedMovement is false
                 p2TappedMovement = false;
             }
         }
