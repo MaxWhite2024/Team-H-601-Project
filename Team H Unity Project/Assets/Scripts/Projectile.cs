@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour
     void Awake()
     {
         enemyLayer = LayerMask.NameToLayer("Enemy");
-        enemyLayer = LayerMask.NameToLayer("Trash");
+        trashLayer = LayerMask.NameToLayer("Trash");
         //Debug.Log(enemyLayer);
     }
 
