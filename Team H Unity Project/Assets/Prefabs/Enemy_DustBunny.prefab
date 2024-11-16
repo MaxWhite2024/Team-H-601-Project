@@ -99,7 +99,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 3567012921864464182}
   originalXScaling: 0
-  universalXWidth: 1
 --- !u!1 &6721093072881008051
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9892d5b9bd021498f240854ffcd569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
 --- !u!58 &3357971548406643286
 CircleCollider2D:
   m_ObjectHideFlags: 0
