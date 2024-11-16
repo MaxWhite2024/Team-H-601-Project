@@ -52,11 +52,11 @@ public class PlayerSpriteManager : MonoBehaviour
         //set player sprite to front sprite
         playerSpriteRenderer.sprite = downSprite;
 
-        //
+        //define fadedP1PipColor as white with 0.2 alpha
         fadedP1PipColor = Color.white;
         fadedP1PipColor.a = 0.2f;
 
-        //
+        //define fadedP2PipColor as white with 0.2 alpha
         fadedP2PipColor = Color.white;
         fadedP2PipColor.a = 0.2f;
     }

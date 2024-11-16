@@ -336,6 +336,12 @@ MonoBehaviour:
   p2AmmoText: {fileID: 7648115762007234406}
   P1AmmoRechargeSlider: {fileID: 7810058889333575646}
   P2AmmoRechargeSlider: {fileID: 7464450049828307510}
+  p1Pip1Image: {fileID: 7942758128699832170}
+  p1Pip2Image: {fileID: 200606007719437576}
+  p1Pip3Image: {fileID: 7760362545034711832}
+  p2Pip1Image: {fileID: 6314781711925817319}
+  p2Pip2Image: {fileID: 5959862244673179997}
+  p2Pip3Image: {fileID: 4090935242146925121}
 --- !u!1 &527145941186530420
 GameObject:
   m_ObjectHideFlags: 0
