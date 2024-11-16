@@ -217,8 +217,8 @@ MonoBehaviour:
   p1IsAttacking: 0
   p2IsAttacking: 0
   canAttackMove: 1
-  freeFormMoveSpeed: 10000
-  outOfSyncMovementPenalty: 0.5
+  freeFormMoveSpeed: 6000
+  outOfSyncMovementPenalty: 0.3
   movementInputBufferTimeLimit: 0.1
   fireRate: 0.3
   maxAmmo: 3
