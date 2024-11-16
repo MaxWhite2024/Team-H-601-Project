@@ -139,11 +139,11 @@ public class Door : MonoBehaviour
             //If the player is moving down
             if (exitRoom.transform.position.y > enterRoom.transform.position.y)
             {
-                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - this.gameObject.transform.localScale.y - 1, 0);
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - this.gameObject.transform.localScale.y - .5f, 0);
             }
             else //else moving up
             {
-                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + this.gameObject.transform.localScale.y + 1, 0);
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + this.gameObject.transform.localScale.y + .5f, 0);
             }
         }
 

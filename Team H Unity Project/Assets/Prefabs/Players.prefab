@@ -217,8 +217,8 @@ MonoBehaviour:
   p1IsAttacking: 0
   p2IsAttacking: 0
   canAttackMove: 1
-  freeFormMoveSpeed: 10000
-  outOfSyncMovementPenalty: 0.5
+  freeFormMoveSpeed: 6000
+  outOfSyncMovementPenalty: 0.3
   movementInputBufferTimeLimit: 0.1
   fireRate: 0.3
   maxAmmo: 3
@@ -228,7 +228,7 @@ MonoBehaviour:
   movementAmmoRechargeMultiplier: 2
   tempP1AmmoRechargeTime: 0
   tempP2AmmoRechargeTime: 0
-  attackBufferTime: 0.2
+  attackBufferTime: 0.15
   meleeSwipe: {fileID: 7506816831007820961}
   p1MeleeStab: {fileID: 7225709484863884097}
   p2MeleeStab: {fileID: 5519271001967049682}
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   health: 10
-  iFrameTime: 0.75
+  iFrameTime: 0.6
   type: 0
   room: {fileID: 0}
 --- !u!114 &2494213612536732334
