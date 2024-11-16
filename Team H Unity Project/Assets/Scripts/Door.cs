@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -9,6 +10,9 @@ public class Door : MonoBehaviour
     [SerializeField] public GameObject room2;
     [SerializeField] private GameObject mainCamera;
     [SerializeField] private GameObject player;
+    [SerializeField] public bool open;
+    [SerializeField] private Sprite openSprite;
+    [SerializeField] private Sprite closeSprite;
 
     [HideInInspector] public bool changingRooms;
     private float lerpAmount = 0;
@@ -24,6 +28,8 @@ public class Door : MonoBehaviour
         {
             player = GameObject.Find("Players");
         }
+
+        Close();
     }
 
     // Update is called once per frame
@@ -43,11 +49,31 @@ public class Door : MonoBehaviour
 
                 if(!enterRoom.GetComponent<RoomManager>().roomClean)
                 {
-                    this.gameObject.SetActive(false);
+                    Close();
                     player.GetComponent<Damageable>().health = player.GetComponent<Damageable>().maxHealth;
                 }
 
             }
+        }
+    }
+
+    public void Open()
+    {
+        this.GetComponent<BoxCollider2D>().enabled = true;
+
+        foreach (Transform child in transform)
+        {
+            child.gameObject.GetComponent<SpriteRenderer>().sprite = openSprite;
+        }
+    }
+
+    public void Close()
+    {
+        this.GetComponent<BoxCollider2D>().enabled = false;
+
+        foreach (Transform child in transform)
+        {
+            child.gameObject.GetComponent<SpriteRenderer>().sprite = closeSprite;
         }
     }
 
