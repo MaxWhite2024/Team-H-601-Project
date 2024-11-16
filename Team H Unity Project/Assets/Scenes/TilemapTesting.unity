@@ -939,7 +939,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: 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
+    dataString: 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
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -35824,58 +35824,6 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 2016527632}
     m_ColliderPaths:
-    - - X: 120000000
-        Y: 60000000
-      - X: 119750000
-        Y: 60000000
-      - X: 119750000
-        Y: 67800000
-      - X: 119700000
-        Y: 67950000
-      - X: 110400000
-        Y: 67950000
-      - X: 110150000
-        Y: 67750000
-      - X: 110150000
-        Y: 60000000
-      - X: 110000000
-        Y: 60000000
-      - X: 110000000
-        Y: 54050004
-      - X: 120000000
-        Y: 54050004
-    - - X: 20000000
-        Y: 60000000
-      - X: 19750000
-        Y: 60000000
-      - X: 19750000
-        Y: 67800000
-      - X: 19700000
-        Y: 67950000
-      - X: 10400000
-        Y: 67950000
-      - X: 10150000
-        Y: 67750000
-      - X: 10150000
-        Y: 60000000
-      - X: 9750000
-        Y: 60000000
-      - X: 9750000
-        Y: 67800000
-      - X: 9700000
-        Y: 67950000
-      - X: 400000
-        Y: 67950000
-      - X: 150000
-        Y: 67750000
-      - X: 150000
-        Y: 60000000
-      - X: 0
-        Y: 60000000
-      - X: 0
-        Y: 54050004
-      - X: 20000000
-        Y: 54050004
     - - X: 106950000
         Y: 61149996
       - X: 82600000
@@ -35884,6 +35832,40 @@ CompositeCollider2D:
         Y: 53750000
       - X: 106950000
         Y: 53750000
+    - - X: 20000000
+        Y: 60000000
+      - X: 18300000
+        Y: 60000000
+      - X: 11400000
+        Y: 60050000
+      - X: 11650000
+        Y: 60000000
+      - X: 8300000
+        Y: 60000000
+      - X: 1400000
+        Y: 60050000
+      - X: 1650000
+        Y: 60000000
+      - X: 0
+        Y: 60000000
+      - X: 0
+        Y: 54050004
+      - X: 20000000
+        Y: 54050004
+    - - X: 120000000
+        Y: 60000000
+      - X: 118300000
+        Y: 60000000
+      - X: 111400000
+        Y: 60050000
+      - X: 111650000
+        Y: 60000000
+      - X: 110000000
+        Y: 60000000
+      - X: 110000000
+        Y: 54050004
+      - X: 120000000
+        Y: 54050004
     - - X: 130000000
         Y: 50000000
       - X: 129950000
@@ -35910,6 +35892,12 @@ CompositeCollider2D:
         Y: 43800000
       - X: 130000000
         Y: 43800000
+    - - X: -8600000
+        Y: 50050000
+      - X: -8350000
+        Y: 50000000
+      - X: -1700000
+        Y: 50000000
     - - X: -2250000
         Y: 47750000
       - X: -7949999
@@ -35976,40 +35964,6 @@ CompositeCollider2D:
         Y: 23050000
       - X: 19000000
         Y: 23050000
-    - - X: 118400000
-        Y: 20100000
-      - X: 117400000
-        Y: 23100000
-      - X: 117150000
-        Y: 23599998
-      - X: 116850008
-        Y: 24050000
-      - X: 116650000
-        Y: 24250000
-      - X: 116000000
-        Y: 24550000
-      - X: 114650000
-        Y: 24550000
-      - X: 113700000
-        Y: 24350000
-      - X: 113250000
-        Y: 24050000
-      - X: 112800000
-        Y: 23650000
-      - X: 112650000
-        Y: 23200000
-      - X: 112600000
-        Y: 22700000
-      - X: 112350000
-        Y: 22150000
-      - X: 112100000
-        Y: 21300002
-      - X: 111700000
-        Y: 20250000
-      - X: 111650000
-        Y: 20000000
-      - X: 118400000
-        Y: 20000000
     - - X: 117550000
         Y: 16750000
       - X: 112800000
@@ -36026,6 +35980,12 @@ CompositeCollider2D:
         Y: 12650000
       - X: 99050000
         Y: 12650000
+    - - X: -38600000
+        Y: 10050000
+      - X: -38350000
+        Y: 10000000
+      - X: -31700000
+        Y: 10000000
     - - X: -32250000
         Y: 7750000
       - X: -37950000
@@ -36050,40 +36010,6 @@ CompositeCollider2D:
         Y: -6900000
       - X: 59400000
         Y: -6900000
-    - - X: 18400000
-        Y: -9900000
-      - X: 17400000
-        Y: -6900000
-      - X: 17150000
-        Y: -6400000
-      - X: 16850000
-        Y: -5950000
-      - X: 16650000
-        Y: -5750000
-      - X: 16000000
-        Y: -5450000
-      - X: 14650000
-        Y: -5450000
-      - X: 13700000
-        Y: -5650000
-      - X: 13250000
-        Y: -5950000
-      - X: 12800000
-        Y: -6350000
-      - X: 12650000
-        Y: -6800000
-      - X: 12600000
-        Y: -7300000
-      - X: 12350000
-        Y: -7849999
-      - X: 12100000
-        Y: -8700000
-      - X: 11700001
-        Y: -9750000
-      - X: 11650000
-        Y: -10000000
-      - X: 18400000
-        Y: -10000000
     - - X: 68650000
         Y: -9900000
       - X: 21350000
@@ -36102,14 +36028,6 @@ CompositeCollider2D:
         Y: -17250000
       - X: 17550000
         Y: -17250000
-    - - X: 19400000
-        Y: -21650000
-      - X: 10700001
-        Y: -21700000
-      - X: 10700001
-        Y: -26900000
-      - X: 19400000
-        Y: -26900000
     - - X: 79400000
         Y: -21650000
       - X: 70700000
@@ -36117,6 +36035,14 @@ CompositeCollider2D:
       - X: 70700000
         Y: -26900000
       - X: 79400000
+        Y: -26900000
+    - - X: 19400000
+        Y: -21650000
+      - X: 10700001
+        Y: -21700000
+      - X: 10700001
+        Y: -26900000
+      - X: 19400000
         Y: -26900000
     - - X: 128950008
         Y: -22550002
@@ -36126,14 +36052,6 @@ CompositeCollider2D:
         Y: -27050000
       - X: 128950008
         Y: -27050000
-    - - X: 39400000
-        Y: -41650000
-      - X: 30700000
-        Y: -41700000
-      - X: 30700000
-        Y: -46900000
-      - X: 39400000
-        Y: -46900000
     - - X: 59400000
         Y: -41650000
       - X: 50700000
@@ -36141,6 +36059,14 @@ CompositeCollider2D:
       - X: 50700000
         Y: -46900000
       - X: 59400000
+        Y: -46900000
+    - - X: 39400000
+        Y: -41650000
+      - X: 30700000
+        Y: -41700000
+      - X: 30700000
+        Y: -46900000
+      - X: 39400000
         Y: -46900000
     - - X: 89000000
         Y: -53300000
@@ -36158,40 +36084,6 @@ CompositeCollider2D:
         Y: -56950000
       - X: 99000000
         Y: -56950000
-    - - X: 128400000
-        Y: -59899996
-      - X: 127400000
-        Y: -56900000
-      - X: 127150000
-        Y: -56400000
-      - X: 126850008
-        Y: -55949996
-      - X: 126650000
-        Y: -55750000
-      - X: 126000000
-        Y: -55450000
-      - X: 124650000
-        Y: -55450000
-      - X: 123700000
-        Y: -55650000
-      - X: 123250000
-        Y: -55949996
-      - X: 122800000
-        Y: -56350004
-      - X: 122650000
-        Y: -56800000
-      - X: 122600000
-        Y: -57300000
-      - X: 122350000
-        Y: -57850000
-      - X: 122100000
-        Y: -58700000
-      - X: 121700000
-        Y: -59750000
-      - X: 121650000
-        Y: -60000000
-      - X: 128400000
-        Y: -60000000
     - - X: 127550000
         Y: -63250000
       - X: 122800000
@@ -36202,41 +36094,23 @@ CompositeCollider2D:
         Y: -67250000
     - - X: -40000000
         Y: -110000000
-      - X: -40250000
+      - X: -41700000
         Y: -110000000
-      - X: -40250000
-        Y: -102200000
-      - X: -40300004
-        Y: -102050000
-      - X: -49600000
-        Y: -102050000
-      - X: -49850000
-        Y: -102250000
-      - X: -49850000
+      - X: -48600000
+        Y: -109950000
+      - X: -48350000
         Y: -110000000
-      - X: -50250000
+      - X: -51700000
         Y: -110000000
-      - X: -50250000
-        Y: -102200000
-      - X: -50300004
-        Y: -102050000
-      - X: -59600000
-        Y: -102050000
-      - X: -59850000
-        Y: -102250000
-      - X: -59850000
+      - X: -58600000
+        Y: -109950000
+      - X: -58350000
         Y: -110000000
-      - X: -60250000
+      - X: -61700000
         Y: -110000000
-      - X: -60250000
-        Y: -102200000
-      - X: -60300004
-        Y: -102050000
-      - X: -69600000
-        Y: -102050000
-      - X: -69850000
-        Y: -102250000
-      - X: -69850000
+      - X: -68600000
+        Y: -109950000
+      - X: -68350000
         Y: -110000000
       - X: -70000000
         Y: -110000000
@@ -36262,38 +36136,14 @@ CompositeCollider2D:
         Y: -165700000
     - - X: -120000000
         Y: -180000000
-      - X: -120050000
+      - X: -121700000
         Y: -180000000
-      - X: -120000000
-        Y: -179350000
-      - X: -120000000
-        Y: -178250000
-      - X: -120750000
-        Y: -178050000
-      - X: -122100000
-        Y: -178250000
-      - X: -122299992
-        Y: -177200000
-      - X: -122650000
-        Y: -175950000
-      - X: -123350000
-        Y: -175450000
-      - X: -123800000
-        Y: -175300000
-      - X: -125500000
-        Y: -175300000
-      - X: -126200000
-        Y: -175350000
-      - X: -126899992
-        Y: -175600000
-      - X: -127450000
-        Y: -176350000
-      - X: -127650000
-        Y: -178200000
-      - X: -129900000
-        Y: -178150000
+      - X: -128600000
+        Y: -179950016
+      - X: -128350000
+        Y: -180000000
       - X: -130000000
-        Y: -178300000
+        Y: -180000000
       - X: -130000000
         Y: -185950000
       - X: -120000000
@@ -36386,36 +36236,27 @@ CompositeCollider2D:
         Y: -585699968
   m_CompositePaths:
     m_Paths:
-    - - {x: 11.99997, y: 5.4050007}
-      - {x: 11.99997, y: 6}
-      - {x: 11.975, y: 6.0000296}
-      - {x: 11.974998, y: 6.780004}
-      - {x: 11.96998, y: 6.795}
-      - {x: 11.039993, y: 6.7949944}
-      - {x: 11.015, y: 6.774987}
-      - {x: 11.014971, y: 6}
-      - {x: 11, y: 5.999971}
-      - {x: 11.00003, y: 5.4050007}
-    - - {x: 1.9999708, y: 5.4050007}
-      - {x: 1.9999708, y: 6}
-      - {x: 1.975, y: 6.0000296}
-      - {x: 1.9749988, y: 6.780004}
-      - {x: 1.96998, y: 6.795}
-      - {x: 1.0399929, y: 6.7949944}
-      - {x: 1.015, y: 6.774987}
-      - {x: 1.0149707, y: 6}
-      - {x: 0.975, y: 6.0000296}
-      - {x: 0.9749987, y: 6.780004}
-      - {x: 0.96998, y: 6.795}
-      - {x: 0.0399929, y: 6.7949944}
-      - {x: 0.015000001, y: 6.774987}
-      - {x: 0.014970601, y: 6}
-      - {x: 0, y: 5.999971}
-      - {x: 0.000029300001, y: 5.4050007}
     - - {x: 10.69497, y: 5.375}
       - {x: 10.69497, y: 6.115}
       - {x: 8.26, y: 6.1149707}
       - {x: 8.26003, y: 5.375}
+    - - {x: 1.9999708, y: 5.4050007}
+      - {x: 1.9999708, y: 6}
+      - {x: 1.8300004, y: 6}
+      - {x: 1.14047, y: 6.004906}
+      - {x: 1.1645405, y: 6}
+      - {x: 0.8300003, y: 6}
+      - {x: 0.14047, y: 6.004906}
+      - {x: 0.1645405, y: 6}
+      - {x: 0, y: 5.999971}
+      - {x: 0.000029300001, y: 5.4050007}
+    - - {x: 11.99997, y: 5.4050007}
+      - {x: 11.99997, y: 6}
+      - {x: 11.83, y: 6}
+      - {x: 11.1404705, y: 6.004906}
+      - {x: 11.164541, y: 6}
+      - {x: 11, y: 5.999971}
+      - {x: 11.00003, y: 5.4050007}
     - - {x: 12.99997, y: 4.38}
       - {x: 12.99997, y: 5}
       - {x: 12.995, y: 5.0000296}
@@ -36429,6 +36270,9 @@ CompositeCollider2D:
       - {x: 12.70997, y: 5}
       - {x: 12.035, y: 4.999971}
       - {x: 12.035029, y: 4.38}
+    - - {x: -0.1837559, y: 5}
+      - {x: -0.85953003, y: 5.004906}
+      - {x: -0.8349973, y: 5}
     - - {x: -0.2250293, y: 4.25}
       - {x: -0.2250293, y: 4.775}
       - {x: -0.7949999, y: 4.774971}
@@ -36462,23 +36306,6 @@ CompositeCollider2D:
       - {x: 1.8999708, y: 2.67}
       - {x: 1.115, y: 2.6699708}
       - {x: 1.1150293, y: 2.305}
-    - - {x: 11.839971, y: 2}
-      - {x: 11.839998, y: 2.0100038}
-      - {x: 11.74, y: 2.310002}
-      - {x: 11.714999, y: 2.3600008}
-      - {x: 11.684999, y: 2.405002}
-      - {x: 11.664996, y: 2.4250019}
-      - {x: 11.599995, y: 2.455}
-      - {x: 11.464997, y: 2.4549997}
-      - {x: 11.369996, y: 2.4349973}
-      - {x: 11.324999, y: 2.4049985}
-      - {x: 11.279998, y: 2.3649936}
-      - {x: 11.265, y: 2.319997}
-      - {x: 11.259998, y: 2.2699964}
-      - {x: 11.235, y: 2.2149978}
-      - {x: 11.209999, y: 2.1299984}
-      - {x: 11.17, y: 2.024999}
-      - {x: 11.165038, y: 2}
     - - {x: 11.754971, y: 1.275}
       - {x: 11.754971, y: 1.6750001}
       - {x: 11.28, y: 1.6749707}
@@ -36487,6 +36314,9 @@ CompositeCollider2D:
       - {x: 9.90497, y: 1.59}
       - {x: 9.095, y: 1.5899707}
       - {x: 9.09503, y: 1.265}
+    - - {x: -3.183756, y: 1}
+      - {x: -3.85953, y: 1.004906}
+      - {x: -3.8349972, y: 1}
     - - {x: -3.2250292, y: 0.25}
       - {x: -3.2250292, y: 0.77500004}
       - {x: -3.795, y: 0.7749707}
@@ -36499,23 +36329,6 @@ CompositeCollider2D:
       - {x: 5.9399705, y: -0.1650002}
       - {x: 5.07, y: -0.1700291}
       - {x: 5.0700293, y: -0.69}
-    - - {x: 1.8399708, y: -1}
-      - {x: 1.8399988, y: -0.9899962}
-      - {x: 1.7399992, y: -0.6899981}
-      - {x: 1.7149994, y: -0.6399991}
-      - {x: 1.684998, y: -0.5949981}
-      - {x: 1.664996, y: -0.5749982}
-      - {x: 1.5999944, y: -0.545}
-      - {x: 1.4649974, y: -0.5450005}
-      - {x: 1.3699958, y: -0.5650028}
-      - {x: 1.3249984, y: -0.5950014}
-      - {x: 1.2799978, y: -0.6350064}
-      - {x: 1.2649997, y: -0.680003}
-      - {x: 1.2599983, y: -0.7300037}
-      - {x: 1.2349993, y: -0.7850021}
-      - {x: 1.2099993, y: -0.8700018}
-      - {x: 1.17, y: -0.9750012}
-      - {x: 1.1650373, y: -1}
     - - {x: 6.8649707, y: -3.57}
       - {x: 6.8649707, y: -0.99}
       - {x: 2.135, y: -0.99002934}
@@ -36553,47 +36366,21 @@ CompositeCollider2D:
       - {x: 8.89997, y: -5.33}
       - {x: 8.115, y: -5.3300295}
       - {x: 8.115029, y: -5.695}
-    - - {x: 12.839971, y: -6}
-      - {x: 12.839998, y: -5.989996}
-      - {x: 12.74, y: -5.689998}
-      - {x: 12.714999, y: -5.6399994}
-      - {x: 12.684999, y: -5.594998}
-      - {x: 12.664996, y: -5.5749984}
-      - {x: 12.599995, y: -5.545}
-      - {x: 12.464997, y: -5.5450006}
-      - {x: 12.369996, y: -5.565003}
-      - {x: 12.324999, y: -5.5950007}
-      - {x: 12.279998, y: -5.635007}
-      - {x: 12.265, y: -5.680003}
-      - {x: 12.259998, y: -5.730004}
-      - {x: 12.235, y: -5.785002}
-      - {x: 12.209999, y: -5.870002}
-      - {x: 12.17, y: -5.9750013}
-      - {x: 12.165038, y: -6}
     - - {x: 12.754971, y: -6.725}
       - {x: 12.754971, y: -6.3250003}
       - {x: 12.28, y: -6.3250294}
       - {x: 12.280029, y: -6.725}
     - - {x: -4.000029, y: -11.595}
       - {x: -4.000029, y: -11}
-      - {x: -4.025, y: -10.99997}
-      - {x: -4.025001, y: -10.219996}
-      - {x: -4.03002, y: -10.205}
-      - {x: -4.960007, y: -10.205006}
-      - {x: -4.985, y: -10.225013}
-      - {x: -4.9850297, y: -11}
-      - {x: -5.025, y: -10.99997}
-      - {x: -5.025001, y: -10.219996}
-      - {x: -5.03002, y: -10.205}
-      - {x: -5.960007, y: -10.205006}
-      - {x: -5.985, y: -10.225013}
-      - {x: -5.9850297, y: -11}
-      - {x: -6.025, y: -10.99997}
-      - {x: -6.025001, y: -10.219996}
-      - {x: -6.03002, y: -10.205}
-      - {x: -6.960007, y: -10.205006}
-      - {x: -6.985, y: -10.225013}
-      - {x: -6.9850297, y: -11}
+      - {x: -4.1699996, y: -11}
+      - {x: -4.85953, y: -10.995093}
+      - {x: -4.8354597, y: -11}
+      - {x: -5.1699996, y: -11}
+      - {x: -5.85953, y: -10.995093}
+      - {x: -5.8354597, y: -11}
+      - {x: -6.1699996, y: -11}
+      - {x: -6.8595295, y: -10.995093}
+      - {x: -6.835459, y: -11}
       - {x: -7, y: -11.00003}
       - {x: -6.9999704, y: -11.595}
     - - {x: 3.8649704, y: -14.57}
@@ -36606,22 +36393,10 @@ CompositeCollider2D:
       - {x: 6.125029, y: -16.56}
     - - {x: -12.00003, y: -18.595}
       - {x: -12.00003, y: -18}
-      - {x: -12.004998, y: -17.999968}
-      - {x: -12, y: -17.935}
-      - {x: -12.000021, y: -17.824995}
-      - {x: -12.075006, y: -17.805002}
-      - {x: -12.210006, y: -17.824972}
-      - {x: -12.23, y: -17.72}
-      - {x: -12.265007, y: -17.594995}
-      - {x: -12.335003, y: -17.544998}
-      - {x: -12.380004, y: -17.53}
-      - {x: -12.550001, y: -17.53}
-      - {x: -12.620004, y: -17.535002}
-      - {x: -12.690004, y: -17.560007}
-      - {x: -12.745001, y: -17.635006}
-      - {x: -12.765026, y: -17.82}
-      - {x: -12.990008, y: -17.815014}
-      - {x: -13, y: -17.830008}
+      - {x: -12.17, y: -18}
+      - {x: -12.8595295, y: -17.995096}
+      - {x: -12.83546, y: -18}
+      - {x: -13, y: -18.000029}
       - {x: -12.99997, y: -18.595}
     - - {x: -6.1350303, y: -22.57}
       - {x: -6.13503, y: -19.99}
