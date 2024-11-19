@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     [Header("Movement Vars")]
     [SerializeField] private float speed;
+    [SerializeField] private bool canMove;
     //[SerializeField] private float stepTime; //Time between steps, only used in old pathfinding
 
     [Header("Player + EnemyRB")]
@@ -53,6 +54,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(!canMove)
+        {
+            return;
+        }
+
         playerPos = player.transform.position;
         path.destination = playerPos;
 

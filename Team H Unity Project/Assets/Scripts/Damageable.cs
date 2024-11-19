@@ -6,19 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class Damageable : MonoBehaviour
 {
-    enum Damageables {Unassigned, Enemy, Player, Trash, Spawner};
+    enum Damageables {Unassigned, Enemy, Player, Trash, Spawner, MiniBoss};
 
     public int maxHealth;
     public int health;
+    public int armor;
     [SerializeField] private float iFrameTime;
     [SerializeField] private Damageables type;
     
     private float timer;
+    private float startScale;
     [HideInInspector] public RoomManager room;
 
     // Start is called before the first frame update
     void Start()
     {
+        startScale = transform.localScale.x;
         timer = iFrameTime;
         if (room == null && transform.parent != null)
         {
@@ -74,9 +77,15 @@ public class Damageable : MonoBehaviour
         //If there is damage coming in AND the iFrames ran out
         if (damage != null && timer <= 0)
         {
+            if(armor >= damage.damage)
+            {
+                return;
+            }
+            //Anything after this point knows damage is more than armor (also non-zero)
+
             //Sets iFrames, takes damage, and takes knockback based on damage taken
             timer = iFrameTime;
-            health = health - damage.damage;
+            health = health + armor - damage.damage;
 
             
 
@@ -92,11 +101,16 @@ public class Damageable : MonoBehaviour
             {
                 case Damageables.Enemy:
                     knockbackAngle = -1 * (collider.gameObject.transform.position - this.gameObject.transform.position);
-                    this.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackAngle.normalized * damage.damage * 1000);
+                    this.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackAngle.normalized * (armor-damage.damage) * 1000);
                     break;
                 case Damageables.Player:
                     knockbackAngle = -1 * (collider.gameObject.transform.position - this.gameObject.transform.position);
-                    this.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackAngle.normalized * damage.damage * 500);
+                    this.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackAngle.normalized * (armor-damage.damage) * 500);
+                    break;
+                case Damageables.MiniBoss:
+                    float scale = startScale * (((float)health / ((float)maxHealth * 2)) + .5f);
+                    transform.localScale = new Vector3(scale, scale, 1);
+                    this.gameObject.GetComponent<MiniBoss>().UpdateSpawnTime((float)health / (float)maxHealth);
                     break;
                 default:
                     break;
@@ -131,6 +145,7 @@ public class Damageable : MonoBehaviour
             case Damageables.Player:
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 break;
+            case Damageables.MiniBoss:
             case Damageables.Enemy:
                 this.gameObject.GetComponent<Enemy>().Death();
                 break;

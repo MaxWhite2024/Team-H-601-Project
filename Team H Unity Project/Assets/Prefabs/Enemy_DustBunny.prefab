@@ -204,6 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  canMove: 1
   player: {fileID: 0}
   rb: {fileID: 5263086027457687259}
   spawner: {fileID: 0}
@@ -222,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 4
   health: 4
+  armor: 0
   iFrameTime: 0.25
   type: 0
   room: {fileID: 0}
