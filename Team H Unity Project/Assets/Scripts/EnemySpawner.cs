@@ -62,7 +62,7 @@ public class EnemySpawner : MonoBehaviour
                 room.damageables.Add(newEnemy.gameObject.GetComponent<Damageable>());
                 enemiesSpawned++;
 
-                this.transform.position = new Vector3(this.transform.position.x - .1f, this.transform.position.y, this.transform.position.z);
+                //this.transform.position = new Vector3(this.transform.position.x - .1f, this.transform.position.y, this.transform.position.z);
             }
         }
     }
