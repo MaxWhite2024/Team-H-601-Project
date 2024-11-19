@@ -329,7 +329,7 @@ MonoBehaviour:
   maxHealth: 10
   health: 10
   armor: 1
-  iFrameTime: 0.3
+  iFrameTime: 0.5
   type: 5
   room: {fileID: 0}
 --- !u!114 &7083126903951629451

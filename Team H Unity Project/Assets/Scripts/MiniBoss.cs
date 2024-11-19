@@ -19,7 +19,7 @@ public class MiniBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = startSpawnTimer;
+        timer = (startSpawnTimer/10);
         spawnWiggleRoom = startSpawnTimer - minSpawnTimer;
         currentSpawnTimer = startSpawnTimer;
 
