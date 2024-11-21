@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Rendering;
 using static PlayerMovementAndAttack;
 
 public class PlayerSpriteManager : MonoBehaviour
@@ -46,6 +48,14 @@ public class PlayerSpriteManager : MonoBehaviour
     [SerializeField] private SpriteRenderer p2Pip2Renderer;
     [SerializeField] private SpriteRenderer p2Pip3Renderer;
 
+    [Header("Invulnerable Flash Variables")]
+    private Color originalPlayerCharacterColor;
+    private Color fadedPlayerColor;
+    [SerializeField] private float invulFlashMinAlpha;
+    [SerializeField] private float invulFlashRate;
+    private float invulFlashTimer = 0f;
+    private bool isInvulFlashing = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,11 +69,62 @@ public class PlayerSpriteManager : MonoBehaviour
         //define fadedP2PipColor as white with 0.2 alpha
         fadedP2PipColor = Color.white;
         fadedP2PipColor.a = 0.2f;
+
+        //make note of player's original color
+        originalPlayerCharacterColor = playerSpriteRenderer.color;
+
+        //calculate fadedPlayerColor
+        fadedPlayerColor = originalPlayerCharacterColor;
+        fadedPlayerColor.a = invulFlashMinAlpha;
     }
 
     // Update is called once per frame
     void Update()
     {
+        #region Timer Update
+
+        //if player is flashing,...
+        if (isInvulFlashing)
+        {
+            //if invulFlashTimer is greater than 0,...
+            if (invulFlashTimer > 0)
+            {
+                //decrement invulFlashTimer
+                invulFlashTimer -= Time.deltaTime;
+            }
+            //else invulFlashTimer is less than or equal to 0,...
+            else
+            {
+                //"flip" player character's opacity between original opacity and faded opacity
+                if (playerSpriteRenderer.color == originalPlayerCharacterColor)
+                {
+                    playerSpriteRenderer.color = fadedPlayerColor;
+                    p1ArmSpriteRenderer.color = fadedPlayerColor;
+                    p2ArmSpriteRenderer.color = fadedPlayerColor;
+                }
+                else
+                {
+                    playerSpriteRenderer.color = originalPlayerCharacterColor;
+                    p1ArmSpriteRenderer.color = originalPlayerCharacterColor;
+                    p2ArmSpriteRenderer.color = originalPlayerCharacterColor;
+                }
+
+                //restart invulFlashTimer
+                invulFlashTimer = invulFlashRate;
+            }
+        }
+        //else player is NOT flashing,...
+        else
+        {
+            //set player character's opacity back to original opacity
+            playerSpriteRenderer.color = originalPlayerCharacterColor;
+            p1ArmSpriteRenderer.color = originalPlayerCharacterColor;
+            p2ArmSpriteRenderer.color = originalPlayerCharacterColor;
+        }
+
+        #endregion
+
+        #region Player Character Sprite
         //Debug.Log(playerMovementAndAttack.characterCenter.transform.localEulerAngles);
 
         //compare the z rotation of the character's center object to determine the character's sprite
@@ -117,7 +178,9 @@ public class PlayerSpriteManager : MonoBehaviour
                 playerSpriteRenderer.sprite = rightSprite;
                 break;
         }
+        #endregion
 
+        #region P1 Arm Sprite
         //compare the z rotation of P1's center object to determine the P1's arm sprite
         switch (p1Center.transform.localEulerAngles.z)
         {
@@ -145,7 +208,9 @@ public class PlayerSpriteManager : MonoBehaviour
                 p1ArmSpriteRenderer.sprite = p1Right;
                 break;
         }
+        #endregion
 
+        #region P2 Arm Sprite
         //compare the z rotation of P2's center object to determine the P2's arm sprite
         switch (p2Center.transform.localEulerAngles.z)
         {
@@ -173,7 +238,9 @@ public class PlayerSpriteManager : MonoBehaviour
                 p2ArmSpriteRenderer.sprite = p2Right;
                 break;
         }
+        #endregion
 
+        #region P1 Ammo Pips
         //compare P1's ammo
         switch (playerMovementAndAttack.p1Ammo)
         {
@@ -213,7 +280,9 @@ public class PlayerSpriteManager : MonoBehaviour
                 p1Pip3Renderer.color = Color.white;
                 break;
         }
+        #endregion
 
+        #region P2 Ammo Pips
         //compare P2's ammo
         switch (playerMovementAndAttack.p2Ammo)
         {
@@ -253,5 +322,20 @@ public class PlayerSpriteManager : MonoBehaviour
                 p2Pip3Renderer.color = Color.white;
                 break;
         }
+        #endregion
+    }
+
+    //***** Makes the player start to flash between transparent and opaque to signify they are invulnerable *****
+    public void StartPlayerDamageVFX()
+    {
+        //set isInvulFlashing to true
+        isInvulFlashing = true;
+    }
+
+    //***** Makes the player stop flashing between transparent and opaque to signify they are no longer invulnerable *****
+    public void EndPlayerDamageVFX()
+    {
+        //set isInvulFlashing to false
+        isInvulFlashing = false;
     }
 }

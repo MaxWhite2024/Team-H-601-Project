@@ -281,7 +281,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
             //else if players are moving in orthogonal directions,...
             else if(AreVector2sOrthogonal(p1MoveDir, p2MoveDir))
             {
-                Debug.Log("ORTHOGONAL");
+                // Debug.Log("ORTHOGONAL");
                 //set inSyncMove to false
                 inSyncMove = false;
 

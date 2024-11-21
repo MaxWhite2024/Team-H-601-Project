@@ -255,9 +255,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   health: 10
+  armor: 0
   iFrameTime: 0.6
   type: 0
   room: {fileID: 0}
+  playerSpriteManager: {fileID: 2494213612536732334}
 --- !u!114 &2494213612536732334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,6 +297,8 @@ MonoBehaviour:
   p2Pip1Renderer: {fileID: 9012143509200261663}
   p2Pip2Renderer: {fileID: 7567022241090036750}
   p2Pip3Renderer: {fileID: 4464304398717811127}
+  invulFlashMinAlpha: 0.2
+  invulFlashRate: 0.2
 --- !u!1 &610750069560181508
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,6 +18,8 @@ public class Damageable : MonoBehaviour
     private float startScale;
     [HideInInspector] public RoomManager room;
 
+    [SerializeField] private PlayerSpriteManager playerSpriteManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,11 +55,18 @@ public class Damageable : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(timer > 0)
+        //if invisibility timer has NOT yet elapsed,...
+        if (timer > 0)
         {
-            timer -= Time.deltaTime;
+            //decrement timer
+            timer -= Time.fixedDeltaTime;
         }
-
+        //else invisibility timer has elapsed AND gameobject is the player,...
+        else if (type == Damageables.Player)
+        {
+            //end player damage VFX
+            playerSpriteManager.EndPlayerDamageVFX();
+        }
     }
 
     /// <summary>
@@ -87,6 +96,12 @@ public class Damageable : MonoBehaviour
             timer = iFrameTime;
             health = health + armor - damage.damage;
 
+            //if gameobject is the player,...
+            if(type == Damageables.Player)
+            {
+                //start player damage VFX
+                playerSpriteManager.StartPlayerDamageVFX();
+            }
             
 
             //Death methods
