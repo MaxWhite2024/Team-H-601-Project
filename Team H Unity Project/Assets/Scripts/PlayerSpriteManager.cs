@@ -92,6 +92,30 @@ public class PlayerSpriteManager : MonoBehaviour
                 //change character sprite to rightSprite
                 playerSpriteRenderer.sprite = rightSprite;
                 break;
+
+            //character is facing up and right
+            case -45f:
+                //change character sprite to rightSprite
+                playerSpriteRenderer.sprite = rightSprite;
+                break;
+
+            //character is facing up and left
+            case 45f:
+                //change character sprite to leftSprite
+                playerSpriteRenderer.sprite = leftSprite;
+                break;
+
+            //character is facing down and left
+            case 135f:
+                //change character sprite to leftSprite
+                playerSpriteRenderer.sprite = leftSprite;
+                break;
+
+            //character is facing down and right
+            case -135f:
+                //change character sprite to rightSprite
+                playerSpriteRenderer.sprite = rightSprite;
+                break;
         }
 
         //compare the z rotation of P1's center object to determine the P1's arm sprite

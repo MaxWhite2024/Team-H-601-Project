@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -277,7 +278,17 @@ public class PlayerMovementAndAttack : MonoBehaviour
                 //set characterMoveDir to p1MoveDir since both players are moving in same direction
                 characterMoveDir = p1MoveDir;
             }
-            //else players are moving in different directions,...
+            //else if players are moving in orthogonal directions,...
+            else if(AreVector2sOrthogonal(p1MoveDir, p2MoveDir))
+            {
+                Debug.Log("ORTHOGONAL");
+                //set inSyncMove to false
+                inSyncMove = false;
+
+                //set characterMoveDir to vector at 45 degree angle between both p1MoveDir and p2MoveDir
+                characterMoveDir = (p1MoveDir + p2MoveDir).normalized;
+            }
+            //else players are moving in opposing directions,...
             else
             {
                 // Debug.Log("UNDECIDED");
@@ -521,6 +532,13 @@ public class PlayerMovementAndAttack : MonoBehaviour
             default:
                 return Vector2.zero;
         }
+    }
+
+    public bool AreVector2sOrthogonal(Vector2 A, Vector2 B)
+    {
+        //if dotProduct of A and B equals 0, then A and B are orthogonal so return true
+        //else dotProduct of A and B does NOT equal 0, then A and B are NOT orthogonal so return false
+        return ((int)(A[0] * B[0] + A[1] * B[1]) == 0) ? true : false;
     }
 
     private void RotateCharacter()
