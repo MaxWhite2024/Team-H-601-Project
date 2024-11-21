@@ -299,6 +299,8 @@ MonoBehaviour:
   p2Pip3Renderer: {fileID: 4464304398717811127}
   invulFlashMinAlpha: 0.2
   invulFlashRate: 0.2
+  maxVignetteAlpha: 0.5
+  vignetteFadeDuration: 0.6
 --- !u!1 &610750069560181508
 GameObject:
   m_ObjectHideFlags: 0

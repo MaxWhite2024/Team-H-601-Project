@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Rendering;
 using static PlayerMovementAndAttack;
+using Unity.VisualScripting;
 
 public class PlayerSpriteManager : MonoBehaviour
 {
@@ -49,12 +51,19 @@ public class PlayerSpriteManager : MonoBehaviour
     [SerializeField] private SpriteRenderer p2Pip3Renderer;
 
     [Header("Invulnerable Flash Variables")]
-    private Color originalPlayerCharacterColor;
-    private Color fadedPlayerColor;
     [SerializeField] private float invulFlashMinAlpha;
     [SerializeField] private float invulFlashRate;
     private float invulFlashTimer = 0f;
     private bool isInvulFlashing = false;
+    private Color originalPlayerCharacterColor;
+    private Color fadedPlayerColor;
+
+    [Header("Damage Vignetter Variables")]
+    [SerializeField] private float maxVignetteAlpha;
+    private Color vignetteColor;
+    private Image playerDamageVignetteImage;
+    [SerializeField] private float vignetteFadeDuration;
+    private float vignetteFadeTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -76,12 +85,22 @@ public class PlayerSpriteManager : MonoBehaviour
         //calculate fadedPlayerColor
         fadedPlayerColor = originalPlayerCharacterColor;
         fadedPlayerColor.a = invulFlashMinAlpha;
+
+        //try to find PlayerDamageVignette
+        playerDamageVignetteImage = GameObject.Find("PlayerDamageVignette").GetComponent<Image>();
+
+        //calculate fadedVignette
+        vignetteColor = playerDamageVignetteImage.color;
+        vignetteColor.a = maxVignetteAlpha;
+
+        //stop vignetteFadeTimer
+        vignetteFadeTimer = vignetteFadeDuration;
     }
 
     // Update is called once per frame
     void Update()
     {
-        #region Timer Update
+        #region Invulnerability Flash Timer Update
 
         //if player is flashing,...
         if (isInvulFlashing)
@@ -120,6 +139,17 @@ public class PlayerSpriteManager : MonoBehaviour
             playerSpriteRenderer.color = originalPlayerCharacterColor;
             p1ArmSpriteRenderer.color = originalPlayerCharacterColor;
             p2ArmSpriteRenderer.color = originalPlayerCharacterColor;
+        }
+
+        #endregion
+
+        #region Damage Vignette Timer Update
+
+        if(vignetteFadeTimer < vignetteFadeDuration)
+        {
+            playerDamageVignetteImage.color = Color.Lerp(vignetteColor, Color.clear, vignetteFadeTimer / vignetteFadeDuration);
+
+            vignetteFadeTimer += Time.fixedDeltaTime;
         }
 
         #endregion
@@ -330,10 +360,17 @@ public class PlayerSpriteManager : MonoBehaviour
     {
         //set isInvulFlashing to true
         isInvulFlashing = true;
+
+        //make damage vignette visible
+        if (playerDamageVignetteImage != null)
+            playerDamageVignetteImage.color = vignetteColor;
+
+        //start vignetteFadeDuration
+        vignetteFadeTimer = 0f;
     }
 
     //***** Makes the player stop flashing between transparent and opaque to signify they are no longer invulnerable *****
-    public void EndPlayerDamageVFX()
+    public void EndPlayerInvulFlashVFX()
     {
         //set isInvulFlashing to false
         isInvulFlashing = false;

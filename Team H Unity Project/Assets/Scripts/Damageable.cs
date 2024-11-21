@@ -65,7 +65,7 @@ public class Damageable : MonoBehaviour
         else if (type == Damageables.Player)
         {
             //end player damage VFX
-            playerSpriteManager.EndPlayerDamageVFX();
+            playerSpriteManager.EndPlayerInvulFlashVFX();
         }
     }
 
