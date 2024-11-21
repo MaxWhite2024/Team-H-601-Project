@@ -58,12 +58,15 @@ public class PlayerSpriteManager : MonoBehaviour
     private Color originalPlayerCharacterColor;
     private Color fadedPlayerColor;
 
-    [Header("Damage Vignetter Variables")]
+    [Header("Damage Vignette Variables")]
     [SerializeField] private float maxVignetteAlpha;
     private Color vignetteColor;
     private Image playerDamageVignetteImage;
     [SerializeField] private float vignetteFadeDuration;
     private float vignetteFadeTimer;
+
+    [Header("Damage Hitstop Variable")]
+    [SerializeField] private float damageHitStopTime;
 
     // Start is called before the first frame update
     void Start()
@@ -145,11 +148,14 @@ public class PlayerSpriteManager : MonoBehaviour
 
         #region Damage Vignette Timer Update
 
-        if(vignetteFadeTimer < vignetteFadeDuration)
+        //if vignetteFadeDuration has not yet elapsed,...
+        if (vignetteFadeTimer < vignetteFadeDuration)
         {
+            //lerp between vignetteColor and fully transparent
             playerDamageVignetteImage.color = Color.Lerp(vignetteColor, Color.clear, vignetteFadeTimer / vignetteFadeDuration);
 
-            vignetteFadeTimer += Time.fixedDeltaTime;
+            //increment vignetteFadeTimer
+            vignetteFadeTimer += Time.deltaTime;
         }
 
         #endregion
@@ -365,8 +371,13 @@ public class PlayerSpriteManager : MonoBehaviour
         if (playerDamageVignetteImage != null)
             playerDamageVignetteImage.color = vignetteColor;
 
+        //hitstop for damageHitStopTime seconds
+        StartCoroutine(HitStop(damageHitStopTime));
+
         //start vignetteFadeDuration
         vignetteFadeTimer = 0f;
+
+
     }
 
     //***** Makes the player stop flashing between transparent and opaque to signify they are no longer invulnerable *****
@@ -374,5 +385,21 @@ public class PlayerSpriteManager : MonoBehaviour
     {
         //set isInvulFlashing to false
         isInvulFlashing = false;
+    }
+
+    //***** Stop time for hitStopTime seconds *****
+    IEnumerator HitStop(float hitStopTime)
+    {
+        //save original time scale
+        float originalTimeScale = Time.timeScale;
+
+        //set timescale to 0
+        Time.timeScale = 0f;
+
+        //wait for hitstop seconds
+        yield return new WaitForSecondsRealtime(hitStopTime);
+
+        //set timescale back to original time scale
+        Time.timeScale = originalTimeScale;
     }
 }

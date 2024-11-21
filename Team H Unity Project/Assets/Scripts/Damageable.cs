@@ -149,6 +149,9 @@ public class Damageable : MonoBehaviour
 
     private void Death()
     {
+        //reset Time.timeScale
+        Time.timeScale = 1f;
+
         //Removes self from room
         if (room != null)
         {

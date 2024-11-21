@@ -301,6 +301,7 @@ MonoBehaviour:
   invulFlashRate: 0.2
   maxVignetteAlpha: 0.5
   vignetteFadeDuration: 0.6
+  damageHitStopTime: 0.6
 --- !u!1 &610750069560181508
 GameObject:
   m_ObjectHideFlags: 0
