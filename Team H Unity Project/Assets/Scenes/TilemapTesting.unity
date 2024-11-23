@@ -35683,6 +35683,10 @@ PrefabInstance:
       propertyPath: spawnTimer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6934744611123188724, guid: 5810be6edec83874c8c3fb31b9d6a0a0, type: 3}
+      propertyPath: offWhenRoomClean
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
