@@ -10,15 +10,19 @@ public class Damageable : MonoBehaviour
 
     public int maxHealth;
     public int armor;
+    public int health;
     [SerializeField] private float iFrameTime;
     [SerializeField] private Damageables type;
+
+    [Header("Health Pickups")]
+    [SerializeField] private bool dropHealth = false;
+    [SerializeField] private GameObject healthPickup;
     
     private float timer;
     private float startScale;
     [HideInInspector] public RoomManager room;
 
     [SerializeField] private PlayerSpriteManager playerSpriteManager;
-    [SerializeField] public int health;
 
     // Start is called before the first frame update
     void Start()
@@ -83,8 +87,31 @@ public class Damageable : MonoBehaviour
 
         DamageSource damage = collider.gameObject.GetComponent<DamageSource>();
 
+        if(damage == null)
+        {
+            return;
+        }
+
+        if (damage.healing)
+        {
+            //If it is a healing item and this is not a player, nothign should happen
+            if (type != Damageables.Player)
+            {
+                return;
+            }
+            health += damage.damage;
+
+            if(health > maxHealth)
+            {
+                health = maxHealth;
+            }
+
+            Destroy(damage.gameObject);
+            return;
+        }
+
         //If there is damage coming in AND the iFrames ran out
-        if (damage != null && timer <= 0)
+        if (timer <= 0)
         {
             if(armor >= damage.damage)
             {
@@ -156,6 +183,14 @@ public class Damageable : MonoBehaviour
         if (room != null)
         {
             room.damageables.Remove(this);
+
+            if(dropHealth)
+            {
+                if(Random.Range(0, 100) <= room.healthDropChance)
+                {
+                    Instantiate(healthPickup, transform.position, transform.rotation, transform.parent);
+                }
+            }
         }
 
         switch (type)

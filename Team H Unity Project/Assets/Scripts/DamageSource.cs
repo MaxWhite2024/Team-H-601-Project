@@ -5,6 +5,7 @@ using UnityEngine;
 public class DamageSource : MonoBehaviour
 {
     public int damage;
+    public bool healing;
 
     // Start is called before the first frame update
     void Start()

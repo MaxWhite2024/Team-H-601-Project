@@ -5,6 +5,7 @@ using UnityEngine;
 public class HouseManager : MonoBehaviour
 {
     public GameObject doors;
+    public float healthDropChance;
 
     [Header("Debug Vars")]
     [SerializeField] private List<RoomManager> rooms = new List<RoomManager>();

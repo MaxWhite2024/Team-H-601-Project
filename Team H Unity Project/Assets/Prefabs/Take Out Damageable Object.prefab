@@ -24,6 +24,14 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5361164914950095804, guid: 5f18cc741a4df2a4a8533e7992af9e54, type: 3}
+      propertyPath: dropHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5361164914950095804, guid: 5f18cc741a4df2a4a8533e7992af9e54, type: 3}
+      propertyPath: healthPickup
+      value: 
+      objectReference: {fileID: 4373816778238043665, guid: c52275eaa83594b45b1e9d0b2065864d, type: 3}
     - target: {fileID: 6458405145016396295, guid: 5f18cc741a4df2a4a8533e7992af9e54, type: 3}
       propertyPath: m_Sprite
       value: 

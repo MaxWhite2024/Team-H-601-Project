@@ -70,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
     private void Shake()
     {
         int timerInt = (int) (10f * timer);
-        Debug.Log(timerInt);
+        //Debug.Log(timerInt);
 
         if (timerInt % 2 == 0)
         {

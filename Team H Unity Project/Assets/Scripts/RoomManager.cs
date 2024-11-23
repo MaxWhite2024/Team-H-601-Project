@@ -14,6 +14,7 @@ public class RoomManager : MonoBehaviour
     public Transform cameraTransform;
     public int maxEnemies;
     [SerializeField] private bool fullClear; //Do you need to kill all enemies or all everything
+    public float healthDropChance = -1;
 
     [Header("Spawners Speed Up Vars")]
     [SerializeField] private float decreaseSpawnRateRate;
@@ -31,6 +32,7 @@ public class RoomManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+
         roomClean = false;
 
         //Goes through each child of the room and adds them to the appropriate list
@@ -58,6 +60,11 @@ public class RoomManager : MonoBehaviour
         if (house == null)
         {
             house = transform.parent.gameObject.GetComponent<HouseManager>();
+        }
+
+        if (healthDropChance < 0)
+        {
+            healthDropChance = house.healthDropChance;
         }
 
         //Disables self if not the first room

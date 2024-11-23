@@ -22400,6 +22400,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1654425746345012756, guid: 0fd307ffeb946fc41a05430cd2cd8ef8, type: 3}
+      propertyPath: healthDropChance
+      value: 98
+      objectReference: {fileID: 0}
+    - target: {fileID: 1654425746345012756, guid: 0fd307ffeb946fc41a05430cd2cd8ef8, type: 3}
       propertyPath: enemies.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -22606,6 +22610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doors: {fileID: 30505750}
+  healthDropChance: 25
   rooms: []
   doorsList: []
 --- !u!1 &696198750
@@ -22944,6 +22949,10 @@ PrefabInstance:
     - target: {fileID: 1654425746345012756, guid: 0fd307ffeb946fc41a05430cd2cd8ef8, type: 3}
       propertyPath: doors.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1654425746345012756, guid: 0fd307ffeb946fc41a05430cd2cd8ef8, type: 3}
+      propertyPath: healthDropChance
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 1654425746345012756, guid: 0fd307ffeb946fc41a05430cd2cd8ef8, type: 3}
       propertyPath: enemies.Array.size
@@ -33094,6 +33103,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1309435824349621235, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1661928322099624535, guid: 8f5080aad09927344b318297b4777396, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -33242,6 +33255,10 @@ PrefabInstance:
     - target: {fileID: 1654425746345012756, guid: 0fd307ffeb946fc41a05430cd2cd8ef8, type: 3}
       propertyPath: doors.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1654425746345012756, guid: 0fd307ffeb946fc41a05430cd2cd8ef8, type: 3}
+      propertyPath: healthDropChance
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1654425746345012756, guid: 0fd307ffeb946fc41a05430cd2cd8ef8, type: 3}
       propertyPath: enemies.Array.size
@@ -39051,6 +39068,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 641546827}
     m_Modifications:
     - target: {fileID: 1654425746345012756, guid: 0fd307ffeb946fc41a05430cd2cd8ef8, type: 3}
+      propertyPath: firstRoom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1654425746345012756, guid: 0fd307ffeb946fc41a05430cd2cd8ef8, type: 3}
       propertyPath: fullClear
       value: 1
       objectReference: {fileID: 0}
@@ -39065,6 +39086,10 @@ PrefabInstance:
     - target: {fileID: 1654425746345012756, guid: 0fd307ffeb946fc41a05430cd2cd8ef8, type: 3}
       propertyPath: doors.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1654425746345012756, guid: 0fd307ffeb946fc41a05430cd2cd8ef8, type: 3}
+      propertyPath: healthDropChance
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1654425746345012756, guid: 0fd307ffeb946fc41a05430cd2cd8ef8, type: 3}
       propertyPath: enemies.Array.size
