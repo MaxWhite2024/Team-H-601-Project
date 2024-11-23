@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
 
         path = GetComponent<AIPath>();
 
-        playerPos = player.transform.position;
+        //playerPos = player.transform.position; - technically a useless call??
         path.maxSpeed = speed;
         //timer = stepTime;
     }

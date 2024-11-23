@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class MiniBoss : MonoBehaviour
 {
@@ -9,13 +10,24 @@ public class MiniBoss : MonoBehaviour
     [SerializeField] private float minSpawnTimer;
     [SerializeField] private GameObject enemy;
 
+    [Header("Move Settings")]
+    [SerializeField] private Vector2 horizontal;
+    [SerializeField] private Vector2 vertical;
+    [SerializeField] private float speedMin;
+    [SerializeField] private float speedMax;
+
+
     [Header("Debug Vars")]
     [SerializeField] private List<Transform> spawnLocations;
     [SerializeField] private RoomManager room;
     [SerializeField] private float currentSpawnTimer;
-    private float spawnWiggleRoom;
+    [SerializeField] private float currentSpeed;
+    [SerializeField] private Vector3 nextTarget;
 
+    private float spawnWiggleRoom;
+    private float speedWiggleRoom;
     private float timer;
+    private AIPath path;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +35,18 @@ public class MiniBoss : MonoBehaviour
         spawnWiggleRoom = startSpawnTimer - minSpawnTimer;
         currentSpawnTimer = startSpawnTimer;
 
+        speedWiggleRoom = speedMax - minSpawnTimer;
+        currentSpeed = speedMin;
+
         if (room == null)
         {
             room = transform.parent.gameObject.GetComponent<RoomManager>();
         }
+
+        path = GetComponent<AIPath>();
+        path.maxSpeed = currentSpeed;
+        SetPath();
+
     }
 
     // Update is called once per frame
@@ -46,12 +66,28 @@ public class MiniBoss : MonoBehaviour
                 room.damageables.Add(newEnemy.gameObject.GetComponent<Damageable>());
             }
         }
+
+        if(transform.position == nextTarget)
+        {
+            SetPath();
+        }
     }
 
-    public void UpdateSpawnTime(float healthPercent)
+    public void UpdateVars(float healthPercent)
     {
+        Debug.Log(healthPercent);
         currentSpawnTimer = (spawnWiggleRoom * healthPercent) + minSpawnTimer;
+        currentSpeed = (speedWiggleRoom * (1-healthPercent)) + speedMin;
+        path.maxSpeed = currentSpeed;
+        Debug.Log(currentSpeed);
+    }
 
+    public void SetPath()
+    {
+        nextTarget = new Vector3(0, 0, 0);
+        nextTarget.x = Random.Range(horizontal.x, horizontal.y);
+        nextTarget.y = Random.Range(vertical.x, vertical.y);
 
+        path.destination = nextTarget;
     }
 }

@@ -125,7 +125,7 @@ public class Damageable : MonoBehaviour
                 case Damageables.MiniBoss:
                     float scale = startScale * (((float)health / ((float)maxHealth * 2)) + .5f);
                     transform.localScale = new Vector3(scale, scale, 1);
-                    this.gameObject.GetComponent<MiniBoss>().UpdateSpawnTime((float)health / (float)maxHealth);
+                    this.gameObject.GetComponent<MiniBoss>().UpdateVars((float)health / (float)maxHealth);
                     break;
                 default:
                     break;
@@ -163,16 +163,19 @@ public class Damageable : MonoBehaviour
             case Damageables.Player:
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 break;
-            case Damageables.MiniBoss:
+            
             case Damageables.Enemy:
                 this.gameObject.GetComponent<Enemy>().Death();
                 break;
             case Damageables.Spawner:
                 this.gameObject.GetComponent<EnemySpawner>().Death();
                 break;
-            default:
+            case Damageables.Trash:
                 //Recalculates the Astar grid at the position of this object
                 AstarPath.active.UpdateGraphs(gameObject.GetComponent<Collider2D>().bounds);
+                Destroy(this.gameObject);
+                break;
+            default:
                 Destroy(this.gameObject);
                 break;
         }
