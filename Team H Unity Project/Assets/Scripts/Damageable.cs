@@ -6,11 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class Damageable : MonoBehaviour
 {
-<<<<<<< Updated upstream
     enum Damageables {Unassigned, Enemy, Player, Trash, Spawner, MiniBoss};
 
     public int maxHealth;
-    public int health;
     public int armor;
     [SerializeField] private float iFrameTime;
     [SerializeField] private Damageables type;
@@ -20,9 +18,7 @@ public class Damageable : MonoBehaviour
     [HideInInspector] public RoomManager room;
 
     [SerializeField] private PlayerSpriteManager playerSpriteManager;
-=======
     [SerializeField] public int health;
->>>>>>> Stashed changes
 
     // Start is called before the first frame update
     void Start()
