@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour
     
     [Header("Spawn Settings")]
     [SerializeField] public float spawnTimer;
+    [SerializeField] public float spawnOffset = 0;
     [SerializeField] private GameObject enemy;
     [SerializeField] private bool offWhenRoomClean;
     public bool decreaseSpawnTime;
@@ -22,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = spawnTimer;
+        timer = spawnTimer - spawnOffset;
         enemiesSpawned = 0;
 
         if(room == null)
