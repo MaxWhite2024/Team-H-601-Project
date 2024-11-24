@@ -6,28 +6,28 @@ using Pathfinding;
 public class Enemy : MonoBehaviour
 {
     [Header("Movement Vars")]
-    [SerializeField] private float speed;
-    [SerializeField] private bool canMove;
+    [SerializeField] protected float speed;
+    public bool canMove;
     //[SerializeField] private float stepTime; //Time between steps, only used in old pathfinding
 
     [Header("Player + EnemyRB")]
-    [SerializeField] private GameObject player;
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] protected GameObject player;
+    [SerializeField] protected Rigidbody2D rb;
 
     [Header("Debug Vars")]
     public EnemySpawner spawner;
     public RoomManager room;
 
     //public bool spawned = true;
-    private Vector3 playerPos;
-    private Vector3 distance;
-    private float timer;
+    protected Vector3 playerPos;
+    protected Vector3 distance;
+    //protected float timer; //Only used in old pathfinding
 
     //Astar vars
-    private AIPath path;
+    protected AIPath path;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
 
         //Gets player, room, and rb if not assigned through inspector
@@ -44,22 +44,24 @@ public class Enemy : MonoBehaviour
             room = transform.parent.gameObject.GetComponent<RoomManager>();
         }
 
-        path = GetComponent<AIPath>();
+        if(canMove)
+        {
+            path = GetComponent<AIPath>();
+            path.maxSpeed = speed;
+        }
 
         //playerPos = player.transform.position; - technically a useless call??
-        path.maxSpeed = speed;
         //timer = stepTime;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(!canMove)
+        if (!canMove)
         {
             return;
         }
 
-        playerPos = player.transform.position;
         path.destination = playerPos;
 
         #region old pathing
@@ -76,6 +78,11 @@ public class Enemy : MonoBehaviour
             timer = stepTime;
         }*/
         #endregion
+    }
+
+    protected void UpdatePlayerPos()
+    {
+        playerPos = player.transform.position;
     }
 
     /// <summary>

@@ -142,12 +142,16 @@ public class Damageable : MonoBehaviour
             switch (type)
             {
                 case Damageables.Enemy:
+                    if(!this.gameObject.GetComponent<Enemy>().canMove) //No knockback if enemy can't move
+                    {
+                        return;
+                    }
                     knockbackAngle = -1 * (collider.gameObject.transform.position - this.gameObject.transform.position);
-                    this.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackAngle.normalized * (armor-damage.damage) * 1000);
+                    this.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackAngle.normalized * (armor-damage.damage) * 1000 * -1);
                     break;
                 case Damageables.Player:
                     knockbackAngle = -1 * (collider.gameObject.transform.position - this.gameObject.transform.position);
-                    this.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackAngle.normalized * (armor-damage.damage) * 500);
+                    this.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackAngle.normalized * (armor-damage.damage) * 500 * -1);
                     break;
                 case Damageables.MiniBoss:
                     float scale = startScale * (((float)health / ((float)maxHealth * 2)) + .5f);
