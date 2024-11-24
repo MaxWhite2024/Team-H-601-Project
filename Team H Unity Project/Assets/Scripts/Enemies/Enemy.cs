@@ -27,11 +27,16 @@ public class Enemy : MonoBehaviour
     protected AIPath path;
 
     // Start is called before the first frame update
-    protected void Start()
+    void Start()
     {
+        //This is so children can declare all the vars needed
+        DeclareVars();
+    }
 
+    protected void DeclareVars()
+    {
         //Gets player, room, and rb if not assigned through inspector
-        if(!player)
+        if (!player)
         {
             player = GameObject.Find("Players");
         }
@@ -44,7 +49,7 @@ public class Enemy : MonoBehaviour
             room = transform.parent.gameObject.GetComponent<RoomManager>();
         }
 
-        if(canMove)
+        if (canMove)
         {
             path = GetComponent<AIPath>();
             path.maxSpeed = speed;

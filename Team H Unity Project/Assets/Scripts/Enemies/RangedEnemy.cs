@@ -6,7 +6,6 @@ public class RangedEnemy : Enemy
 {
     [Header("Projectile Stuff")]
     [SerializeField] private GameObject projectile;
-    [SerializeField] private float projectileSpeed;
     [SerializeField] public float attackTimer;
 
     [Header("Projectile Debug Vars")]
@@ -17,7 +16,7 @@ public class RangedEnemy : Enemy
     {
         timer = attackTimer;
 
-        base.Start();
+        base.DeclareVars();
     }
 
     // Update is called once per frame
