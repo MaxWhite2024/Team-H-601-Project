@@ -50,7 +50,7 @@ public class Door : MonoBehaviour
                 if(!enterRoom.GetComponent<RoomManager>().roomClean)
                 {
                     Close();
-                    player.GetComponent<Damageable>().health = player.GetComponent<Damageable>().maxHealth;
+                    //player.GetComponent<Damageable>().health = player.GetComponent<Damageable>().maxHealth; //Heals players on entering new room
                 }
 
             }
