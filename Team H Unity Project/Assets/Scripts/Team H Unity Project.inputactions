@@ -565,6 +565,51 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "debugInvul",
+                    "type": "Button",
+                    "id": "513c054e-8b51-4704-bbbf-3a7b6c3fadcc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "debugKillEnemies",
+                    "type": "Button",
+                    "id": "ff8f2c3b-a376-4f75-a0e5-61ebc3e8af50",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "debugHeal",
+                    "type": "Button",
+                    "id": "bfc8547a-c91c-4732-9cc4-4630b8af8f90",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "debugOpen",
+                    "type": "Button",
+                    "id": "73e0c2a7-1c24-4150-be31-88645586b4ae",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "debugUnlimitedAmmo",
+                    "type": "Button",
+                    "id": "c48ac06f-02f1-4039-b58a-d9e8a2b54ea6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -774,6 +819,61 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Next Attack Type",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e89ba501-6910-4493-9457-fabf73d1d8ef",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "debugInvul",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f731cb51-930b-4155-a981-13dd67a689c1",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "debugKillEnemies",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9a387561-3dc0-4497-a7d2-cf3200e804db",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "debugHeal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "63dd31e3-93a1-41c9-92b5-84d741f2dfe1",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "debugOpen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ac96e8c3-7553-4f69-8182-28f8aa6e20df",
+                    "path": "<Keyboard>/u",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "debugUnlimitedAmmo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

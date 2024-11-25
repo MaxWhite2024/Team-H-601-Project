@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5061495762136108037}
   - component: {fileID: 6391768355133209792}
   - component: {fileID: 2494213612536732334}
+  - component: {fileID: 6805367522625027477}
   m_Layer: 3
   m_Name: Players
   m_TagString: Untagged
@@ -262,6 +263,7 @@ MonoBehaviour:
   healthPickup: {fileID: 0}
   room: {fileID: 0}
   playerSpriteManager: {fileID: 2494213612536732334}
+  bossSpriteManager: {fileID: 0}
 --- !u!114 &2494213612536732334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,6 +306,18 @@ MonoBehaviour:
   maxVignetteAlpha: 0.5
   vignetteFadeDuration: 0.6
   damageHitStopTime: 0.6
+--- !u!114 &6805367522625027477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73474973282886379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2200e0f5659ed9c4b8b5acb44fe430dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &610750069560181508
 GameObject:
   m_ObjectHideFlags: 0
