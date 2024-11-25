@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 5263086027457687259}
   - component: {fileID: 5259773209165945196}
   - component: {fileID: 3919374294201013576}
+  - component: {fileID: 6902684544733372930}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -223,11 +224,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 2
   armor: 0
+  health: 2
   iFrameTime: 0.25
   type: 0
+  dropHealth: 0
+  healthPickup: {fileID: 0}
   room: {fileID: 0}
   playerSpriteManager: {fileID: 0}
-  health: 2
 --- !u!114 &6308125006339560893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
+  healing: 0
 --- !u!58 &3357971548406643286
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -373,3 +377,15 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 1
   constrainInsideGraph: 0
+--- !u!114 &6902684544733372930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6721093072881008051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4495229ff78995148961dd4fd241892e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
