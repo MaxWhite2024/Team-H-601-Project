@@ -43,12 +43,14 @@ public class PlayerSpriteManager : MonoBehaviour
     [SerializeField] private SpriteRenderer p1Pip1Renderer;
     [SerializeField] private SpriteRenderer p1Pip2Renderer;
     [SerializeField] private SpriteRenderer p1Pip3Renderer;
+    private Vector3 p1PipOriginalScale;
 
     [Header("P2 Pip Variables")]
     private Color fadedP2PipColor;
     [SerializeField] private SpriteRenderer p2Pip1Renderer;
     [SerializeField] private SpriteRenderer p2Pip2Renderer;
     [SerializeField] private SpriteRenderer p2Pip3Renderer;
+    private Vector3 p2PipOriginalScale;
 
     [Header("Invulnerable Flash Variables")]
     [SerializeField] private float invulFlashMinAlpha;
@@ -78,9 +80,15 @@ public class PlayerSpriteManager : MonoBehaviour
         fadedP1PipColor = Color.white;
         fadedP1PipColor.a = 0.2f;
 
+        //save orignal scale of p1 pips
+        p1PipOriginalScale = p1Pip1Renderer.gameObject.transform.localScale;
+
         //define fadedP2PipColor as white with 0.2 alpha
         fadedP2PipColor = Color.white;
         fadedP2PipColor.a = 0.2f;
+
+        //save orignal scale of p2 pips
+        p2PipOriginalScale = p2Pip1Renderer.gameObject.transform.localScale;
 
         //make note of player's original color
         originalPlayerCharacterColor = playerSpriteRenderer.color;
@@ -286,6 +294,12 @@ public class PlayerSpriteManager : MonoBehaviour
                 p1Pip1Renderer.color = fadedP1PipColor;
                 p1Pip2Renderer.color = fadedP1PipColor;
                 p1Pip3Renderer.color = fadedP1PipColor;
+
+                //scale up pip1 over time and shrink pip2 and pip3
+                p1Pip1Renderer.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, p1PipOriginalScale, playerMovementAndAttack.tempP1AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
+                p1Pip2Renderer.gameObject.transform.localScale = Vector3.zero;
+                p1Pip3Renderer.gameObject.transform.localScale = Vector3.zero;
+
                 break;
 
             //P1 was 1 ammo
@@ -296,6 +310,12 @@ public class PlayerSpriteManager : MonoBehaviour
                 //fade 2 higher pips
                 p1Pip2Renderer.color = fadedP1PipColor;
                 p1Pip3Renderer.color = fadedP1PipColor;
+
+                //scale up pip2 over time and shrink pip3
+                p1Pip1Renderer.gameObject.transform.localScale = p1PipOriginalScale;
+                p1Pip2Renderer.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, p1PipOriginalScale, playerMovementAndAttack.tempP1AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
+                p1Pip3Renderer.gameObject.transform.localScale = Vector3.zero;
+
                 break;
 
             //P1 was 2 ammo
@@ -306,6 +326,12 @@ public class PlayerSpriteManager : MonoBehaviour
 
                 //fade 1 higher pip
                 p1Pip3Renderer.color = fadedP1PipColor;
+
+                //scale up pip3 over time
+                p1Pip1Renderer.gameObject.transform.localScale = p1PipOriginalScale;
+                p1Pip2Renderer.gameObject.transform.localScale = p1PipOriginalScale;
+                p1Pip3Renderer.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, p1PipOriginalScale, playerMovementAndAttack.tempP1AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
+
                 break;
 
             //P1 was 3 ammo
@@ -314,6 +340,12 @@ public class PlayerSpriteManager : MonoBehaviour
                 p1Pip1Renderer.color = Color.white;
                 p1Pip2Renderer.color = Color.white;
                 p1Pip3Renderer.color = Color.white;
+
+                //keep all pips at original scale
+                p1Pip1Renderer.gameObject.transform.localScale = p1PipOriginalScale;
+                p1Pip2Renderer.gameObject.transform.localScale = p1PipOriginalScale;
+                p1Pip3Renderer.gameObject.transform.localScale = p1PipOriginalScale;
+
                 break;
         }
         #endregion
@@ -328,6 +360,12 @@ public class PlayerSpriteManager : MonoBehaviour
                 p2Pip1Renderer.color = fadedP2PipColor;
                 p2Pip2Renderer.color = fadedP2PipColor;
                 p2Pip3Renderer.color = fadedP2PipColor;
+
+                //scale up pip1 over time and shrink pip2 and pip3
+                p2Pip1Renderer.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, p2PipOriginalScale, playerMovementAndAttack.tempP2AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
+                p2Pip2Renderer.gameObject.transform.localScale = Vector3.zero;
+                p2Pip3Renderer.gameObject.transform.localScale = Vector3.zero;
+
                 break;
 
             //P1 was 1 ammo
@@ -338,6 +376,12 @@ public class PlayerSpriteManager : MonoBehaviour
                 //fade 2 higher pips
                 p2Pip2Renderer.color = fadedP2PipColor;
                 p2Pip3Renderer.color = fadedP2PipColor;
+
+                //scale up pip2 over time and shrink pip3
+                p2Pip1Renderer.gameObject.transform.localScale = p2PipOriginalScale;
+                p2Pip2Renderer.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, p2PipOriginalScale, playerMovementAndAttack.tempP2AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
+                p2Pip3Renderer.gameObject.transform.localScale = Vector3.zero;
+
                 break;
 
             //P1 was 2 ammo
@@ -348,6 +392,12 @@ public class PlayerSpriteManager : MonoBehaviour
 
                 //fade 1 higher pip
                 p2Pip3Renderer.color = fadedP2PipColor;
+
+                //scale up pip3 over time
+                p2Pip1Renderer.gameObject.transform.localScale = p2PipOriginalScale;
+                p2Pip2Renderer.gameObject.transform.localScale = p2PipOriginalScale;
+                p2Pip3Renderer.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, p2PipOriginalScale, playerMovementAndAttack.tempP2AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
+
                 break;
 
             //P1 was 3 ammo
@@ -356,6 +406,12 @@ public class PlayerSpriteManager : MonoBehaviour
                 p2Pip1Renderer.color = Color.white;
                 p2Pip2Renderer.color = Color.white;
                 p2Pip3Renderer.color = Color.white;
+
+                //keep all pips at original scale
+                p2Pip1Renderer.gameObject.transform.localScale = p2PipOriginalScale;
+                p2Pip2Renderer.gameObject.transform.localScale = p2PipOriginalScale;
+                p2Pip3Renderer.gameObject.transform.localScale = p2PipOriginalScale;
+
                 break;
         }
         #endregion
@@ -376,8 +432,6 @@ public class PlayerSpriteManager : MonoBehaviour
 
         //start vignetteFadeDuration
         vignetteFadeTimer = 0f;
-
-
     }
 
     //***** Makes the player stop flashing between transparent and opaque to signify they are no longer invulnerable *****
