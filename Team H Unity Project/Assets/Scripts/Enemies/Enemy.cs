@@ -67,6 +67,7 @@ public class Enemy : MonoBehaviour
             return;
         }
 
+        UpdatePlayerPos();
         path.destination = playerPos;
 
         #region old pathing
