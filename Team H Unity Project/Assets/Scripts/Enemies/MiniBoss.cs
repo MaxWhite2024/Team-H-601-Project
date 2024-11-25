@@ -67,19 +67,33 @@ public class MiniBoss : MonoBehaviour
             }
         }
 
-        if(transform.position == nextTarget)
+        if(ReachTarget())
         {
             SetPath();
         }
     }
 
+    private bool ReachTarget()
+    {
+
+        if(transform.position.x <= nextTarget.x +.1 && transform.position.x >= nextTarget.x - .1) //If the x is within .1 of the target x
+        {
+            if (transform.position.y <= nextTarget.y + .1 && transform.position.y >= nextTarget.y - .1) //If the y is within .1 of the target y
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void UpdateVars(float healthPercent)
     {
-        Debug.Log(healthPercent);
+        //Debug.Log(healthPercent);
         currentSpawnTimer = (spawnWiggleRoom * healthPercent) + minSpawnTimer;
         currentSpeed = (speedWiggleRoom * (1-healthPercent)) + speedMin;
         path.maxSpeed = currentSpeed;
-        Debug.Log(currentSpeed);
+        //Debug.Log(currentSpeed);
     }
 
     public void SetPath()

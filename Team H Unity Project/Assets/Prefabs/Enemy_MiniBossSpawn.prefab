@@ -109,7 +109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3221990833745314391}
   - component: {fileID: 5128381500765606462}
-  - component: {fileID: 2558388615955554361}
+  - component: {fileID: 1847676026371534556}
   - component: {fileID: 3567012921864464182}
   - component: {fileID: 6308125006339560893}
   - component: {fileID: 3357971548406643286}
@@ -191,7 +191,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2558388615955554361
+--- !u!114 &1847676026371534556
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -200,15 +200,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 6721093072881008051}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9586d952ca5aebb4c9ea3000f356da76, type: 3}
+  m_Script: {fileID: 11500000, guid: 01003230d70dcca43a73b3ac7c67994f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1.5
   canMove: 1
   player: {fileID: 0}
   rb: {fileID: 5263086027457687259}
   spawner: {fileID: 0}
   room: {fileID: 0}
+  horizontal: {x: -5, y: 5}
+  vertical: {x: 10, y: 15}
+  nextTarget: {x: 0, y: 0, z: 0}
 --- !u!114 &3567012921864464182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,11 +225,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
-  health: 1
   armor: 0
+  health: 1
   iFrameTime: 0
   type: 0
+  dropHealth: 0
+  healthPickup: {fileID: 0}
   room: {fileID: 0}
+  playerSpriteManager: {fileID: 0}
 --- !u!114 &6308125006339560893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  healing: 0
 --- !u!58 &3357971548406643286
 CircleCollider2D:
   m_ObjectHideFlags: 0
