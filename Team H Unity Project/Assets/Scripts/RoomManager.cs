@@ -28,6 +28,7 @@ public class RoomManager : MonoBehaviour
     public List<Damageable> damageables;
     public bool roomClean;
     [SerializeField] private HouseManager house;
+    private float cleanTimer = 5;
 
     // Start is called before the first frame update
     private void Start()
@@ -104,28 +105,16 @@ public class RoomManager : MonoBehaviour
                 }
             }
             house.RoomsClean();
+
+            return;
         }
 
-        //If the enemies list is empty and the room doesn't need to be full cleared, OR if the damageables list is empty
-        switch (fullClear)
-        {
-            case true:
-                if (damageables.Count <= 0)
-                {
-                    roomClean = true;
-                }
-                break;
-            default:
-                if (enemies.Count <= 0)
-                {
-                    roomClean = true;
-                }
-                break;
-        }
+        RoomClean();
 
         //Counts up to decreaseSpawnRateRate, once timeInRoom reachest that if goes through each spawner to see if they spawn faster over time
         //If they do spawn faster over time, their rate is decreased by decreaseSpawnRateAmount as long as the spawnrate is > decreaseSpawnRateMinimum
         timeInRoom += Time.deltaTime;
+        cleanTimer -= Time.deltaTime;
         if (timeInRoom > decreaseSpawnRateRate)
         {
             foreach (EnemySpawner spawner in spawners)
@@ -143,5 +132,60 @@ public class RoomManager : MonoBehaviour
 
             timeInRoom -= decreaseSpawnRateRate;
         }
+
+        if(cleanTimer <= 0)
+        {
+            ForceCheckClean();
+            cleanTimer = 1;
+        }
+    }
+
+    public void ForceCheckClean()
+    {
+        if (fullClear)
+        {
+            for(int i = 0; i < damageables.Count; i++)
+            {
+                if (damageables[i] == null)
+                {
+                    damageables.Remove(damageables[i]);
+                    i--;
+                }
+            }
+
+            return;
+        }
+
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i] == null)
+            {
+                enemies.Remove(enemies[i]);
+                i--;
+            }
+        }
+    }
+
+    public bool RoomClean()
+    {
+        //If the enemies list is empty and the room doesn't need to be full cleared, OR if the damageables list is empty
+
+        switch (fullClear)
+        {
+            case true:
+                if (damageables.Count <= 0)
+                {
+                    roomClean = true;
+                }
+                break;
+            default:
+                if (enemies.Count <= 0)
+                {
+                    roomClean = true;
+                }
+                break;
+        }
+
+        return roomClean;
     }
 }
