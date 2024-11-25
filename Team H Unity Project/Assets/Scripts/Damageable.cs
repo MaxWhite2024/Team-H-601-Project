@@ -22,7 +22,9 @@ public class Damageable : MonoBehaviour
     private float startScale;
     [HideInInspector] public RoomManager room;
 
+    [Header("Player and Miniboss variables")]
     [SerializeField] private PlayerSpriteManager playerSpriteManager;
+    [SerializeField] private BossSpriteManager bossSpriteManager;
 
     // Start is called before the first frame update
     void Start()
@@ -59,17 +61,23 @@ public class Damageable : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //if invisibility timer has NOT yet elapsed,...
+        //if invulnerability timer has NOT yet elapsed,...
         if (timer > 0)
         {
             //decrement timer
             timer -= Time.fixedDeltaTime;
         }
-        //else invisibility timer has elapsed AND gameobject is the player,...
+        //else invulnerability timer has elapsed AND gameobject is the player,...
         else if (type == Damageables.Player)
         {
             //end player damage VFX
             playerSpriteManager.EndPlayerInvulFlashVFX();
+        }
+        //else invulnerability timer has elapsed AND gameobject is a mini-boss,...
+        else if (type == Damageables.MiniBoss)
+        {
+            //end boss damage VFX
+            bossSpriteManager.EndInvulFlashVFX();
         }
     }
 
@@ -128,6 +136,12 @@ public class Damageable : MonoBehaviour
             {
                 //start player damage VFX
                 playerSpriteManager.StartPlayerDamageVFX();
+            }
+            //else if gameobject is a miniboss,...
+            else if(type == Damageables.MiniBoss)
+            {
+                //start boss damage VFX
+                bossSpriteManager.StartInvulFlashVFX();
             }
             
 

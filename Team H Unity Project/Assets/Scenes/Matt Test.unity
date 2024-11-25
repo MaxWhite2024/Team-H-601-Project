@@ -2085,6 +2085,10 @@ PrefabInstance:
       propertyPath: horizontal.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4511778500165211178, guid: 34dd33d3ad7e086478e375f9d10376ec, type: 3}
+      propertyPath: iFrameTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5169228249115891467, guid: 34dd33d3ad7e086478e375f9d10376ec, type: 3}
       propertyPath: m_Name
       value: Enemy_MiniBoss
