@@ -57,6 +57,8 @@ public class PlayerAmmoUI : MonoBehaviour
         P1AmmoRechargeSlider.value = playerMovementAndAttack.tempP1AmmoRechargeTime;
         P2AmmoRechargeSlider.value = playerMovementAndAttack.tempP2AmmoRechargeTime;
 
+        #region P1 Ammo Images
+
         //compare P1's ammo
         switch (playerMovementAndAttack.p1Ammo)
         {
@@ -121,6 +123,10 @@ public class PlayerAmmoUI : MonoBehaviour
                 break;
         }
 
+        #endregion
+
+        #region P2 Ammo Images
+
         //compare P2's ammo
         switch (playerMovementAndAttack.p2Ammo)
         {
@@ -132,13 +138,13 @@ public class PlayerAmmoUI : MonoBehaviour
                 p2Pip3Image.color = fadedP2PipColor;
 
                 //scale up pip1 over time and shrink pip2 and pip3
-                p2Pip1Image.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, p2ImageOriginalScale, playerMovementAndAttack.tempP1AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
+                p2Pip1Image.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, p2ImageOriginalScale, playerMovementAndAttack.tempP2AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
                 p2Pip2Image.gameObject.transform.localScale = Vector3.zero;
                 p2Pip3Image.gameObject.transform.localScale = Vector3.zero;
 
                 break;
 
-            //P1 was 1 ammo
+            //P2 was 1 ammo
             case 1:
                 //intensify lower pip
                 p2Pip1Image.color = Color.white;
@@ -149,12 +155,12 @@ public class PlayerAmmoUI : MonoBehaviour
 
                 //scale up pip2 over time and shrink pip3
                 p2Pip1Image.gameObject.transform.localScale = p2ImageOriginalScale;
-                p2Pip2Image.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, p2ImageOriginalScale, playerMovementAndAttack.tempP1AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
+                p2Pip2Image.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, p2ImageOriginalScale, playerMovementAndAttack.tempP2AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
                 p2Pip3Image.gameObject.transform.localScale = Vector3.zero;
 
                 break;
 
-            //P1 was 2 ammo
+            //P2 was 2 ammo
             case 2:
                 //intensify 2 lower pips
                 p2Pip1Image.color = Color.white;
@@ -166,11 +172,11 @@ public class PlayerAmmoUI : MonoBehaviour
                 //scale up pip3 over time
                 p2Pip1Image.gameObject.transform.localScale = p2ImageOriginalScale;
                 p2Pip2Image.gameObject.transform.localScale = p2ImageOriginalScale;
-                p2Pip3Image.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, p2ImageOriginalScale, playerMovementAndAttack.tempP1AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
+                p2Pip3Image.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, p2ImageOriginalScale, playerMovementAndAttack.tempP2AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
 
                 break;
 
-            //P1 was 3 ammo
+            //P2 was 3 ammo
             case 3:
                 //intensify all 3 pips
                 p2Pip1Image.color = Color.white;
@@ -184,5 +190,7 @@ public class PlayerAmmoUI : MonoBehaviour
 
                 break;
         }
+
+        #endregion
     }
 }

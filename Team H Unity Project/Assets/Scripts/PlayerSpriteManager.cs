@@ -362,7 +362,7 @@ public class PlayerSpriteManager : MonoBehaviour
                 p2Pip3Renderer.color = fadedP2PipColor;
 
                 //scale up pip1 over time and shrink pip2 and pip3
-                p2Pip1Renderer.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, p2PipOriginalScale, playerMovementAndAttack.tempP1AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
+                p2Pip1Renderer.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, p2PipOriginalScale, playerMovementAndAttack.tempP2AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
                 p2Pip2Renderer.gameObject.transform.localScale = Vector3.zero;
                 p2Pip3Renderer.gameObject.transform.localScale = Vector3.zero;
 
@@ -379,7 +379,7 @@ public class PlayerSpriteManager : MonoBehaviour
 
                 //scale up pip2 over time and shrink pip3
                 p2Pip1Renderer.gameObject.transform.localScale = p2PipOriginalScale;
-                p2Pip2Renderer.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, p2PipOriginalScale, playerMovementAndAttack.tempP1AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
+                p2Pip2Renderer.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, p2PipOriginalScale, playerMovementAndAttack.tempP2AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
                 p2Pip3Renderer.gameObject.transform.localScale = Vector3.zero;
 
                 break;
@@ -396,7 +396,7 @@ public class PlayerSpriteManager : MonoBehaviour
                 //scale up pip3 over time
                 p2Pip1Renderer.gameObject.transform.localScale = p2PipOriginalScale;
                 p2Pip2Renderer.gameObject.transform.localScale = p2PipOriginalScale;
-                p2Pip3Renderer.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, p2PipOriginalScale, playerMovementAndAttack.tempP1AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
+                p2Pip3Renderer.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, p2PipOriginalScale, playerMovementAndAttack.tempP2AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
 
                 break;
 
