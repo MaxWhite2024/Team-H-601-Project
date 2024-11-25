@@ -43,6 +43,7 @@ public class PlayerSpriteManager : MonoBehaviour
     [SerializeField] private SpriteRenderer p1Pip1Renderer;
     [SerializeField] private SpriteRenderer p1Pip2Renderer;
     [SerializeField] private SpriteRenderer p1Pip3Renderer;
+    private Vector3 pPipOriginalScale;
 
     [Header("P2 Pip Variables")]
     private Color fadedP2PipColor;
@@ -77,6 +78,9 @@ public class PlayerSpriteManager : MonoBehaviour
         //define fadedP1PipColor as white with 0.2 alpha
         fadedP1PipColor = Color.white;
         fadedP1PipColor.a = 0.2f;
+
+        //
+        pPipOriginalScale = p1Pip1Renderer.gameObject.transform.localScale;
 
         //define fadedP2PipColor as white with 0.2 alpha
         fadedP2PipColor = Color.white;
@@ -286,6 +290,12 @@ public class PlayerSpriteManager : MonoBehaviour
                 p1Pip1Renderer.color = fadedP1PipColor;
                 p1Pip2Renderer.color = fadedP1PipColor;
                 p1Pip3Renderer.color = fadedP1PipColor;
+
+                //
+                p1Pip1Renderer.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, pPipOriginalScale, playerMovementAndAttack.tempP1AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
+                p1Pip2Renderer.gameObject.transform.localScale = Vector3.zero;
+                p1Pip3Renderer.gameObject.transform.localScale = Vector3.zero;
+
                 break;
 
             //P1 was 1 ammo
@@ -296,6 +306,12 @@ public class PlayerSpriteManager : MonoBehaviour
                 //fade 2 higher pips
                 p1Pip2Renderer.color = fadedP1PipColor;
                 p1Pip3Renderer.color = fadedP1PipColor;
+
+                //
+                p1Pip1Renderer.gameObject.transform.localScale = pPipOriginalScale;
+                p1Pip2Renderer.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, pPipOriginalScale, playerMovementAndAttack.tempP1AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
+                p1Pip3Renderer.gameObject.transform.localScale = Vector3.zero;
+
                 break;
 
             //P1 was 2 ammo
@@ -306,6 +322,12 @@ public class PlayerSpriteManager : MonoBehaviour
 
                 //fade 1 higher pip
                 p1Pip3Renderer.color = fadedP1PipColor;
+
+                //
+                p1Pip1Renderer.gameObject.transform.localScale = pPipOriginalScale;
+                p1Pip2Renderer.gameObject.transform.localScale = pPipOriginalScale;
+                p1Pip3Renderer.gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, pPipOriginalScale, playerMovementAndAttack.tempP1AmmoRechargeTime / playerMovementAndAttack.ammoRechargeTime);
+
                 break;
 
             //P1 was 3 ammo
@@ -358,6 +380,12 @@ public class PlayerSpriteManager : MonoBehaviour
                 p2Pip3Renderer.color = Color.white;
                 break;
         }
+        #endregion
+
+        #region P1 Ammmo Pip Recharge
+
+
+
         #endregion
     }
 
