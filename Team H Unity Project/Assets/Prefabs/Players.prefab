@@ -254,10 +254,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  health: 10
   armor: 0
+  health: 10
   iFrameTime: 0.6
   type: 0
+  dropHealth: 0
+  healthPickup: {fileID: 0}
   room: {fileID: 0}
   playerSpriteManager: {fileID: 2494213612536732334}
 --- !u!114 &2494213612536732334
@@ -1113,6 +1115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  healing: 0
 --- !u!61 &5144136414275370856
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1788,6 +1791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  healing: 0
 --- !u!61 &4333169715455252580
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1996,6 +2000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 3
+  healing: 0
 --- !u!60 &5851685980865653452
 PolygonCollider2D:
   m_ObjectHideFlags: 0
