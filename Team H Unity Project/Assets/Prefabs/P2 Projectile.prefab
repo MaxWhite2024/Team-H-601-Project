@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5362708713431935145, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
+      propertyPath: burstParticleGameObject
+      value: 
+      objectReference: {fileID: 7199349090860912902, guid: 805ee92bfd5f337468be8fd013183981, type: 3}
     - target: {fileID: 5574379742644334510, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
       propertyPath: m_Name
       value: P2 Projectile

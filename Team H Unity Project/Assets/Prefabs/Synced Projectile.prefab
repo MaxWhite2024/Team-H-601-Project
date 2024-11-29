@@ -96,6 +96,10 @@ PrefabInstance:
       propertyPath: canPierceEnemies
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5362708713431935145, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
+      propertyPath: burstParticleGameObject
+      value: 
+      objectReference: {fileID: 6747738213137506087, guid: 57b188e905cff3d4aa0fdec62309eeca, type: 3}
     - target: {fileID: 5574379742644334510, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
       propertyPath: m_Name
       value: Synced Projectile
