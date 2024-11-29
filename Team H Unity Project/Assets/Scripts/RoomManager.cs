@@ -30,6 +30,9 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private HouseManager house;
     private float cleanTimer = 5;
 
+    [Header("Particle System Vars")]
+    [SerializeField] private ParticleSystem particleSystem;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -105,6 +108,13 @@ public class RoomManager : MonoBehaviour
                 }
             }
             house.RoomsClean();
+
+            if(!particleSystem.isPlaying && !firstRoom)
+            {
+                //play sparkle particle system
+                particleSystem.Play();
+                Debug.Log("particle play");
+            }
 
             return;
         }
