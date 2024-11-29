@@ -113,7 +113,6 @@ public class RoomManager : MonoBehaviour
             {
                 //play sparkle particle system
                 particleSystem.Play();
-                Debug.Log("particle play");
             }
 
             return;
