@@ -6,6 +6,8 @@ using UnityEngine.UI;
 using UnityEngine.Rendering;
 using static PlayerMovementAndAttack;
 using Unity.VisualScripting;
+using static UnityEngine.Rendering.DebugUI;
+using UnityEngine.UIElements;
 
 public class PlayerSpriteManager : MonoBehaviour
 {
@@ -63,12 +65,17 @@ public class PlayerSpriteManager : MonoBehaviour
     [Header("Damage Vignette Variables")]
     [SerializeField] private float maxVignetteAlpha;
     private Color vignetteColor;
-    private Image playerDamageVignetteImage;
+    private UnityEngine.UI.Image playerDamageVignetteImage;
     [SerializeField] private float vignetteFadeDuration;
     private float vignetteFadeTimer;
 
     [Header("Damage Hitstop Variable")]
     [SerializeField] private float damageHitStopTime;
+
+    [Header("Player Particle Variables")]
+    [SerializeField] private TrailRenderer inSyncTrail;
+    [SerializeField] private ParticleSystem outSyncParticles;
+    [SerializeField] private ParticleSystem opposingParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -98,7 +105,7 @@ public class PlayerSpriteManager : MonoBehaviour
         fadedPlayerColor.a = invulFlashMinAlpha;
 
         //try to find PlayerDamageVignette
-        playerDamageVignetteImage = GameObject.Find("PlayerDamageVignette").GetComponent<Image>();
+        playerDamageVignetteImage = GameObject.Find("PlayerDamageVignette").GetComponent<UnityEngine.UI.Image>();
 
         //calculate fadedVignette
         vignetteColor = playerDamageVignetteImage.color;
@@ -415,6 +422,45 @@ public class PlayerSpriteManager : MonoBehaviour
                 break;
         }
         #endregion
+
+        #region Player Particles
+
+        //if players are moving in the same direction,...
+        if(playerMovementAndAttack.p1MoveDir == playerMovementAndAttack.p2MoveDir)
+        {
+            //if both players are not moving,...
+            if(playerMovementAndAttack.p1MoveDir == Vector2.zero)
+            {
+                //play nothing
+                StopAllPlayerParticles();
+            }
+            //else both players are moving the same direction and are non-zero,...
+            else
+            {
+                //play in-sync trail
+                PlayInSyncTrail();
+            }
+        }
+        //else if one player is not moving while the other is,...
+        else if((playerMovementAndAttack.p1MoveDir != Vector2.zero && playerMovementAndAttack.p2MoveDir == Vector2.zero) || (playerMovementAndAttack.p1MoveDir == Vector2.zero && playerMovementAndAttack.p2MoveDir != Vector2.zero))
+        {
+            //play out-sync particles
+            PlayOutSyncParticles();
+        }
+        //else if players are moving in opposing directions,...
+        else if(playerMovementAndAttack.p1MoveDir + playerMovementAndAttack.p2MoveDir == Vector2.zero)
+        {
+            //play oppising particles
+            PlayOpposingParticles();
+        }
+        //else player are moving in orthoganal directions,...
+        else
+        {
+            //play out-sync particles
+            PlayOutSyncParticles();
+        }
+
+        #endregion
     }
 
     //***** Makes the player start to flash between transparent and opaque to signify they are invulnerable *****
@@ -455,5 +501,61 @@ public class PlayerSpriteManager : MonoBehaviour
 
         //set timescale back to original time scale
         Time.timeScale = originalTimeScale;
+    }
+
+    private void PlayInSyncTrail()
+    {
+        //turn on in-sync trail
+        inSyncTrail.emitting = true;
+
+        //turn off out-sync particles
+        if (outSyncParticles.isPlaying)
+            outSyncParticles.Stop();
+
+        //turn off opposing partilces
+        if (opposingParticles.isPlaying)
+            opposingParticles.Stop();
+    }
+
+    private void PlayOutSyncParticles()
+    {
+        //turn off in-sync trail
+        inSyncTrail.emitting = false;
+
+        //turn on out-sync particles
+        if (!outSyncParticles.isPlaying)
+            outSyncParticles.Play();
+
+        //turn off opposing partilces
+        if (opposingParticles.isPlaying)
+            opposingParticles.Stop();
+    }
+
+    private void PlayOpposingParticles()
+    {
+        //turn off in-sync trail
+        inSyncTrail.emitting = false;
+
+        //turn off out-sync particles
+        if (outSyncParticles.isPlaying)
+            outSyncParticles.Stop();
+
+        //turn on opposing partilces
+        if (!opposingParticles.isPlaying)
+            opposingParticles.Play();
+    }
+
+    private void StopAllPlayerParticles()
+    {
+        //turn off in-sync trail
+        inSyncTrail.emitting = false;
+
+        //turn off out-sync particles
+        if (outSyncParticles.isPlaying)
+            outSyncParticles.Stop();
+
+        //turn off opposing partilces
+        if (opposingParticles.isPlaying)
+            opposingParticles.Stop();
     }
 }

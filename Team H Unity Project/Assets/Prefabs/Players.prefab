@@ -309,6 +309,9 @@ MonoBehaviour:
   maxVignetteAlpha: 0.5
   vignetteFadeDuration: 0.6
   damageHitStopTime: 0.6
+  inSyncTrail: {fileID: 6637684084227233222}
+  outSyncParticles: {fileID: 8613095592420308504}
+  opposingParticles: {fileID: 969226137313292484}
 --- !u!114 &6805367522625027477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7470,14 +7473,14 @@ ParticleSystem:
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 31226
+        ctime1: 16384
         ctime2: 0
         ctime3: 0
         ctime4: 0
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 0
+        atime0: 16384
         atime1: 65535
         atime2: 0
         atime3: 0

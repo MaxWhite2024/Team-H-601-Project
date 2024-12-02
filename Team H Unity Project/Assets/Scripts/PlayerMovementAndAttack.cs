@@ -9,7 +9,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [Header("DEBUG VARIABLES")]
     [SerializeField] private bool inSyncMove = false;
     [SerializeField] private Vector2 characterMoveDir;
-    [SerializeField] private Vector2 p1MoveDir, p2MoveDir;
+    public Vector2 p1MoveDir, p2MoveDir;
     [SerializeField] private bool p1IsAttacking = false, p2IsAttacking = false;
 
     [Header("Movement Options")]
