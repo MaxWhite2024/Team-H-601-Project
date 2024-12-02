@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9892d5b9bd021498f240854ffcd569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 4
+  damage: 3
   healing: 0
 --- !u!58 &3357971548406643286
 CircleCollider2D:

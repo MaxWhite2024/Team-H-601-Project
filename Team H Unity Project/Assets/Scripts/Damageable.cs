@@ -192,7 +192,7 @@ public class Damageable : MonoBehaviour
         CollisionLogic(collider);
     }
 
-    private void Death()
+    public void Death()
     {
         //reset Time.timeScale
         Time.timeScale = 1f;

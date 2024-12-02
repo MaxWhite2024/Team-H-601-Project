@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1808796167490377895}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Spawn2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2650721125619139127}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Spawn6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6719127802281203646}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Spawn4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4182190683624855192}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Spawn7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1399815928499449139}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: SpawnLocations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 6881873359489112781}
   - component: {fileID: 1033154420033744338}
   - component: {fileID: 5292554769401332116}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1618041786367359150}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Spawn8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 2408854146701322545}
   - component: {fileID: 8090722024369992509}
   - component: {fileID: 6031543040171357506}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Enemy_MiniBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,12 +400,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpawnTimer: 5
-  minSpawnTimer: 2
+  minSpawnTimer: 1.5
   enemy: {fileID: 6721093072881008051, guid: d32e208e0f731da4389d12e00aa27eae, type: 3}
   horizontal: {x: 0, y: 0}
   vertical: {x: 0, y: 0}
-  speedMin: 1
-  speedMax: 4
+  speedMin: 0.5
+  speedMax: 5
   spawnLocations:
   - {fileID: 5291364124023308937}
   - {fileID: 1808796167490377895}
@@ -434,7 +434,7 @@ MonoBehaviour:
   maxHealth: 10
   armor: 1
   health: 10
-  iFrameTime: 0.5
+  iFrameTime: 0.7
   type: 5
   dropHealth: 0
   healthPickup: {fileID: 0}
@@ -611,7 +611,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 821845970064143973}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Spawn3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -642,7 +642,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5291364124023308937}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Spawn1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -673,7 +673,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7874074473937792754}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Spawn5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
