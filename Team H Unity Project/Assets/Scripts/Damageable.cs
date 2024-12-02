@@ -30,7 +30,7 @@ public class Damageable : MonoBehaviour
     void Start()
     {
         startScale = transform.localScale.x;
-        timer = iFrameTime;
+        timer = 0;
         if (room == null && transform.parent != null)
         {
             room = transform.parent.gameObject.GetComponent<RoomManager>();
