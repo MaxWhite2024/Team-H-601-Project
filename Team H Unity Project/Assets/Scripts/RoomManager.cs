@@ -28,7 +28,7 @@ public class RoomManager : MonoBehaviour
     public List<Damageable> damageables;
     public bool roomClean;
     [SerializeField] private HouseManager house;
-    private float cleanTimer = 5;
+    private float cleanTimer = 10;
 
     // Start is called before the first frame update
     private void Start()
@@ -97,15 +97,6 @@ public class RoomManager : MonoBehaviour
         //Activate each door when room is clean
         if (roomClean)
         {
-            foreach (Door door in doors)
-            {
-                if (!door.open)
-                {
-                    door.Open();
-                }
-            }
-            house.RoomsClean();
-
             return;
         }
 
@@ -135,14 +126,14 @@ public class RoomManager : MonoBehaviour
 
         if(cleanTimer <= 0)
         {
-            ForceCheckClean();
+            PurgeNulls();
             cleanTimer = 2;
         }
     }
 
-    public void ForceCheckClean()
+    public void PurgeNulls(bool full = false)
     {
-        if (fullClear)
+        if (fullClear || full)
         {
             for(int i = 0; i < damageables.Count; i++)
             {
@@ -184,6 +175,28 @@ public class RoomManager : MonoBehaviour
                     roomClean = true;
                 }
                 break;
+        }
+
+        if(roomClean)
+        {
+            foreach (Door door in doors)
+            {
+                if (!door.open)
+                {
+                    door.Open();
+                }
+            }
+
+            if(!fullClear)
+            {
+                PurgeNulls(true);
+                while (damageables.Count > 0)
+                {
+                    damageables[0].Death();
+                }
+            }
+
+            house.RoomsClean();
         }
 
         return roomClean;
