@@ -222,7 +222,7 @@ public class RoomManager : MonoBehaviour
     /// <summary>
     /// Destroys every damagable in the room
     /// </summary>
-    public void DebugClearRoom()
+    public void DebugClear()
     {
         for (int i = 0; i < damageables.Count; i++)
         {
@@ -238,7 +238,10 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    public void ForceCleanRoom()
+    /// <summary>
+    /// Forces the room to be marked as clean
+    /// </summary>
+    public void DebugCleanRoom()
     {
         RoomCleanCheck(true);
     }
