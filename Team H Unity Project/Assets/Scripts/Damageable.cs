@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Damageable : MonoBehaviour
 {
-    enum Damageables {Unassigned, Enemy, Player, Trash, Spawner, MiniBoss};
+    enum Damageables { Unassigned, Enemy, Player, Trash, Spawner, MiniBoss };
 
     public int maxHealth;
     public int armor;
@@ -17,7 +17,7 @@ public class Damageable : MonoBehaviour
     [Header("Health Pickups")]
     [SerializeField] private bool dropHealth = false;
     [SerializeField] private GameObject healthPickup;
-    
+
     private float timer;
     private float startScale;
     [HideInInspector] public RoomManager room;
@@ -36,7 +36,7 @@ public class Damageable : MonoBehaviour
             room = transform.parent.gameObject.GetComponent<RoomManager>();
         }
 
-        if(type == Damageables.Unassigned)
+        if (type == Damageables.Unassigned)
         {
             if (this.gameObject.GetComponent<PlayerMovementAndAttack>() != null)
             {
@@ -95,7 +95,7 @@ public class Damageable : MonoBehaviour
 
         DamageSource damage = collider.gameObject.GetComponent<DamageSource>();
 
-        if(damage == null)
+        if (damage == null)
         {
             return;
         }
@@ -109,7 +109,7 @@ public class Damageable : MonoBehaviour
             }
             health += damage.damage;
 
-            if(health > maxHealth)
+            if (health > maxHealth)
             {
                 health = maxHealth;
             }
@@ -121,7 +121,7 @@ public class Damageable : MonoBehaviour
         //If there is damage coming in AND the iFrames ran out
         if (timer <= 0)
         {
-            if(armor >= damage.damage)
+            if (armor >= damage.damage)
             {
                 return;
             }
@@ -132,18 +132,18 @@ public class Damageable : MonoBehaviour
             health = health + armor - damage.damage;
 
             //if gameobject is the player,...
-            if(type == Damageables.Player)
+            if (type == Damageables.Player)
             {
                 //start player damage VFX
                 playerSpriteManager.StartPlayerDamageVFX();
             }
             //else if gameobject is a miniboss,...
-            else if(type == Damageables.MiniBoss)
+            else if (type == Damageables.MiniBoss)
             {
                 //start boss damage VFX
                 bossSpriteManager.StartInvulFlashVFX();
             }
-            
+
 
             //Death methods
             if (health <= 0)
@@ -156,16 +156,16 @@ public class Damageable : MonoBehaviour
             switch (type)
             {
                 case Damageables.Enemy:
-                    if(!this.gameObject.GetComponent<Enemy>().canMove) //No knockback if enemy can't move
+                    if (!this.gameObject.GetComponent<Enemy>().canMove) //No knockback if enemy can't move
                     {
                         return;
                     }
                     knockbackAngle = -1 * (collider.gameObject.transform.position - this.gameObject.transform.position);
-                    this.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackAngle.normalized * (armor-damage.damage) * 1000 * -1);
+                    this.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackAngle.normalized * (armor - damage.damage) * 1000 * -1);
                     break;
                 case Damageables.Player:
                     knockbackAngle = -1 * (collider.gameObject.transform.position - this.gameObject.transform.position);
-                    this.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackAngle.normalized * (armor-damage.damage) * 500 * -1);
+                    this.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackAngle.normalized * (armor - damage.damage) * 500 * -1);
                     break;
                 case Damageables.MiniBoss:
                     float scale = startScale * (((float)health / ((float)maxHealth * 2)) + .5f);
@@ -180,11 +180,11 @@ public class Damageable : MonoBehaviour
 
     private void CollisionStayCheck(Collider2D collider)
     {
-        if(type != Damageables.Player) //Enemies should not be able to take damage from the same projectile
+        if (type != Damageables.Player) //Enemies should not be able to take damage from the same projectile
         {
             return;
         }
-        if(timer > 0)
+        if (timer > 0)
         {
             return;
         }
@@ -202,9 +202,9 @@ public class Damageable : MonoBehaviour
         {
             room.damageables.Remove(this);
 
-            if(dropHealth)
+            if (dropHealth)
             {
-                if(Random.Range(0, 100) <= room.healthDropChance)
+                if (Random.Range(0, 100) <= room.healthDropChance)
                 {
                     Instantiate(healthPickup, transform.position, transform.rotation, transform.parent);
                 }
@@ -216,7 +216,7 @@ public class Damageable : MonoBehaviour
             case Damageables.Player:
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 break;
-            
+
             case Damageables.Enemy:
                 this.gameObject.GetComponent<Enemy>().Death();
                 break;
@@ -232,6 +232,12 @@ public class Damageable : MonoBehaviour
                 Destroy(this.gameObject);
                 break;
         }
+    }
+
+    public void HealPlayer()
+    {
+        //heal player to maxHealth
+        health = maxHealth;
     }
 
     private void OnCollisionEnter2D(Collision2D collider)

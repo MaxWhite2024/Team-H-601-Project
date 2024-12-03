@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DebugKeys : MonoBehaviour
 {
+    [Header("Houses to Teleport Too")]
+    [SerializeField] private List<Scene> housesToTeleportTo = new List<Scene>();
+
+    [Header("")]
+    [SerializeField] private Damageable playerDamageable;
     private HouseManager houseManager;
 
     void Start()
@@ -37,6 +43,7 @@ public class DebugKeys : MonoBehaviour
     void OnDebugHeal()
     {
         //heal player to max health
+        playerDamageable.HealPlayer();
     }
 
     //when the player presses 'o',...
