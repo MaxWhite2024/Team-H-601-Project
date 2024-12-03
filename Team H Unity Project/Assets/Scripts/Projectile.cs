@@ -11,6 +11,9 @@ public class Projectile : MonoBehaviour
     private int enemyLayer;
     private int trashLayer;
 
+    [Header("Particle System Vars")]
+    [SerializeField] private GameObject burstParticleGameObject;
+
     void Awake()
     {
         enemyLayer = LayerMask.NameToLayer("Enemy");
@@ -32,6 +35,9 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Create a burst particle system gameobject
+        Instantiate(burstParticleGameObject, gameObject.transform.position, Quaternion.identity);
+
         //destroy self
         Destroy(this.gameObject);
     }
@@ -49,6 +55,9 @@ public class Projectile : MonoBehaviour
         //else projectile CANNOT pierce enemies or touched rigidbody is NOT an enemy,...
         else
         {
+            //Create a burst particle system gameobject
+            Instantiate(burstParticleGameObject, gameObject.transform.position, Quaternion.identity);
+
             //destroy self
             Destroy(this.gameObject);
         }

@@ -30,6 +30,9 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private HouseManager house;
     private float cleanTimer = 10;
 
+    [Header("Particle System Vars")]
+    [SerializeField] private new ParticleSystem particleSystem;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -73,6 +76,10 @@ public class RoomManager : MonoBehaviour
         {
             this.gameObject.SetActive(false);
         }
+        else
+        {
+            house.activeRoom = this;
+        }
     }
 
     void OnEnable()
@@ -100,7 +107,7 @@ public class RoomManager : MonoBehaviour
             return;
         }
 
-        RoomCleanCheck();
+        RoomClean();
 
         //Counts up to decreaseSpawnRateRate, once timeInRoom reachest that if goes through each spawner to see if they spawn faster over time
         //If they do spawn faster over time, their rate is decreased by decreaseSpawnRateAmount as long as the spawnrate is > decreaseSpawnRateMinimum
@@ -157,7 +164,7 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    public bool RoomCleanCheck()
+    public bool RoomClean()
     {
         //If the enemies list is empty and the room doesn't need to be full cleared, OR if the damageables list is empty
 
@@ -187,7 +194,13 @@ public class RoomManager : MonoBehaviour
                 }
             }
 
-            if(!fullClear)
+            if (!particleSystem.isPlaying && !firstRoom)
+            {
+                //play sparkle particle system
+                particleSystem.Play();
+            }
+
+            if (!fullClear)
             {
                 PurgeNulls(true);
                 while (damageables.Count > 0)
@@ -200,34 +213,5 @@ public class RoomManager : MonoBehaviour
         }
 
         return roomClean;
-    }
-
-    //DEBUG METHODS
-
-    /// <summary>
-    /// Destroys every damagable in the room
-    /// </summary>
-    public void DebugClearRoom()
-    {
-        for (int i = 0; i < damageables.Count; i++)
-        {
-            if (damageables[i] == null)
-            {
-                damageables.Remove(damageables[i]);
-                i--;
-            }
-            else
-            {
-                damageables[i].Death();
-            }
-        }
-    }
-
-    /// <summary>
-    /// Cleans the room
-    /// </summary>
-    public void DebugCleanRoom()
-    {
-        roomClean = true;
     }
 }
