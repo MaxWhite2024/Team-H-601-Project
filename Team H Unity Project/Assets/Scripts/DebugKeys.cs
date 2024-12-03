@@ -26,6 +26,9 @@ public class DebugKeys : MonoBehaviour
     //when player presses 'k',...
     void OnDebugKillEnemies()
     {
+        //find the currently active room
+        //houseManager.rooms.Find();
+
         //kill everything in the current room
         //houseManager.;
     }
