@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class DebugKeys : MonoBehaviour
 {
+    private HouseManager houseManager;
+
+    void Start()
+    {
+        //find houseManager script
+        houseManager = (HouseManager)FindFirstObjectByType(typeof(HouseManager));
+        if (!houseManager)
+            Debug.LogWarning("Debug Keys could not find the 'HouseManager' script. Please add the 'HouseManager' script to an GameObject");
+    }
+
     //when player presses 'i',...
     void OnDebugInvul()
     {
@@ -17,6 +27,7 @@ public class DebugKeys : MonoBehaviour
     void OnDebugKillEnemies()
     {
         //kill everything in the current room
+        //houseManager.;
     }
 
     //when the player presses 'h',...
@@ -38,15 +49,15 @@ public class DebugKeys : MonoBehaviour
     }
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    //// Start is called before the first frame update
+    //void Start()
+    //{
         
-    }
+    //}
 
-    // Update is called once per frame
-    void Update()
-    {
+    //// Update is called once per frame
+    //void Update()
+    //{
         
-    }
+    //}
 }
