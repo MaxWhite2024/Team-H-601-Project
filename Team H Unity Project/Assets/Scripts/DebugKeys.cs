@@ -88,6 +88,7 @@ public class DebugKeys : MonoBehaviour
     void OnDebugKillEnemies()
     {
         //kill everything in the current room
+        houseManager.activeRoom.DebugClear();
     }
 
     //when the player presses 'h',...
@@ -101,6 +102,7 @@ public class DebugKeys : MonoBehaviour
     void OnDebugOpen()
     {
         //open all doors in current room
+        houseManager.activeRoom.DebugCleanRoom();
     }
 
     //when the player presses 'u'
