@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/FreeFormMovementScene.unity
     guid: 4729c727e5b5a2543bca0df2dd418ce6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Matt Test.unity
     guid: d087d7eac21fb7848b8cb32b95b136fa
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/TilemapTesting.unity
     guid: 9a2b42ae313058549b4c8deac5df4035
   m_configObjects: {}
