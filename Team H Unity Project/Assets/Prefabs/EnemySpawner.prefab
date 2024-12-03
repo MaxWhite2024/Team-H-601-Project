@@ -126,7 +126,7 @@ MonoBehaviour:
   spawnTimer: 3
   spawnOffset: 0
   enemy: {fileID: 6721093072881008051, guid: 578fae2c5939b4f45bd61a2d3d4c47fb, type: 3}
-  offWhenRoomClean: 0
+  offWhenRoomClean: 1
   decreaseSpawnTime: 0
   maxEnemies: 5
   room: {fileID: 0}

@@ -28,7 +28,7 @@ public class RoomManager : MonoBehaviour
     public List<Damageable> damageables;
     public bool roomClean;
     [SerializeField] private HouseManager house;
-    private float cleanTimer = 5;
+    private float cleanTimer = 10;
 
     [Header("Particle System Vars")]
     [SerializeField] private new ParticleSystem particleSystem;
@@ -76,6 +76,10 @@ public class RoomManager : MonoBehaviour
         {
             this.gameObject.SetActive(false);
         }
+        else
+        {
+            house.activeRoom = this;
+        }
     }
 
     void OnEnable()
@@ -100,25 +104,10 @@ public class RoomManager : MonoBehaviour
         //Activate each door when room is clean
         if (roomClean)
         {
-            foreach (Door door in doors)
-            {
-                if (!door.open)
-                {
-                    door.Open();
-                }
-            }
-            house.RoomsClean();
-
-            if(!particleSystem.isPlaying && !firstRoom)
-            {
-                //play sparkle particle system
-                particleSystem.Play();
-            }
-
             return;
         }
 
-        RoomClean();
+        RoomCleanCheck();
 
         //Counts up to decreaseSpawnRateRate, once timeInRoom reachest that if goes through each spawner to see if they spawn faster over time
         //If they do spawn faster over time, their rate is decreased by decreaseSpawnRateAmount as long as the spawnrate is > decreaseSpawnRateMinimum
@@ -144,14 +133,14 @@ public class RoomManager : MonoBehaviour
 
         if(cleanTimer <= 0)
         {
-            ForceCheckClean();
-            cleanTimer = 1;
+            PurgeNulls();
+            cleanTimer = 2;
         }
     }
 
-    public void ForceCheckClean()
+    public void PurgeNulls(bool full = false)
     {
-        if (fullClear)
+        if (fullClear || full)
         {
             for(int i = 0; i < damageables.Count; i++)
             {
@@ -175,10 +164,12 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    public bool RoomClean()
+    public bool RoomCleanCheck(bool force = false)
     {
-        //If the enemies list is empty and the room doesn't need to be full cleared, OR if the damageables list is empty
+        //Forcing room clean?
+        roomClean = force;
 
+        //If the enemies list is empty and the room doesn't need to be full cleared, OR if the damageables list is empty
         switch (fullClear)
         {
             case true:
@@ -195,6 +186,63 @@ public class RoomManager : MonoBehaviour
                 break;
         }
 
+        if(roomClean)
+        {
+            foreach (Door door in doors)
+            {
+                if (!door.open)
+                {
+                    door.Open();
+                }
+            }
+
+            if (!particleSystem.isPlaying && !firstRoom)
+            {
+                //play sparkle particle system
+                particleSystem.Play();
+            }
+
+            if (!fullClear)
+            {
+                PurgeNulls(true);
+                while (damageables.Count > 0)
+                {
+                    damageables[0].Death();
+                }
+            }
+
+            house.RoomsClean();
+        }
+
         return roomClean;
+    }
+
+    //DEBUG METHODS
+
+    /// <summary>
+    /// Destroys every damagable in the room
+    /// </summary>
+    public void DebugClear()
+    {
+        for (int i = 0; i < damageables.Count; i++)
+        {
+            if (damageables[i] == null)
+            {
+                damageables.Remove(damageables[i]);
+                i--;
+            }
+            else
+            {
+                damageables[i].Death();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Forces the room to be marked as clean
+    /// </summary>
+    public void DebugCleanRoom()
+    {
+        RoomCleanCheck(true);
     }
 }

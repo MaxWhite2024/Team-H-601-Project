@@ -10,6 +10,9 @@ public class Door : MonoBehaviour
     [SerializeField] public GameObject room2;
     [SerializeField] private GameObject mainCamera;
     [SerializeField] private GameObject player;
+
+    [Header("Debug Vars")]
+    [SerializeField] private HouseManager house;
     [SerializeField] public bool open;
     [SerializeField] private Sprite openSprite;
     [SerializeField] private Sprite closeSprite;
@@ -27,6 +30,10 @@ public class Door : MonoBehaviour
         if(player == null)
         {
             player = GameObject.Find("Players");
+        }
+        if (house == null)
+        {
+            house = transform.parent.parent.gameObject.GetComponent<HouseManager>();
         }
 
         Close();
@@ -47,7 +54,9 @@ public class Door : MonoBehaviour
                 lerpAmount = 0;
                 changingRooms = false;
 
-                if(!enterRoom.GetComponent<RoomManager>().roomClean)
+                house.activeRoom = enterRoom.GetComponent<RoomManager>();
+
+                if (!enterRoom.GetComponent<RoomManager>().roomClean)
                 {
                     Close();
                     //player.GetComponent<Damageable>().health = player.GetComponent<Damageable>().maxHealth; //Heals players on entering new room
