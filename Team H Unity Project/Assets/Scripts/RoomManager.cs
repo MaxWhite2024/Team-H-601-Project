@@ -31,7 +31,7 @@ public class RoomManager : MonoBehaviour
     private float cleanTimer = 5;
 
     [Header("Particle System Vars")]
-    [SerializeField] private ParticleSystem particleSystem;
+    [SerializeField] private new ParticleSystem particleSystem;
 
     // Start is called before the first frame update
     private void Start()
