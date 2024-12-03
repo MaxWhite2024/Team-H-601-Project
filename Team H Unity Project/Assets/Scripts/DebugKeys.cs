@@ -10,7 +10,12 @@ public class DebugKeys : MonoBehaviour
 
     [Header("")]
     [SerializeField] private Damageable playerDamageable;
+    [SerializeField] private PlayerMovementAndAttack playerMovementAndAttack;
     private HouseManager houseManager;
+
+    //integer variables
+    private int startingPlayerArmor;
+    private float startingAmmoRechargeTime;
 
     void Start()
     {
@@ -18,15 +23,29 @@ public class DebugKeys : MonoBehaviour
         houseManager = (HouseManager)FindFirstObjectByType(typeof(HouseManager));
         if (!houseManager)
             Debug.LogWarning("Debug Keys could not find the 'HouseManager' script. Please add the 'HouseManager' script to an GameObject");
+
+        //get startingPlayerArmor
+        startingPlayerArmor = playerDamageable.armor;
+
+        //get startingAmmoRechargeSpeed
+        startingAmmoRechargeTime = playerMovementAndAttack.ammoRechargeTime;
     }
 
     //when player presses 'i',...
     void OnDebugInvul()
     {
-        //if player is already invulnerable,...
-            //make player vulnerable
-        //else player is vulnerable
+        //if player is vulnerable,...
+        if(playerDamageable.armor != int.MaxValue)
+        {
             //make player invulnerable
+            playerDamageable.armor = int.MaxValue;
+        }
+        //else player is invulnerable
+        else
+        {
+            //make player vulnerable
+            playerDamageable.armor = startingPlayerArmor;
+        }
     }
 
     //when player presses 'k',...
@@ -54,8 +73,9 @@ public class DebugKeys : MonoBehaviour
 
     //when the player presses 'u'
     void OnDebugUnlimitedAmmo()
-    { 
-        //set ammo recharge speed to 0f
+    {
+        //toggle instant ammo recharge 
+        playerMovementAndAttack.hasInstantAmmoRecharge = !playerMovementAndAttack.hasInstantAmmoRecharge;
     }
 
 

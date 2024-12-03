@@ -225,6 +225,7 @@ MonoBehaviour:
   outOfSyncMovementPenalty: 0.3
   movementInputBufferTimeLimit: 0.1
   fireRate: 0.3
+  hasInstantAmmoRecharge: 0
   maxAmmo: 3
   p1Ammo: 0
   p2Ammo: 0
@@ -324,7 +325,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2200e0f5659ed9c4b8b5acb44fe430dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  housesToTeleportTo: []
   playerDamageable: {fileID: 6391768355133209792}
+  playerMovementAndAttack: {fileID: 5061495762136108037}
 --- !u!1 &610750069560181508
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,6 +28,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private float fireRate = 0.3f;
     private float tempP1FireRate = 0f, tempP2FireRate = 0f, tempSyncedFireRate = 0f;
     private bool isP1Attacking = false, isP2Attacking = false;
+    public bool hasInstantAmmoRecharge = false;
     [SerializeField] private int maxAmmo;
     [HideInInspector] public int p1Ammo, p2Ammo;
     public float ammoRechargeTime;
@@ -565,8 +566,12 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //fire p1 projectile in p1 direction
         Instantiate(p1Projectile, p1Arrow.transform.position, p1Arrow.transform.rotation);
 
-        //decrement p1Ammo
-        p1Ammo--;
+        //if player does NOT have instant ammo recharge,...
+        if (!hasInstantAmmoRecharge)
+        {
+            //decrement p1Ammo
+            p1Ammo--;
+        }
 
         //set p1IsAttacking to false
         p1IsAttacking = false;
@@ -580,8 +585,12 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //fire p2 projectile in p2 direction
         Instantiate(p2Projectile, p2Arrow.transform.position, p2Arrow.transform.rotation);
 
-        //decrement p2Ammo
-        p2Ammo--;
+        //if player does NOT have instant ammo recharge,...
+        if (!hasInstantAmmoRecharge)
+        {
+            //decrement p2Ammo
+            p2Ammo--;
+        }
 
         //set p2IsAttacking to false
         p2IsAttacking = false;
@@ -595,9 +604,13 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //fire a synced projectile in p1 direction
         Instantiate(syncedProjectile, p1Arrow.transform.position, p1Arrow.transform.rotation);
 
-        //decrement p1Ammo and p2Ammo
-        p1Ammo--;
-        p2Ammo--;
+        //if player does NOT have instant ammo recharge,...
+        if (!hasInstantAmmoRecharge)
+        {
+            //decrement p1Ammo and p2Ammo
+            p1Ammo--;
+            p2Ammo--;
+        }
 
         //set p1IsAttacking and p2IsAttacking to false
         p1IsAttacking = false;
