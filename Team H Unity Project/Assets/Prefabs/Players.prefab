@@ -325,7 +325,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2200e0f5659ed9c4b8b5acb44fe430dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  housesToTeleportTo: []
+  housesToTeleportTo:
+  - TilemapTesting
+  - House01
+  - Matt Test
   playerDamageable: {fileID: 6391768355133209792}
   playerMovementAndAttack: {fileID: 5061495762136108037}
 --- !u!1 &610750069560181508

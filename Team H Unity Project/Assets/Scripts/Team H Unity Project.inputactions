@@ -610,6 +610,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "debugTeleport1",
+                    "type": "Button",
+                    "id": "646cb792-4ee4-424d-811c-5f369fe38551",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "debugTeleport2",
+                    "type": "Button",
+                    "id": "7df68cb1-dbe5-4ea0-a2a8-e4c1fdfce941",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "debugTeleport3",
+                    "type": "Button",
+                    "id": "c4082ac2-2a05-4bed-9607-4a090670999e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -874,6 +901,39 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "debugUnlimitedAmmo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ca4e048-ad66-401d-86a3-cf0748d21fa5",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "debugTeleport1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "198805af-9aa5-4dfe-ba10-60375c98e927",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "debugTeleport2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "726e7d57-44f3-4f1d-9af4-773ff08624ee",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "debugTeleport3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

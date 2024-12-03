@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class DebugKeys : MonoBehaviour
 {
-    [Header("Houses to Teleport Too")]
-    [SerializeField] private List<Scene> housesToTeleportTo = new List<Scene>();
+    [Header("Houses (Scenes) to Teleport to")]
+    [SerializeField] private List<string> housesToTeleportTo = new List<string>();
 
-    [Header("")]
+    [Header("Component Variables")]
     [SerializeField] private Damageable playerDamageable;
     [SerializeField] private PlayerMovementAndAttack playerMovementAndAttack;
     private HouseManager houseManager;
@@ -22,13 +23,48 @@ public class DebugKeys : MonoBehaviour
         //find houseManager script
         houseManager = (HouseManager)FindFirstObjectByType(typeof(HouseManager));
         if (!houseManager)
+        {
             Debug.LogWarning("Debug Keys could not find the 'HouseManager' script. Please add the 'HouseManager' script to an GameObject");
+        }
 
         //get startingPlayerArmor
         startingPlayerArmor = playerDamageable.armor;
 
         //get startingAmmoRechargeSpeed
         startingAmmoRechargeTime = playerMovementAndAttack.ammoRechargeTime;
+    }
+
+    //when player presses '1',...
+    void OnDebugTeleport1()
+    {
+        //if first level in the housesToTeleportTo list exists,...
+        if (housesToTeleportTo[0] != null)
+        {
+            //load first level
+            SceneManager.LoadScene(housesToTeleportTo[0].ToString());
+        }
+    }
+
+    //when player presses '2',...
+    void OnDebugTeleport2()
+    {
+        //if second level in the housesToTeleportTo list exists,...
+        if (housesToTeleportTo[1] != null)
+        {
+            //load second level
+            SceneManager.LoadScene(housesToTeleportTo[1].ToString());
+        }
+    }
+
+    //when player presses '3',...
+    void OnDebugTeleport3()
+    {
+        //if third level in the housesToTeleportTo list exists,...
+        if (housesToTeleportTo[2] != null)
+        {
+            //load third level
+            SceneManager.LoadScene(housesToTeleportTo[2].ToString());
+        }
     }
 
     //when player presses 'i',...
@@ -51,11 +87,7 @@ public class DebugKeys : MonoBehaviour
     //when player presses 'k',...
     void OnDebugKillEnemies()
     {
-        //find the currently active room
-        //houseManager.rooms.Find();
-
         //kill everything in the current room
-        //houseManager.;
     }
 
     //when the player presses 'h',...
@@ -77,17 +109,4 @@ public class DebugKeys : MonoBehaviour
         //toggle instant ammo recharge 
         playerMovementAndAttack.hasInstantAmmoRecharge = !playerMovementAndAttack.hasInstantAmmoRecharge;
     }
-
-
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-        
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
 }
