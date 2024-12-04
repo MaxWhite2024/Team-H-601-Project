@@ -129,9 +129,10 @@ MonoBehaviour:
   iFrameTime: 0.25
   type: 0
   dropHealth: 0
-  healthPickup: {fileID: 0}
+  healthPickup: {fileID: 4373816778238043665, guid: c52275eaa83594b45b1e9d0b2065864d, type: 3}
   room: {fileID: 0}
   playerSpriteManager: {fileID: 0}
+  bossSpriteManager: {fileID: 0}
 --- !u!114 &2284973072253781257
 MonoBehaviour:
   m_ObjectHideFlags: 0
