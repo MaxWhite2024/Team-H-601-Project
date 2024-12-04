@@ -14,17 +14,17 @@ public class PlayerAmmoUI : MonoBehaviour
     private PlayerMovementAndAttack playerMovementAndAttack;
 
     [Header("P1 Pip Variables")]
-    private Color fadedP1PipColor;
     [SerializeField] private Image p1Pip1Image;
     [SerializeField] private Image p1Pip2Image;
     [SerializeField] private Image p1Pip3Image;
+    private Color fadedP1PipColor;
     private Vector3 p1ImageOriginalScale;
 
     [Header("P2 Pip Variables")]
-    private Color fadedP2PipColor;
     [SerializeField] private Image p2Pip1Image;
     [SerializeField] private Image p2Pip2Image;
     [SerializeField] private Image p2Pip3Image;
+    private Color fadedP2PipColor;
     private Vector3 p2ImageOriginalScale;
 
     // Start is called before the first frame update
