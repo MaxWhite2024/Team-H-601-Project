@@ -20825,6 +20825,7 @@ MonoBehaviour:
   doors: {fileID: 30505750}
   healthDropChance: 15
   activeRoom: {fileID: 0}
+  nextSceneName: HouseBoss
   rooms: []
   doorsList: []
 --- !u!1001 &685178632
@@ -31453,6 +31454,10 @@ PrefabInstance:
     - target: {fileID: 1654425746345012756, guid: 0fd307ffeb946fc41a05430cd2cd8ef8, type: 3}
       propertyPath: healthDropChance
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1654425746345012756, guid: 0fd307ffeb946fc41a05430cd2cd8ef8, type: 3}
+      propertyPath: cleanTrashOnClear
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1654425746345012756, guid: 0fd307ffeb946fc41a05430cd2cd8ef8, type: 3}
       propertyPath: enemies.Array.size
