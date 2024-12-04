@@ -20825,7 +20825,7 @@ MonoBehaviour:
   doors: {fileID: 30505750}
   healthDropChance: 15
   activeRoom: {fileID: 0}
-  nextSceneName: Matt Test
+  nextSceneName: HouseBoss
   rooms: []
   doorsList: []
 --- !u!1001 &685178632

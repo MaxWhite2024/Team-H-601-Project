@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/FreeFormMovementScene.unity
     guid: 4729c727e5b5a2543bca0df2dd418ce6
+  - enabled: 1
+    path: Assets/Scenes/You Win.unity
+    guid: bfb29e80960063741944e9c55882c156
   m_configObjects: {}
