@@ -7,10 +7,6 @@ using UnityEngine.UI;
 public class PlayerAmmoUI : MonoBehaviour
 {
     [Header("General Variables")]
-    [SerializeField] private TMP_Text p1AmmoText;
-    [SerializeField] private TMP_Text p2AmmoText;
-    [SerializeField] private Slider P1AmmoRechargeSlider;
-    [SerializeField] private Slider P2AmmoRechargeSlider;
     private PlayerMovementAndAttack playerMovementAndAttack;
 
     [Header("P1 Pip Variables")]
@@ -31,8 +27,6 @@ public class PlayerAmmoUI : MonoBehaviour
     void Start()
     {
         playerMovementAndAttack = GameObject.Find("Players").GetComponent<PlayerMovementAndAttack>();
-        P1AmmoRechargeSlider.maxValue = playerMovementAndAttack.ammoRechargeTime;
-        P2AmmoRechargeSlider.maxValue = playerMovementAndAttack.ammoRechargeTime;
 
         //define fadedP1PipColor as white with 0.2 alpha
         fadedP1PipColor = Color.white;
@@ -52,11 +46,6 @@ public class PlayerAmmoUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //p1AmmoText.text = "P1 Ammo: " + playerMovementAndAttack.p1Ammo;
-        //p2AmmoText.text = "P2 Ammo: " + playerMovementAndAttack.p2Ammo;
-        P1AmmoRechargeSlider.value = playerMovementAndAttack.tempP1AmmoRechargeTime;
-        P2AmmoRechargeSlider.value = playerMovementAndAttack.tempP2AmmoRechargeTime;
-
         #region P1 Ammo Images
 
         //compare P1's ammo
