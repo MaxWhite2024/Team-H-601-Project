@@ -558,15 +558,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Next Attack Type",
-                    "type": "Button",
-                    "id": "bed7c2d3-0a01-45f9-9324-7758ae3a0a2d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "debugInvul",
                     "type": "Button",
                     "id": "513c054e-8b51-4704-bbbf-3a7b6c3fadcc",
@@ -835,17 +826,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "p2Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1724b049-b8ca-4f94-9311-f9f6eb35268a",
-                    "path": "<Keyboard>/h",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Next Attack Type",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

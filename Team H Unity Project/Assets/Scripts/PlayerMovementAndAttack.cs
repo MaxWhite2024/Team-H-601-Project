@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovementAndAttack : MonoBehaviour
 {
@@ -645,5 +646,10 @@ public class PlayerMovementAndAttack : MonoBehaviour
         }
 
         return angle;
+    }
+
+    public void Death()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
