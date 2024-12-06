@@ -33071,6 +33071,7 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+<<<<<<< Updated upstream
       propertyPath: cutsceneUI
       value: 
       objectReference: {fileID: 304246544}
@@ -33078,6 +33079,39 @@ PrefabInstance:
       propertyPath: playerInput
       value: 
       objectReference: {fileID: 496010684}
+=======
+      propertyPath: cutsceneSprites.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: cutsceneSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 29b79bbec80ebf9409631f212937b930, type: 3}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: cutsceneSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: d168c108a0524304cb9d5e0f32e856cc, type: 3}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: cutsceneSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3da83112b037e55418f5e16bc1ac1107, type: 3}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: cutsceneSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: e1c94538257cc5b4fb038c8cb5d8d295, type: 3}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: cutsceneSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9bc58b298c87d494880af9c4b27c19cc, type: 3}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: cutsceneSprites.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: ca8f5425ffdff1945b139df92177c8a6, type: 3}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: cutsceneSprites.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 14602ae9c87d92d46bc2ae3ec7c0d0b4, type: 3}
+>>>>>>> Stashed changes
     - target: {fileID: 459069760057529449, guid: 8f5080aad09927344b318297b4777396, type: 3}
       propertyPath: m_Name
       value: Canvas
