@@ -8,32 +8,30 @@ public class HealthBar : MonoBehaviour
     public Slider healthSlider;
     public Gradient healthGradient;
     public Image fill;
+    public Damageable playerDamageable;
 
-    public GameObject Player;
-    public void SetMaxHealth(int health)
-    {
-        healthSlider.maxValue = health;
-        healthSlider.value = health;
-
-        fill.color = healthGradient.Evaluate(1f);
-    }
     public void Start()
     {
-        int PlayerHealth = 0;
-        PlayerHealth=Player.GetComponent<Damageable>().health;
-        SetMaxHealth(PlayerHealth);
-      
+        playerDamageable = GameObject.Find("Players").GetComponent<Damageable>();
+
+        SetMaxHealth(playerDamageable.maxHealth, playerDamageable.health); 
     }
     public void Update()
     {
-        int PlayerHealth = 0;
-        PlayerHealth = Player.GetComponent<Damageable>().health;
-        SetHealth(PlayerHealth);
+        SetHealth(playerDamageable.health);
     }
     public void SetHealth(int health)
     {
         healthSlider.value = health;
 
         fill.color = healthGradient.Evaluate(healthSlider.normalizedValue);
+    }
+
+    public void SetMaxHealth(int maxHealth, int health)
+    {
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = health;
+
+        fill.color = healthGradient.Evaluate(1f);
     }
 }

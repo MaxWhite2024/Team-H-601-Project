@@ -1287,7 +1287,11 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+<<<<<<< HEAD
   m_WasSpriteAssigned: 0
+=======
+  m_WasSpriteAssigned: 1
+>>>>>>> Textbox-stuff
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &422482339
@@ -22957,6 +22961,10 @@ MonoBehaviour:
   doors: {fileID: 30505750}
   healthDropChance: 25
   activeRoom: {fileID: 0}
+<<<<<<< HEAD
+=======
+  nextSceneName: House01
+>>>>>>> Textbox-stuff
   rooms: []
   doorsList: []
 --- !u!1 &696198750
@@ -23472,7 +23480,11 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+<<<<<<< HEAD
   m_WasSpriteAssigned: 0
+=======
+  m_WasSpriteAssigned: 1
+>>>>>>> Textbox-stuff
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &819947759
@@ -24463,7 +24475,11 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+<<<<<<< HEAD
   m_WasSpriteAssigned: 0
+=======
+  m_WasSpriteAssigned: 1
+>>>>>>> Textbox-stuff
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &996269742
