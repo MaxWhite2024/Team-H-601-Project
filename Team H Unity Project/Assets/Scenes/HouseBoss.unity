@@ -10232,6 +10232,7 @@ MonoBehaviour:
   activeRoom: {fileID: 0}
   rooms: []
   doorsList: []
+  winScreen: {fileID: 1126347734}
 --- !u!1 &1020529692
 GameObject:
   m_ObjectHideFlags: 0
@@ -13342,6 +13343,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: isCutscenePlaying
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 459069760057529449, guid: 8f5080aad09927344b318297b4777396, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -13462,9 +13467,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3754321976039795697, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: nextSceneName
+      value: HouseBoss
+      objectReference: {fileID: 0}
     - target: {fileID: 4412069596959782942, guid: 8f5080aad09927344b318297b4777396, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934528698023036534, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: nextSceneName
+      value: TilemapTesting
       objectReference: {fileID: 0}
     - target: {fileID: 5000980087627080175, guid: 8f5080aad09927344b318297b4777396, type: 3}
       propertyPath: m_AnchorMax.x
@@ -13487,6 +13500,27 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f5080aad09927344b318297b4777396, type: 3}
+--- !u!1 &1126347733 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9128782906892596865, guid: 8f5080aad09927344b318297b4777396, type: 3}
+  m_PrefabInstance: {fileID: 1126347732}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1126347734 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4723500851647853774, guid: 8f5080aad09927344b318297b4777396, type: 3}
+  m_PrefabInstance: {fileID: 1126347732}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1126347735 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+  m_PrefabInstance: {fileID: 1126347732}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 516e335cc5d561349ad98e58d133a340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1262984763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13637,9 +13671,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5061495762136108037, guid: 76195bd9ef611044ea98bb97c7f5e131, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1126347733}
+    - target: {fileID: 5061495762136108037, guid: 76195bd9ef611044ea98bb97c7f5e131, type: 3}
       propertyPath: gridMoveSpeed
       value: 450
       objectReference: {fileID: 0}
+    - target: {fileID: 5061495762136108037, guid: 76195bd9ef611044ea98bb97c7f5e131, type: 3}
+      propertyPath: cutsceneController
+      value: 
+      objectReference: {fileID: 1126347735}
     - target: {fileID: 6209709697524763909, guid: 76195bd9ef611044ea98bb97c7f5e131, type: 3}
       propertyPath: m_SortingOrder
       value: 0
@@ -13667,7 +13709,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1654425746345012756, guid: 0fd307ffeb946fc41a05430cd2cd8ef8, type: 3}
       propertyPath: firstRoom
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1654425746345012756, guid: 0fd307ffeb946fc41a05430cd2cd8ef8, type: 3}
       propertyPath: fullClear
@@ -13902,6 +13944,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9dee2beec0ea95e4da67cb017d4d7adc, type: 3}
   displayDuration: 3
   fadeDuration: 1
+  cutsceneDuration: 0
+  isCutscenePlaying: 0
+  nextSceneName: 
 --- !u!114 &1806406216
 MonoBehaviour:
   m_ObjectHideFlags: 0

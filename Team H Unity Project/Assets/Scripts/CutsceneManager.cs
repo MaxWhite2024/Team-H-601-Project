@@ -14,7 +14,7 @@ public class CutsceneManager : MonoBehaviour
     public float fadeDuration = 1f; // Time for fade in/out transitions
     public float cutsceneDuration; // Total duration of the cutscene
     private float cutsceneTimer = 0f;
-    [HideInInspector] public bool isCutscenePlaying = true;
+    public bool isCutscenePlaying = false;
 
     [SerializeField] private string nextSceneName;
 

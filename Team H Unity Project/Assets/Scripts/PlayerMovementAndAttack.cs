@@ -69,7 +69,8 @@ public class PlayerMovementAndAttack : MonoBehaviour
         p2Ammo = maxAmmo;
 
         //find cutsceneController
-        cutsceneController = GameObject.FindObjectOfType<CutsceneManager>();
+        if (cutsceneController == null)
+            cutsceneController = GameObject.FindObjectOfType<CutsceneManager>();
     }
 
     //when p1 pressed WASD,...
