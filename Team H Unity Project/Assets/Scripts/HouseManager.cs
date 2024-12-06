@@ -11,6 +11,7 @@ public class HouseManager : MonoBehaviour
     [Header("Debug Vars")]
     [SerializeField] private List<RoomManager> rooms = new List<RoomManager>();
     [SerializeField] private List<Door> doorsList = new List<Door>();
+    [SerializeField] private GameObject winScreen;
 
     // Start is called before the first frame update
     void Start()

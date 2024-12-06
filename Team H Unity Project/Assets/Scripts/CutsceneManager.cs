@@ -12,18 +12,12 @@ public class CutsceneManager : MonoBehaviour
     public Sprite[] cutsceneSprites; // Drag and drop your cutscene images here in the inspector
     public float displayDuration = 3f; // Time each image stays on screen
     public float fadeDuration = 1f; // Time for fade in/out transitions
-<<<<<<< Updated upstream:Team H Unity Project/Assets/Scripts/CutsceneManager.cs
     public float cutsceneDuration; // Total duration of the cutscene
     private float cutsceneTimer = 0f;
     [HideInInspector] public bool isCutscenePlaying = true;
-    private void Awake()
-    {
-=======
-    [SerializeField] private string nextSceneName;
->>>>>>> Stashed changes:Team H Unity Project/Assets/Image.cs
 
-        
-    }
+    [SerializeField] private string nextSceneName;
+
     private void Start()
     {
         cutsceneDuration = (fadeDuration*2+displayDuration)*cutsceneSprites.Length;
