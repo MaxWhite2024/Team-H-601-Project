@@ -214,11 +214,13 @@ public class Damageable : MonoBehaviour
         switch (type)
         {
             case Damageables.Player:
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                gameObject.GetComponent<PlayerMovementAndAttack>().Death();
                 break;
-
             case Damageables.Enemy:
                 this.gameObject.GetComponent<Enemy>().Death();
+                break;
+            case Damageables.MiniBoss:
+                this.gameObject.GetComponent<MiniBoss>().Death();
                 break;
             case Damageables.Spawner:
                 this.gameObject.GetComponent<EnemySpawner>().Death();

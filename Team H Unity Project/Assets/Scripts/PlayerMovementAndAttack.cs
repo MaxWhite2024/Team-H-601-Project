@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovementAndAttack : MonoBehaviour
 {
@@ -681,13 +682,11 @@ public class PlayerMovementAndAttack : MonoBehaviour
 
         return angle;
     }
-<<<<<<< Updated upstream
-=======
 
     public void Death()
     {
         loseScreen.SetActive(true);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
->>>>>>> Stashed changes
+
 }

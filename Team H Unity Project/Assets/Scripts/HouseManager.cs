@@ -7,11 +7,6 @@ public class HouseManager : MonoBehaviour
     public GameObject doors;
     public float healthDropChance;
     public RoomManager activeRoom;
-<<<<<<< Updated upstream
-=======
-    public string nextSceneName;
-    [SerializeField] private GameObject winScreen;
->>>>>>> Stashed changes
 
     [Header("Debug Vars")]
     [SerializeField] private List<RoomManager> rooms = new List<RoomManager>();
@@ -70,10 +65,8 @@ public class HouseManager : MonoBehaviour
                 return;
             }
         }
-
-<<<<<<< Updated upstream
+        
         Debug.Log("ALL ROOMS CLEAN");
-=======
         //Debug.Log("ALL ROOMS CLEAN");
         Win();
     }
@@ -86,6 +79,5 @@ public class HouseManager : MonoBehaviour
         {
             SceneManager.LoadScene(nextSceneName);
         }*/
->>>>>>> Stashed changes
     }
 }

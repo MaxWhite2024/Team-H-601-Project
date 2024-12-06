@@ -87,6 +87,12 @@ public class MiniBoss : MonoBehaviour
         return false;
     }
 
+    public void Death()
+    {
+        room.GetComponent<RoomManager>().DebugClear();
+        Destroy(this.gameObject);
+    }
+
     public void UpdateVars(float healthPercent)
     {
         //Debug.Log(healthPercent);
