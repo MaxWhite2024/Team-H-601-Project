@@ -1,0 +1,969 @@
+fileFormatVersion: 2
+guid: 9b0714e31d449a24183a2c2197dd0ad9
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 150
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 833.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e657962a0829ae4295a36e36ce8f0e7
+      internalID: -1574716728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_1
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 833.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1eda845adf3f2b4f847b28de05aaeaf
+      internalID: -699573512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_2
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 833.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aba48489036ebe14093fbd0ca5d86b3f
+      internalID: 379290392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_3
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 833.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b32efa639d08d664b895b1102bcaac54
+      internalID: -1841471853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_4
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 833.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7274c7a0921ee8498094e51d450f851
+      internalID: 1083089915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_5
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 833.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff09f369ae7334b42b6865167b66fc18
+      internalID: 1576715452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 667.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02f1778001d52f644aa527f51e735009
+      internalID: -1741589851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_7
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 667.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a65f85d9670a10943a1e7f636f34b08f
+      internalID: -1992541171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_8
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 667.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b83a40bcf3565c24383f99f6c835f3ce
+      internalID: -280728101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_9
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 667.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44986e502c7bb82438a41e71679fd121
+      internalID: -4456593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_10
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 667.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c17e237e48fb5249a953f08e24d1d1c
+      internalID: 1477059005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_11
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 667.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 393227873d62e28419e2c3d40e399a86
+      internalID: 429152225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 501.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88ad4d9404806f54dbef1e8d05c7e053
+      internalID: -739359647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_13
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 501.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30482725962fc10429fd240bae996f1c
+      internalID: 1393245822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_14
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 501.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 350f74d83f565364981f4f5d76b8a48e
+      internalID: 307715134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_15
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 501.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7daa0b12492a58d4e95896bef4462228
+      internalID: 598395078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_16
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 501.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19cdc5c2a0450124a8b75c50a89799cd
+      internalID: -620790937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_17
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 501.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0983001dd2c33264e840ff420136f934
+      internalID: 821471739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 335.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -100, y: -83.16669}
+        - {x: 100, y: -83.16669}
+        - {x: 100, y: -27.666656}
+        - {x: -100, y: -27.666656}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19e85f2179800d84d9a4f9e628c11c24
+      internalID: 1728217553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_19
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 335.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -100, y: -83.16669}
+        - {x: 100, y: -83.16669}
+        - {x: 100, y: -27.666656}
+        - {x: -100, y: -27.666656}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f0b8d4defdfb51469ae4594a2c0b78c
+      internalID: 1173738975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_20
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 335.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -100, y: -83.16669}
+        - {x: 100, y: -83.16669}
+        - {x: 100, y: -27.666656}
+        - {x: -100, y: -27.666656}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 973a7f9b0c6a06540b950b0061adb97f
+      internalID: -533433013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_21
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 335.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -100, y: -83.16669}
+        - {x: 100, y: -83.16669}
+        - {x: 100, y: -27.666656}
+        - {x: -100, y: -27.666656}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9740ca91a7ba14b4aa4f4ca5f6df5f72
+      internalID: -1025516086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_22
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 335.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -100, y: -83.16669}
+        - {x: 100, y: -83.16669}
+        - {x: 100, y: -27.666656}
+        - {x: -100, y: -27.666656}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93ee268acd7cc0643861078061c43d34
+      internalID: -2003782856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_23
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 335.3333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -100, y: -83.16669}
+        - {x: 100, y: -83.16669}
+        - {x: 100, y: -27.666656}
+        - {x: -100, y: -27.666656}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0a4c239e88fc0b4ba1e746e573e71c3
+      internalID: -175833026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 169.33333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a983f9dc520ce1e4a9523273e55de66f
+      internalID: -1363182205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_25
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 169.33333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeb3c8964e2142b4997312527a1c3c0e
+      internalID: 647337104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_26
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 169.33333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9da4f6498c710a149bdbc4e4efa5a148
+      internalID: -654780050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_27
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 169.33333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb354d3a82dc3d64f9aeb8b520cff3c6
+      internalID: 111271373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_28
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 169.33333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 319e42ea5fd37434a87bcb946b0ec9c3
+      internalID: -1753303194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_29
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 169.33333
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 334f8c536bf03cd46b88d494edfc7c71
+      internalID: -980968191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3.3333282
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94517e77a73b0004abfb3bf4b60cda5f
+      internalID: 238338062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_31
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 3.3333282
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4705e816eb66e574eb5737d7c4d19948
+      internalID: 1718817904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_32
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 3.3333282
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 879c3349bb1939541ac11df39015e2a0
+      internalID: 929813799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_33
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 3.3333282
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a41f66f52a7a00d4484d6aaec5995183
+      internalID: -116934072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_34
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 3.3333282
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51a9da3e59c7da2499ea6749146f193c
+      internalID: 390758408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprint4_tileset_Furniture_Beds_35
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 3.3333282
+        width: 200
+        height: 166.66667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5644940936dbff543b8be8a1470c8fd9
+      internalID: -868398175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Sprint4_tileset_Furniture_Beds_0: -1574716728
+      Sprint4_tileset_Furniture_Beds_1: -699573512
+      Sprint4_tileset_Furniture_Beds_10: 1477059005
+      Sprint4_tileset_Furniture_Beds_11: 429152225
+      Sprint4_tileset_Furniture_Beds_12: -739359647
+      Sprint4_tileset_Furniture_Beds_13: 1393245822
+      Sprint4_tileset_Furniture_Beds_14: 307715134
+      Sprint4_tileset_Furniture_Beds_15: 598395078
+      Sprint4_tileset_Furniture_Beds_16: -620790937
+      Sprint4_tileset_Furniture_Beds_17: 821471739
+      Sprint4_tileset_Furniture_Beds_18: 1728217553
+      Sprint4_tileset_Furniture_Beds_19: 1173738975
+      Sprint4_tileset_Furniture_Beds_2: 379290392
+      Sprint4_tileset_Furniture_Beds_20: -533433013
+      Sprint4_tileset_Furniture_Beds_21: -1025516086
+      Sprint4_tileset_Furniture_Beds_22: -2003782856
+      Sprint4_tileset_Furniture_Beds_23: -175833026
+      Sprint4_tileset_Furniture_Beds_24: -1363182205
+      Sprint4_tileset_Furniture_Beds_25: 647337104
+      Sprint4_tileset_Furniture_Beds_26: -654780050
+      Sprint4_tileset_Furniture_Beds_27: 111271373
+      Sprint4_tileset_Furniture_Beds_28: -1753303194
+      Sprint4_tileset_Furniture_Beds_29: -980968191
+      Sprint4_tileset_Furniture_Beds_3: -1841471853
+      Sprint4_tileset_Furniture_Beds_30: 238338062
+      Sprint4_tileset_Furniture_Beds_31: 1718817904
+      Sprint4_tileset_Furniture_Beds_32: 929813799
+      Sprint4_tileset_Furniture_Beds_33: -116934072
+      Sprint4_tileset_Furniture_Beds_34: 390758408
+      Sprint4_tileset_Furniture_Beds_35: -868398175
+      Sprint4_tileset_Furniture_Beds_4: 1083089915
+      Sprint4_tileset_Furniture_Beds_5: 1576715452
+      Sprint4_tileset_Furniture_Beds_6: -1741589851
+      Sprint4_tileset_Furniture_Beds_7: -1992541171
+      Sprint4_tileset_Furniture_Beds_8: -280728101
+      Sprint4_tileset_Furniture_Beds_9: -4456593
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
