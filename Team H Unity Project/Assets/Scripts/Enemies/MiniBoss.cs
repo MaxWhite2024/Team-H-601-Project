@@ -11,8 +11,8 @@ public class MiniBoss : MonoBehaviour
     [SerializeField] private GameObject enemy;
 
     [Header("Move Settings")]
-    [SerializeField] private Vector2 horizontal;
-    [SerializeField] private Vector2 vertical;
+    [SerializeField] private Vector2 horizontalMinMax;
+    [SerializeField] private Vector2 verticalMinMax;
     [SerializeField] private float speedMin;
     [SerializeField] private float speedMax;
 
@@ -97,6 +97,10 @@ public class MiniBoss : MonoBehaviour
     {
         //Debug.Log(healthPercent);
         currentSpawnTimer = (spawnWiggleRoom * healthPercent) + minSpawnTimer;
+        if (timer > currentSpawnTimer)
+        {
+            timer = currentSpawnTimer;
+        }
         currentSpeed = (speedWiggleRoom * (1-healthPercent)) + speedMin;
         path.maxSpeed = currentSpeed;
         //Debug.Log(currentSpeed);
@@ -105,8 +109,8 @@ public class MiniBoss : MonoBehaviour
     public void SetPath()
     {
         nextTarget = new Vector3(0, 0, 0);
-        nextTarget.x = Random.Range(horizontal.x, horizontal.y);
-        nextTarget.y = Random.Range(vertical.x, vertical.y);
+        nextTarget.x = Random.Range(horizontalMinMax.x, horizontalMinMax.y);
+        nextTarget.y = Random.Range(verticalMinMax.x, verticalMinMax.y);
 
         path.destination = nextTarget;
     }

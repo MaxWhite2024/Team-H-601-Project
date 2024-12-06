@@ -8,13 +8,13 @@ public class RoomManager : MonoBehaviour
 
     [Header("Doors and order")] public List<Door> doors;
     [SerializeField] private bool firstRoom;
-    public Transform cameraTransform;
+
 
     [Header("Customization Vars")]
+    public Transform cameraTransform;
     public int maxEnemies;
     [SerializeField] private bool fullClear; //Do you need to kill all enemies or all everything
     public float healthDropChance = -1;
-    [SerializeField] private bool cleanTrashOnClear = true;
 
     [Header("Spawners Speed Up Vars")]
     [SerializeField] private float decreaseSpawnRateRate;
@@ -202,7 +202,7 @@ public class RoomManager : MonoBehaviour
                 particleSystem.Play();
             }
 
-            if (!fullClear && cleanTrashOnClear)
+            if (!fullClear)
             {
                 PurgeNulls(true);
                 while (damageables.Count > 0)
@@ -224,15 +224,16 @@ public class RoomManager : MonoBehaviour
     /// </summary>
     public void DebugClear()
     {
-        while (damageables.Count > 0)
+        for (int i = 0; i < damageables.Count; i++)
         {
-            if (damageables[0] == null)
+            if (damageables[i] == null)
             {
-                damageables.Remove(damageables[0]);
+                damageables.Remove(damageables[i]);
+                i--;
             }
             else
             {
-                damageables[0].Death();
+                damageables[i].Death();
             }
         }
     }

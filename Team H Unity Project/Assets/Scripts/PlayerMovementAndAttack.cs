@@ -51,6 +51,10 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private GameObject p2Arrow;
     [SerializeField] private GameObject syncedProjectile;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private GameObject loseScreen;
+
+    [Header("Cutscene Variables")]
+    [SerializeField] private CutsceneManager cutsceneController;
 
     // Start is called before the first frame update
     void Start()
@@ -63,84 +67,116 @@ public class PlayerMovementAndAttack : MonoBehaviour
         //give each player max ammo
         p1Ammo = maxAmmo;
         p2Ammo = maxAmmo;
+
+        //find cutsceneController
+        if (cutsceneController == null)
+            cutsceneController = GameObject.FindObjectOfType<CutsceneManager>();
     }
 
     //when p1 pressed WASD,...
     void OnP1Move(InputValue value)
     {
-        //set p1MoveDir to direction of WASD
-        //NOTE: vector is already normalized!
-        p1MoveDir = RemoveDiagonal(value.Get<Vector2>());
-
-        //if p1MoveDir is not equal to zero,...
-        if (p1MoveDir != Vector2.zero)
+        //if cutscene is NOT playing,...
+        if (!cutsceneController.isCutscenePlaying)
         {
-            //if 
-            if (p1MoveDir == EulerAngleToVector2(p1Center.transform.localEulerAngles.z))
-            {
-                isP1TurningToNewDirection = false;
-            }
-            else
-            {
-                isP1TurningToNewDirection = true;
-            }
+            //set p1MoveDir to direction of WASD
+            //NOTE: vector is already normalized!
+            p1MoveDir = RemoveDiagonal(value.Get<Vector2>());
 
-            //change direction of p2Center
-            p1Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p1MoveDir));
+            //if p1MoveDir is not equal to zero,...
+            if (p1MoveDir != Vector2.zero)
+            {
+                //if 
+                if (p1MoveDir == EulerAngleToVector2(p1Center.transform.localEulerAngles.z))
+                {
+                    isP1TurningToNewDirection = false;
+                }
+                else
+                {
+                    isP1TurningToNewDirection = true;
+                }
+
+                //change direction of p2Center
+                p1Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p1MoveDir));
+            }
         }
     }
 
     //when p2 pressed Arrow Keys,...
     void OnP2Move(InputValue value)
     {
-        //set p2MoveDir to direction of WASD
-        //NOTE: vector is already normalized!
-        p2MoveDir = RemoveDiagonal(value.Get<Vector2>());
-
-        //if p2MoveDir is not equal to zero,...
-        if (p2MoveDir != Vector2.zero)
+        //if cutscene is NOT playing,...
+        if (!cutsceneController.isCutscenePlaying)
         {
-            //Debug.Log(p2MoveDir == EulerAngleToVector2(p2Center.transform.localEulerAngles.z));
-            //if 
-            if(p2MoveDir == EulerAngleToVector2(p2Center.transform.localEulerAngles.z))
-            {
-                isP2TurningToNewDirection = false;
-            }
-            else
-            {
-                isP2TurningToNewDirection = true;
-            }
+            //set p2MoveDir to direction of WASD
+            //NOTE: vector is already normalized!
+            p2MoveDir = RemoveDiagonal(value.Get<Vector2>());
 
-            //change direction of p2Center
-            p2Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p2MoveDir));
+            //if p2MoveDir is not equal to zero,...
+            if (p2MoveDir != Vector2.zero)
+            {
+                //Debug.Log(p2MoveDir == EulerAngleToVector2(p2Center.transform.localEulerAngles.z));
+                //if 
+                if (p2MoveDir == EulerAngleToVector2(p2Center.transform.localEulerAngles.z))
+                {
+                    isP2TurningToNewDirection = false;
+                }
+                else
+                {
+                    isP2TurningToNewDirection = true;
+                }
+
+                //change direction of p2Center
+                p2Center.transform.localEulerAngles = new Vector3(0f, 0f, Vector2.SignedAngle(Vector2.up, p2MoveDir));
+            }
         }
     }
 
     //when p1 presses any p1 attack button,...
     void OnP1Attack()
     {
-        //if p1 can fire again,...
-        if (!p1IsAttacking && tempP1FireRate >= fireRate && p1Ammo > 0)
+        //if cutscene is playing,...
+        if (cutsceneController.isCutscenePlaying)
         {
-            //set p1IsAttacking to true
-            p1IsAttacking = true;
+            //skip the cutscene
+            cutsceneController.EndCutscene();
+        }
+        //else cutscene is NOT playing,...
+        else
+        {
+            //if p1 can fire again,...
+            if (!p1IsAttacking && tempP1FireRate >= fireRate && p1Ammo > 0)
+            {
+                //set p1IsAttacking to true
+                p1IsAttacking = true;
 
-            //reset tempP1FireRate
-            tempP1FireRate = 0f;
+                //reset tempP1FireRate
+                tempP1FireRate = 0f;
+            }
         }
     }
 
     //when p2 presses any p2 attack button,...
     void OnP2Attack()
     {
-        //if p2 can fire again,...
-        if (!p2IsAttacking && tempP2FireRate >= fireRate && p2Ammo > 0)
+        //if cutscene is playing,...
+        if (cutsceneController.isCutscenePlaying)
         {
-            //set p2IsAttacking to true
-            p2IsAttacking = true;
+            //skip the cutscene
+            cutsceneController.EndCutscene();
+        }
+        //else cutscene is NOT playing,...
+        else
+        {
+            //if p2 can fire again,...
+            if (!p2IsAttacking && tempP2FireRate >= fireRate && p2Ammo > 0)
+            {
+                //set p2IsAttacking to true
+                p2IsAttacking = true;
 
-            //reset tempP2FireRate
-            tempP2FireRate = 0f;
+                //reset tempP2FireRate
+                tempP2FireRate = 0f;
+            }
         }
     }
 
@@ -650,6 +686,8 @@ public class PlayerMovementAndAttack : MonoBehaviour
 
     public void Death()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        loseScreen.SetActive(true);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
 }

@@ -1,6 +1,10 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+
 
 public class CutsceneManager : MonoBehaviour
 {
@@ -8,10 +12,48 @@ public class CutsceneManager : MonoBehaviour
     public Sprite[] cutsceneSprites; // Drag and drop your cutscene images here in the inspector
     public float displayDuration = 3f; // Time each image stays on screen
     public float fadeDuration = 1f; // Time for fade in/out transitions
+    public float cutsceneDuration; // Total duration of the cutscene
+    private float cutsceneTimer = 0f;
+    public bool isCutscenePlaying = false;
+
+    [SerializeField] private string nextSceneName;
 
     private void Start()
     {
+        cutsceneDuration = (fadeDuration*2+displayDuration)*cutsceneSprites.Length;
+
+        StartCutscene();
+       
+    }
+    void Update()
+    {
+        if (isCutscenePlaying)
+        {
+            // Increment timer
+            cutsceneTimer += Time.deltaTime;
+
+            // End cutscene if duration is reached
+            if (cutsceneTimer >= cutsceneDuration)
+            {
+                EndCutscene();
+            }
+        }
+    }
+
+    void StartCutscene()
+    {
+       
+        isCutscenePlaying = true;
+        gameObject.SetActive(true);
         StartCoroutine(PlayCutscene());
+
+    }
+
+    public void EndCutscene()
+    {
+        isCutscenePlaying = false;
+        gameObject.SetActive(false); // Hide cutscene UI
+        // Trigger game progression, e.g., enable player controls, load next scene
     }
 
     private IEnumerator PlayCutscene()
@@ -33,12 +75,18 @@ public class CutsceneManager : MonoBehaviour
             yield return new WaitForSeconds(displayDuration);
 
             // Fade out
-            yield return StartCoroutine(FadeImage(0f, fadeDuration));
+            //yield return StartCoroutine(FadeImage(0f, fadeDuration));
         }
 
         // End of cutscene (you can add transitions to gameplay here)
+        if(nextSceneName != "")
+        {
+            SceneManager.LoadScene(nextSceneName);
+        }
         Debug.Log("Cutscene Finished");
     }
+
+
 
     private IEnumerator FadeImage(float targetAlpha, float duration)
     {
