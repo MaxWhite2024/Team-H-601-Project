@@ -50,6 +50,7 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private GameObject p2Arrow;
     [SerializeField] private GameObject syncedProjectile;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private GameObject loseScreen;
 
     [Header("Cutscene Variables")]
     [SerializeField] private CutsceneManager cutsceneController;
@@ -680,4 +681,13 @@ public class PlayerMovementAndAttack : MonoBehaviour
 
         return angle;
     }
+<<<<<<< Updated upstream
+=======
+
+    public void Death()
+    {
+        loseScreen.SetActive(true);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+>>>>>>> Stashed changes
 }
