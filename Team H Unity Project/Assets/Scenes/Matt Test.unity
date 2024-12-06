@@ -1220,8 +1220,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doors: {fileID: 242442119}
   healthDropChance: 30
-  activeRoom: {fileID: 0}
-  nextSceneName: You Win
   rooms: []
   doorsList: []
 --- !u!4 &1621425090

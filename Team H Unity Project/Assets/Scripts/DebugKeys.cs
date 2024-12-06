@@ -17,7 +17,6 @@ public class DebugKeys : MonoBehaviour
     //integer variables
     private int startingPlayerArmor;
     private float startingAmmoRechargeTime;
-    private float originalTimeScale;
 
     void Start()
     {
@@ -33,9 +32,6 @@ public class DebugKeys : MonoBehaviour
 
         //get startingAmmoRechargeSpeed
         startingAmmoRechargeTime = playerMovementAndAttack.ammoRechargeTime;
-
-        //save original time scale
-        originalTimeScale = Time.timeScale;
     }
 
     //when player presses '1',...
@@ -47,9 +43,6 @@ public class DebugKeys : MonoBehaviour
             //load first level
             SceneManager.LoadScene(housesToTeleportTo[0].ToString());
         }
-
-        //set timescale back to original time scale
-        Time.timeScale = originalTimeScale;
     }
 
     //when player presses '2',...
@@ -61,9 +54,6 @@ public class DebugKeys : MonoBehaviour
             //load second level
             SceneManager.LoadScene(housesToTeleportTo[1].ToString());
         }
-
-        //set timescale back to original time scale
-        Time.timeScale = originalTimeScale;
     }
 
     //when player presses '3',...
@@ -75,9 +65,6 @@ public class DebugKeys : MonoBehaviour
             //load third level
             SceneManager.LoadScene(housesToTeleportTo[2].ToString());
         }
-
-        //set timescale back to original time scale
-        Time.timeScale = originalTimeScale;
     }
 
     //when player presses 'i',...

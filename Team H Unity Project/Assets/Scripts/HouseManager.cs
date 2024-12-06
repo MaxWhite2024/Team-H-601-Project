@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class HouseManager : MonoBehaviour
 {
     public GameObject doors;
     public float healthDropChance;
     public RoomManager activeRoom;
-    public string nextSceneName;
 
     [Header("Debug Vars")]
     [SerializeField] private List<RoomManager> rooms = new List<RoomManager>();
@@ -68,12 +66,6 @@ public class HouseManager : MonoBehaviour
             }
         }
 
-        //Debug.Log("ALL ROOMS CLEAN");
-        Win();
-    }
-
-    public void Win()
-    {
-        SceneManager.LoadScene(nextSceneName);
+        Debug.Log("ALL ROOMS CLEAN");
     }
 }
