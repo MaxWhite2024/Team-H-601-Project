@@ -74,6 +74,9 @@ public class HouseManager : MonoBehaviour
 
     public void Win()
     {
-        SceneManager.LoadScene(nextSceneName);
+        if (nextSceneName != "")
+        {
+            SceneManager.LoadScene(nextSceneName);
+        }
     }
 }
