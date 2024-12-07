@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dece7363d9632b458d546c8ca1b4e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
+  maxHealth: 3
   armor: 0
   health: 4
   iFrameTime: 0.25
