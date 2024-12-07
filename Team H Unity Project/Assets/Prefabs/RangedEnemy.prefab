@@ -108,8 +108,9 @@ MonoBehaviour:
   rb: {fileID: 2535503093216284288}
   spawner: {fileID: 0}
   room: {fileID: 0}
+  sprite: {fileID: 0}
   projectile: {fileID: 5574379742644334510, guid: c7b8179aa9a6e444da5b21a4988df6f7, type: 3}
-  attackTimer: 3
+  attackTimer: 2
   timer: 0
 --- !u!114 &132937568626667955
 MonoBehaviour:
@@ -125,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   armor: 0
-  health: 3
+  health: 2
   iFrameTime: 0.25
   type: 0
   dropHealth: 0
