@@ -402,8 +402,8 @@ MonoBehaviour:
   startSpawnTimer: 5
   minSpawnTimer: 1.5
   enemy: {fileID: 6721093072881008051, guid: d32e208e0f731da4389d12e00aa27eae, type: 3}
-  horizontalMinMax: {x: 0, y: 0}
-  verticalMinMax: {x: 0, y: 0}
+  horizontalMinMax: {x: -12, y: 12}
+  verticalMinMax: {x: -5, y: 5}
   speedMin: 0.5
   speedMax: 5
   spawnLocations:
@@ -453,7 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9892d5b9bd021498f240854ffcd569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 4
   healing: 0
 --- !u!58 &8957678003618132842
 CircleCollider2D:

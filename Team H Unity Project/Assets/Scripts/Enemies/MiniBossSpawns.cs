@@ -34,18 +34,17 @@ public class MiniBossSpawns : Enemy
         {
             base.UpdatePlayerPos();
             path.destination = playerPos;
-
+            if (sprite != null)
+            {
+                Vector3 move = (playerPos - sprite.transform.position);
+                sprite.transform.rotation = Quaternion.Euler(new Vector3(0, 0, (Mathf.Rad2Deg * Mathf.Atan2(-move.x, move.y)) + 180));
+            }
             return;
         }
 
         if(ReachTarget())
         {
             targetingPlayer = true;
-            if (sprite != null)
-            {
-                Vector3 move = (playerPos - sprite.transform.position);
-                sprite.transform.rotation = Quaternion.Euler(new Vector3(0, 0, (Mathf.Rad2Deg * Mathf.Atan2(-move.x, move.y)) + 180));
-            }
         }
         else
         {

@@ -871,6 +871,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: isCutscenePlaying
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 459069760057529449, guid: 8f5080aad09927344b318297b4777396, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -1220,8 +1224,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doors: {fileID: 242442119}
   healthDropChance: 30
+  activeRoom: {fileID: 0}
   rooms: []
   doorsList: []
+  winScreen: {fileID: 0}
 --- !u!4 &1621425090
 Transform:
   m_ObjectHideFlags: 0
