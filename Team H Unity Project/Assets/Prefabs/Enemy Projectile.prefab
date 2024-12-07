@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.111328125, y: 0.1955937, z: 0.95}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.95}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 34587324d412940a79d530020c957dc0, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.75307083, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 08bbfbb526bf4234aa4c5af2c4f6b72a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -117,6 +117,7 @@ MonoBehaviour:
   moveSpeed: 6
   deleteTimer: 5
   canPierceEnemies: 0
+  burstParticleGameObject: {fileID: 0}
 --- !u!50 &5992466656730156495
 Rigidbody2D:
   serializedVersion: 4
