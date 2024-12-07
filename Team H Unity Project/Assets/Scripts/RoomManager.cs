@@ -180,7 +180,7 @@ public class RoomManager : MonoBehaviour
                 }
                 break;
             default:
-                if (enemies.Count <= 0)
+                if (enemies.Count <= 0 && spawners.Count <= 0)
                 {
                     roomClean = true;
                 }
