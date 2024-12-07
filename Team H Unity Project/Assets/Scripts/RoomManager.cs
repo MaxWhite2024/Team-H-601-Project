@@ -14,6 +14,7 @@ public class RoomManager : MonoBehaviour
     public Transform cameraTransform;
     public int maxEnemies;
     [SerializeField] private bool fullClear; //Do you need to kill all enemies or all everything
+    [SerializeField] private bool clearTrash = true; //Do you need to kill all enemies or all everything
     public float healthDropChance = -1;
 
     [Header("Spawners Speed Up Vars")]
@@ -202,7 +203,7 @@ public class RoomManager : MonoBehaviour
                 particleSystem.Play();
             }
 
-            if (!fullClear)
+            if (!fullClear && clearTrash)
             {
                 PurgeNulls(true);
                 while (damageables.Count > 0)
@@ -234,6 +235,7 @@ public class RoomManager : MonoBehaviour
             else
             {
                 damageables[i].Death();
+                i--;
             }
         }
     }
