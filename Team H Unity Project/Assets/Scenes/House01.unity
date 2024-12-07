@@ -32630,7 +32630,7 @@ MonoBehaviour:
   fadeDuration: 1
   cutsceneDuration: 0
   isCutscenePlaying: 1
-  nextSceneName: House01
+  nextSceneName: HouseBoss
 --- !u!114 &1846072174
 MonoBehaviour:
   m_ObjectHideFlags: 0
