@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1496193582903074443, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1663665016946373995, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.75
@@ -91,6 +95,10 @@ PrefabInstance:
     - target: {fileID: 5574379742644334510, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
       propertyPath: m_Name
       value: Synced Melee
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574379742644334510, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2456208488445453727, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
