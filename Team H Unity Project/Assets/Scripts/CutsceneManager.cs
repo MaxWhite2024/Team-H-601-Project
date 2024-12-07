@@ -19,6 +19,10 @@ public class CutsceneManager : MonoBehaviour
 
     [SerializeField] private string nextSceneName;
 
+    [Header("Sound GameObjects")]
+    [SerializeField] private List<GameObject> soundGameObjects;
+    [SerializeField] private List<int> timesToPlaySounds;
+
     private void Start()
     {
         cutsceneDuration = (fadeDuration*2+displayDuration)*cutsceneSprites.Length;
