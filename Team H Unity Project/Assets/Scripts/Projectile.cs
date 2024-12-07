@@ -14,6 +14,9 @@ public class Projectile : MonoBehaviour
     [Header("Particle System Vars")]
     [SerializeField] private GameObject burstParticleGameObject;
 
+    [Header("Sound Vars")]
+    [SerializeField] private GameObject popBurstSoundGameObject;
+
     void Awake()
     {
         enemyLayer = LayerMask.NameToLayer("Enemy");
@@ -41,6 +44,12 @@ public class Projectile : MonoBehaviour
             Instantiate(burstParticleGameObject, gameObject.transform.position, Quaternion.identity);
         }
 
+        //create a burst sound
+        if(popBurstSoundGameObject != null)
+        {
+            Instantiate(popBurstSoundGameObject, gameObject.transform.position, Quaternion.identity);
+        }
+
         //destroy self
         Destroy(this.gameObject);
     }
@@ -62,6 +71,12 @@ public class Projectile : MonoBehaviour
             if (burstParticleGameObject != null)
             {
                 Instantiate(burstParticleGameObject, gameObject.transform.position, Quaternion.identity);
+            }
+
+            //create a burst sound
+            if (popBurstSoundGameObject != null)
+            {
+                Instantiate(popBurstSoundGameObject, gameObject.transform.position, Quaternion.identity);
             }
 
             //destroy self

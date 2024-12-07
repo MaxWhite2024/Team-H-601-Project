@@ -849,26 +849,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: abe1f71b71ed4824a96e09cdc82862f3, type: 3}
---- !u!1 &304246544 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1309435824349621235, guid: 8f5080aad09927344b318297b4777396, type: 3}
-  m_PrefabInstance: {fileID: 1126347732}
-  m_PrefabAsset: {fileID: 0}
---- !u!111 &304246549
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 304246544}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1001 &339612269
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26598,7 +26578,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
   m_PrefabInstance: {fileID: 1126347732}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 304246544}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 516e335cc5d561349ad98e58d133a340, type: 3}
@@ -26754,6 +26734,14 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: soundGameObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: timesToPlaySounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
       propertyPath: cutsceneSprites.Array.data[0]
       value: 
       objectReference: {fileID: 21300000, guid: 29b79bbec80ebf9409631f212937b930, type: 3}
@@ -26789,6 +26777,30 @@ PrefabInstance:
       propertyPath: cutsceneSprites.Array.data[8]
       value: 
       objectReference: {fileID: 21300000, guid: 4003f6bedfb555241a13c65853eb17f9, type: 3}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: soundGameObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 2068792958702457606, guid: 4c07648741f004f45b427ea1a031816f, type: 3}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: soundGameObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 8892448928339043854, guid: 0cf7799bd090cc541b78b0940eb4d0c9, type: 3}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: soundGameObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 3907868848083107897, guid: 59d357831ae51bf4ab08899a401de253, type: 3}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: timesToPlaySounds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: timesToPlaySounds.Array.data[1]
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: timesToPlaySounds.Array.data[2]
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 459069760057529449, guid: 8f5080aad09927344b318297b4777396, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -27008,10 +27020,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1309435824349621235, guid: 8f5080aad09927344b318297b4777396, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 304246549}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f5080aad09927344b318297b4777396, type: 3}
 --- !u!1001 &1128714807
 PrefabInstance:
