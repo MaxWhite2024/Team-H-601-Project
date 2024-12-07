@@ -6,6 +6,14 @@ public class BossSpriteManager : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer bossSpriteRenderer;
 
+    [Header("Sprites")]
+    [SerializeField] private Sprite initial;
+    [SerializeField] private Sprite second;
+    [SerializeField] private Sprite third;
+    [SerializeField] private Sprite fourth; 
+    [SerializeField] private Sprite final;
+    private byte sprite = 0;
+
     [Header("Invulnerable Flash Variables")]
     [SerializeField] private float invulFlashMinAlpha;
     [SerializeField] private float invulFlashRate;
@@ -14,9 +22,12 @@ public class BossSpriteManager : MonoBehaviour
     private Color originalBossColor;
     private Color fadedBossColor;
 
+    private float startScale;
     // Start is called before the first frame update
     void Start()
     {
+        startScale = transform.localScale.x;
+
         //make note of boss' original color
         originalBossColor = bossSpriteRenderer.color;
 
@@ -60,6 +71,39 @@ public class BossSpriteManager : MonoBehaviour
             //set boss' opacity back to original opacity
             bossSpriteRenderer.color = originalBossColor;
         }
+    }
+
+    public void ChangeSprite(float healthPercent)
+    {
+        if (healthPercent <= .8f && sprite <= 0)
+        {
+            float scale = startScale * ((healthPercent / 2) + .5f);
+            transform.localScale = new Vector3(scale, scale, 1);
+            bossSpriteRenderer.sprite = second;
+            sprite++;
+        }
+        else if (healthPercent <= .6f && sprite <= 1)
+        {
+            float scale = startScale * ((healthPercent / 2) + .5f);
+            transform.localScale = new Vector3(scale, scale, 1);
+            bossSpriteRenderer.sprite = third;
+            sprite++;
+        }
+        else if (healthPercent <= .4f && sprite <= 2)
+        {
+            float scale = startScale * ((healthPercent / 2) + .5f);
+            transform.localScale = new Vector3(scale, scale, 1);
+            bossSpriteRenderer.sprite = fourth;
+            sprite++;
+        }
+        else if (healthPercent <= .2f && sprite <= 3)
+        {
+            float scale = startScale * ((healthPercent / 2) + .5f);
+            transform.localScale = new Vector3(scale, scale, 1);
+            bossSpriteRenderer.sprite = final;
+            sprite++;
+        }
+
     }
 
     //***** Makes the boss start to flash between transparent and opaque to signify it is invulnerable *****

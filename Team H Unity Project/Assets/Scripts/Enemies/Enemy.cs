@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     [Header("Debug Vars")]
     public EnemySpawner spawner;
     public RoomManager room;
+    [SerializeField] protected GameObject sprite;
 
     //public bool spawned = true;
     protected Vector3 playerPos;
@@ -31,6 +32,10 @@ public class Enemy : MonoBehaviour
     {
         //This is so children can declare all the vars needed
         DeclareVars();
+        if (sprite == null)
+        {
+            sprite = transform.GetChild(1).gameObject;
+        }
     }
 
     protected void DeclareVars()
@@ -69,6 +74,14 @@ public class Enemy : MonoBehaviour
 
         UpdatePlayerPos();
         path.destination = playerPos;
+
+        if(sprite != null)
+        {
+            Vector3 move = (playerPos - sprite.transform.position);
+            sprite.transform.rotation = Quaternion.Euler(new Vector3(0, 0, (Mathf.Rad2Deg * Mathf.Atan2(-move.x, move.y)) + 180));
+        }
+        
+
 
         #region old pathing
         /*//Counts down from stepTime, once time hits 0 moves in the direction of the player

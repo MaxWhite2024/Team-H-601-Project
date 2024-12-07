@@ -17,6 +17,7 @@ public class DebugKeys : MonoBehaviour
     //integer variables
     private int startingPlayerArmor;
     private float startingAmmoRechargeTime;
+    private float originalTimeScale;
 
     void Start()
     {
@@ -32,11 +33,17 @@ public class DebugKeys : MonoBehaviour
 
         //get startingAmmoRechargeSpeed
         startingAmmoRechargeTime = playerMovementAndAttack.ammoRechargeTime;
+
+        //get originalTimeScale
+        originalTimeScale = Time.timeScale;
     }
 
     //when player presses '1',...
     void OnDebugTeleport1()
     {
+        //reset timeScale
+        Time.timeScale = originalTimeScale;
+
         //if first level in the housesToTeleportTo list exists,...
         if (housesToTeleportTo[0] != null)
         {
@@ -48,6 +55,9 @@ public class DebugKeys : MonoBehaviour
     //when player presses '2',...
     void OnDebugTeleport2()
     {
+        //reset timeScale
+        Time.timeScale = originalTimeScale;
+
         //if second level in the housesToTeleportTo list exists,...
         if (housesToTeleportTo[1] != null)
         {
@@ -59,6 +69,9 @@ public class DebugKeys : MonoBehaviour
     //when player presses '3',...
     void OnDebugTeleport3()
     {
+        //reset timeScale
+        Time.timeScale = originalTimeScale;
+
         //if third level in the housesToTeleportTo list exists,...
         if (housesToTeleportTo[2] != null)
         {
