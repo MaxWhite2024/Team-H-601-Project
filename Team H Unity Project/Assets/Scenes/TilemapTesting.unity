@@ -22800,6 +22800,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[UNUSED?] C1-Win'
       objectReference: {fileID: 0}
+    - target: {fileID: 6518672853100465811, guid: aed42859225d44e4ba7f26b1a3bd44ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7645272181343391202, guid: aed42859225d44e4ba7f26b1a3bd44ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.67
