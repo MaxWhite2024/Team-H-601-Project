@@ -36,7 +36,10 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Create a burst particle system gameobject
-        Instantiate(burstParticleGameObject, gameObject.transform.position, Quaternion.identity);
+        if(burstParticleGameObject != null)
+        {
+            Instantiate(burstParticleGameObject, gameObject.transform.position, Quaternion.identity);
+        }
 
         //destroy self
         Destroy(this.gameObject);
@@ -56,7 +59,10 @@ public class Projectile : MonoBehaviour
         else
         {
             //Create a burst particle system gameobject
-            Instantiate(burstParticleGameObject, gameObject.transform.position, Quaternion.identity);
+            if (burstParticleGameObject != null)
+            {
+                Instantiate(burstParticleGameObject, gameObject.transform.position, Quaternion.identity);
+            }
 
             //destroy self
             Destroy(this.gameObject);
