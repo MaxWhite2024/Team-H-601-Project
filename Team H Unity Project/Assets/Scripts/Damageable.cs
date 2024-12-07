@@ -102,7 +102,7 @@ public class Damageable : MonoBehaviour
         if (damage.healing)
         {
             //If it is a healing item and this is not a player, nothign should happen
-            if (type != Damageables.Player)
+            if (type != Damageables.Player || health >= maxHealth)
             {
                 return;
             }
