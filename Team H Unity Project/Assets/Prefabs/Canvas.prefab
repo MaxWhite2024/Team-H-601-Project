@@ -501,6 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 516e335cc5d561349ad98e58d133a340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DoesFadeOut: 0
   cutsceneImage: {fileID: 5117124165476893385}
   cutsceneSprites:
   - {fileID: 21300000, guid: 79ec6f40fa8bb704cb4a96539afe65e2, type: 3}
@@ -512,6 +513,8 @@ MonoBehaviour:
   cutsceneDuration: 0
   isCutscenePlaying: 1
   nextSceneName: 
+  soundGameObjects: []
+  timesToPlaySounds: []
 --- !u!1 &1844256661390995079
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,6 +791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 516e335cc5d561349ad98e58d133a340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DoesFadeOut: 0
   cutsceneImage: {fileID: 8745033440036098657}
   cutsceneSprites:
   - {fileID: 21300000, guid: d85bd147b6369314ba09a63f3c19ca89, type: 3}
@@ -796,6 +800,8 @@ MonoBehaviour:
   cutsceneDuration: 0
   isCutscenePlaying: 1
   nextSceneName: House01
+  soundGameObjects: []
+  timesToPlaySounds: []
 --- !u!1 &5031698498997993278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1447,6 +1453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 516e335cc5d561349ad98e58d133a340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DoesFadeOut: 0
   cutsceneImage: {fileID: 2909953515367692378}
   cutsceneSprites:
   - {fileID: 21300000, guid: b99e3c69c240743469c3e4ae44a4aa80, type: 3}
@@ -1455,3 +1462,5 @@ MonoBehaviour:
   cutsceneDuration: 0
   isCutscenePlaying: 1
   nextSceneName: TilemapTesting
+  soundGameObjects: []
+  timesToPlaySounds: []

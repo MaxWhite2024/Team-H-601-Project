@@ -24,9 +24,12 @@ public class CutsceneManager : MonoBehaviour
     [Header("Sound GameObjects")]
     [SerializeField] private List<GameObject> soundGameObjects;
     [SerializeField] private List<float> timesToPlaySounds;
+    public List<GameObject> instantaitedGameObjects;
 
     private void Start()
     {
+        instantaitedGameObjects = new List<GameObject>(soundGameObjects.Count);
+
         cutsceneDuration = (fadeDuration*2+displayDuration)*cutsceneSprites.Length;
 
         StartCutscene();
@@ -70,6 +73,19 @@ public class CutsceneManager : MonoBehaviour
             for (int i = 0; i < soundGameObjects.Count; i++)
             {
                 StartCoroutine(WaitThenInstantiate(soundGameObjects[i], timesToPlaySounds[i]));
+            }
+        }
+    }
+
+    private void StopSounds()
+    {
+        //stop all currently created sounds
+        for(int i = 0; i < instantaitedGameObjects.Count; i++)
+        {
+            if (instantaitedGameObjects[i])
+            {
+                instantaitedGameObjects[i].GetComponent<AudioSource>().Stop();
+                Destroy(instantaitedGameObjects[i]);
             }
         }
     }
@@ -126,6 +142,6 @@ public class CutsceneManager : MonoBehaviour
         yield return new WaitForSeconds(secondsToWait);
 
         //create prefabToInstantiate
-        Instantiate(prefabToInstantiate);
+        instantaitedGameObjects.Add(Instantiate(prefabToInstantiate));
     }
 }
