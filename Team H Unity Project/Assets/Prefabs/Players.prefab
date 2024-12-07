@@ -245,6 +245,8 @@ MonoBehaviour:
   p1Arrow: {fileID: 2005881012553786414}
   p2Arrow: {fileID: 6597807637758744979}
   syncedProjectile: {fileID: 506075118401876979, guid: 4f3254e9898936244b7ac325dd420600, type: 3}
+  syncedProjectileSpawn: {fileID: 6472619162037521016}
+  syncedMelee: {fileID: 6007265236689706881, guid: 36da47f2294aa8e458f4161bcc2173bc, type: 3}
   rb: {fileID: 3923888817605829432}
   loseScreen: {fileID: 0}
   cutsceneController: {fileID: 0}
@@ -11111,6 +11113,37 @@ Transform:
   - {fileID: 1733879051847329005}
   m_Father: {fileID: 7081134332818919972}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6472619162037521016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3018009533332898931}
+  m_Layer: 0
+  m_Name: SyncProjectileSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3018009533332898931
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6472619162037521016}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.02, y: 2.54, z: 0}
+  m_LocalScale: {x: 3.3333328, y: 3.3333328, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8868182885742550093}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6515628095684922612
 GameObject:
   m_ObjectHideFlags: 0
@@ -11460,6 +11493,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5529344380742159688}
+  - {fileID: 3018009533332898931}
   m_Father: {fileID: 3979158823159578912}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7225709484863884097

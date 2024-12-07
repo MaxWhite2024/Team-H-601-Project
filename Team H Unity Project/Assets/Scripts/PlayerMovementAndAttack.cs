@@ -50,6 +50,8 @@ public class PlayerMovementAndAttack : MonoBehaviour
     [SerializeField] private GameObject p1Arrow;
     [SerializeField] private GameObject p2Arrow;
     [SerializeField] private GameObject syncedProjectile;
+    [SerializeField] private GameObject syncedProjectileSpawn;
+    [SerializeField] private GameObject syncedMelee;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GameObject loseScreen;
 
@@ -639,7 +641,8 @@ public class PlayerMovementAndAttack : MonoBehaviour
     private void FireSyncedProjectile()
     {
         //fire a synced projectile in p1 direction
-        Instantiate(syncedProjectile, p1Arrow.transform.position, p1Arrow.transform.rotation);
+        Instantiate(syncedMelee, transform.position, transform.rotation);
+        Instantiate(syncedProjectile, syncedProjectileSpawn.transform.position, syncedProjectileSpawn.transform.rotation);
 
         //if player does NOT have instant ammo recharge,...
         if (!hasInstantAmmoRecharge)

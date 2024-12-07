@@ -19,7 +19,7 @@ public class Damageable : MonoBehaviour
     [SerializeField] private GameObject healthPickup;
 
     private float timer;
-    private float startScale;
+
     [HideInInspector] public RoomManager room;
 
     [Header("Player and Miniboss variables")]
@@ -29,7 +29,6 @@ public class Damageable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startScale = transform.localScale.x;
         timer = 0;
         if (room == null && transform.parent != null)
         {
@@ -103,7 +102,7 @@ public class Damageable : MonoBehaviour
         if (damage.healing)
         {
             //If it is a healing item and this is not a player, nothign should happen
-            if (type != Damageables.Player)
+            if (type != Damageables.Player || health >= maxHealth)
             {
                 return;
             }
@@ -168,9 +167,8 @@ public class Damageable : MonoBehaviour
                     this.gameObject.GetComponent<Rigidbody2D>().AddForce(knockbackAngle.normalized * (armor - damage.damage) * 500 * -1);
                     break;
                 case Damageables.MiniBoss:
-                    float scale = startScale * (((float)health / ((float)maxHealth * 2)) + .5f);
-                    transform.localScale = new Vector3(scale, scale, 1);
                     this.gameObject.GetComponent<MiniBoss>().UpdateVars((float)health / (float)maxHealth);
+                    bossSpriteManager.ChangeSprite((float)health / (float)maxHealth);
                     break;
                 default:
                     break;
