@@ -33230,6 +33230,14 @@ PrefabInstance:
       propertyPath: cutsceneController
       value: 
       objectReference: {fileID: 1034882864}
+    - target: {fileID: 5639558656254542896, guid: 76195bd9ef611044ea98bb97c7f5e131, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639558656254542896, guid: 76195bd9ef611044ea98bb97c7f5e131, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6199732062852769932, guid: 76195bd9ef611044ea98bb97c7f5e131, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
       value: 0.27947187

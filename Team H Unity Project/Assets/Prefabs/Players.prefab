@@ -246,6 +246,7 @@ MonoBehaviour:
   p2Arrow: {fileID: 6597807637758744979}
   syncedProjectile: {fileID: 506075118401876979, guid: 4f3254e9898936244b7ac325dd420600, type: 3}
   syncedProjectileSpawn: {fileID: 6472619162037521016}
+  syncedMelee: {fileID: 6007265236689706881, guid: 36da47f2294aa8e458f4161bcc2173bc, type: 3}
   rb: {fileID: 3923888817605829432}
   loseScreen: {fileID: 0}
   cutsceneController: {fileID: 0}
