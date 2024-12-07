@@ -376,7 +376,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dcf05a6812994df47a14d1a3c6b35201, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 99bff1b22b76a5a4fab70e1d96ca8325, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -402,8 +402,8 @@ MonoBehaviour:
   startSpawnTimer: 5
   minSpawnTimer: 1.5
   enemy: {fileID: 6721093072881008051, guid: d32e208e0f731da4389d12e00aa27eae, type: 3}
-  horizontal: {x: 0, y: 0}
-  vertical: {x: 0, y: 0}
+  horizontalMinMax: {x: 0, y: 0}
+  verticalMinMax: {x: 0, y: 0}
   speedMin: 0.5
   speedMax: 5
   spawnLocations:
@@ -600,6 +600,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossSpriteRenderer: {fileID: 8514486940097414851}
+  initial: {fileID: 21300000, guid: 99bff1b22b76a5a4fab70e1d96ca8325, type: 3}
+  second: {fileID: 21300000, guid: 75338762aa2323b44a9150ee39c5ddae, type: 3}
+  third: {fileID: 21300000, guid: 596953c449e3da2469a1f664f604ab64, type: 3}
+  fourth: {fileID: 21300000, guid: a84d0aa711458be43ad330369c16403a, type: 3}
+  final: {fileID: 21300000, guid: 267f57565fe2e15489e1c62493df1c04, type: 3}
   invulFlashMinAlpha: 0.2
   invulFlashRate: 0.2
 --- !u!1 &5569615066185188455
