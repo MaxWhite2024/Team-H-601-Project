@@ -246,6 +246,8 @@ MonoBehaviour:
   p2Arrow: {fileID: 6597807637758744979}
   syncedProjectile: {fileID: 506075118401876979, guid: 4f3254e9898936244b7ac325dd420600, type: 3}
   rb: {fileID: 3923888817605829432}
+  loseScreen: {fileID: 0}
+  cutsceneController: {fileID: 0}
 --- !u!114 &6391768355133209792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,7 +330,7 @@ MonoBehaviour:
   housesToTeleportTo:
   - TilemapTesting
   - House01
-  - Matt Test
+  - HouseBoss
   playerDamageable: {fileID: 6391768355133209792}
   playerMovementAndAttack: {fileID: 5061495762136108037}
 --- !u!1 &610750069560181508
