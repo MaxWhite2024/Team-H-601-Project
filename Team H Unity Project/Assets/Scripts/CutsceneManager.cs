@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 
 public class CutsceneManager : MonoBehaviour
 {
+    [SerializeField] private bool DoesFadeOut;
     public Image cutsceneImage; // Assign your UI Image component here
     public Sprite[] cutsceneSprites; // Drag and drop your cutscene images here in the inspector
     public float displayDuration = 3f; // Time each image stays on screen
@@ -58,32 +59,35 @@ public class CutsceneManager : MonoBehaviour
 
     private IEnumerator PlayCutscene()
     {
-        // Make sure the image is initially transparent
-        Color transparent = cutsceneImage.color;
-        transparent.a = 0;
-        cutsceneImage.color = transparent;
+        // Make sure the image is initially opaque
+        Color opaque = cutsceneImage.color;
+        opaque.a = 1f;
+        cutsceneImage.color = opaque;
 
         foreach (var sprite in cutsceneSprites)
         {
             // Set the current image
             cutsceneImage.sprite = sprite;
-
-            // Fade in
-            yield return StartCoroutine(FadeImage(1f, fadeDuration));
-
             // Display image for the set duration
             yield return new WaitForSeconds(displayDuration);
 
-            // Fade out
-            //yield return StartCoroutine(FadeImage(0f, fadeDuration));
+
         }
+        if (DoesFadeOut == true)
+            {
+           
+            yield return StartCoroutine(FadeImage(0f, fadeDuration)); // Fade out
+        }
+        
+        
 
         // End of cutscene (you can add transitions to gameplay here)
-        if(nextSceneName != "")
+        if (nextSceneName != "")
         {
             SceneManager.LoadScene(nextSceneName);
         }
         Debug.Log("Cutscene Finished");
+        EndCutscene();
     }
 
 
