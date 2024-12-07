@@ -32342,6 +32342,14 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: soundGameObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: timesToPlaySounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
       propertyPath: cutsceneSprites.Array.data[0]
       value: 
       objectReference: {fileID: 21300000, guid: 29b79bbec80ebf9409631f212937b930, type: 3}
@@ -32377,6 +32385,30 @@ PrefabInstance:
       propertyPath: cutsceneSprites.Array.data[8]
       value: 
       objectReference: {fileID: 21300000, guid: 4003f6bedfb555241a13c65853eb17f9, type: 3}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: soundGameObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 2068792958702457606, guid: 4c07648741f004f45b427ea1a031816f, type: 3}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: soundGameObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 8892448928339043854, guid: 0cf7799bd090cc541b78b0940eb4d0c9, type: 3}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: soundGameObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 3907868848083107897, guid: 59d357831ae51bf4ab08899a401de253, type: 3}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: timesToPlaySounds.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: timesToPlaySounds.Array.data[1]
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 332286027198033586, guid: 8f5080aad09927344b318297b4777396, type: 3}
+      propertyPath: timesToPlaySounds.Array.data[2]
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 459069760057529449, guid: 8f5080aad09927344b318297b4777396, type: 3}
       propertyPath: m_Name
       value: Canvas

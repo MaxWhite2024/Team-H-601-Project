@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEditor.ShaderGraph.Drawing.Inspector.PropertyDrawers;
+using System.Linq;
 
 
 public class CutsceneManager : MonoBehaviour
@@ -21,7 +23,7 @@ public class CutsceneManager : MonoBehaviour
 
     [Header("Sound GameObjects")]
     [SerializeField] private List<GameObject> soundGameObjects;
-    [SerializeField] private List<int> timesToPlaySounds;
+    [SerializeField] private List<float> timesToPlaySounds;
 
     private void Start()
     {
@@ -47,11 +49,10 @@ public class CutsceneManager : MonoBehaviour
 
     void StartCutscene()
     {
-       
         isCutscenePlaying = true;
         gameObject.SetActive(true);
         StartCoroutine(PlayCutscene());
-
+        PlaySounds();
     }
 
     public void EndCutscene()
@@ -61,6 +62,18 @@ public class CutsceneManager : MonoBehaviour
         // Trigger game progression, e.g., enable player controls, load next scene
     }
 
+    private void PlaySounds()
+    {
+        //play cutscene sounds
+        if (soundGameObjects.Count == timesToPlaySounds.Count && soundGameObjects.Count != 0)
+        {
+            for (int i = 0; i < soundGameObjects.Count; i++)
+            {
+                StartCoroutine(WaitThenInstantiate(soundGameObjects[i], timesToPlaySounds[i]));
+            }
+        }
+    }
+
     private IEnumerator PlayCutscene()
     {
         // Make sure the image is initially opaque
@@ -68,23 +81,20 @@ public class CutsceneManager : MonoBehaviour
         opaque.a = 1f;
         cutsceneImage.color = opaque;
 
-        foreach (var sprite in cutsceneSprites)
+        for (int i = 0; i < cutsceneSprites.Length; i++)
         {
             // Set the current image
-            cutsceneImage.sprite = sprite;
+            cutsceneImage.sprite = cutsceneSprites[i];
+
             // Display image for the set duration
             yield return new WaitForSeconds(displayDuration);
-
-
         }
-        if (DoesFadeOut == true)
-            {
-           
+
+        if (DoesFadeOut)
+        {
             yield return StartCoroutine(FadeImage(0f, fadeDuration)); // Fade out
         }
         
-        
-
         // End of cutscene (you can add transitions to gameplay here)
         if (nextSceneName != "")
         {
@@ -93,8 +103,6 @@ public class CutsceneManager : MonoBehaviour
         Debug.Log("Cutscene Finished");
         EndCutscene();
     }
-
-
 
     private IEnumerator FadeImage(float targetAlpha, float duration)
     {
@@ -110,5 +118,14 @@ public class CutsceneManager : MonoBehaviour
             cutsceneImage.color = color;
             yield return null;
         }
+    }
+
+    private IEnumerator WaitThenInstantiate(GameObject prefabToInstantiate, float secondsToWait)
+    {
+        //wait for secondsToWait seconds
+        yield return new WaitForSeconds(secondsToWait);
+
+        //create prefabToInstantiate
+        Instantiate(prefabToInstantiate);
     }
 }
