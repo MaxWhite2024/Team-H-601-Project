@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3223032109849257500, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d3c1473183f3414aa314d9483ec1f2e, type: 3}
     - target: {fileID: 5362708713431935145, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
       propertyPath: moveSpeed
       value: 12
@@ -100,6 +104,10 @@ PrefabInstance:
       propertyPath: burstParticleGameObject
       value: 
       objectReference: {fileID: 6747738213137506087, guid: 57b188e905cff3d4aa0fdec62309eeca, type: 3}
+    - target: {fileID: 5362708713431935145, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
+      propertyPath: popBurstSoundGameObject
+      value: 
+      objectReference: {fileID: 2515372162194885792, guid: 38553c13a83cb5b4fae8d38ef46d8c62, type: 3}
     - target: {fileID: 5574379742644334510, guid: 547c3eac3fa6dc5458b9e0ff85126dd5, type: 3}
       propertyPath: m_Name
       value: Synced Projectile
