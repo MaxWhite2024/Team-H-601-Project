@@ -30149,7 +30149,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3925970441447837084, guid: b18477fe15703fe49b570b6f4a6bb8b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.81
+      value: -1.48
       objectReference: {fileID: 0}
     - target: {fileID: 3925970441447837084, guid: b18477fe15703fe49b570b6f4a6bb8b5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -32195,6 +32195,9 @@ MonoBehaviour:
   cutsceneDuration: 0
   isCutscenePlaying: 0
   nextSceneName: 
+  soundGameObjects: []
+  timesToPlaySounds: []
+  instantaitedGameObjects: []
 --- !u!114 &1806406216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32641,6 +32644,9 @@ MonoBehaviour:
   cutsceneDuration: 0
   isCutscenePlaying: 1
   nextSceneName: HouseBoss
+  soundGameObjects: []
+  timesToPlaySounds: []
+  instantaitedGameObjects: []
 --- !u!114 &1846072174
 MonoBehaviour:
   m_ObjectHideFlags: 0
