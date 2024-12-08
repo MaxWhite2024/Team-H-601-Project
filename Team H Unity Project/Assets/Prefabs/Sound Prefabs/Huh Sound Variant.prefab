@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8824171454914292499
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 125225875194013320, guid: 9c07139ffd93a1c4ea9dc49c863667c9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125225875194013320, guid: 9c07139ffd93a1c4ea9dc49c863667c9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125225875194013320, guid: 9c07139ffd93a1c4ea9dc49c863667c9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125225875194013320, guid: 9c07139ffd93a1c4ea9dc49c863667c9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 125225875194013320, guid: 9c07139ffd93a1c4ea9dc49c863667c9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125225875194013320, guid: 9c07139ffd93a1c4ea9dc49c863667c9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125225875194013320, guid: 9c07139ffd93a1c4ea9dc49c863667c9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125225875194013320, guid: 9c07139ffd93a1c4ea9dc49c863667c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125225875194013320, guid: 9c07139ffd93a1c4ea9dc49c863667c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125225875194013320, guid: 9c07139ffd93a1c4ea9dc49c863667c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3939657048056125415, guid: 9c07139ffd93a1c4ea9dc49c863667c9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: affbc35df91a75f48a457b90f2ac0796, type: 3}
+    - target: {fileID: 6642424018823099215, guid: 9c07139ffd93a1c4ea9dc49c863667c9, type: 3}
+      propertyPath: m_Name
+      value: Huh Sound Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c07139ffd93a1c4ea9dc49c863667c9, type: 3}
