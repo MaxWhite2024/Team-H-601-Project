@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: 3939657048056125415, guid: 9c07139ffd93a1c4ea9dc49c863667c9, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: affbc35df91a75f48a457b90f2ac0796, type: 3}
+      objectReference: {fileID: 8300000, guid: 3b0bba93d8b6e6d469135571802d5160, type: 3}
     - target: {fileID: 6642424018823099215, guid: 9c07139ffd93a1c4ea9dc49c863667c9, type: 3}
       propertyPath: m_Name
       value: Huh Sound Variant
