@@ -314,7 +314,7 @@ MonoBehaviour:
   invulFlashRate: 0.2
   maxVignetteAlpha: 0.5
   vignetteFadeDuration: 0.6
-  damageHitStopTime: 0.6
+  damageHitStopTime: 0.3
   inSyncTrail: {fileID: 6637684084227233222}
   outSyncParticles: {fileID: 8613095592420308504}
   opposingParticles: {fileID: 969226137313292484}
