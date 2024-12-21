@@ -687,6 +687,61 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "LeftAnalog",
+                    "id": "770a4b22-6c71-4ca1-90d8-dcdf555180e5",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "p1Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "5a85cf8c-a54f-4b54-8c90-6f6749e63ec9",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "p1Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "1706d1b1-76f9-4a01-afd0-c640d97ff93c",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "p1Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "6623546f-b5da-4fdc-bb3d-f6ec89104ffc",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "p1Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "2a9ad2a4-83b9-41de-a8a4-ffbc5db006e0",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "p1Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "Arrow Keys",
                     "id": "2ebd0daf-8af5-499c-8fba-03e3599ac96f",
                     "path": "Dpad",
@@ -742,6 +797,61 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "RightAnalog",
+                    "id": "ea9ac1af-09cf-4a39-ba49-ebbfe068ca11",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "p2Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "13170162-f597-4249-beeb-14b0d473be1c",
+                    "path": "<Gamepad>/rightStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "p2Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "9845a30f-e67a-491a-b243-08577e7c1027",
+                    "path": "<Gamepad>/rightStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "p2Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "c275d48c-1a30-4b29-aa11-16fd655e0c20",
+                    "path": "<Gamepad>/rightStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "p2Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "b6dc7f9f-b97d-435a-bae8-092d6148c625",
+                    "path": "<Gamepad>/rightStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "p2Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "836c1818-bdb1-4ba1-bfb8-9817bc09c3fc",
                     "path": "<Keyboard>/capsLock",
@@ -787,6 +897,17 @@
                 },
                 {
                     "name": "",
+                    "id": "3a0cb6dd-66df-4103-8be8-3d2aafcbc5f3",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "p1Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9b8965f7-4375-411c-bd0b-09eecd3be5cb",
                     "path": "<Keyboard>/enter",
                     "interactions": "",
@@ -825,6 +946,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
+                    "action": "p2Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e60beeda-1760-4749-a90b-7d88f5afdac2",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "p2Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
